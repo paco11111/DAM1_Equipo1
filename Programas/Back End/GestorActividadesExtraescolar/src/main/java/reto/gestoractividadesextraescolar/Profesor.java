@@ -4,6 +4,8 @@
  */
 package reto.gestoractividadesextraescolar;
 
+import Enumerados.PuestoProfesor;
+
 /**
  *
  * @author Francisco Sitjar
@@ -13,7 +15,7 @@ public class Profesor {
     private String nombre;
     private String apellidos;
     private String email;
-    private PuestoProfesor puesto;
+    private PuestoProfesor PUESTO;
     private boolean activo;
     
     
@@ -24,7 +26,7 @@ public class Profesor {
         this.nombre = nombre;
         this.apellidos = apellidos;
         this.email = email;
-        this.puesto = puesto;
+        this.PUESTO = puesto;
         this.activo = activo;
         
         
@@ -37,8 +39,10 @@ public class Profesor {
         this.nombre = Teclado.nextString("Nombre: ");
         this.apellidos = Teclado.nextString("Apellidos: ");
         this.email = Teclado.email();
-        this.puesto = 
+        this.PUESTO = Teclado.puesto();
+        this.activo = Teclado.nextBolean("El profesor esta activo?");
         
     }
+    
     
 }

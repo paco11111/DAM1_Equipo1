@@ -4,8 +4,13 @@
  */
 package reto.gestoractividadesextraescolar;
 
+import Enumerados.EstadoSolicitud;
+import Enumerados.EtapaCurso;
+import Enumerados.PuestoProfesor;
+import Enumerados.TipoActividad;
 import java.time.DateTimeException;
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -88,6 +93,17 @@ public class Teclado {
             temp = LocalDate.of(dia, mes, anio);
         } catch (DateTimeException a) {
             System.out.println("Error: Los datos no son validos para el formato de fecha");
+        }
+        return temp;
+    }
+    public static LocalTime hora(String texto) {
+        System.out.print(texto);
+        int hora = nextInt("Introduce la hora: ");
+        LocalTime temp = LocalTime.now();
+        try {
+            temp = LocalTime.of(hora, 0, 0);
+        } catch (DateTimeException a) {
+            System.out.println("Error: Los datos no son validos para el formato de hora");
         }
         return temp;
     }
@@ -189,5 +205,114 @@ public class Teclado {
         return puesto;
 
     }
+    
+    public static TipoActividad tipoActividad(){
+        TipoActividad actividad = null;
+        boolean salir = false;
+        do {
+            int opc = Teclado.nextInt("Tipo de actividad:       1-Extraescolar      2-Complementaria");
+            if(opc == 1){
+                actividad = TipoActividad.EXTRAESCOLAR;
+                salir = true;
+            }else if (opc == 2){
+                actividad = TipoActividad.COMPLEMENTARIA;
+                salir = true;
+            }else{
+                System.out.println("Opción no valida");
+            }
+        } while (!salir);
+
+        return actividad;
+    }
+    
+    public static EstadoSolicitud estado(){
+        int opc;
+        EstadoSolicitud estado = null;
+        boolean salir = false;
+
+        do {
+            opc = Teclado.nextInt("Estado de la actividad: \n1.-Solicitada\n2.-Aprobada\n3.-Denegada\n4.-Realizada");
+            switch (opc) {
+                case 1 -> {
+                    estado = estado.SOLICITADA;
+                    salir = true;
+                }
+                case 2 -> {
+                    estado = estado.APROBADA;
+                    salir = true;
+                }
+                case 3 -> {
+                    estado = estado.DENEGADA;
+                    salir = true;
+                }
+                case 4 -> {
+                    estado = estado.REALIZADA;
+                    salir = true;
+                }
+                default ->
+                    System.out.println("Opcion no valida");
+            }
+
+        } while (!salir);
+        
+        return estado;
+    }
+    public static EstadoSolicitud etapaCurso(){
+        int opc;
+        EtapaCurso etapa = null;
+        boolean salir = false;
+
+        do {
+            opc = Teclado.nextInt("Etapa del curso: \n1.-ESO\n2.-Bachillerato\n3.-FP Basica\n4.-FP grado medio\n5.-FP grado superior\n6.-FP curso especializacion: ");
+            switch (opc) {
+                case 1 -> {
+                    etapa = EtapaCurso.ESO;
+                    salir = true;
+                }
+                case 2 -> {
+                    etapa = EtapaCurso.BACHILLERATO;
+                    salir = true;
+                }
+                case 3 -> {
+                    etapa = EtapaCurso.FPB;
+                    salir = true;
+                }
+                case 4 -> {
+                    etapa = EtapaCurso.FPGM;
+                    salir = true;
+                }
+                case 5 -> {
+                    etapa = EtapaCurso.FPGS;
+                    salir = true;
+                }
+                case 6 -> {
+                    etapa = EtapaCurso.FPCE;
+                    salir = true;
+                }
+                default ->
+                    System.out.println("Opcion no valida");
+            }
+
+        } while (!salir);
+        
+        return etapa;
+    }
+    
+    public static String codigoCurso() {
+        String temp = "";
+        boolean salir = false;
+        do {
+            temp = Teclado.nextString("Codigo del curso (No puede tener mas de 8 caracteres): ");
+            if (temp.length() <= 8) {
+                salir = true;
+            } else {
+                System.out.println("Curso no valido, vuelva a intentarlo.");
+            }
+        } while (!salir);
+
+        return temp;
+    }
+    
+    
 
 }
