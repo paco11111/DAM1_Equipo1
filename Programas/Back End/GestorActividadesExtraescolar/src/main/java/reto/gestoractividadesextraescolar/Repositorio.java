@@ -9,6 +9,7 @@ import java.util.List;
 /**
  *
  * @author DAM114
+ * @param <T>
  */
 public interface Repositorio<T> {
 
@@ -23,7 +24,10 @@ public interface Repositorio<T> {
     // método en este caso puede ser tanto para realizar la inserción o modificación de un objeto
     // aunque también se pueden crear un método para añadir un objeto y otro para modificar
     // inserta un registro en la tabla o bien lo modifica
-    public void guardar(T t);
+    public void modificar(T t);
+    
+    //método para agregar
+    public void agregar(T t);
 
     // método para borrar un objeto por su ID
     // nos permite borrar un registro de la base de datos por clave primaria
