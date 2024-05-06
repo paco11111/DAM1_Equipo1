@@ -8,8 +8,9 @@ import Enumerados.EstadoSolicitud;
 import Enumerados.TipoActividad;
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.util.ArrayList;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
+import java.util.Locale;
 
 /**
  *
@@ -75,6 +76,94 @@ public class Solicitud {
         
         
     }
+    
+    
+    @Override
+    public String toString(){
+         //DateTimeFormatter f = DateTimeFormatter.ofPattern("dd 'de' MMMM 'de' yyyy ").withLocale(new Locale("es", "ES"));
+         //DateTimeFormatter t = DateTimeFormatter.ofPattern("'a las' hh:mm").withLocale(new Locale("es", "ES"));
+         
+        return "\nID: " + id + "-- Profesor: "+ profesorSolicitante.getNombre() + " " + profesorSolicitante.getApellidos();
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public Profesor getProfesorSolicitante() {
+        return profesorSolicitante;
+    }
+
+    public String getActividad() {
+        return actividad;
+    }
+
+    public TipoActividad getTIPOACTIVIDAD() {
+        return TIPOACTIVIDAD;
+    }
+
+    public String getDepartamento() {
+        return departamento;
+    }
+
+    public boolean isPrevisto() {
+        return previsto;
+    }
+
+    public boolean isTransporte() {
+        return transporte;
+    }
+
+    public String getComentarioTransporte() {
+        return comentarioTransporte;
+    }
+
+    public LocalDate getFechaInicio() {
+        return fechaInicio;
+    }
+
+    public LocalDate getFechaFinal() {
+        return fechaFinal;
+    }
+
+    public LocalTime getHoraInicio() {
+        return horaInicio;
+    }
+
+    public LocalTime getHoraFinal() {
+        return horaFinal;
+    }
+
+    public boolean isAlojamiento() {
+        return alojamiento;
+    }
+
+    public String getComentarioAlojamiento() {
+        return comentarioAlojamiento;
+    }
+
+    public String getComentarioAdicional() {
+        return comentarioAdicional;
+    }
+
+    public EstadoSolicitud getESTADO() {
+        return ESTADO;
+    }
+
+    public String getComentarioEstado() {
+        return comentarioEstado;
+    }
+
+    public List<Profesor> getProfesoresParticipantes() {
+        return profesoresParticipantes;
+    }
+
+    public List<Profesor> getProfesoresResponsables() {
+        return profesoresResponsables;
+    }
+    
+    
+    
     
     
 }

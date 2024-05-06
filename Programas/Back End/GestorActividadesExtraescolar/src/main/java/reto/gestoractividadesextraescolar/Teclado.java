@@ -82,6 +82,7 @@ public class Teclado {
         } while (!salir);
         return temp;
     }
+    
 
     public static LocalDate fecha(String texto) {
         System.out.print(texto);
@@ -108,15 +109,6 @@ public class Teclado {
         return temp;
     }
 
-    public static String telefono(String texto) {
-        String temp = nextString(texto);
-        while (!temp.matches("[0-9]{9}")) {
-            System.out.println("Valor introducido invalido, prueve otra vez");
-            temp = nextString(texto);
-        }
-
-        return temp;
-    }
 
     private static boolean letraDni(String dni) {
         int numDni = Integer.parseInt(dni.substring(0, 8));
@@ -169,6 +161,22 @@ public class Teclado {
             }
         } while (!salir);
 
+        return temp;
+    }
+    
+    public static int id(String texto){
+       boolean salir = false;
+        int temp = 0;
+        do {
+            try {
+                System.out.println(texto);
+                temp = new Scanner(System.in).nextInt();
+                salir = true;
+            } catch (InputMismatchException a) {
+                System.out.println("Error: no se ha introducido un entero");
+            }
+
+        } while (!salir);
         return temp;
     }
 
@@ -234,19 +242,19 @@ public class Teclado {
             opc = Teclado.nextInt("Estado de la actividad: \n1.-Solicitada\n2.-Aprobada\n3.-Denegada\n4.-Realizada");
             switch (opc) {
                 case 1 -> {
-                    estado = estado.SOLICITADA;
+                    estado = EstadoSolicitud.SOLICITADA;
                     salir = true;
                 }
                 case 2 -> {
-                    estado = estado.APROBADA;
+                    estado = EstadoSolicitud.APROBADA;
                     salir = true;
                 }
                 case 3 -> {
-                    estado = estado.DENEGADA;
+                    estado = EstadoSolicitud.DENEGADA;
                     salir = true;
                 }
                 case 4 -> {
-                    estado = estado.REALIZADA;
+                    estado = EstadoSolicitud.REALIZADA;
                     salir = true;
                 }
                 default ->
@@ -257,7 +265,7 @@ public class Teclado {
         
         return estado;
     }
-    public static EstadoSolicitud etapaCurso(){
+    public static EtapaCurso etapaCurso(){
         int opc;
         EtapaCurso etapa = null;
         boolean salir = false;
@@ -298,7 +306,7 @@ public class Teclado {
         return etapa;
     }
     
-    public static String codigoCurso() {
+    public static String codigoGrupo() {
         String temp = "";
         boolean salir = false;
         do {
@@ -307,6 +315,36 @@ public class Teclado {
                 salir = true;
             } else {
                 System.out.println("Curso no valido, vuelva a intentarlo.");
+            }
+        } while (!salir);
+
+        return temp;
+    }
+    
+    public static String codigoCurso() {
+        String temp = "";
+        boolean salir = false;
+        do {
+            temp = Teclado.nextString("Codigo del curso (No puede tener mas de 5 caracteres): ");
+            if (temp.length() <= 5) {
+                salir = true;
+            } else {
+                System.out.println("Curso no valido, vuelva a intentarlo.");
+            }
+        } while (!salir);
+
+        return temp;
+    }
+    
+    public static String codigoDepartamento() {
+        String temp = "";
+        boolean salir = false;
+        do {
+            temp = Teclado.nextString("Codigo de Departamento (3 caracteres en mayuscula): ");
+            if (temp.matches("[A-Z]{3}")) {
+                salir = true;
+            } else {
+                System.out.println("El codigo debe cumplir los requisitos.");
             }
         } while (!salir);
 
