@@ -10,7 +10,7 @@ import Enumerados.PuestoProfesor;
  *
  * @author Francisco Sitjar
  */
-public class Profesor {
+public class Profesor implements Comparable<Profesor>  {
     private int id;
     private String dni;
     private String nombre;
@@ -82,6 +82,11 @@ public class Profesor {
 
     public boolean isActivo() {
         return activo;
+    }
+
+    @Override
+    public int compareTo(Profesor o) {
+        return this.getNombre().compareTo(o.getNombre());
     }
     
     

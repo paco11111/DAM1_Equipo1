@@ -11,6 +11,7 @@ import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Locale;
+import java.util.TreeMap;
 
 /**
  *
@@ -34,13 +35,35 @@ public class Solicitud {
     private String comentarioAdicional;
     private EstadoSolicitud ESTADO;
     private String comentarioEstado;
-    private List <Profesor> profesoresParticipantes;
-    private List <Profesor> profesoresResponsables;
-    
+    private TreeMap <Integer, Profesor> profesoresParticipantes;
+    private TreeMap <Integer, Profesor> profesoresResponsables;
+
+    public Solicitud(int id, Profesor profesorSolicitante, String actividad, TipoActividad TIPOACTIVIDAD, String departamento, boolean previsto, boolean transporte, String comentarioTransporte, LocalDate fechaInicio, LocalDate fechaFinal, LocalTime horaInicio, LocalTime horaFinal, boolean alojamiento, String comentarioAlojamiento, String comentarioAdicional, EstadoSolicitud ESTADO, String comentarioEstado, TreeMap<Integer, Profesor> profesoresParticipantes, TreeMap<Integer, Profesor> profesoresResponsables) {
+        this.id = id;
+        this.profesorSolicitante = profesorSolicitante;
+        this.actividad = actividad;
+        this.TIPOACTIVIDAD = TIPOACTIVIDAD;
+        this.departamento = departamento;
+        this.previsto = previsto;
+        this.transporte = transporte;
+        this.comentarioTransporte = comentarioTransporte;
+        this.fechaInicio = fechaInicio;
+        this.fechaFinal = fechaFinal;
+        this.horaInicio = horaInicio;
+        this.horaFinal = horaFinal;
+        this.alojamiento = alojamiento;
+        this.comentarioAlojamiento = comentarioAlojamiento;
+        this.comentarioAdicional = comentarioAdicional;
+        this.ESTADO = ESTADO;
+        this.comentarioEstado = comentarioEstado;
+        this.profesoresParticipantes = profesoresParticipantes;
+        this.profesoresResponsables = profesoresResponsables;
+    }
+        
     
     
     public Solicitud(){
-        //profesorSolicitante = *** ESTO LLAMA A CLASE PROFESORES
+        profesorSolicitante = new Profesor(false);
         actividad = Teclado.nextString("Actividad a solicitar:");
         TIPOACTIVIDAD = Teclado.tipoActividad();
         departamento = Teclado.nextString("Departamento");
@@ -68,14 +91,12 @@ public class Solicitud {
         if(opc){
             comentarioTransporte = Teclado.nextString("Añade un comentario: ");
         }
-        //profesoresParticipantes = new ArrayList<Profesor>(); ***Insertar profesores participantes por su nombre o dni (mirar cual es mas comodo)
-        //profesoresResponsables = new ArrayList<Profesor>(); *** Repetir proceso anterior para los profesores responsables
-        
-        
-        
-        
+        profesoresParticipantes = new TreeMap<Integer, Profesor>(); 
+        profesoresResponsables = new TreeMap<Integer, Profesor>(); 
         
     }
+    
+    
     
     
     @Override
@@ -154,13 +175,16 @@ public class Solicitud {
         return comentarioEstado;
     }
 
-    public List<Profesor> getProfesoresParticipantes() {
+    public TreeMap<Integer, Profesor> getProfesoresParticipantes() {
         return profesoresParticipantes;
     }
 
-    public List<Profesor> getProfesoresResponsables() {
+    public TreeMap<Integer, Profesor> getProfesoresResponsables() {
         return profesoresResponsables;
     }
+
+    
+    
     
     
     
