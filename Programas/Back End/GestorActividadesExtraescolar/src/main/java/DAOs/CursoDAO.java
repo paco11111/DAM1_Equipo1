@@ -103,7 +103,7 @@ public class CursoDAO implements Repositorio<Curso>{
             String etapa = ""+curso.getEtapa();
             stmt.setString(3, etapa);
             stmt.setBoolean(4, curso.isActivoCurso());
-            stmt.setInt(5, curso.getIdCurso());
+            stmt.setInt(5, curso.getId());
             int salida = stmt.executeUpdate();
             if (salida != 1) {
                 throw new Exception(" No se ha insertado/modificado un solo registro");

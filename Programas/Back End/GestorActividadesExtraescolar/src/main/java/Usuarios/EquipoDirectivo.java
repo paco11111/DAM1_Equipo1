@@ -27,10 +27,13 @@ public class EquipoDirectivo {
         
     }
     
-    public void estadoSolicitud(){
-        int id = Teclado.nextInt("Que solicitud desea modificar?");
-        sol.porId(id);
-        //menu desplegable para cambiar aprobado o denegado
+    public void estadoSolicitud(String estado){
+        for(Solicitud s : sol.listar()){
+            System.out.println(s);
+        }
+        if(estado.toUpperCase().equals(EstadoSolicitud.APROBADA)){
+            
+        }
         
         
     }

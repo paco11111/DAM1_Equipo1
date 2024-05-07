@@ -11,7 +11,7 @@ import Enumerados.EtapaCurso;
  * @author Francisco Sitjar
  */
 public class Curso {
-    private int idCurso;
+    private int id;
     private String codigo;
     private EtapaCurso etapa;
     private String descripcion;
@@ -23,7 +23,7 @@ public class Curso {
     
     public Curso(boolean tieneId){
         if(tieneId){
-            this.idCurso = Teclado.nextInt("Id del curso");
+            this.id = Teclado.nextInt("Id del curso");
         }
         etapa = Teclado.etapaCurso();
         codigo = Teclado.codigoCurso();
@@ -36,7 +36,7 @@ public class Curso {
     }
     
     public Curso(int id, String codigo, EtapaCurso etapa, String descripcion, boolean activo){
-        this.idCurso = id;
+        this.id = id;
         this.codigo = codigo;
         this.etapa = etapa;
         this.descripcion = descripcion;
@@ -50,8 +50,8 @@ public class Curso {
         return codigo;
     }
 
-    public int getIdCurso() {
-        return idCurso;
+    public int getId() {
+        return id;
     }
 
     public EtapaCurso getEtapa() {

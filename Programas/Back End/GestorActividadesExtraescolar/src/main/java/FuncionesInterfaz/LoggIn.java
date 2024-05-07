@@ -17,9 +17,13 @@ public class LoggIn {
     public LoggIn(){
         
         email = Teclado.email();
+        psswrd = Teclado.nextString("");               
         
         
     }
+    
+    
+    
     
     
 }

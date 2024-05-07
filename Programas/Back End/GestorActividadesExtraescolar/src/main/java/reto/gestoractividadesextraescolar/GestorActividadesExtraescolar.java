@@ -7,6 +7,7 @@ package reto.gestoractividadesextraescolar;
 
 
 
+
 /**
  *
  * @author Francisco Sitjar
@@ -14,9 +15,8 @@ package reto.gestoractividadesextraescolar;
 public class GestorActividadesExtraescolar {
      
     public static void main(String[] args) {
-        
-        
-        
+       
+               
       
     }
 }
