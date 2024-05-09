@@ -13,6 +13,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import reto.gestoractividadesextraescolar.AccesoBaseDatos;
+import reto.gestoractividadesextraescolar.Departamento;
 import reto.gestoractividadesextraescolar.Profesor;
 import reto.gestoractividadesextraescolar.Repositorio;
 import reto.gestoractividadesextraescolar.Teclado;
@@ -22,6 +23,7 @@ import reto.gestoractividadesextraescolar.Teclado;
  * @author Francisco Sitjar
  */
 public class ProfesorDAO implements Repositorio<Profesor>{
+    private DepartamentoDAO departamentoDAO = new DepartamentoDAO(); 
     
     private Connection getConnection() {
         return AccesoBaseDatos.getInstance().getConn();
@@ -30,7 +32,7 @@ public class ProfesorDAO implements Repositorio<Profesor>{
     @Override
     public List<Profesor> listar() {
         List<Profesor> profesores = new ArrayList<>();
-        try ( Statement stmt = getConnection().createStatement();  ResultSet rs = stmt.executeQuery("SELECT idProfesor,apellidos,nombre, DNI, email, idDepartamento,ocupacion,activo FROM profesores");) {
+        try ( Statement stmt = getConnection().createStatement();  ResultSet rs = stmt.executeQuery("SELECT * FROM profesores");) {
             while (rs.next()) {
                 Profesor profesor = crearProfesor(rs);
                 if (!profesores.add(profesor)) {
@@ -47,31 +49,27 @@ public class ProfesorDAO implements Repositorio<Profesor>{
         return profesores;
     }
     private Profesor crearProfesor(final ResultSet rs) throws SQLException {
-        PuestoProfesor puesto = null;
-        switch (rs.getString("ocupacion")) {
-                case "SUPERUSUARIO" -> {
-                    puesto = PuestoProfesor.SUPERUSUARIO;
-                }
-                case "ADMINISTRADOR" -> {
-                    puesto = PuestoProfesor.ADMINISTRADOR;
-                }
-                case "EQUIPO_DIRECTIVO" -> {
-                    puesto = PuestoProfesor.EQUIPO_DIRECTIVO;
-                }
-                case "PROFESOR" -> {
-                    puesto = PuestoProfesor.PROFESOR;
-                }
-                default ->
-                    System.out.println("Opcion no valida");
-            }
-
-        return new Profesor(rs.getInt("idProfesor"), rs.getString("apellidos"), rs.getString("nombre"), rs.getString("DNI"), rs.getString("email"), rs.getInt("idDepartamento"), puesto, rs.getBoolean("activo"));
+        Departamento departamento= departamentoDAO.porId(rs.getInt("idDepartamento"));
+        if(departamento !=null){
+            System.out.println("funciona");
+        }else{
+            System.out.println("No funciona");
+        }
+        
+        
+        
+        return new Profesor(rs.getInt("idProfesor"), 
+                rs.getString("nombre"), 
+                rs.getString("apellidos"), 
+                rs.getString("DNI"), 
+                rs.getString("email"), 
+                rs.getString("ocupacion"), rs.getBoolean("activo"));
     }
 
     @Override
     public Profesor porId(int id) {
         Profesor profesor = null;
-        String sql = "SELECT idProfesor,nombre,apellidos, DNI, email, idDepartamento, ocupacion, activo FROM profesores WHERE idProfesor=?";
+        String sql = "SELECT idProfesor, nombre, apellidos, DNI, email, idDepartamento, ocupacion, activo FROM profesores WHERE idProfesor=?";
         try ( PreparedStatement stmt = getConnection().prepareStatement(sql);) {
             stmt.setInt(1, id);
             try ( ResultSet rs = stmt.executeQuery();) {
@@ -96,7 +94,7 @@ public class ProfesorDAO implements Repositorio<Profesor>{
             stmt.setString(2, profesor.getApellidos());
             stmt.setString(3, profesor.getDni());
             stmt.setString(4, profesor.getEmail());
-            stmt.setInt(5, profesor.getDepartamento());
+            stmt.setInt(5, profesor.getDepartamento().getId());
             String puesto = ""+profesor.getPUESTO();
             stmt.setString(6, puesto);
             stmt.setBoolean(7, profesor.isActivo());
@@ -122,7 +120,7 @@ public class ProfesorDAO implements Repositorio<Profesor>{
             stmt.setString(2, profesor.getApellidos());
             stmt.setString(3, profesor.getDni());
             stmt.setString(4, profesor.getEmail());
-            stmt.setInt(5, profesor.getDepartamento());
+            stmt.setInt(5, profesor.getDepartamento().getId());
             String puesto = ""+profesor.getPUESTO();
             stmt.setString(6, puesto);
             stmt.setBoolean(7, profesor.isActivo());

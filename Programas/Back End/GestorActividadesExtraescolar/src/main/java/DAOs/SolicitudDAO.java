@@ -5,13 +5,14 @@
 package DAOs;
 
 import Enumerados.EstadoSolicitud;
-import Enumerados.PuestoProfesor;
 import Enumerados.TipoActividad;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.Time;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
@@ -21,6 +22,9 @@ import reto.gestoractividadesextraescolar.AccesoBaseDatos;
 import reto.gestoractividadesextraescolar.Profesor;
 import reto.gestoractividadesextraescolar.Repositorio;
 import reto.gestoractividadesextraescolar.Solicitud;
+import reto.gestoractividadesextraescolar.Transporte;
+
+
 
 /**
  *
@@ -51,76 +55,20 @@ public class SolicitudDAO implements Repositorio<Solicitud>{
         }
         return solicitudes;
     }
-    private Profesor crearProfesor(final ResultSet rs) throws SQLException {
-        PuestoProfesor puesto = null;
-        switch (rs.getString("ocupacion")) {
-                case "SUPERUSUARIO" -> {
-                    puesto = PuestoProfesor.SUPERUSUARIO;
-                }
-                case "ADMINISTRADOR" -> {
-                    puesto = PuestoProfesor.ADMINISTRADOR;
-                }
-                case "EQUIPO_DIRECTIVO" -> {
-                    puesto = PuestoProfesor.EQUIPO_DIRECTIVO;
-                }
-                case "PROFESOR" -> {
-                    puesto = PuestoProfesor.PROFESOR;
-                }
-                default ->
-                    System.out.println("Opcion no valida");
-            }
-
-        return new Profesor(rs.getInt("idProfesor"), rs.getString("apellidos"), rs.getString("nombre"), rs.getString("DNI"), rs.getString("email"), rs.getInt("idDepartamento"), puesto, rs.getBoolean("activo"));
-    }
-    
     private Solicitud crearSolicitud(final ResultSet rs) throws SQLException {
-        TipoActividad actividad = null;
-        switch (rs.getString("tipo_actividad")) {
-                case "COMPLEMENTARIA" -> {
-                    actividad = TipoActividad.COMPLEMENTARIA;
-                }
-                case "EXTRAESCOLAR" -> {
-                    actividad = TipoActividad.EXTRAESCOLAR;
-                }
-                default ->
-                    System.out.println("Opcion no valida");
-            }
-        
-        
-        EstadoSolicitud estado = null;
-        switch (rs.getString("tipo_actividad")) {
-                case "APROBADA" -> {
-                    estado = EstadoSolicitud.APROBADA;
-                }
-                case "DENEGADA" -> {
-                    estado = EstadoSolicitud.DENEGADA;
-                }
-                case "REALIZADA" -> {
-                    estado = EstadoSolicitud.REALIZADA;
-                }
-                case "SOLICITADA" -> {
-                    estado = EstadoSolicitud.SOLICITADA;
-                }
-                default ->
-                    System.out.println("Opcion no valida");
-            }
-        
-        Profesor solicitante;
-        ProfesorDAO temp = new ProfesorDAO();
-        solicitante = temp.porId(rs.getInt("idSolicitante"));
-        
+        ProfesorDAO profesorDAO = new ProfesorDAO();       
         //Profesores Participantes
         TreeMap <Integer, Profesor> profesoresParticipantes = new TreeMap <Integer, Profesor>();
         
-        try ( PreparedStatement stmt = getConnection().prepareStatement("SELECT * FORM profesores WHERE id = (SELECT idProfe FROM idprofes_participantes WHERE idSolicitud = ?)");) {
+        try ( PreparedStatement stmt = getConnection().prepareStatement("SELECT * FROM idprofes_participantes WHERE idSolicitud = ? ");) {
             stmt.setInt(1, rs.getInt("idSolicitud"));            
             ResultSet rs2 = stmt.executeQuery();
             int index = 0;
             while (rs2.next()) {
-                Profesor profesor = crearProfesor(rs);
-                profesoresParticipantes.put(index, profesor);
+                profesoresParticipantes.put(index, profesorDAO.porId(rs2.getInt("idProfe")));
                 index++;
             }
+            
             
 
         } catch (SQLException ex) {
@@ -134,13 +82,12 @@ public class SolicitudDAO implements Repositorio<Solicitud>{
         //Profesores Responsables
         TreeMap <Integer, Profesor> profesoresResponsables = new TreeMap <Integer, Profesor>();
         
-        try ( PreparedStatement stmt = getConnection().prepareStatement("SELECT * FORM profesores WHERE idProfesor = (SELECT idProfe FROM idprofes_responsables WHERE idSolicitud = ?)");) {
+        try ( PreparedStatement stmt = getConnection().prepareStatement("SELECT * FROM idprofes_responsables WHERE idSolicitud = ? ");) {
             stmt.setInt(1, rs.getInt("idSolicitud"));            
             ResultSet rs2 = stmt.executeQuery();
             int index = 0;
             while (rs2.next()) {
-                Profesor profesor = crearProfesor(rs);
-                profesoresResponsables.put(index, profesor);
+                profesoresResponsables.put(index, profesorDAO.porId(rs2.getInt("idProfe")));
                 index++;
             }
             
@@ -152,45 +99,159 @@ public class SolicitudDAO implements Repositorio<Solicitud>{
             System.out.println(ex.getMessage());
         }
         
-        //Codigo departamento
-        String departamento = null;
-        try ( PreparedStatement stmt = getConnection().prepareStatement("SELECT codigo  FORM departamento WHERE idDepartamento = (SELECT idDepartamento FROM profesores WHERE idProfesor = ?)");) {
+        
+        DepartamentoDAO departamentoDAO = new DepartamentoDAO();
+        
+        TransporteDAO transporteDAO = new TransporteDAO();
+        
+        //Profesores Responsables
+        TreeMap <Integer, Transporte> transportes = new TreeMap <Integer, Transporte>();
+        
+        try ( PreparedStatement stmt = getConnection().prepareStatement("SELECT * FROM solicitudes_has_transporte WHERE idSolicitudes = ? ");) {
             stmt.setInt(1, rs.getInt("idSolicitud"));            
             ResultSet rs2 = stmt.executeQuery();
-            departamento = rs.getString("codigo");
+            int index = 0;
+            while (rs2.next()) {
+                transportes.put(index, transporteDAO.porId(rs2.getInt("idTransporte")));
+                index++;
+            } 
+            
+
         } catch (SQLException ex) {
             // errores
             System.out.println("SQLException: " + ex.getMessage());
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
         }
-        
         LocalDate finicio = rs.getDate("finicio").toLocalDate();
         LocalDate ffin = rs.getDate("ffin").toLocalDate();
         LocalTime horaInicio = rs.getTime("hora_inicio").toLocalTime();
         LocalTime horaFin = rs.getTime("hora_fin").toLocalTime();
         
-        return new Solicitud(rs.getInt("idSolicitud"),solicitante,rs.getString("actividad"),actividad,departamento, rs.getBoolean("previsto_programacion"), rs.getBoolean("requiere_transporte"), rs.getString("comentario_transporte"),finicio, ffin,horaInicio,horaFin, rs.getBoolean("alojamiento"), rs.getString("comentario_alojamiento"), rs.getString("comentarios_adicionales"), estado, rs.getString("comentario_estado"), profesoresParticipantes, profesoresResponsables);
+        return new Solicitud(rs.getInt("idSolicitud"),profesorDAO.porId(rs.getInt("idSolicitante")),rs.getString("actividad"),rs.getString("tipo_actividad"),departamentoDAO.porId(profesorDAO.porId(rs.getInt("idSolicitante")).getDepartamento().getId()), rs.getBoolean("previsto_programacion"),transportes , rs.getString("comentario_transporte"),finicio, ffin,horaInicio,horaFin, rs.getBoolean("alojamiento"), rs.getString("comentario_alojamiento"), rs.getString("comentarios_adicionales"), rs.getString("estado"), rs.getString("comentario_estado"), profesoresParticipantes, profesoresResponsables);
     }
+    
 
     @Override
     public Solicitud porId(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        Solicitud solicitud = null;
+        String sql = "SELECT * FROM transporte WHERE idSolicitud = ?";
+        try ( PreparedStatement stmt = getConnection().prepareStatement(sql);) {
+            stmt.setInt(1, id);
+            try ( ResultSet rs = stmt.executeQuery();) {
+                if (rs.next()) {
+                    solicitud = crearSolicitud(rs);
+                }else{
+                    System.out.println("No hay solicitud con tal id");
+                }
+            } 
+        } catch (SQLException ex) {
+            // errores
+            System.out.println("SQLException: " + ex.getMessage());
+        }
+        return solicitud;
     }
 
     @Override
-    public void modificar(Solicitud t) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public void modificar(Solicitud solicitud) {
+        try ( PreparedStatement stmt = getConnection().prepareStatement("UPDATE solicitudes SET idSolicitante = ?, actividad = ?, tipo_actividad = ?, previsto_programacion = ?, requiere_transporte = ?, comentario_transporte = ?, finicio = ?, ffinal = ?, hora_inicio = ?, hora_fin = ?, alojamiento = ?, comentario_alojamiento = ?, comentarios_adicionales = ?, estado = ?, comentario_estado = ?, WHERE idSolicitud=?");) {
+            stmt.setInt(1, solicitud.getProfesorSolicitante().getId());
+            stmt.setString(2, solicitud.getActividad());
+            String tipoActividad = "" + solicitud.getTIPOACTIVIDAD();
+            stmt.setString(3, tipoActividad);
+            stmt.setBoolean(4, solicitud.isPrevisto());
+            if(solicitud.getTransporte().isEmpty()){
+                stmt.setString(5, "false");
+            }else{
+                stmt.setString(5, "true");
+            }
+            stmt.setString(6, solicitud.getComentarioTransporte());
+            Date fechaInicio = Date.valueOf(solicitud.getFechaInicio());
+            stmt.setDate(7, fechaInicio);
+            Date fechaFinal = Date.valueOf(solicitud.getFechaFinal());
+            stmt.setDate(8, fechaFinal);
+            Time horaInicio = Time.valueOf(solicitud.getHoraInicio());
+            stmt.setTime(9, horaInicio);
+            Time horaFinal = Time.valueOf(solicitud.getHoraFinal());
+            stmt.setTime(10, horaFinal);
+            stmt.setBoolean(11,solicitud.isAlojamiento());
+            stmt.setString(12, solicitud.getComentarioAlojamiento());
+            stmt.setString(13, solicitud.getComentarioAdicional());
+            String estado = "" + solicitud.getESTADO();
+            stmt.setString(14, estado);
+            stmt.setString(15, solicitud.getComentarioEstado());
+            stmt.setInt(16, solicitud.getId());
+            int salida = stmt.executeUpdate();
+            if (salida != 1) {
+                throw new Exception(" No se ha insertado/modificado un solo registro");
+            }
+
+        } catch (SQLException ex) {
+            // errores
+            System.out.println("SQLException: " + ex.getMessage());
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
     }
 
     @Override
-    public void agregar(Solicitud t) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public void agregar(Solicitud solicitud) {
+        try ( PreparedStatement stmt = getConnection().prepareStatement("INSERT INTO solicitudes (idSolicitante, actividad, tipo_actividad, previsto_programacion, requiere_transporte, comentario_transporte, finicio, ffinal, hora_inicio, hora_fin, alojamiento, comentario_alojamiento, comentarios_adicionales, estado, comentario_estado ) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");) {
+            stmt.setInt(1, solicitud.getProfesorSolicitante().getId());
+            stmt.setString(2, solicitud.getActividad());
+            String tipoActividad = "" + solicitud.getTIPOACTIVIDAD();
+            stmt.setString(3, tipoActividad);
+            stmt.setBoolean(4, solicitud.isPrevisto());
+            if(solicitud.getTransporte().isEmpty()){
+                stmt.setString(5, "false");
+            }else{
+                stmt.setString(5, "true");
+            }
+            stmt.setString(6, solicitud.getComentarioTransporte());
+            Date fechaInicio = Date.valueOf(solicitud.getFechaInicio());
+            stmt.setDate(7, fechaInicio);
+            Date fechaFinal = Date.valueOf(solicitud.getFechaFinal());
+            stmt.setDate(8, fechaFinal);
+            Time horaInicio = Time.valueOf(solicitud.getHoraInicio());
+            stmt.setTime(9, horaInicio);
+            Time horaFinal = Time.valueOf(solicitud.getHoraFinal());
+            stmt.setTime(10, horaFinal);
+            stmt.setBoolean(11,solicitud.isAlojamiento());
+            stmt.setString(12, solicitud.getComentarioAlojamiento());
+            stmt.setString(13, solicitud.getComentarioAdicional());
+            String estado = "" + solicitud.getESTADO();
+            stmt.setString(14, estado);
+            stmt.setString(15, solicitud.getComentarioEstado());
+            int salida = stmt.executeUpdate();
+            if (salida != 1) {
+                throw new Exception(" No se ha insertado/modificado un solo registro en profesores");
+            }
+
+        } catch (SQLException ex) {
+            // errores
+            System.out.println("SQLException: " + ex.getMessage());
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
     }
 
     @Override
     public void eliminar(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        String sql="DELETE FROM solicitudes WHERE idSolicitudes=?"; //cambiar idSolicitudes por idSolicitud
+        try ( PreparedStatement stmt = getConnection().prepareStatement(sql);) {
+            stmt.setInt(1, id);
+            int salida = stmt.executeUpdate();
+            if (salida != 1) {
+                throw new Exception(" No se ha borrado un solo registro");
+            }
+        } catch (SQLException ex) {
+            // errores
+            System.out.println("SQLException: " + ex.getMessage());
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
     }
+    
+    
     
 }
