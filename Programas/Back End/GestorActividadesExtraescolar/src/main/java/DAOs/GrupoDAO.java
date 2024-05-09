@@ -26,7 +26,8 @@ public class GrupoDAO implements Repositorio<Grupo>{
     }
     
     private Grupo crearGrupo(final ResultSet rs) throws SQLException {
-        return new Grupo( rs.getInt("idGrupo"),rs.getString("codigo"),rs.getInt("numero_alumnos"),rs.getInt("Cursos_idCursos"),rs.getBoolean("activo"));
+        CursoDAO cursoDAO = new CursoDAO();
+        return new Grupo( rs.getInt("idGrupo"),rs.getString("codigo"),rs.getInt("numero_alumnos"),cursoDAO.porId(rs.getInt("Cursos_idCursos")),rs.getBoolean("activo"));
     }
 
     @Override
@@ -52,14 +53,14 @@ public class GrupoDAO implements Repositorio<Grupo>{
     @Override
     public Grupo porId(int id) {
          Grupo grupo = null;
-        String sql = "SELECT idGrupo, codigo, numero_alumnos, Cursos_idCursos, activo FROM grupos";
+        String sql = "SELECT idGrupo, codigo, numero_alumnos, Cursos_idCursos, activo FROM grupos WHERE idGrupo = ?";
         try ( PreparedStatement stmt = getConnection().prepareStatement(sql);) {
             stmt.setInt(1, id);
             try ( ResultSet rs = stmt.executeQuery();) {
                 if (rs.next()) {
                     grupo = crearGrupo(rs);
                 }else{
-                    System.out.println("No hay profesor con tal id");
+                    System.out.println("No hay grupo con tal id");
                 }
             } 
         } catch (SQLException ex) {
@@ -74,9 +75,9 @@ public class GrupoDAO implements Repositorio<Grupo>{
         try ( PreparedStatement stmt = getConnection().prepareStatement("UPDATE grupos SET codigo =?, numero_alumnos = ?, Cursos_idCursos = ?, activo = ? WHERE idGrupo=?");) {
             stmt.setString(1, grupo.getCodigo());
             stmt.setInt(2, grupo.getNumeroAlumnos());
-            stmt.setInt(3, grupo.getIdC());
+            stmt.setInt(3, grupo.getCurso().getId());
             stmt.setBoolean(4, grupo.isActivoGrupo());
-            stmt.setInt(5, grupo.getIdGrupo());
+            stmt.setInt(5, grupo.getId());
             int salida = stmt.executeUpdate();
             if (salida != 1) {
                 throw new Exception(" No se ha insertado/modificado un solo registro");
@@ -95,7 +96,7 @@ public class GrupoDAO implements Repositorio<Grupo>{
         try ( PreparedStatement stmt = getConnection().prepareStatement("INSERT INTO grupos (codigo, numero_alumnos, Cursos_idCursos,activo ) VALUES (?,?,?,?)");) {
              stmt.setString(1, grupo.getCodigo());
             stmt.setInt(2, grupo.getNumeroAlumnos());
-            stmt.setInt(3, grupo.getIdC());
+            stmt.setInt(3, grupo.getCurso().getId());
             stmt.setBoolean(4, grupo.isActivoGrupo());
             int salida = stmt.executeUpdate();
             if (salida != 1) {

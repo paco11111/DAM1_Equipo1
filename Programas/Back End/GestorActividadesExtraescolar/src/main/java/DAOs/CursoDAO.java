@@ -78,14 +78,14 @@ public class CursoDAO implements Repositorio<Curso>{
     @Override
     public Curso porId(int id) {
         Curso curso = null;
-        String sql = "SELECT idCurso, codigo, descripcion, etapa, activo FROM cursos";
+        String sql = "SELECT idCurso, codigo, descripcion, etapa, activo FROM cursos WHERE idCurso = ?";
         try ( PreparedStatement stmt = getConnection().prepareStatement(sql);) {
             stmt.setInt(1, id);
             try ( ResultSet rs = stmt.executeQuery();) {
                 if (rs.next()) {
                     curso = crearCurso(rs);
                 }else{
-                    System.out.println("No hay profesor con tal id");
+                    System.out.println("No hay curso con tal id");
                 }
             } 
         } catch (SQLException ex) {

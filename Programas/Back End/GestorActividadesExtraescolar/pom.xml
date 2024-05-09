@@ -18,4 +18,5 @@
         <maven.compiler.target>20</maven.compiler.target>
         <exec.mainClass>reto.gestoractividadesextraescolar.GestorActividadesExtraescolar</exec.mainClass>
     </properties>
+    <name>GestorActividadesExtraescolar</name>
 </project>

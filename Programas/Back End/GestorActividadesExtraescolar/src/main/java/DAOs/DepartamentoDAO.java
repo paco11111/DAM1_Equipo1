@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 import reto.gestoractividadesextraescolar.AccesoBaseDatos;
 import reto.gestoractividadesextraescolar.Departamento;
+import reto.gestoractividadesextraescolar.Profesor;
 import reto.gestoractividadesextraescolar.Repositorio;
 
 /**
@@ -46,20 +47,29 @@ public class DepartamentoDAO implements Repositorio<Departamento>{
     }
     
     private Departamento crearDepartamento(final ResultSet rs) throws SQLException {
-        return new Departamento( rs.getInt("idDepartamento"),rs.getString("codigo"),rs.getString("nombre"), rs.getInt("idProfesorJefe"));
+        ProfesorDAO profesorDAO = new ProfesorDAO();
+        Profesor profesor= profesorDAO.porId(rs.getInt("idProfesorJefe"));
+        if(profesor !=null){
+            System.out.println("funciona");
+        }else{
+            System.out.println("No funciona");
+        }
+        
+        
+        return new Departamento( rs.getInt("idDepartamento"),rs.getString("codigo"),rs.getString("nombre"), );
     }
 
     @Override
     public Departamento porId(int id) {
         Departamento departamento = null;
-        String sql = "SELECT idDepartamento, codigo,nombre, idProfesorJefe FROM departamentos";
+        String sql = "SELECT idDepartamento, codigo, nombre, idProfesorJefe FROM departamentos WHERE idDepartamento = ?";
         try ( PreparedStatement stmt = getConnection().prepareStatement(sql);) {
             stmt.setInt(1, id);
             try ( ResultSet rs = stmt.executeQuery();) {
                 if (rs.next()) {
                     departamento = crearDepartamento(rs);
                 }else{
-                    System.out.println("No hay profesor con tal id");
+                    System.out.println("No hay departamento con tal id");
                 }
             } 
         } catch (SQLException ex) {
@@ -74,7 +84,7 @@ public class DepartamentoDAO implements Repositorio<Departamento>{
         try ( PreparedStatement stmt = getConnection().prepareStatement("UPDATE departamentos SET codigo =?, nombre = ?, idProfesorJefe = ? WHERE idDepartamento=?");) {
             stmt.setString(1, departamento.getCodigo());
             stmt.setString(2, departamento.getNombre());
-            stmt.setInt(3, departamento.getJefe());
+            stmt.setInt(3, departamento.getJefe().getId());
             stmt.setInt(3, departamento.getId());
             int salida = stmt.executeUpdate();
             if (salida != 1) {
@@ -94,7 +104,7 @@ public class DepartamentoDAO implements Repositorio<Departamento>{
         try ( PreparedStatement stmt = getConnection().prepareStatement("INSERT INTO transporte (codigo,nombre, idProfesorJefe ) VALUES (?,?,?)");) {
             stmt.setString(1, departamento.getCodigo());
             stmt.setString(2, departamento.getNombre());
-            stmt.setInt(3, departamento.getJefe());
+            stmt.setInt(3, departamento.getJefe().getId());
             int salida = stmt.executeUpdate();
             if (salida != 1) {
                 throw new Exception(" No se ha insertado/modificado un solo registro en profesores");
