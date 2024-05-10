@@ -8,7 +8,7 @@ comentarios adicionales.
 Tambien se almacena el estado de la solicitud y se gestionan los grupos y cursos que van
 Las solicitudes aprobadas tienen fotos de la actividad
 ![](ER.png)
-![](BDR.png)
+![](Markdown/BDR.png)
 
 ## PAGINA WEB
 
