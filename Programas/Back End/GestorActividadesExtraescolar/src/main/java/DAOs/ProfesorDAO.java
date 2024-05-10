@@ -32,7 +32,7 @@ public class ProfesorDAO implements Repositorio<Profesor>{
     @Override
     public List<Profesor> listar() {
         List<Profesor> profesores = new ArrayList<>();
-        try ( Statement stmt = getConnection().createStatement();  ResultSet rs = stmt.executeQuery("SELECT idProfesor, profesores.nombre as profesor, apellidos,DNI,profesores.idDepartamento,ocupacion,activo, codigo, departamentos.nombre, idProfesorJefe FROM profesores INNER JOIN departamentos WHERE profesores.idDepartamento= departamentos.idDepartamento");) {
+        try ( Statement stmt = getConnection().createStatement();  ResultSet rs = stmt.executeQuery("SELECT idProfesor, profesores.nombre as profesor, apellidos,DNI,profesores.idDepartamento,activo, codigo, departamentos.nombre, idProfesorJefe FROM profesores INNER JOIN departamentos WHERE profesores.idDepartamento= departamentos.idDepartamento");) {
 
             while (rs.next()) {
                 Profesor profesor = crearProfesor(rs);
@@ -54,7 +54,7 @@ public class ProfesorDAO implements Repositorio<Profesor>{
     
 
     public Profesor crearProfesor(final ResultSet rs) throws SQLException {
-        Profesor p = new Profesor(rs.getInt("idProfesor"), rs.getString("profesor"), rs.getString("apellidos"),rs.getString("DNI"),  departamentoDAO.porId(rs.getInt("idDepartamento")), rs.getString("ocupacion"), rs.getBoolean("activo"));
+        Profesor p = new Profesor(rs.getInt("idProfesor"), rs.getString("profesor"), rs.getString("apellidos"),rs.getString("DNI"),  departamentoDAO.porId(rs.getInt("idDepartamento")),  rs.getBoolean("activo"));
         
         return p;
     }
@@ -80,13 +80,11 @@ public class ProfesorDAO implements Repositorio<Profesor>{
 
     @Override
     public void modificar(Profesor profesor) {
-        try ( PreparedStatement stmt = getConnection().prepareStatement("UPDATE profesores SET nombre =?, apellidos = ?, DNI = ?, idDepartamento = ?, ocupacion = ?, activo = ? WHERE idProfesor=?");) {
+        try ( PreparedStatement stmt = getConnection().prepareStatement("UPDATE profesores SET nombre =?, apellidos = ?, DNI = ?, idDepartamento = ?, activo = ? WHERE idProfesor=?");) {
             stmt.setString(1, profesor.getNombre());
             stmt.setString(2, profesor.getApellidos());
             stmt.setString(3, profesor.getDni());
             stmt.setInt(5, profesor.getDepartamento().getId());
-            String puesto = ""+profesor.getPUESTO();
-            stmt.setString(6, puesto);
             stmt.setBoolean(7, profesor.isActivo());
              stmt.setInt(8, profesor.getId());
             int salida = stmt.executeUpdate();
@@ -104,14 +102,11 @@ public class ProfesorDAO implements Repositorio<Profesor>{
 
     @Override
     public void agregar(Profesor profesor){
-        try ( PreparedStatement stmt = getConnection().prepareStatement("INSERT INTO profesores (nombre,apellidos, DNI, idDepartamento, ocupacion, activo ) VALUES (?,?,?,?,?,?,?)");) {
-            String pssw = Teclado.nextString("Inserta la contraseña: ");
+        try ( PreparedStatement stmt = getConnection().prepareStatement("INSERT INTO profesores (nombre,apellidos, DNI, idDepartamento,  activo ) VALUES (?,?,?,?,?)");) {
             stmt.setString(1, profesor.getNombre());
             stmt.setString(2, profesor.getApellidos());
             stmt.setString(3, profesor.getDni());;
             stmt.setInt(5, profesor.getDepartamento().getId());
-            String puesto = ""+profesor.getPUESTO();
-            stmt.setString(6, puesto);
             stmt.setBoolean(7, profesor.isActivo());
             int salida = stmt.executeUpdate();
             if (salida != 1) {

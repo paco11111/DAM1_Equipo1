@@ -4,6 +4,7 @@
  */
 package DAOs;
 
+import FuncionesInterfaz.LoggProfesor;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -12,7 +13,6 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import reto.gestoractividadesextraescolar.AccesoBaseDatos;
-import reto.gestoractividadesextraescolar.Departamento;
 import reto.gestoractividadesextraescolar.Profesor;
 import reto.gestoractividadesextraescolar.Repositorio;
 
@@ -20,23 +20,23 @@ import reto.gestoractividadesextraescolar.Repositorio;
  *
  * @author Francisco Sitjar
  */
-public class DepartamentoDAO implements Repositorio<Departamento>{
-//    private ProfesorDAO profesorDAO = new ProfesorDAO();
-        
+public class LoggProfesorDAO implements Repositorio<LoggProfesor> {
+    
     private Connection getConnection() {
         return AccesoBaseDatos.getInstance().getConn();
     }
 
     @Override
-    public List<Departamento> listar() {
-        List<Departamento> departamentos = new ArrayList<>();
-        try ( Statement stmt = getConnection().createStatement();  ResultSet rs = stmt.executeQuery("SELECT idDepartamento, codigo,nombre, idProfesorJefe FROM departamentos");) {
+    public List<LoggProfesor> listar() {
+        List<LoggProfesor> profesores = new ArrayList<>();
+        try ( Statement stmt = getConnection().createStatement();  ResultSet rs = stmt.executeQuery("SELECT idProfesor, profesores.nombre as profesor, apellidos,DNI,profesores.idDepartamento,activo, codigo, departamentos.nombre, idProfesorJefe FROM profesores INNER JOIN departamentos WHERE profesores.idDepartamento= departamentos.idDepartamento");) {
+
             while (rs.next()) {
-                Departamento departamento = crearDepartamento(rs);
-                if (!departamentos.add(departamento)) {
+                LoggProfesor profesor = crearLoggProfesor(rs);
+                if (!profesores.add(profesor)) {
                     throw new Exception("error no se ha insertado el objeto en la colección");
                 }
-                 }
+            }
 
         } catch (SQLException ex) {
             System.out.println("SQLException: " + ex.getMessage());
@@ -44,44 +44,43 @@ public class DepartamentoDAO implements Repositorio<Departamento>{
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
         }
-        return departamentos;
+        return profesores;
     }
-    ; 
-
-    private Departamento crearDepartamento(final ResultSet rs) throws SQLException {
-        Departamento d = new Departamento(rs.getInt("idDepartamento"), rs.getString("codigo"), rs.getString("nombre"), null);
-        Profesor p = new Profesor(rs.getInt("idProfesorJefe"), rs.getString("profesor"), rs.getString("apellidos"),rs.getString("DNI"), d, rs.getBoolean("activo"));
-        d.setJefe(p);
-        p.setDepartamento(d);
-        return d;
+    public LoggProfesor crearLoggProfesor(final ResultSet rs) throws SQLException {
+        Profesor prof = new Profesor(rs.getInt("idProfesor"), rs.getString("profesor"), rs.getString("apellidos"),rs.getString("DNI"),  new DepartamentoDAO().porId(rs.getInt("idDepartamento")),  rs.getBoolean("activo"));
+        LoggProfesor p = new LoggProfesor(prof, rs.getString("email"), rs.getString("password"),rs.getString("ocupacion"));
+        
+        return p;
     }
 
     @Override
-    public Departamento porId(int id) {
-        Departamento departamento = null;
-        String sql = "SELECT idProfesor, profesores.nombre as profesor, apellidos,DNI,profesores.idDepartamento,ocupacion,activo, codigo, departamentos.nombre, idProfesorJefe FROM profesores INNER JOIN departamentos ON profesores.idDepartamento= departamentos.idDepartamento WHERE departamentos.idDepartamento = ? AND departamentos.idProfesorJefe = profesores.idProfesor";
+    public LoggProfesor porId(int id) {
+        LoggProfesor profesor = null;
+        String sql = "SELECT logprofesores.idProfesor, nombre, apellidos,DNI,idDepartamento,ocupacion,activo, email, password, ocupacion FROM profesores INNER JOIN logprofesores ON profesores.idProfesor= profesores.idProfesor WHERE logprofesores.idProfesor=?";
         try (PreparedStatement stmt = getConnection().prepareStatement(sql);) {
             stmt.setInt(1, id);
             try (ResultSet rs = stmt.executeQuery();) {
                 if (rs.next()) {
-                    departamento = crearDepartamento(rs);
+                    profesor = crearLoggProfesor(rs);
                 } else {
-                    System.out.println("No hay departamento con tal id");
+                    System.out.println("No hay profesor usuario con tal id");
                 }
             }
         } catch (SQLException ex) {
             System.out.println("SQLException: " + ex.getMessage());
         }
-        return departamento;
+        return profesor;
     }
 
     @Override
-    public void modificar(Departamento departamento) {
-        try ( PreparedStatement stmt = getConnection().prepareStatement("UPDATE departamentos SET codigo =?, nombre = ?, idProfesorJefe = ? WHERE idDepartamento=?");) {
-            stmt.setString(1, departamento.getCodigo());
-            stmt.setString(2, departamento.getNombre());
-            stmt.setInt(3, departamento.getJefe().getId());
-            stmt.setInt(3, departamento.getId());
+    public void modificar(LoggProfesor profesor) {
+        try ( PreparedStatement stmt = getConnection().prepareStatement("UPDATE logprofesores SET email = ?, password = md5(?), idProfesor = ?, ocupacion = ? WHERE idProfesor=?");) {
+            stmt.setString(1, profesor.getEmail());
+            stmt.setString(2, profesor.getPsswrd());
+            stmt.setInt(3, profesor.getProfesor().getId());
+            String ocupacion = ""+profesor.getPUESTO();
+            stmt.setString(4, ocupacion);
+            stmt.setInt(5, 0);
             int salida = stmt.executeUpdate();
             if (salida != 1) {
                 throw new Exception(" No se ha insertado/modificado un solo registro");
@@ -96,11 +95,13 @@ public class DepartamentoDAO implements Repositorio<Departamento>{
     }
 
     @Override
-    public void agregar(Departamento departamento) {
-        try ( PreparedStatement stmt = getConnection().prepareStatement("INSERT INTO transporte (codigo,nombre, idProfesorJefe ) VALUES (?,?,?)");) {
-            stmt.setString(1, departamento.getCodigo());
-            stmt.setString(2, departamento.getNombre());
-            stmt.setInt(3, departamento.getJefe().getId());
+    public void agregar(LoggProfesor profesor) {
+        try ( PreparedStatement stmt = getConnection().prepareStatement("INSERT INTO profesores (email, password, idProfesor, ocupacion ) VALUES (?,md5(?),?,?)");) {
+            stmt.setString(1, profesor.getEmail());
+            stmt.setString(2, profesor.getPsswrd());
+            stmt.setInt(3, profesor.getProfesor().getId());
+            String ocupacion = ""+profesor.getPUESTO();
+            stmt.setString(4, ocupacion);
             int salida = stmt.executeUpdate();
             if (salida != 1) {
                 throw new Exception(" No se ha insertado/modificado un solo registro en profesores");
@@ -116,7 +117,7 @@ public class DepartamentoDAO implements Repositorio<Departamento>{
 
     @Override
     public void eliminar(int id) {
-        String sql="DELETE FROM departamentos WHERE idDepartamento=?";
+        String sql="DELETE FROM logprofesores WHERE idProfesor=?";
         try ( PreparedStatement stmt = getConnection().prepareStatement(sql);) {
             stmt.setInt(1, id);
             int salida = stmt.executeUpdate();
@@ -130,5 +131,8 @@ public class DepartamentoDAO implements Repositorio<Departamento>{
             System.out.println(ex.getMessage());
         }
     }
+    
+    
+    
     
 }
