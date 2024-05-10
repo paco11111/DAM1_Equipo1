@@ -8,7 +8,7 @@ comentarios adicionales.
 Tambien se almacena el estado de la solicitud y se gestionan los grupos y cursos que van
 Las solicitudes aprobadas tienen fotos de la actividad
 ![](ER.png)
-![]([Markdown/BDR.png](https://github.com/paco11111/DAM1_Equipo1/blob/819450778aa33353f1181a760f5cb26825788a63/Markdown/BDR.png))
+![Markdown/BDR.png](https://github.com/paco11111/DAM1_Equipo1/blob/819450778aa33353f1181a760f5cb26825788a63/Markdown/BDR.png)
 
 ## PAGINA WEB
 
