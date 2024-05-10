@@ -26,13 +26,7 @@ public class GestorActividadesExtraescolar {
         SolicitudDAO sol = new SolicitudDAO();
         ProfesorDAO p = new ProfesorDAO();
         Profesor pro = p.porId(1);
-<<<<<<< Updated upstream
-        
-        DepartamentoDAO d = new DepartamentoDAO();
-        Departamento dep = d.porId(9);
-=======
-        DepartamentoDAO d = new DepartamentoDAO();
->>>>>>> Stashed changes
+        Departamento d = new DepartamentoDAO().porId(9);
         TreeMap <Integer, Transporte> t = new TreeMap <Integer, Transporte>();
         if(t == null){
             System.out.println("AAAA");
@@ -41,11 +35,7 @@ public class GestorActividadesExtraescolar {
         TreeMap <Integer, Profesor> mapa2 = new TreeMap <Integer, Profesor>();
         LocalDate date = LocalDate.now();
         LocalTime time = LocalTime.now();
-<<<<<<< Updated upstream
-        Solicitud temp = new Solicitud(pro, "Temporal", "COMPLEMENTARIA", dep, false, t, "Se mueve", date, date,time, time, true, "No", "No hay", "SOLICITADA", "No hay comentario", mapa1, mapa2);
-=======
-        Solicitud temp = new Solicitud(p.porId(1), "Temporal", "COMPLEMENTARIA", d.porId(9), false, t, "Se mueve", date, date,time, time, true, "No", "No hay", "SOLICITADA", "No hay comentario", mapa1, mapa2);
->>>>>>> Stashed changes
+        Solicitud temp = new Solicitud(p.porId(1), "Temporal", "COMPLEMENTARIA", d, false, t, "Se mueve", date, date,time, time, true, "No", "No hay", "SOLICITADA", "No hay comentario", mapa1, mapa2);
         sol.agregar(temp);
       
     }

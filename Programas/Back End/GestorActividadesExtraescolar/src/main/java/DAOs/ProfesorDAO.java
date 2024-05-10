@@ -32,11 +32,8 @@ public class ProfesorDAO implements Repositorio<Profesor>{
     @Override
     public List<Profesor> listar() {
         List<Profesor> profesores = new ArrayList<>();
-<<<<<<< Updated upstream
-        try ( Statement stmt = getConnection().createStatement();  ResultSet rs = stmt.executeQuery("SELECT idProfesor, profesores.nombre as profesor, apellidos,DNI,email,profesores.idDepartamento,ocupacion,activo, codigo, departamentos.nombre, idProfesorJefe FROM profesores INNER JOIN departamentos WHERE profesores.idDepartamento= departamentos.idDepartamento");) {
-=======
         try ( Statement stmt = getConnection().createStatement();  ResultSet rs = stmt.executeQuery("SELECT idProfesor, profesores.nombre as profesor, apellidos,DNI,profesores.idDepartamento,ocupacion,activo, codigo, departamentos.nombre, idProfesorJefe FROM profesores INNER JOIN departamentos WHERE profesores.idDepartamento= departamentos.idDepartamento");) {
->>>>>>> Stashed changes
+
             while (rs.next()) {
                 Profesor profesor = crearProfesor(rs);
                 if (!profesores.add(profesor)) {
