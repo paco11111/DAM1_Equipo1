@@ -27,13 +27,13 @@ public class GrupoDAO implements Repositorio<Grupo>{
     
     private Grupo crearGrupo(final ResultSet rs) throws SQLException {
         CursoDAO cursoDAO = new CursoDAO();
-        return new Grupo( rs.getInt("idGrupo"),rs.getString("codigo"),rs.getInt("numero_alumnos"),cursoDAO.porId(rs.getInt("Cursos_idCursos")),rs.getBoolean("activo"));
+        return new Grupo( rs.getInt("idGrupo"),rs.getString("codigo"),rs.getInt("numero_alumnos"),cursoDAO.porId(rs.getInt("idCurso")),rs.getBoolean("activo"));
     }
 
     @Override
     public List<Grupo> listar() {
         List<Grupo> grupos = new ArrayList<>();
-        try ( Statement stmt = getConnection().createStatement();  ResultSet rs = stmt.executeQuery("SELECT idGrupo, codigo, numero_alumnos, Cursos_idCursos, activo FROM grupos");) {
+        try ( Statement stmt = getConnection().createStatement();  ResultSet rs = stmt.executeQuery("SELECT idGrupo, codigo, numero_alumnos, idCurso, activo FROM grupos");) {
             while (rs.next()) {
                 Grupo grupo = crearGrupo(rs);
                 if (!grupos.add(grupo)) {
@@ -53,7 +53,7 @@ public class GrupoDAO implements Repositorio<Grupo>{
     @Override
     public Grupo porId(int id) {
          Grupo grupo = null;
-        String sql = "SELECT idGrupo, codigo, numero_alumnos, Cursos_idCursos, activo FROM grupos WHERE idGrupo = ?";
+        String sql = "SELECT idGrupo, codigo, numero_alumnos, idCurso, activo FROM grupos WHERE idGrupo = ?";
         try ( PreparedStatement stmt = getConnection().prepareStatement(sql);) {
             stmt.setInt(1, id);
             try ( ResultSet rs = stmt.executeQuery();) {
@@ -72,7 +72,7 @@ public class GrupoDAO implements Repositorio<Grupo>{
 
     @Override
     public void modificar(Grupo grupo) {
-        try ( PreparedStatement stmt = getConnection().prepareStatement("UPDATE grupos SET codigo =?, numero_alumnos = ?, Cursos_idCursos = ?, activo = ? WHERE idGrupo=?");) {
+        try ( PreparedStatement stmt = getConnection().prepareStatement("UPDATE grupos SET codigo =?, numero_alumnos = ?, idCurso = ?, activo = ? WHERE idGrupo=?");) {
             stmt.setString(1, grupo.getCodigo());
             stmt.setInt(2, grupo.getNumeroAlumnos());
             stmt.setInt(3, grupo.getCurso().getId());
@@ -93,7 +93,7 @@ public class GrupoDAO implements Repositorio<Grupo>{
 
     @Override
     public void agregar(Grupo grupo) {
-        try ( PreparedStatement stmt = getConnection().prepareStatement("INSERT INTO grupos (codigo, numero_alumnos, Cursos_idCursos,activo ) VALUES (?,?,?,?)");) {
+        try ( PreparedStatement stmt = getConnection().prepareStatement("INSERT INTO grupos (codigo, numero_alumnos, idCurso,activo ) VALUES (?,?,?,?)");) {
              stmt.setString(1, grupo.getCodigo());
             stmt.setInt(2, grupo.getNumeroAlumnos());
             stmt.setInt(3, grupo.getCurso().getId());

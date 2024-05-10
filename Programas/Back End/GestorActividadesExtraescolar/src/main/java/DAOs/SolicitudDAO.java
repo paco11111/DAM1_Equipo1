@@ -4,8 +4,6 @@
  */
 package DAOs;
 
-import Enumerados.EstadoSolicitud;
-import Enumerados.TipoActividad;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -39,7 +37,7 @@ public class SolicitudDAO implements Repositorio<Solicitud>{
     @Override
     public List<Solicitud> listar() {
         List<Solicitud> solicitudes = new ArrayList<>();
-        try ( Statement stmt = getConnection().createStatement();  ResultSet rs = stmt.executeQuery("SELECT * FROM solicitudes");) {
+        try ( Statement stmt = getConnection().createStatement();  ResultSet rs = stmt.executeQuery("SELECT idSolicitud, idSolicitante, actividad, tipo_actividad, previsto_programacion, requiere_transporte, comentario_transporte, finicio, ffinal, hora_inicio,  hora_fin, alojamiento, comentario_alojamiento, estado, comentario_estado FROM solicitudes");) {
             while (rs.next()) {
                 Solicitud solicitud = crearSolicitud(rs);
                 if (!solicitudes.add(solicitud)) {
@@ -60,7 +58,7 @@ public class SolicitudDAO implements Repositorio<Solicitud>{
         //Profesores Participantes
         TreeMap <Integer, Profesor> profesoresParticipantes = new TreeMap <Integer, Profesor>();
         
-        try ( PreparedStatement stmt = getConnection().prepareStatement("SELECT * FROM idprofes_participantes WHERE idSolicitud = ? ");) {
+        try ( PreparedStatement stmt = getConnection().prepareStatement("SELECT idProfe FROM idprofes_participantes WHERE idSolicitud = ? ");) {
             stmt.setInt(1, rs.getInt("idSolicitud"));            
             ResultSet rs2 = stmt.executeQuery();
             int index = 0;
@@ -82,7 +80,7 @@ public class SolicitudDAO implements Repositorio<Solicitud>{
         //Profesores Responsables
         TreeMap <Integer, Profesor> profesoresResponsables = new TreeMap <Integer, Profesor>();
         
-        try ( PreparedStatement stmt = getConnection().prepareStatement("SELECT * FROM idprofes_responsables WHERE idSolicitud = ? ");) {
+        try ( PreparedStatement stmt = getConnection().prepareStatement("SELECT idProfe FROM idprofes_responsables WHERE idSolicitud = ? ");) {
             stmt.setInt(1, rs.getInt("idSolicitud"));            
             ResultSet rs2 = stmt.executeQuery();
             int index = 0;
@@ -104,10 +102,10 @@ public class SolicitudDAO implements Repositorio<Solicitud>{
         
         TransporteDAO transporteDAO = new TransporteDAO();
         
-        //Profesores Responsables
+        //Transporte
         TreeMap <Integer, Transporte> transportes = new TreeMap <Integer, Transporte>();
         
-        try ( PreparedStatement stmt = getConnection().prepareStatement("SELECT * FROM solicitudes_has_transporte WHERE idSolicitudes = ? ");) {
+        try ( PreparedStatement stmt = getConnection().prepareStatement("SELECT idTransporte FROM solicitudes_has_transporte WHERE idSolicitudes = ? ");) {
             stmt.setInt(1, rs.getInt("idSolicitud"));            
             ResultSet rs2 = stmt.executeQuery();
             int index = 0;
@@ -204,7 +202,7 @@ public class SolicitudDAO implements Repositorio<Solicitud>{
             stmt.setBoolean(4, solicitud.isPrevisto());
             if(solicitud.getTransporte().isEmpty()){
                 stmt.setString(5, "false");
-            }else{
+            }else{                                        
                 stmt.setString(5, "true");
             }
             stmt.setString(6, solicitud.getComentarioTransporte());

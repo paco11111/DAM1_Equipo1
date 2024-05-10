@@ -4,6 +4,8 @@
  */
 package reto.gestoractividadesextraescolar;
 
+import DAOs.ProfesorDAO;
+
 /**
  *
  * @author Francisco Sitjar
@@ -20,9 +22,12 @@ public class Departamento {
         this.nombre = nombre;
         if(jef != null){
             this.jefe = jef;
+            this.jefe.setDepartamento(this);
         }else{
             this.jefe = null;
         }
+        
+        
     }
     public Departamento(int id,String codigo, String nombre){
         this.id = id;
@@ -30,17 +35,12 @@ public class Departamento {
         this.nombre = nombre;
     }
     
-    /*
-    public Departamento(boolean tieneId){
-        if(tieneId){
-            this.id = Teclado.nextInt("Id del departamento: ");
-        }
-        this.codigo = Teclado.codigoDepartamento();
-        this.nombre = Teclado.nextString("Nombre del departamento: ");
-        this.jefe = Teclado.nextInt("Id del profesor jefe");
-        
+    
+
+    public void setJefe(Profesor jefe) {
+        this.jefe = jefe;
     }
-*/
+    
     public int getId() {
         return id;
     }

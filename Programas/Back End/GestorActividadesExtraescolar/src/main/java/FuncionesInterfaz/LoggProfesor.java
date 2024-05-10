@@ -20,15 +20,6 @@ public class LoggProfesor {
         this.paswrd = paswrd;
         this.PUESTO = PUESTO;
     }
-    
-    public void verificar(String email, String paswrd){
-        if (this.getEmail().equals(email)) {
-            
-        }
-        if (this.getPaswrd().equals(paswrd)) {
-            
-        }
-    }
 
     public String getEmail() {
         return email;

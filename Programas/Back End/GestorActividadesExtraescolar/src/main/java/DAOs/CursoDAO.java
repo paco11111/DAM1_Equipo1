@@ -50,7 +50,7 @@ public class CursoDAO implements Repositorio<Curso>{
     
     private Curso crearCurso(final ResultSet rs) throws SQLException {
         EtapaCurso etapa = null;
-        switch (rs.getString("ocupacion")) {
+        switch (rs.getString("etapa")) {
                 case "ESO" -> {
                     etapa = EtapaCurso.ESO;
                 }
@@ -72,7 +72,7 @@ public class CursoDAO implements Repositorio<Curso>{
                 default ->
                     System.out.println("Opcion no valida");
             }
-        return new Curso( rs.getInt("idCursos"),rs.getString("codigo"),etapa, rs.getString("descripcion"),rs.getBoolean("activo"));
+        return new Curso( rs.getInt("idCurso"),rs.getString("codigo"),etapa, rs.getString("descripcion"),rs.getBoolean("activo"));
     }
 
     @Override
