@@ -23,6 +23,7 @@ import DAOs.DepartamentoDAO;
 import DAOs.ProfesorDAO;
 import DAOs.SolicitudDAO;
 import FuncionesInterfaz.LoggIn;
+import FuncionesInterfaz.LoggProfesor;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.TreeMap;
@@ -333,7 +334,7 @@ public class JFrame_Principal extends javax.swing.JFrame {
                     .addComponent(jButton1))
                 .addGap(18, 18, 18)
                 .addComponent(jLabel1)
-                .addContainerGap(122, Short.MAX_VALUE))
+                .addContainerGap(98, Short.MAX_VALUE))
         );
 
         jPanelPrincipal.setBackground(new java.awt.Color(51, 51, 51));
@@ -863,6 +864,12 @@ public class JFrame_Principal extends javax.swing.JFrame {
         jPanelSoliNueva.setBackground(new java.awt.Color(51, 51, 51));
         jPanelSoliNueva.setPreferredSize(new java.awt.Dimension(812, 632));
 
+        tfActividad.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tfActividadActionPerformed(evt);
+            }
+        });
+
         jLabel2.setBackground(new java.awt.Color(51, 51, 51));
         jLabel2.setForeground(new java.awt.Color(204, 204, 204));
         jLabel2.setText("Nombre de la actividad :");
@@ -1358,7 +1365,7 @@ public class JFrame_Principal extends javax.swing.JFrame {
             .addGroup(jLayersMenuSolicitudLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jLayersMenuSolicitudLayout.createSequentialGroup()
                     .addContainerGap()
-                    .addComponent(jPanelSoliPendientes, javax.swing.GroupLayout.DEFAULT_SIZE, 800, Short.MAX_VALUE)
+                    .addComponent(jPanelSoliPendientes, javax.swing.GroupLayout.PREFERRED_SIZE, 800, Short.MAX_VALUE)
                     .addContainerGap()))
             .addGroup(jLayersMenuSolicitudLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jLayersMenuSolicitudLayout.createSequentialGroup()
@@ -1974,10 +1981,10 @@ public class JFrame_Principal extends javax.swing.JFrame {
         // TODO add your handling code here:
         String usu = txUsu.getText();
         String pass = txCnna.getText();
+        
         jPanelInicio.setVisible(false);
         jPanelPrincipal.setVisible(true);
         jPanelMenuPrincipal.setVisible(true);
-        //LoggIn validar = new LoggIn(usu,pass);
         //cbSoli.getSelectedItem().toString();
     }//GEN-LAST:event_btnSesionActionPerformed
 
@@ -2290,6 +2297,10 @@ public class JFrame_Principal extends javax.swing.JFrame {
         jPanelActvdTable.setVisible(false);
         jPanelActvdInfo.setVisible(true);
     }//GEN-LAST:event_btnSendEdit2ActionPerformed
+
+    private void tfActividadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfActividadActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tfActividadActionPerformed
 
     private void mostrarImagen1() {
         ImageIcon img = new ImageIcon(getClass().getClassLoader().getResource("Imagen/IES MIGUEL HERRERO.png"));
