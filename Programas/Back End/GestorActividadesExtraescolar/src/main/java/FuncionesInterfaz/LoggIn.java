@@ -14,16 +14,13 @@ public class LoggIn {
     private String email;
     private String psswrd;
     
-    public LoggIn(){
-        
-        email = Teclado.email();
-        psswrd = Teclado.nextString("");               
-        
+    public LoggIn(String email, String passwrd){
+        if (email.equals("a")) {
+            this.email = email;
+        }
+        if (passwrd.equals("a")) {
+            this.psswrd = passwrd;
+        }
         
     }
-    
-    
-    
-    
-    
 }
