@@ -22,9 +22,9 @@ public class Solicitud {
     private Profesor profesorSolicitante;
     private String actividad;
     private TipoActividad TIPOACTIVIDAD;
-    private String departamento;
+    private Departamento departamento;
     private boolean previsto;
-    private boolean transporte;
+    private TreeMap <Integer, Transporte> transporte;
     private String comentarioTransporte;
     private LocalDate fechaInicio;
     private LocalDate fechaFinal;
@@ -38,14 +38,22 @@ public class Solicitud {
     private TreeMap <Integer, Profesor> profesoresParticipantes;
     private TreeMap <Integer, Profesor> profesoresResponsables;
 
-    public Solicitud(int id, Profesor profesorSolicitante, String actividad, TipoActividad TIPOACTIVIDAD, String departamento, boolean previsto, boolean transporte, String comentarioTransporte, LocalDate fechaInicio, LocalDate fechaFinal, LocalTime horaInicio, LocalTime horaFinal, boolean alojamiento, String comentarioAlojamiento, String comentarioAdicional, EstadoSolicitud ESTADO, String comentarioEstado, TreeMap<Integer, Profesor> profesoresParticipantes, TreeMap<Integer, Profesor> profesoresResponsables) {
+    public Solicitud(int id, Profesor profesorSolicitante, String actividad, String tipoActividad, Departamento departamento, boolean previsto, TreeMap <Integer, Transporte> transporte, String comentarioTransporte, LocalDate fechaInicio, LocalDate fechaFinal, LocalTime horaInicio, LocalTime horaFinal, boolean alojamiento, String comentarioAlojamiento, String comentarioAdicional, String estado, String comentarioEstado, TreeMap<Integer, Profesor> profesoresParticipantes, TreeMap<Integer, Profesor> profesoresResponsables) {
         this.id = id;
         this.profesorSolicitante = profesorSolicitante;
         this.actividad = actividad;
-        this.TIPOACTIVIDAD = TIPOACTIVIDAD;
-        this.departamento = departamento;
+        this.TIPOACTIVIDAD = tipoActividad(tipoActividad);
+        if(departamento != null){
+            this.departamento = departamento;
+        }else{
+            departamento = null;
+        }
+        if(transporte.isEmpty()){
+            
+        }
         this.previsto = previsto;
         this.transporte = transporte;
+        this.departamento = departamento;
         this.comentarioTransporte = comentarioTransporte;
         this.fechaInicio = fechaInicio;
         this.fechaFinal = fechaFinal;
@@ -54,15 +62,77 @@ public class Solicitud {
         this.alojamiento = alojamiento;
         this.comentarioAlojamiento = comentarioAlojamiento;
         this.comentarioAdicional = comentarioAdicional;
-        this.ESTADO = ESTADO;
+        this.ESTADO = estadoSolicitud(estado);
+        this.comentarioEstado = comentarioEstado;
+        this.profesoresParticipantes = profesoresParticipantes;
+        this.profesoresResponsables = profesoresResponsables;
+    }
+     public Solicitud(Profesor profesorSolicitante, String actividad, String tipoActividad, Departamento departamento, boolean previsto, TreeMap <Integer, Transporte> transporte, String comentarioTransporte, LocalDate fechaInicio, LocalDate fechaFinal, LocalTime horaInicio, LocalTime horaFinal, boolean alojamiento, String comentarioAlojamiento, String comentarioAdicional, String estado, String comentarioEstado, TreeMap<Integer, Profesor> profesoresParticipantes, TreeMap<Integer, Profesor> profesoresResponsables) {
+        
+        this.profesorSolicitante = profesorSolicitante;
+        this.actividad = actividad;
+        this.TIPOACTIVIDAD = tipoActividad(tipoActividad);
+        if(departamento != null){
+            this.departamento = departamento;
+        }else{
+            departamento = null;
+        }
+        if(transporte.isEmpty()){
+            
+        }
+        this.previsto = previsto;
+        this.departamento = departamento;
+        this.comentarioTransporte = comentarioTransporte;
+        this.fechaInicio = fechaInicio;
+        this.fechaFinal = fechaFinal;
+        this.horaInicio = horaInicio;
+        this.horaFinal = horaFinal;
+        this.alojamiento = alojamiento;
+        this.comentarioAlojamiento = comentarioAlojamiento;
+        this.comentarioAdicional = comentarioAdicional;
+        this.ESTADO = estadoSolicitud(estado);
         this.comentarioEstado = comentarioEstado;
         this.profesoresParticipantes = profesoresParticipantes;
         this.profesoresResponsables = profesoresResponsables;
     }
         
+    private TipoActividad tipoActividad(String temp){
+        TipoActividad actividad = null;
+        switch (temp) {
+                case "COMPLEMENTARIA" -> {
+                    actividad = TipoActividad.COMPLEMENTARIA;
+                }
+                case "EXTRAESCOLAR" -> {
+                    actividad = TipoActividad.EXTRAESCOLAR;
+                }
+                default ->
+                    System.out.println("Opcion no valida");
+            }
+        return actividad;
+    }
     
+    private EstadoSolicitud estadoSolicitud(String temp){
+        EstadoSolicitud estado = null;
+        switch (temp) {
+                case "APROBADA" -> {
+                    estado = EstadoSolicitud.APROBADA;
+                }
+                case "DENEGADA" -> {
+                    estado = EstadoSolicitud.DENEGADA;
+                }
+                case "REALIZADA" -> {
+                    estado = EstadoSolicitud.REALIZADA;
+                }
+                case "SOLICITADA" -> {
+                    estado = EstadoSolicitud.SOLICITADA;
+                }
+                default ->
+                    System.out.println("Opcion no valida");
+            }
+        return estado;
+    }
     
-    public Solicitud(){
+   /* public Solicitud(){
         profesorSolicitante = new Profesor(false);
         actividad = Teclado.nextString("Actividad a solicitar:");
         TIPOACTIVIDAD = Teclado.tipoActividad();
@@ -96,17 +166,10 @@ public class Solicitud {
         
     }
     
+    */
     
     
-    
-    @Override
-    public String toString(){
-         //DateTimeFormatter f = DateTimeFormatter.ofPattern("dd 'de' MMMM 'de' yyyy ").withLocale(new Locale("es", "ES"));
-         //DateTimeFormatter t = DateTimeFormatter.ofPattern("'a las' hh:mm").withLocale(new Locale("es", "ES"));
-         
-        return "\nID: " + id + "-- Profesor: "+ profesorSolicitante.getNombre() + " " + profesorSolicitante.getApellidos();
-    }
-
+   
     public int getId() {
         return id;
     }
@@ -123,7 +186,7 @@ public class Solicitud {
         return TIPOACTIVIDAD;
     }
 
-    public String getDepartamento() {
+    public Departamento getDepartamento() {
         return departamento;
     }
 
@@ -131,7 +194,7 @@ public class Solicitud {
         return previsto;
     }
 
-    public boolean isTransporte() {
+    public TreeMap getTransporte() {
         return transporte;
     }
 

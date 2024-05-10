@@ -12,9 +12,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import reto.gestoractividadesextraescolar.AccesoBaseDatos;
-import reto.gestoractividadesextraescolar.Profesor;
 import reto.gestoractividadesextraescolar.Repositorio;
-import reto.gestoractividadesextraescolar.Teclado;
 import reto.gestoractividadesextraescolar.Transporte;
 
 /**
@@ -54,14 +52,14 @@ public class TransporteDAO implements Repositorio<Transporte>{
     @Override
     public Transporte porId(int id) {
         Transporte transporte = null;
-        String sql = "SELECT idTransporte, Tipo_transporte, descripcion FROM transporte";
+        String sql = "SELECT idTransporte, Tipo_transporte, descripcion FROM transporte WHERE idTransporte = ?";
         try ( PreparedStatement stmt = getConnection().prepareStatement(sql);) {
             stmt.setInt(1, id);
             try ( ResultSet rs = stmt.executeQuery();) {
                 if (rs.next()) {
                     transporte = crearTransporte(rs);
                 }else{
-                    System.out.println("No hay profesor con tal id");
+                    System.out.println("No hay transporte con tal id");
                 }
             } 
         } catch (SQLException ex) {

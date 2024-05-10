@@ -13,6 +13,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import reto.gestoractividadesextraescolar.AccesoBaseDatos;
+import reto.gestoractividadesextraescolar.Departamento;
 import reto.gestoractividadesextraescolar.Profesor;
 import reto.gestoractividadesextraescolar.Repositorio;
 import reto.gestoractividadesextraescolar.Teclado;
@@ -22,6 +23,7 @@ import reto.gestoractividadesextraescolar.Teclado;
  * @author Francisco Sitjar
  */
 public class ProfesorDAO implements Repositorio<Profesor>{
+    private DepartamentoDAO departamentoDAO = new DepartamentoDAO();  
     
     private Connection getConnection() {
         return AccesoBaseDatos.getInstance().getConn();
@@ -30,7 +32,7 @@ public class ProfesorDAO implements Repositorio<Profesor>{
     @Override
     public List<Profesor> listar() {
         List<Profesor> profesores = new ArrayList<>();
-        try ( Statement stmt = getConnection().createStatement();  ResultSet rs = stmt.executeQuery("SELECT idProfesor,apellidos,nombre, DNI, email, idDepartamento,ocupacion,activo FROM profesores");) {
+        try ( Statement stmt = getConnection().createStatement();  ResultSet rs = stmt.executeQuery("SELECT idProfesor, profesores.nombre as profesor, apellidos,DNI,email,profesores.idDepartamento,ocupacion,activo, codigo, departamentos.nombre, idProfesorJefe FROM profesores INNER JOIN departamentos WHERE profesores.idDepartamento= departamentos.idDepartamento");) {
             while (rs.next()) {
                 Profesor profesor = crearProfesor(rs);
                 if (!profesores.add(profesor)) {
@@ -46,44 +48,30 @@ public class ProfesorDAO implements Repositorio<Profesor>{
         }
         return profesores;
     }
-    private Profesor crearProfesor(final ResultSet rs) throws SQLException {
-        PuestoProfesor puesto = null;
-        switch (rs.getString("ocupacion")) {
-                case "SUPERUSUARIO" -> {
-                    puesto = PuestoProfesor.SUPERUSUARIO;
-                }
-                case "ADMINISTRADOR" -> {
-                    puesto = PuestoProfesor.ADMINISTRADOR;
-                }
-                case "EQUIPO_DIRECTIVO" -> {
-                    puesto = PuestoProfesor.EQUIPO_DIRECTIVO;
-                }
-                case "PROFESOR" -> {
-                    puesto = PuestoProfesor.PROFESOR;
-                }
-                default ->
-                    System.out.println("Opcion no valida");
-            }
+    
+    
+    
 
-        return new Profesor(rs.getInt("idProfesor"), rs.getString("apellidos"), rs.getString("nombre"), rs.getString("DNI"), rs.getString("email"), rs.getInt("idDepartamento"), puesto, rs.getBoolean("activo"));
+    public Profesor crearProfesor(final ResultSet rs) throws SQLException {
+        Profesor p = new Profesor(rs.getInt("idProfesor"), rs.getString("profesor"), rs.getString("apellidos"),rs.getString("DNI"),  departamentoDAO.porId(rs.getInt("idDepartamento")), rs.getString("ocupacion"), rs.getBoolean("activo"));
+        
+        return p;
     }
-
+    
     @Override
     public Profesor porId(int id) {
         Profesor profesor = null;
-        String sql = "SELECT idProfesor,nombre,apellidos, DNI, email, idDepartamento, ocupacion, activo FROM profesores WHERE idProfesor=?";
-        try ( PreparedStatement stmt = getConnection().prepareStatement(sql);) {
+        String sql = "SELECT idProfesor, profesores.nombre as profesor, apellidos,DNI,profesores.idDepartamento,ocupacion,activo, codigo, departamentos.nombre, idProfesorJefe FROM profesores INNER JOIN departamentos ON profesores.idDepartamento= departamentos.idDepartamento WHERE idProfesor=?";
+        try (PreparedStatement stmt = getConnection().prepareStatement(sql);) {
             stmt.setInt(1, id);
-            try ( ResultSet rs = stmt.executeQuery();) {
+            try (ResultSet rs = stmt.executeQuery();) {
                 if (rs.next()) {
                     profesor = crearProfesor(rs);
-                }else{
+                } else {
                     System.out.println("No hay profesor con tal id");
                 }
             }
-
         } catch (SQLException ex) {
-            // errores
             System.out.println("SQLException: " + ex.getMessage());
         }
         return profesor;
@@ -91,12 +79,11 @@ public class ProfesorDAO implements Repositorio<Profesor>{
 
     @Override
     public void modificar(Profesor profesor) {
-        try ( PreparedStatement stmt = getConnection().prepareStatement("UPDATE profesores SET nombre =?, apellidos = ?, DNI = ?, email = ?, idDepartamento = ?, ocupacion = ?, activo = ? WHERE idProfesor=?");) {
+        try ( PreparedStatement stmt = getConnection().prepareStatement("UPDATE profesores SET nombre =?, apellidos = ?, DNI = ?, idDepartamento = ?, ocupacion = ?, activo = ? WHERE idProfesor=?");) {
             stmt.setString(1, profesor.getNombre());
             stmt.setString(2, profesor.getApellidos());
             stmt.setString(3, profesor.getDni());
-            stmt.setString(4, profesor.getEmail());
-            stmt.setInt(5, profesor.getDepartamento());
+            stmt.setInt(5, profesor.getDepartamento().getId());
             String puesto = ""+profesor.getPUESTO();
             stmt.setString(6, puesto);
             stmt.setBoolean(7, profesor.isActivo());
@@ -116,25 +103,15 @@ public class ProfesorDAO implements Repositorio<Profesor>{
 
     @Override
     public void agregar(Profesor profesor){
-        try ( PreparedStatement stmt = getConnection().prepareStatement("INSERT INTO profesores (nombre,apellidos, DNI, email, idDepartamento, ocupacion, activo ) VALUES (?,?,?,?,?,?,?)");) {
+        try ( PreparedStatement stmt = getConnection().prepareStatement("INSERT INTO profesores (nombre,apellidos, DNI, idDepartamento, ocupacion, activo ) VALUES (?,?,?,?,?,?,?)");) {
             String pssw = Teclado.nextString("Inserta la contraseña: ");
             stmt.setString(1, profesor.getNombre());
             stmt.setString(2, profesor.getApellidos());
-            stmt.setString(3, profesor.getDni());
-            stmt.setString(4, profesor.getEmail());
-            stmt.setInt(5, profesor.getDepartamento());
+            stmt.setString(3, profesor.getDni());;
+            stmt.setInt(5, profesor.getDepartamento().getId());
             String puesto = ""+profesor.getPUESTO();
             stmt.setString(6, puesto);
             stmt.setBoolean(7, profesor.isActivo());
-            try ( PreparedStatement stmt2 = getConnection().prepareStatement("INSERT INTO logprofesores (email, contraseña) VALUES (?,?)");){
-                stmt2.setString(1, profesor.getEmail());
-                stmt2.setString(2, pssw);
-                int salida = stmt2.executeUpdate();
-            if (salida != 1) {
-                throw new Exception(" No se ha insertado/modificado un solo registro en logprofesores");
-            }
-                
-            }
             int salida = stmt.executeUpdate();
             if (salida != 1) {
                 throw new Exception(" No se ha insertado/modificado un solo registro en profesores");

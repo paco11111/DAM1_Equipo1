@@ -28,12 +28,12 @@ public class UsuarioProfesor {
         
     }
     
-    public void modificarSolicitud(){
+    /*public void modificarSolicitud(){
        int id = Teclado.nextInt("Que solicitud desea modificar?");
        if(sol.porId(id).getESTADO().equals(EstadoSolicitud.SOLICITADA)){
            sol.modificar(new Solicitud());
        }
-    }
+    }*/
     
     
     

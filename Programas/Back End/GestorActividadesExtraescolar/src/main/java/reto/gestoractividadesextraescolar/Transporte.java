@@ -8,7 +8,7 @@ package reto.gestoractividadesextraescolar;
  *
  * @author Francisco Sitjar
  */
-public class Transporte {
+public class Transporte implements Comparable<Transporte> {
     private int id;
     private String tipo;
     private String descripcion;
@@ -40,6 +40,13 @@ public class Transporte {
     public String getDescripcion() {
         return descripcion;
     }
+
+    @Override
+    public int compareTo(Transporte o) {
+        return this.getTipo().compareTo(o.getTipo());
+    }
     
+    
+
     
 }

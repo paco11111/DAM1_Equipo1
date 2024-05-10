@@ -50,7 +50,7 @@ public class CursoDAO implements Repositorio<Curso>{
     
     private Curso crearCurso(final ResultSet rs) throws SQLException {
         EtapaCurso etapa = null;
-        switch (rs.getString("ocupacion")) {
+        switch (rs.getString("etapa")) {
                 case "ESO" -> {
                     etapa = EtapaCurso.ESO;
                 }
@@ -72,20 +72,20 @@ public class CursoDAO implements Repositorio<Curso>{
                 default ->
                     System.out.println("Opcion no valida");
             }
-        return new Curso( rs.getInt("idCursos"),rs.getString("codigo"),etapa, rs.getString("descripcion"),rs.getBoolean("activo"));
+        return new Curso( rs.getInt("idCurso"),rs.getString("codigo"),etapa, rs.getString("descripcion"),rs.getBoolean("activo"));
     }
 
     @Override
     public Curso porId(int id) {
         Curso curso = null;
-        String sql = "SELECT idCurso, codigo, descripcion, etapa, activo FROM cursos";
+        String sql = "SELECT idCurso, codigo, descripcion, etapa, activo FROM cursos WHERE idCurso = ?";
         try ( PreparedStatement stmt = getConnection().prepareStatement(sql);) {
             stmt.setInt(1, id);
             try ( ResultSet rs = stmt.executeQuery();) {
                 if (rs.next()) {
                     curso = crearCurso(rs);
                 }else{
-                    System.out.println("No hay profesor con tal id");
+                    System.out.println("No hay curso con tal id");
                 }
             } 
         } catch (SQLException ex) {
