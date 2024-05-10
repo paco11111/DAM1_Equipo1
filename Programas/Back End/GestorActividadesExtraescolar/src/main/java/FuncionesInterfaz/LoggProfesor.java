@@ -5,36 +5,78 @@
 package FuncionesInterfaz;
 
 import Enumerados.PuestoProfesor;
+import reto.gestoractividadesextraescolar.Profesor;
 
 /**
  *
  * @author Fabian Saiz Landeras
  */
 public class LoggProfesor {
+    private Profesor profesor;
     private String email;
-    private String paswrd;
+    private String psswrd;
     private PuestoProfesor PUESTO;
     
-    public LoggProfesor(String email, String paswrd, PuestoProfesor PUESTO){
+    public LoggProfesor(Profesor profesor,String email, String psswrd, String puesto){
+        this.profesor = profesor;
         this.email = email;
-        this.paswrd = paswrd;
-        this.PUESTO = PUESTO;
+        this.psswrd = psswrd;
+        this.PUESTO = puesto(puesto);
     }
 
+    
+    
+    
+    
+    private PuestoProfesor puesto(String temp) {
+        PuestoProfesor puesto = null;
+        switch (temp.toUpperCase()) {
+            case "SUPERUSUARIO" -> {
+                puesto = PuestoProfesor.SUPERUSUARIO;
+            }
+            case "ADMINISTRADOR" -> {
+                puesto = PuestoProfesor.ADMINISTRADOR;
+            }
+            case "EQUIPO_DIRECTIVO" -> {
+                puesto = PuestoProfesor.EQUIPO_DIRECTIVO;
+            }
+            case "PROFESOR" -> {
+                puesto = PuestoProfesor.PROFESOR;
+            }
+            default ->
+                System.out.println("Opcion no valida");
+        }
+        return puesto;
+    }
+
+    public Profesor getProfesor() {
+        return profesor;
+    }
+
+    public void setProfesor(Profesor profesor) {
+        this.profesor = profesor;
+    }
+    
+    
+    
+    
+    
     public String getEmail() {
+        
         return email;
+        
     }
 
     public void setEmail(String email) {
         this.email = email;
     }
 
-    public String getPaswrd() {
-        return paswrd;
+    public String getPsswrd() {
+        return psswrd;
     }
 
-    public void setPaswrd(String paswrd) {
-        this.paswrd = paswrd;
+    public void setPsswrd(String paswrd) {
+        this.psswrd = paswrd;
     }
 
     public PuestoProfesor getPUESTO() {

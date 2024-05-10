@@ -17,11 +17,10 @@ public class Profesor implements Comparable<Profesor> {
     private String dni;
     private String nombre;
     private String apellidos;
-    private PuestoProfesor PUESTO;
     private Departamento departamento;
     private boolean activo;
 
-    public Profesor(int id, String nombre, String apellidos, String dni, Departamento departamento, String puesto, boolean activo) {
+    public Profesor(int id, String nombre, String apellidos, String dni, Departamento departamento, boolean activo) {
         this.id = id;
         this.dni = dni;
         this.nombre = nombre;
@@ -33,7 +32,6 @@ public class Profesor implements Comparable<Profesor> {
             this.departamento = null;
         }
        
-        this.PUESTO = puesto(puesto);
         this.activo = activo;
 
     }
@@ -47,26 +45,6 @@ public class Profesor implements Comparable<Profesor> {
     
     
 
-    private PuestoProfesor puesto(String temp) {
-        PuestoProfesor puesto = null;
-        switch (temp.toUpperCase()) {
-            case "SUPERUSUARIO" -> {
-                puesto = PuestoProfesor.SUPERUSUARIO;
-            }
-            case "ADMINISTRADOR" -> {
-                puesto = PuestoProfesor.ADMINISTRADOR;
-            }
-            case "EQUIPO_DIRECTIVO" -> {
-                puesto = PuestoProfesor.EQUIPO_DIRECTIVO;
-            }
-            case "PROFESOR" -> {
-                puesto = PuestoProfesor.PROFESOR;
-            }
-            default ->
-                System.out.println("Opcion no valida");
-        }
-        return puesto;
-    }
 
     public int getId() {
         return id;
@@ -89,9 +67,7 @@ public class Profesor implements Comparable<Profesor> {
     }
 
 
-    public PuestoProfesor getPUESTO() {
-        return PUESTO;
-    }
+    
 
     public boolean isActivo() {
         return activo;
