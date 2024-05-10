@@ -56,7 +56,7 @@ public class DepartamentoDAO implements Repositorio<Departamento>{
         }
         
         
-        return new Departamento( rs.getInt("idDepartamento"),rs.getString("codigo"),rs.getString("nombre"), );
+        return new Departamento( rs.getInt("idDepartamento"),rs.getString("codigo"),rs.getString("nombre"), profesor);
     }
 
     @Override
