@@ -38,42 +38,12 @@ public class SolicitudAprobadaDAO implements Repositorio<SolicitudAprobada> {
     }
     
     private SolicitudAprobada crearSolicitudAprobada(final ResultSet rs) throws SQLException {
-        TipoActividad actividad = null;
-        switch (rs.getString("tipo_actividad")) {
-                case "COMPLEMENTARIA" -> {
-                    actividad = TipoActividad.COMPLEMENTARIA;
-                }
-                case "EXTRAESCOLAR" -> {
-                    actividad = TipoActividad.EXTRAESCOLAR;
-                }
-                default ->
-                    System.out.println("Opcion no valida");
-            }
-        
-        
-        EstadoSolicitud estado = null;
-        switch (rs.getString("tipo_actividad")) {
-                case "APROBADA" -> {
-                    estado = EstadoSolicitud.APROBADA;
-                }
-                case "DENEGADA" -> {
-                    estado = EstadoSolicitud.DENEGADA;
-                }
-                case "REALIZADA" -> {
-                    estado = EstadoSolicitud.REALIZADA;
-                }
-                case "SOLICITADA" -> {
-                    estado = EstadoSolicitud.SOLICITADA;
-                }
-                default ->
-                    System.out.println("Opcion no valida");
-            }
-        
+                
         ProfesorDAO profesorDAO = new ProfesorDAO();       
         //Profesores Participantes
         TreeMap <Integer, Profesor> profesoresParticipantes = new TreeMap <Integer, Profesor>();
         
-        try ( PreparedStatement stmt = getConnection().prepareStatement("SELECT * FROM idprofes_participantes WHERE idSolicitud = ? ");) {
+        try ( PreparedStatement stmt = getConnection().prepareStatement("SELECT idProfe FROM idprofes_participantes WHERE idSolicitud = ? ");) {
             stmt.setInt(1, rs.getInt("idSolicitud"));            
             ResultSet rs2 = stmt.executeQuery();
             int index = 0;
@@ -95,7 +65,7 @@ public class SolicitudAprobadaDAO implements Repositorio<SolicitudAprobada> {
         //Profesores Responsables
         TreeMap <Integer, Profesor> profesoresResponsables = new TreeMap <Integer, Profesor>();
         
-        try ( PreparedStatement stmt = getConnection().prepareStatement("SELECT * FROM idprofes_responsables WHERE idSolicitud = ? ");) {
+        try ( PreparedStatement stmt = getConnection().prepareStatement("SELECT idProfe FROM idprofes_responsables WHERE idSolicitud = ? ");) {
             stmt.setInt(1, rs.getInt("idSolicitud"));            
             ResultSet rs2 = stmt.executeQuery();
             int index = 0;
@@ -120,7 +90,7 @@ public class SolicitudAprobadaDAO implements Repositorio<SolicitudAprobada> {
         //Profesores Responsables
         TreeMap <Integer, Transporte> transportes = new TreeMap <Integer, Transporte>();
         
-        try ( PreparedStatement stmt = getConnection().prepareStatement("SELECT * FROM solicitudes_has_transporte WHERE idSolicitudes = ? ");) {
+        try ( PreparedStatement stmt = getConnection().prepareStatement("SELECT idTransporte FROM solicitudes_has_transporte WHERE idSolicitudes = ? ");) {
             stmt.setInt(1, rs.getInt("idSolicitud"));            
             ResultSet rs2 = stmt.executeQuery();
             int index = 0;
@@ -147,7 +117,7 @@ public class SolicitudAprobadaDAO implements Repositorio<SolicitudAprobada> {
     @Override
     public SolicitudAprobada porId(int id) {
         SolicitudAprobada solicitud = null;
-        String sql = "SELECT * FROM solicitudes_aprobadas WHERE idSolicitud = ?";
+        String sql = "SELECT idSolicitud, idSolicitante, actividad, tipo_actividad, requiere_transporte, comentario_transporte, finicio , ffinal, hora_inicio, hora_fin, alojamiento, comentario_alojamiento, comentarios_adicionales, estado, comentario_estado, empresa_transporte, importe_transporte, comentario_actividad FROM solicitudes_aprobadas WHERE idSolicitud = ?";
         try ( PreparedStatement stmt = getConnection().prepareStatement(sql);) {
             stmt.setInt(1, id);
             try ( ResultSet rs = stmt.executeQuery();) {

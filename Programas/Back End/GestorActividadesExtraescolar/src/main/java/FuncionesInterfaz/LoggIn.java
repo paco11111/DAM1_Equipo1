@@ -8,18 +8,22 @@ import reto.gestoractividadesextraescolar.Teclado;
 
 /**
  *
- * @author Francisco Sitjar, Fabian Saiz Landeras
+ * @author Francisco Sitjar
  */
 public class LoggIn {
     private String email;
     private String psswrd;
     
-    public LoggIn(String email, String passwrd){
-        if (email.equals("a")) {
-            this.email = email;
-        }
-        if (passwrd.equals("a")) {
-            this.psswrd = passwrd;
-        }
+    public LoggIn(){
+        
+        email = Teclado.email();
+        psswrd = Teclado.nextString("");               
+        
+        
     }
+    
+    
+    
+    
+    
 }
