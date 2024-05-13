@@ -227,10 +227,10 @@
                       <Component id="jPanelMantenimientoDatos" alignment="0" pref="818" max="32767" attributes="0"/>
                   </Group>
                   <Group type="103" rootIndex="3" groupAlignment="0" attributes="0">
-                      <Component id="jPanelSolicitud" alignment="0" max="32767" attributes="0"/>
+                      <Component id="jPanelSolicitud" alignment="0" pref="818" max="32767" attributes="0"/>
                   </Group>
                   <Group type="103" rootIndex="4" groupAlignment="0" attributes="0">
-                      <Component id="jPanelActividad" alignment="1" max="32767" attributes="0"/>
+                      <Component id="jPanelActividad" alignment="1" pref="818" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -373,28 +373,28 @@
                           <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                               <Group type="102" attributes="0">
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="jPanelProf" max="32767" attributes="0"/>
+                                  <Component id="jPanelProf" pref="806" max="32767" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <Group type="103" rootIndex="2" groupAlignment="0" attributes="0">
                               <Group type="102" attributes="0">
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="jPanelCurso" max="32767" attributes="0"/>
+                                  <Component id="jPanelCurso" pref="806" max="32767" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <Group type="103" rootIndex="3" groupAlignment="0" attributes="0">
                               <Group type="102" attributes="0">
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="jPanelGrupo" max="32767" attributes="0"/>
+                                  <Component id="jPanelGrupo" pref="806" max="32767" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <Group type="103" rootIndex="4" groupAlignment="0" attributes="0">
                               <Group type="102" attributes="0">
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="jPanelDeptm" max="32767" attributes="0"/>
+                                  <Component id="jPanelDeptm" pref="806" max="32767" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                               </Group>
                           </Group>
@@ -406,28 +406,28 @@
                           <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                               <Group type="102" attributes="0">
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="jPanelProf" max="32767" attributes="0"/>
+                                  <Component id="jPanelProf" pref="644" max="32767" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <Group type="103" rootIndex="2" groupAlignment="0" attributes="0">
                               <Group type="102" attributes="0">
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="jPanelCurso" max="32767" attributes="0"/>
+                                  <Component id="jPanelCurso" pref="644" max="32767" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <Group type="103" rootIndex="3" groupAlignment="0" attributes="0">
                               <Group type="102" attributes="0">
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="jPanelGrupo" max="32767" attributes="0"/>
+                                  <Component id="jPanelGrupo" pref="644" max="32767" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <Group type="103" rootIndex="4" groupAlignment="0" attributes="0">
                               <Group type="102" attributes="0">
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="jPanelDeptm" max="32767" attributes="0"/>
+                                  <Component id="jPanelDeptm" pref="644" max="32767" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                               </Group>
                           </Group>
@@ -1008,21 +1008,21 @@
                           <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                               <Group type="102" attributes="0">
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="jPanelSoliPendientes" max="32767" attributes="0"/>
+                                  <Component id="jPanelSoliPendientes" pref="644" max="32767" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <Group type="103" rootIndex="2" groupAlignment="0" attributes="0">
                               <Group type="102" attributes="0">
                                   <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
-                                  <Component id="jPanelSoliNueva" max="32767" attributes="0"/>
+                                  <Component id="jPanelSoliNueva" pref="644" max="32767" attributes="0"/>
                                   <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <Group type="103" rootIndex="3" groupAlignment="0" attributes="0">
                               <Group type="102" attributes="0">
                                   <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
-                                  <Component id="jPanelSoliUsu" max="32767" attributes="0"/>
+                                  <Component id="jPanelSoliUsu" pref="644" max="32767" attributes="0"/>
                                   <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
                               </Group>
                           </Group>
@@ -1621,7 +1621,7 @@
                         </DimensionLayout>
                         <DimensionLayout dim="1">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jLayeredPane1" alignment="0" pref="656" max="32767" attributes="0"/>
+                              <Component id="jLayeredPane1" alignment="0" pref="644" max="32767" attributes="0"/>
                           </Group>
                         </DimensionLayout>
                       </Layout>
@@ -2163,7 +2163,7 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jPanelMenuActividad" pref="800" max="32767" attributes="0"/>
+                          <Component id="jPanelMenuActividad" pref="806" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -2192,7 +2192,7 @@
                   <Layout>
                     <DimensionLayout dim="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jLayeredPane2" alignment="0" pref="800" max="32767" attributes="0"/>
+                          <Component id="jLayeredPane2" alignment="0" pref="806" max="32767" attributes="0"/>
                       </Group>
                     </DimensionLayout>
                     <DimensionLayout dim="1">
@@ -2214,15 +2214,15 @@
                           <Group type="103" groupAlignment="0" attributes="0">
                               <EmptySpace min="0" pref="800" max="32767" attributes="0"/>
                               <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
-                                  <Component id="jPanelActvdEdit" alignment="0" pref="800" max="32767" attributes="0"/>
+                                  <Component id="jPanelActvdEdit" alignment="0" pref="806" max="32767" attributes="0"/>
                               </Group>
                               <Group type="103" rootIndex="2" groupAlignment="0" attributes="0">
-                                  <Component id="jPanelActvdTable" alignment="0" pref="800" max="32767" attributes="0"/>
+                                  <Component id="jPanelActvdTable" alignment="0" pref="806" max="32767" attributes="0"/>
                               </Group>
                               <Group type="103" rootIndex="3" groupAlignment="0" attributes="0">
                                   <Group type="102" attributes="0">
                                       <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
-                                      <Component id="jPanelActvdInfo" pref="784" max="32767" attributes="0"/>
+                                      <Component id="jPanelActvdInfo" pref="790" max="32767" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
                                   </Group>
                               </Group>
