@@ -50,7 +50,7 @@ public class DepartamentoDAO implements Repositorio<Departamento>{
 
     private Departamento crearDepartamento(final ResultSet rs) throws SQLException {
         Departamento d = new Departamento(rs.getInt("idDepartamento"), rs.getString("codigo"), rs.getString("nombre"), null);
-        Profesor p = new Profesor(rs.getInt("idProfesorJefe"), rs.getString("profesor"), rs.getString("apellidos"),rs.getString("DNI"), d, rs.getString("ocupacion"), rs.getBoolean("activo"));
+        Profesor p = new Profesor(rs.getInt("idProfesorJefe"), rs.getString("profesor"), rs.getString("apellidos"),rs.getString("DNI"), d, rs.getBoolean("activo"));
         d.setJefe(p);
         p.setDepartamento(d);
         return d;
@@ -59,9 +59,10 @@ public class DepartamentoDAO implements Repositorio<Departamento>{
     @Override
     public Departamento porId(int id) {
         Departamento departamento = null;
-        String sql = "SELECT idProfesor, profesores.nombre as profesor, apellidos,DNI,profesores.idDepartamento,ocupacion,activo, codigo, departamentos.nombre, idProfesorJefe FROM profesores INNER JOIN departamentos ON profesores.idDepartamento= departamentos.idDepartamento WHERE departamentos.idDepartamento = ? AND departamentos.idProfesorJefe = profesores.idProfesor";
+        String sql = "SELECT idProfesor, profesores.nombre as profesor, apellidos,DNI,departamentos.idDepartamento,activo, codigo, departamentos.nombre, idProfesorJefe FROM departamentos LEFT JOIN profesores ON profesores.idDepartamento= departamentos.idDepartamento WHERE IF (idProfesorJefe IS NULL, departamentos.idDepartamento = ?, departamentos.idDepartamento = ? AND idProfesor = idProfesorJefe);";
         try (PreparedStatement stmt = getConnection().prepareStatement(sql);) {
             stmt.setInt(1, id);
+            stmt.setInt(2, id);
             try (ResultSet rs = stmt.executeQuery();) {
                 if (rs.next()) {
                     departamento = crearDepartamento(rs);
@@ -81,7 +82,7 @@ public class DepartamentoDAO implements Repositorio<Departamento>{
             stmt.setString(1, departamento.getCodigo());
             stmt.setString(2, departamento.getNombre());
             stmt.setInt(3, departamento.getJefe().getId());
-            stmt.setInt(3, departamento.getId());
+            stmt.setInt(4, departamento.getId());
             int salida = stmt.executeUpdate();
             if (salida != 1) {
                 throw new Exception(" No se ha insertado/modificado un solo registro");
@@ -97,7 +98,7 @@ public class DepartamentoDAO implements Repositorio<Departamento>{
 
     @Override
     public void agregar(Departamento departamento) {
-        try ( PreparedStatement stmt = getConnection().prepareStatement("INSERT INTO transporte (codigo,nombre, idProfesorJefe ) VALUES (?,?,?)");) {
+        try ( PreparedStatement stmt = getConnection().prepareStatement("INSERT INTO departamento (codigo,nombre, idProfesorJefe ) VALUES (?,?,?)");) {
             stmt.setString(1, departamento.getCodigo());
             stmt.setString(2, departamento.getNombre());
             stmt.setInt(3, departamento.getJefe().getId());

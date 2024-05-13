@@ -13,21 +13,17 @@ public class Transporte implements Comparable<Transporte> {
     private String tipo;
     private String descripcion;
     
-    public Transporte(boolean tieneId){
-        if(tieneId){
-            id = Teclado.nextInt("Id del transporte: ");
-        }
-        tipo = Teclado.nextString("Tipo de transporte: ");
-        boolean opc = Teclado.nextBolean("Añadir descripción sobre el  transporte?");
-        if(opc){
-            descripcion = Teclado.nextString("Añade una descripción : ");
-        }
-    }
+    
     public Transporte(int id, String tipo, String descripcion){
         this.id = id;
         this.tipo = tipo;
         this.descripcion = descripcion;
     }
+    public Transporte(String tipo, String descripcion){
+        this.tipo = tipo;
+        this.descripcion = descripcion;
+    }
+
 
     public int getId() {
         return id;

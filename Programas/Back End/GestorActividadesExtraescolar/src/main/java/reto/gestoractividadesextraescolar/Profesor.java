@@ -8,7 +8,7 @@ import DAOs.DepartamentoDAO;
 import Enumerados.PuestoProfesor;
 
 /**
- *
+ *  Esta clase representa la tabla profesor en la base de datos.
  * @author Francisco Sitjar
  */
 public class Profesor implements Comparable<Profesor> {
@@ -17,11 +17,19 @@ public class Profesor implements Comparable<Profesor> {
     private String dni;
     private String nombre;
     private String apellidos;
-    private PuestoProfesor PUESTO;
     private Departamento departamento;
     private boolean activo;
 
-    public Profesor(int id, String nombre, String apellidos, String dni, Departamento departamento, String puesto, boolean activo) {
+    /**
+     * 
+     * @param id numero entero que identifica el objeto
+     * @param nombre Cadena de texto que guarad el nombre
+     * @param apellidos Cadena de texto que guarad los apellidos
+     * @param dni Cadena de texto que guarda DNI
+     * @param departamento Objeto Departamento al que pertenece el profesor
+     * @param activo boolean que informa si el profesor esta activo o no 
+     */
+    public Profesor(int id, String nombre, String apellidos, String dni, Departamento departamento, boolean activo) {
         this.id = id;
         this.dni = dni;
         this.nombre = nombre;
@@ -33,8 +41,21 @@ public class Profesor implements Comparable<Profesor> {
             this.departamento = null;
         }
        
-        this.PUESTO = puesto(puesto);
         this.activo = activo;
+
+    }
+    public Profesor( String nombre, String apellidos, String dni, Departamento departamento) {
+        this.dni = dni;
+        this.nombre = nombre;
+        this.apellidos = apellidos;
+        if(departamento != null){
+            this.departamento = departamento;
+           this. departamento.setJefe(this);
+        }else{
+            this.departamento = null;
+        }
+        this.activo = true;
+       
 
     }
 
@@ -45,29 +66,6 @@ public class Profesor implements Comparable<Profesor> {
     }
 
     
-    
-
-    private PuestoProfesor puesto(String temp) {
-        PuestoProfesor puesto = null;
-        switch (temp.toUpperCase()) {
-            case "SUPERUSUARIO" -> {
-                puesto = PuestoProfesor.SUPERUSUARIO;
-            }
-            case "ADMINISTRADOR" -> {
-                puesto = PuestoProfesor.ADMINISTRADOR;
-            }
-            case "EQUIPO_DIRECTIVO" -> {
-                puesto = PuestoProfesor.EQUIPO_DIRECTIVO;
-            }
-            case "PROFESOR" -> {
-                puesto = PuestoProfesor.PROFESOR;
-            }
-            default ->
-                System.out.println("Opcion no valida");
-        }
-        return puesto;
-    }
-
     public int getId() {
         return id;
     }
@@ -89,14 +87,18 @@ public class Profesor implements Comparable<Profesor> {
     }
 
 
-    public PuestoProfesor getPUESTO() {
-        return PUESTO;
-    }
+    
 
     public boolean isActivo() {
         return activo;
     }
 
+    /**
+     * 
+     * @param o Objeto profesor a comparar
+     * @return Compara ambos objetos profesores por nombre 
+     */
+    
     @Override
     public int compareTo(Profesor o) {
         return this.getNombre().compareTo(o.getNombre());

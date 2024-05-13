@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package FuncionesInterfaz;
+package reto.gestoractividadesextraescolar;
 
 import Enumerados.PuestoProfesor;
 import reto.gestoractividadesextraescolar.Profesor;
@@ -22,6 +22,11 @@ public class LoggProfesor {
         this.email = email;
         this.psswrd = psswrd;
         this.PUESTO = puesto(puesto);
+    }
+    public LoggProfesor(Profesor profesor,String email){
+        this.profesor = profesor;
+        this.email = email;
+        PUESTO = PuestoProfesor.PROFESOR;
     }
 
     
@@ -56,8 +61,6 @@ public class LoggProfesor {
     public void setProfesor(Profesor profesor) {
         this.profesor = profesor;
     }
-    
-    
     
     
     
