@@ -37,7 +37,7 @@ public class SolicitudDAO implements Repositorio<Solicitud>{
     @Override
     public List<Solicitud> listar() {
         List<Solicitud> solicitudes = new ArrayList<>();
-        try ( Statement stmt = getConnection().createStatement();  ResultSet rs = stmt.executeQuery("SELECT idSolicitud, idSolicitante, actividad, tipo_actividad, previsto_programacion, requiere_transporte, comentario_transporte, finicio, ffinal, hora_inicio,  hora_fin, alojamiento, comentario_alojamiento, estado, comentario_estado FROM solicitudes");) {
+        try ( Statement stmt = getConnection().createStatement();  ResultSet rs = stmt.executeQuery("SELECT idSolicitud, idSolicitante, actividad, tipo_actividad, previsto_programacion, requiere_transporte, comentario_transporte, finicio, ffinal, hora_inicio,  hora_fin, alojamiento, comentario_alojamiento,comentarios_adicionales, estado, comentario_estado FROM solicitudes");) {
             while (rs.next()) {
                 Solicitud solicitud = crearSolicitud(rs);
                 if (!solicitudes.add(solicitud)) {
@@ -105,7 +105,7 @@ public class SolicitudDAO implements Repositorio<Solicitud>{
         //Transporte
         TreeMap <Integer, Transporte> transportes = new TreeMap <Integer, Transporte>();
         
-        try ( PreparedStatement stmt = getConnection().prepareStatement("SELECT idTransporte FROM solicitudes_has_transporte WHERE idSolicitudes = ? ");) {
+        try ( PreparedStatement stmt = getConnection().prepareStatement("SELECT idTransporte FROM solicitudes_has_transporte WHERE idSolicitud = ? ");) {
             stmt.setInt(1, rs.getInt("idSolicitud"));            
             ResultSet rs2 = stmt.executeQuery();
             int index = 0;
@@ -114,7 +114,7 @@ public class SolicitudDAO implements Repositorio<Solicitud>{
                 index++;
             } 
             
-
+            
         } catch (SQLException ex) {
             // errores
             System.out.println("SQLException: " + ex.getMessage());
@@ -122,7 +122,7 @@ public class SolicitudDAO implements Repositorio<Solicitud>{
             System.out.println(ex.getMessage());
         }
         LocalDate finicio = rs.getDate("finicio").toLocalDate();
-        LocalDate ffin = rs.getDate("ffin").toLocalDate();
+        LocalDate ffin = rs.getDate("ffinal").toLocalDate();
         LocalTime horaInicio = rs.getTime("hora_inicio").toLocalTime();
         LocalTime horaFin = rs.getTime("hora_fin").toLocalTime();
         
@@ -133,7 +133,7 @@ public class SolicitudDAO implements Repositorio<Solicitud>{
     @Override
     public Solicitud porId(int id) {
         Solicitud solicitud = null;
-        String sql = "SELECT * FROM transporte WHERE idSolicitud = ?";
+        String sql = "SELECT * FROM solicitudes WHERE idSolicitud = ?";
         try ( PreparedStatement stmt = getConnection().prepareStatement(sql);) {
             stmt.setInt(1, id);
             try ( ResultSet rs = stmt.executeQuery();) {
@@ -159,9 +159,9 @@ public class SolicitudDAO implements Repositorio<Solicitud>{
             stmt.setString(3, tipoActividad);
             stmt.setBoolean(4, solicitud.isPrevisto());
             if(solicitud.getTransporte().isEmpty()){
-                stmt.setString(5, "false");
-            }else{
-                stmt.setString(5, "true");
+                stmt.setBoolean(5, false);
+            }else{                                        
+                stmt.setBoolean(5, true);
             }
             stmt.setString(6, solicitud.getComentarioTransporte());
             Date fechaInicio = Date.valueOf(solicitud.getFechaInicio());
@@ -201,9 +201,9 @@ public class SolicitudDAO implements Repositorio<Solicitud>{
             stmt.setString(3, tipoActividad);
             stmt.setBoolean(4, solicitud.isPrevisto());
             if(solicitud.getTransporte().isEmpty()){
-                stmt.setString(5, "false");
+                stmt.setBoolean(5, false);
             }else{                                        
-                stmt.setString(5, "true");
+                stmt.setBoolean(5, true);
             }
             stmt.setString(6, solicitud.getComentarioTransporte());
             Date fechaInicio = Date.valueOf(solicitud.getFechaInicio());
@@ -235,7 +235,7 @@ public class SolicitudDAO implements Repositorio<Solicitud>{
 
     @Override
     public void eliminar(int id) {
-        String sql="DELETE FROM solicitudes WHERE idSolicitudes=?"; //cambiar idSolicitudes por idSolicitud
+        String sql="DELETE FROM solicitudes WHERE idSolicitud=?"; 
         try ( PreparedStatement stmt = getConnection().prepareStatement(sql);) {
             stmt.setInt(1, id);
             int salida = stmt.executeUpdate();

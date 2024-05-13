@@ -19,16 +19,33 @@ import reto.gestoractividadesextraescolar.Utilidad;
  */
 public class MostrarTabla {
 
-    private static DefaultTableModel model = new DefaultTableModel();
+    private static DefaultTableModel model;
     private static SolicitudDAO solicitudDAO = new SolicitudDAO();
     private static String[] solicitud = new String[16];
     private static List<Solicitud> solicitudes = new ArrayList<>();
 
-    public static void mostrarSolicitud() {
-        DateTimeFormatter f = DateTimeFormatter.ofPattern("dd '-' MMMM '-' yyyy '").withLocale(new Locale("es", "ES"));
-        DateTimeFormatter t = DateTimeFormatter.ofPattern("' hh:mm").withLocale(new Locale("es", "ES"));
+    public static DefaultTableModel mostrarSolicitud() {
+        model = new DefaultTableModel();
+        DateTimeFormatter f = DateTimeFormatter.ofPattern("dd 'de' MMMM 'de' yyyy").withLocale(new Locale("es", "ES"));
+        DateTimeFormatter t = DateTimeFormatter.ofPattern("hh:mm").withLocale(new Locale("es", "ES"));
         solicitudes = solicitudDAO.listar();
         try {
+            model.addColumn("idSolicitud");
+            model.addColumn("idProfesorSolicitante");
+            model.addColumn("Actividad");
+            model.addColumn("Tipo Actividad");
+            model.addColumn("Previsto Programacion");
+            model.addColumn("Transporte");
+            model.addColumn("Comentario Transporte");
+            model.addColumn("Fecha Inicio");
+            model.addColumn("Fecha Final");
+            model.addColumn("Hora Inicio");
+            model.addColumn("Hora Final");
+            model.addColumn("Comentario Alojamiento");
+            model.addColumn("Comentario Adicional");
+            model.addColumn("Estado");
+            model.addColumn("Comentario Estado");
+            
             for (Solicitud s : solicitudes) {
                 solicitud[0] = String.valueOf(s.getId());
                 solicitud[1] = s.getProfesorSolicitante().getNombre() + " " + s.getProfesorSolicitante().getApellidos();
@@ -53,6 +70,7 @@ public class MostrarTabla {
         } catch (Exception e) {
             e.getMessage();
         }
+        return model;
 
     }
 
