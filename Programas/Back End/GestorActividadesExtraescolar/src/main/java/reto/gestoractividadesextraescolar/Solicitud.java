@@ -52,6 +52,7 @@ public class Solicitud {
             
         }
         this.previsto = previsto;
+        this.transporte = transporte;
         this.departamento = departamento;
         this.comentarioTransporte = comentarioTransporte;
         this.fechaInicio = fechaInicio;

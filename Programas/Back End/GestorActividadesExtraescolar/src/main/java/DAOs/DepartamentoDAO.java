@@ -21,7 +21,8 @@ import reto.gestoractividadesextraescolar.Repositorio;
  * @author Francisco Sitjar
  */
 public class DepartamentoDAO implements Repositorio<Departamento>{
-    
+//    private ProfesorDAO profesorDAO = new ProfesorDAO();
+        
     private Connection getConnection() {
         return AccesoBaseDatos.getInstance().getConn();
     }
@@ -45,35 +46,30 @@ public class DepartamentoDAO implements Repositorio<Departamento>{
         }
         return departamentos;
     }
-    
+    ; 
+
     private Departamento crearDepartamento(final ResultSet rs) throws SQLException {
-        ProfesorDAO profesorDAO = new ProfesorDAO();
-        Profesor profesor= profesorDAO.porId(rs.getInt("idProfesorJefe"));
-        if(profesor !=null){
-            System.out.println("funciona");
-        }else{
-            System.out.println("No funciona");
-        }
-        
-        
-        return new Departamento( rs.getInt("idDepartamento"),rs.getString("codigo"),rs.getString("nombre"), );
+        Departamento d = new Departamento(rs.getInt("idDepartamento"), rs.getString("codigo"), rs.getString("nombre"), null);
+        Profesor p = new Profesor(rs.getInt("idProfesorJefe"), rs.getString("profesor"), rs.getString("apellidos"),rs.getString("DNI"), d, rs.getString("ocupacion"), rs.getBoolean("activo"));
+        d.setJefe(p);
+        p.setDepartamento(d);
+        return d;
     }
 
     @Override
     public Departamento porId(int id) {
         Departamento departamento = null;
-        String sql = "SELECT idDepartamento, codigo, nombre, idProfesorJefe FROM departamentos WHERE idDepartamento = ?";
-        try ( PreparedStatement stmt = getConnection().prepareStatement(sql);) {
+        String sql = "SELECT idProfesor, profesores.nombre as profesor, apellidos,DNI,profesores.idDepartamento,ocupacion,activo, codigo, departamentos.nombre, idProfesorJefe FROM profesores INNER JOIN departamentos ON profesores.idDepartamento= departamentos.idDepartamento WHERE departamentos.idDepartamento = ? AND departamentos.idProfesorJefe = profesores.idProfesor";
+        try (PreparedStatement stmt = getConnection().prepareStatement(sql);) {
             stmt.setInt(1, id);
-            try ( ResultSet rs = stmt.executeQuery();) {
+            try (ResultSet rs = stmt.executeQuery();) {
                 if (rs.next()) {
                     departamento = crearDepartamento(rs);
-                }else{
+                } else {
                     System.out.println("No hay departamento con tal id");
                 }
-            } 
+            }
         } catch (SQLException ex) {
-            // errores
             System.out.println("SQLException: " + ex.getMessage());
         }
         return departamento;
