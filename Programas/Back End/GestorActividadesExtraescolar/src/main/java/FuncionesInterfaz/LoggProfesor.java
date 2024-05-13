@@ -23,10 +23,6 @@ public class LoggProfesor {
         this.psswrd = psswrd;
         this.PUESTO = puesto(puesto);
     }
-
-    
-    
-    
     
     private PuestoProfesor puesto(String temp) {
         PuestoProfesor puesto = null;
@@ -56,10 +52,6 @@ public class LoggProfesor {
     public void setProfesor(Profesor profesor) {
         this.profesor = profesor;
     }
-    
-    
-    
-    
     
     public String getEmail() {
         

@@ -33,6 +33,7 @@ import java.util.TreeMap;
 import reto.gestoractividadesextraescolar.Departamento;
 import reto.gestoractividadesextraescolar.LoggProfesor;
 import reto.gestoractividadesextraescolar.Profesor;
+import FuncionesInterfaz.LoggIn;
 import reto.gestoractividadesextraescolar.Solicitud;
 import reto.gestoractividadesextraescolar.Transporte;
 
@@ -704,22 +705,22 @@ public class JFrame_Principal extends javax.swing.JFrame {
             .addGroup(jLayersMenuDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jLayersMenuDatosLayout.createSequentialGroup()
                     .addContainerGap()
-                    .addComponent(jPanelProf, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanelProf, javax.swing.GroupLayout.DEFAULT_SIZE, 806, Short.MAX_VALUE)
                     .addContainerGap()))
             .addGroup(jLayersMenuDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jLayersMenuDatosLayout.createSequentialGroup()
                     .addContainerGap()
-                    .addComponent(jPanelCurso, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanelCurso, javax.swing.GroupLayout.DEFAULT_SIZE, 806, Short.MAX_VALUE)
                     .addContainerGap()))
             .addGroup(jLayersMenuDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jLayersMenuDatosLayout.createSequentialGroup()
                     .addContainerGap()
-                    .addComponent(jPanelGrupo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanelGrupo, javax.swing.GroupLayout.DEFAULT_SIZE, 806, Short.MAX_VALUE)
                     .addContainerGap()))
             .addGroup(jLayersMenuDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jLayersMenuDatosLayout.createSequentialGroup()
                     .addContainerGap()
-                    .addComponent(jPanelDeptm, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanelDeptm, javax.swing.GroupLayout.DEFAULT_SIZE, 806, Short.MAX_VALUE)
                     .addContainerGap()))
         );
         jLayersMenuDatosLayout.setVerticalGroup(
@@ -728,22 +729,22 @@ public class JFrame_Principal extends javax.swing.JFrame {
             .addGroup(jLayersMenuDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jLayersMenuDatosLayout.createSequentialGroup()
                     .addContainerGap()
-                    .addComponent(jPanelProf, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanelProf, javax.swing.GroupLayout.DEFAULT_SIZE, 644, Short.MAX_VALUE)
                     .addContainerGap()))
             .addGroup(jLayersMenuDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jLayersMenuDatosLayout.createSequentialGroup()
                     .addContainerGap()
-                    .addComponent(jPanelCurso, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanelCurso, javax.swing.GroupLayout.DEFAULT_SIZE, 644, Short.MAX_VALUE)
                     .addContainerGap()))
             .addGroup(jLayersMenuDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jLayersMenuDatosLayout.createSequentialGroup()
                     .addContainerGap()
-                    .addComponent(jPanelGrupo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanelGrupo, javax.swing.GroupLayout.DEFAULT_SIZE, 644, Short.MAX_VALUE)
                     .addContainerGap()))
             .addGroup(jLayersMenuDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jLayersMenuDatosLayout.createSequentialGroup()
                     .addContainerGap()
-                    .addComponent(jPanelDeptm, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanelDeptm, javax.swing.GroupLayout.DEFAULT_SIZE, 644, Short.MAX_VALUE)
                     .addContainerGap()))
         );
 
@@ -800,6 +801,7 @@ public class JFrame_Principal extends javax.swing.JFrame {
 
         jPanelSoliPendientes.setBackground(new java.awt.Color(51, 51, 51));
         jPanelSoliPendientes.setPreferredSize(new java.awt.Dimension(812, 656));
+
 
         jTableSoliPendientes.setModel(MostrarTabla.mostrarSolicitud());
         jTableSoliPendientes.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -1240,23 +1242,23 @@ public class JFrame_Principal extends javax.swing.JFrame {
 
         jTableSoliUsu.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4", "Title 5", "Title 6", "Title 7", "Title 8"
+                "Title 1", "Title 2", "Title 3", "Title 4", "Title 5", "Title 6", "Title 7", "Title 8", "Title 9", "Title 10", "Title 11", "Title 12", "Title 13", "Title 14", "Title 15", "Title 16"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false
+                false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -1326,7 +1328,7 @@ public class JFrame_Principal extends javax.swing.JFrame {
         );
         jPanelSoliUsuLayout.setVerticalGroup(
             jPanelSoliUsuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLayeredPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 656, Short.MAX_VALUE)
+            .addComponent(jLayeredPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 644, Short.MAX_VALUE)
         );
 
         jLayersMenuSolicitud.setLayer(jPanelMenuSolicitud, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -1340,7 +1342,7 @@ public class JFrame_Principal extends javax.swing.JFrame {
             jLayersMenuSolicitudLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jLayersMenuSolicitudLayout.createSequentialGroup()
                 .addComponent(jPanelMenuSolicitud, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 639, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(jLayersMenuSolicitudLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jLayersMenuSolicitudLayout.createSequentialGroup()
                     .addContainerGap()
@@ -1363,17 +1365,17 @@ public class JFrame_Principal extends javax.swing.JFrame {
             .addGroup(jLayersMenuSolicitudLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jLayersMenuSolicitudLayout.createSequentialGroup()
                     .addContainerGap()
-                    .addComponent(jPanelSoliPendientes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanelSoliPendientes, javax.swing.GroupLayout.DEFAULT_SIZE, 644, Short.MAX_VALUE)
                     .addContainerGap()))
             .addGroup(jLayersMenuSolicitudLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jLayersMenuSolicitudLayout.createSequentialGroup()
                     .addGap(6, 6, 6)
-                    .addComponent(jPanelSoliNueva, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanelSoliNueva, javax.swing.GroupLayout.DEFAULT_SIZE, 644, Short.MAX_VALUE)
                     .addGap(6, 6, 6)))
             .addGroup(jLayersMenuSolicitudLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jLayersMenuSolicitudLayout.createSequentialGroup()
                     .addGap(6, 6, 6)
-                    .addComponent(jPanelSoliUsu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanelSoliUsu, javax.swing.GroupLayout.DEFAULT_SIZE, 644, Short.MAX_VALUE)
                     .addGap(6, 6, 6)))
         );
 
@@ -1795,13 +1797,13 @@ public class JFrame_Principal extends javax.swing.JFrame {
             jLayeredPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 800, Short.MAX_VALUE)
             .addGroup(jLayeredPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jPanelActvdEdit, javax.swing.GroupLayout.DEFAULT_SIZE, 800, Short.MAX_VALUE))
+                .addComponent(jPanelActvdEdit, javax.swing.GroupLayout.DEFAULT_SIZE, 806, Short.MAX_VALUE))
             .addGroup(jLayeredPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jPanelActvdTable, javax.swing.GroupLayout.DEFAULT_SIZE, 800, Short.MAX_VALUE))
+                .addComponent(jPanelActvdTable, javax.swing.GroupLayout.DEFAULT_SIZE, 806, Short.MAX_VALUE))
             .addGroup(jLayeredPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jLayeredPane2Layout.createSequentialGroup()
                     .addGap(10, 10, 10)
-                    .addComponent(jPanelActvdInfo, javax.swing.GroupLayout.DEFAULT_SIZE, 784, Short.MAX_VALUE)
+                    .addComponent(jPanelActvdInfo, javax.swing.GroupLayout.DEFAULT_SIZE, 790, Short.MAX_VALUE)
                     .addContainerGap()))
         );
         jLayeredPane2Layout.setVerticalGroup(
@@ -1826,7 +1828,7 @@ public class JFrame_Principal extends javax.swing.JFrame {
         jPanelMenuActividad.setLayout(jPanelMenuActividadLayout);
         jPanelMenuActividadLayout.setHorizontalGroup(
             jPanelMenuActividadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLayeredPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 800, Short.MAX_VALUE)
+            .addComponent(jLayeredPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 806, Short.MAX_VALUE)
         );
         jPanelMenuActividadLayout.setVerticalGroup(
             jPanelMenuActividadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1839,7 +1841,7 @@ public class JFrame_Principal extends javax.swing.JFrame {
             jPanelActividadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelActividadLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanelMenuActividad, javax.swing.GroupLayout.DEFAULT_SIZE, 800, Short.MAX_VALUE)
+                .addComponent(jPanelMenuActividad, javax.swing.GroupLayout.DEFAULT_SIZE, 806, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanelActividadLayout.setVerticalGroup(
@@ -1861,13 +1863,13 @@ public class JFrame_Principal extends javax.swing.JFrame {
             jLayersMenuPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 0, Short.MAX_VALUE)
             .addGroup(jLayersMenuPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jPanelCargaDatos, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 818, Short.MAX_VALUE))
+                .addComponent(jPanelCargaDatos, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jLayersMenuPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jPanelMantenimientoDatos, javax.swing.GroupLayout.DEFAULT_SIZE, 818, Short.MAX_VALUE))
+                .addComponent(jPanelMantenimientoDatos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jLayersMenuPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(jPanelSolicitud, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jLayersMenuPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jPanelActividad, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jPanelActividad, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 818, Short.MAX_VALUE))
         );
         jLayersMenuPrincipalLayout.setVerticalGroup(
             jLayersMenuPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1960,11 +1962,14 @@ public class JFrame_Principal extends javax.swing.JFrame {
         // TODO add your handling code here:
         String usu = txUsu.getText();
         String pass = txCnna.getText();
-        jPanelInicio.setVisible(false);
-        jPanelPrincipal.setVisible(true);
-        jPanelMenuPrincipal.setVisible(true);
-        //LoggIn validar = new LoggIn(usu,pass);
-        //cbSoli.getSelectedItem().toString();
+        boolean temp = LoggIn.validarEmail(usu);
+        if (temp/*&& LoggIn.validarPasswrd(pass)*/) {
+            jPanelInicio.setVisible(false);
+            jPanelPrincipal.setVisible(true);
+            jPanelMenuPrincipal.setVisible(true);
+        }else{
+            JOptionPane.showMessageDialog(this, "Usuario o Contraseña incorrectos");
+        }
     }//GEN-LAST:event_btnSesionActionPerformed
 
     private void txCnnaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txCnnaActionPerformed
@@ -2078,49 +2083,33 @@ public class JFrame_Principal extends javax.swing.JFrame {
     }
     private void btnCSVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCSVActionPerformed
         // TODO add your handling code here:/
-        JFileChooser fileChooser = new JFileChooser();
-        int response = fileChooser.showOpenDialog(null);
-        if(response == JFileChooser.APPROVE_OPTION){
-            texto = fileChooser.getSelectedFile().getAbsolutePath();
-        }
-        String file = texto;
+        boolean condicion = false;
+        do{
+            JFileChooser fileChooser = new JFileChooser();
+            int response = fileChooser.showOpenDialog(null);
+            if(response == JFileChooser.APPROVE_OPTION){
+                if (fileChooser.getSelectedFile().getAbsolutePath().toString().endsWith(".csv")) {
+                    texto = fileChooser.getSelectedFile().getAbsolutePath();
+                    txFile.setText(texto);
+                    condicion = true;
+                }else{
+                    JOptionPane.showMessageDialog(this, "El archivo seleccionado no esta soportado por la base de datos",
+                            "Error", JOptionPane.ERROR_MESSAGE);
+                }
+            }else if (response != JFileChooser.APPROVE_OPTION) {
+                txFile.setText("Selecciona un CSV desde tu dispositivo");
+                condicion = true;
+            }
+        }while(condicion == false);
         
         BufferedReader reader = null;
         
        // String line = "";
-        
-        txFile.setText(texto);
-        LectorCSV.lectorCSV(file);
-        /*try{
-            reader = new BufferedReader(new FileReader(file));
-            while((line = reader.readLine()) != null){
-                
-                String[] row = line.split(";");
-                
-                System.out.println(row.length);
-                
-                for(String s : row){
-                    System.out.printf("%-10s", s);
-                    
-                }
-                System.out.println("");
-            }
-            
-            
-        }catch(Exception error){
-            error.printStackTrace();
-        }finally{
-            try {
-                reader.close();
-            } catch (IOException ex) {
-                Logger.getLogger(txUsu.getText()).log(Level.SEVERE, null, ex);
-                //cuando este acabado hay que comprobar que es lo que deberia ir en "name:"
-            }
-        }*/
     }//GEN-LAST:event_btnCSVActionPerformed
 
     private void btnCSVupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCSVupActionPerformed
         // TODO add your handling code here:
+        String file = texto;
         if (txFile.getText().equals("Selecciona un CSV desde tu dispositivo")) {
             JOptionPane.showMessageDialog(this, "Selecciona un archivo para importar");
         }else{
@@ -2131,6 +2120,7 @@ public class JFrame_Principal extends javax.swing.JFrame {
                 pbCSV.setValue(50);
                 JOptionPane.showMessageDialog(this, "Archivo importado correctamente");
                 pbCSV.setValue(100);
+                LectorCSV.lectorCSV(file);
             }else if (confirmar == JOptionPane.NO_OPTION) {
                 System.out.println("Operacion interrumpida");
                 txFile.setText("Selecciona un CSV desde tu dispositivo");
