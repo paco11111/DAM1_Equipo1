@@ -23,15 +23,15 @@ public class Curso {
     
     public Curso(boolean tieneId){
         if(tieneId){
-            this.id = Teclado.nextInt("Id del curso");
+            this.id = Utilidad.nextInt("Id del curso");
         }
-        etapa = Teclado.etapaCurso();
-        codigo = Teclado.codigoCurso();
-        boolean opc = Teclado.nextBolean("Añadir comentario sobre el transporte?");
+        etapa = Utilidad.etapaCurso();
+        codigo = Utilidad.codigoCurso();
+        boolean opc = Utilidad.nextBolean("Añadir comentario sobre el transporte?");
         if(opc){
-            descripcion = Teclado.nextString("Añade un comentario: ");
+            descripcion = Utilidad.nextString("Añade un comentario: ");
         }
-        activoCurso = Teclado.nextBolean("Curso activo?");
+        activoCurso = Utilidad.nextBolean("Curso activo?");
         
     }
     
