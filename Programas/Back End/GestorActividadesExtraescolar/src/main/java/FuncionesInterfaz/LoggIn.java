@@ -4,7 +4,7 @@
  */
 package FuncionesInterfaz;
 
-import reto.gestoractividadesextraescolar.Teclado;
+import reto.gestoractividadesextraescolar.Utilidad;
 
 /**
  *
@@ -16,8 +16,8 @@ public class LoggIn {
     
     public LoggIn(){
         
-        email = Teclado.email();
-        psswrd = Teclado.nextString("");               
+        email = Utilidad.email();
+        psswrd = Utilidad.nextString("");               
         
         
     }

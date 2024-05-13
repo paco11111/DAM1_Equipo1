@@ -4,7 +4,7 @@
  */
 package DAOs;
 
-import FuncionesInterfaz.LoggProfesor;
+import reto.gestoractividadesextraescolar.LoggProfesor;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -29,7 +29,7 @@ public class LoggProfesorDAO implements Repositorio<LoggProfesor> {
     @Override
     public List<LoggProfesor> listar() {
         List<LoggProfesor> profesores = new ArrayList<>();
-        try ( Statement stmt = getConnection().createStatement();  ResultSet rs = stmt.executeQuery("SELECT idProfesor, profesores.nombre as profesor, apellidos,DNI,profesores.idDepartamento,activo, codigo, departamentos.nombre, idProfesorJefe FROM profesores INNER JOIN departamentos WHERE profesores.idDepartamento= departamentos.idDepartamento");) {
+        try ( Statement stmt = getConnection().createStatement();  ResultSet rs = stmt.executeQuery("SELECT email, password, idProfesor, ocupacion, profesores.nombre as profesor, apellidos,DNI,profesores.idDepartamento,activo, codigo, departamentos.nombre, idProfesorJefe FROM logprofesores INNER JOIN profesores ON logprofesores.idProfesor = profesores.idProfesor INNER JOIN departamentos ON profesores.idDepartamento= departamentos.idDepartamento");) {
 
             while (rs.next()) {
                 LoggProfesor profesor = crearLoggProfesor(rs);
@@ -56,7 +56,7 @@ public class LoggProfesorDAO implements Repositorio<LoggProfesor> {
     @Override
     public LoggProfesor porId(int id) {
         LoggProfesor profesor = null;
-        String sql = "SELECT logprofesores.idProfesor, nombre, apellidos,DNI,idDepartamento,ocupacion,activo, email, password, ocupacion FROM profesores INNER JOIN logprofesores ON profesores.idProfesor= profesores.idProfesor WHERE logprofesores.idProfesor=?";
+        String sql = "SELECT logprofesores.idProfesor, nombre, apellidos,DNI,idDepartamento,ocupacion,activo, email, password FROM profesores INNER JOIN logprofesores ON profesores.idProfesor= profesores.idProfesor WHERE logprofesores.idProfesor=?";
         try (PreparedStatement stmt = getConnection().prepareStatement(sql);) {
             stmt.setInt(1, id);
             try (ResultSet rs = stmt.executeQuery();) {
@@ -96,7 +96,7 @@ public class LoggProfesorDAO implements Repositorio<LoggProfesor> {
 
     @Override
     public void agregar(LoggProfesor profesor) {
-        try ( PreparedStatement stmt = getConnection().prepareStatement("INSERT INTO profesores (email, password, idProfesor, ocupacion ) VALUES (?,md5(?),?,?)");) {
+        try ( PreparedStatement stmt = getConnection().prepareStatement("INSERT INTO logprofesores (email,password,idProfesor,ocupacion) VALUES (?,md5(?),?,?)");) {
             stmt.setString(1, profesor.getEmail());
             stmt.setString(2, profesor.getPsswrd());
             stmt.setInt(3, profesor.getProfesor().getId());

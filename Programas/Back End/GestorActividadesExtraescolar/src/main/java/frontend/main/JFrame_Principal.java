@@ -20,12 +20,17 @@ import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import DAOs.DepartamentoDAO;
+import DAOs.LoggProfesorDAO;
 import DAOs.ProfesorDAO;
 import DAOs.SolicitudDAO;
+import FuncionesInterfaz.LectorCSV;
 import FuncionesInterfaz.LoggIn;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.TreeMap;
+import reto.gestoractividadesextraescolar.Departamento;
+import reto.gestoractividadesextraescolar.LoggProfesor;
+import reto.gestoractividadesextraescolar.Profesor;
 
 /**
  *
@@ -2092,8 +2097,7 @@ public class JFrame_Principal extends javax.swing.JFrame {
         return texto;
     }
     private void btnCSVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCSVActionPerformed
-        // TODO add your handling code here:
-        
+        // TODO add your handling code here:/
         JFileChooser fileChooser = new JFileChooser();
         int response = fileChooser.showOpenDialog(null);
         if(response == JFileChooser.APPROVE_OPTION){
@@ -2103,10 +2107,11 @@ public class JFrame_Principal extends javax.swing.JFrame {
         
         BufferedReader reader = null;
         
-        String line = "";
+       // String line = "";
         
         txFile.setText(texto);
-        try{
+        LectorCSV.lectorCSV(file);
+        /*try{
             reader = new BufferedReader(new FileReader(file));
             while((line = reader.readLine()) != null){
                 
@@ -2131,7 +2136,7 @@ public class JFrame_Principal extends javax.swing.JFrame {
                 Logger.getLogger(txUsu.getText()).log(Level.SEVERE, null, ex);
                 //cuando este acabado hay que comprobar que es lo que deberia ir en "name:"
             }
-        }
+        }*/
     }//GEN-LAST:event_btnCSVActionPerformed
 
     private void btnCSVupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCSVupActionPerformed
@@ -2352,6 +2357,7 @@ public class JFrame_Principal extends javax.swing.JFrame {
                 new JFrame_Principal().setVisible(true);
             }
         });
+        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
