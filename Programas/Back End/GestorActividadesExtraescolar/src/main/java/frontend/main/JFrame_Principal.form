@@ -227,7 +227,7 @@
                       <Component id="jPanelMantenimientoDatos" alignment="0" max="32767" attributes="0"/>
                   </Group>
                   <Group type="103" rootIndex="3" groupAlignment="0" attributes="0">
-                      <Component id="jPanelSolicitud" alignment="0" max="32767" attributes="0"/>
+                      <Component id="jPanelSolicitud" alignment="0" pref="818" max="32767" attributes="0"/>
                   </Group>
                   <Group type="103" rootIndex="4" groupAlignment="0" attributes="0">
                       <Component id="jPanelActividad" alignment="1" pref="818" max="32767" attributes="0"/>
