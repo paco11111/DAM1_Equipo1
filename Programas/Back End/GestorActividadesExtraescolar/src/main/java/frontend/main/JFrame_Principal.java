@@ -23,14 +23,18 @@ import DAOs.DepartamentoDAO;
 import DAOs.LoggProfesorDAO;
 import DAOs.ProfesorDAO;
 import DAOs.SolicitudDAO;
+import DAOs.TransporteDAO;
 import FuncionesInterfaz.LectorCSV;
 import FuncionesInterfaz.LoggIn;
+import FuncionesInterfaz.MostrarTabla;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.TreeMap;
 import reto.gestoractividadesextraescolar.Departamento;
 import reto.gestoractividadesextraescolar.LoggProfesor;
 import reto.gestoractividadesextraescolar.Profesor;
+import reto.gestoractividadesextraescolar.Solicitud;
+import reto.gestoractividadesextraescolar.Transporte;
 
 /**
  *
@@ -797,31 +801,7 @@ public class JFrame_Principal extends javax.swing.JFrame {
         jPanelSoliPendientes.setBackground(new java.awt.Color(51, 51, 51));
         jPanelSoliPendientes.setPreferredSize(new java.awt.Dimension(812, 656));
 
-        jTableSoliPendientes.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4", "Title 5", "Title 6", "Title 7", "Title 8"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
+        jTableSoliPendientes.setModel(MostrarTabla.mostrarSolicitud());
         jTableSoliPendientes.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jTableSoliPendientesMouseClicked(evt);
@@ -2304,26 +2284,7 @@ public class JFrame_Principal extends javax.swing.JFrame {
                         lblimagen1.getHeight(), img.getIconWidth()));
         lblimagen1.setIcon(icon);
     }
-    /*private void mostrarTabla(String tabla){
-        String sql = "Select * from" + tabla;
-        Statement st;
-        //conexion x = new conexion();
-        //Connection conexion = x.conectar();
-        System.out.println(sql);
-        
-        String [] datos = new String[5];
-        try{
-            st = conexion.createStatement();
-            ResulSet rs = st.executeQuery(sql);
-            while(rs.next()){
-                datos[0]=rs.getString(1);
-                
-                model.addRow(datos);
-            }
-        }catch(SQLException e){
-            JOptionPane.showMessageDialog(this, "Error");
-        }
-    }*/
+    
     /**
      * @param args the command line arguments
      */
@@ -2358,6 +2319,7 @@ public class JFrame_Principal extends javax.swing.JFrame {
             }
         });
         
+
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
