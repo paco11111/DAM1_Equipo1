@@ -29,7 +29,7 @@ public class LoggProfesorDAO implements Repositorio<LoggProfesor> {
     @Override
     public List<LoggProfesor> listar() {
         List<LoggProfesor> profesores = new ArrayList<>();
-        try ( Statement stmt = getConnection().createStatement();  ResultSet rs = stmt.executeQuery("SELECT email, password, idProfesor, ocupacion, profesores.nombre as profesor, apellidos,DNI,profesores.idDepartamento,activo, codigo, departamentos.nombre, idProfesorJefe FROM logprofesores INNER JOIN profesores ON logprofesores.idProfesor = profesores.idProfesor INNER JOIN departamentos ON profesores.idDepartamento= departamentos.idDepartamento");) {
+        try ( Statement stmt = getConnection().createStatement();  ResultSet rs = stmt.executeQuery("SELECT email, password, profesores.idProfesor, ocupacion, profesores.nombre as profesor, apellidos,DNI,profesores.idDepartamento,activo, codigo, departamentos.nombre, idProfesorJefe FROM logprofesores INNER JOIN profesores ON logprofesores.idProfesor = profesores.idProfesor INNER JOIN departamentos ON profesores.idDepartamento= departamentos.idDepartamento");) {
 
             while (rs.next()) {
                 LoggProfesor profesor = crearLoggProfesor(rs);
