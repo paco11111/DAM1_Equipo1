@@ -17,7 +17,31 @@ import reto.gestoractividadesextraescolar.LoggProfesor;
 public class LoggIn {
     private static List<LoggProfesor> validar;
     private static LoggProfesorDAO loggProfesorDAO;
+ 
     
+    public static boolean validarEmail(String email){
+        boolean valido = false;
+        validar = new ArrayList<LoggProfesor>();
+        loggProfesorDAO = new LoggProfesorDAO();
+        validar = loggProfesorDAO.listar();
+        try {
+            for(LoggProfesor p : validar){
+                if (p.getEmail().equals(email)) {
+                    System.out.println("TRUE");
+                    System.out.println(p.getEmail());
+                    valido = true;
+                }else{
+                    System.out.println("FALSE");
+                }
+            }
+        }catch(Exception e){
+            e.getMessage();
+        }             
+        return valido;        
+
+    }
+
+
     
     public static boolean validarEmail(String email){
         boolean valido = false;
