@@ -20,7 +20,7 @@ public class AccesoBaseDatos {
     private static final String BD = "Base_Datos_Reto";
     private static final String USUARIO = "gestor";
     private static final String CLAVE = "root";
-    private static final String URL = "jdbc:mysql://10.0.6.39:3306/" + BD;
+    private static final String URL = "jdbc:mysql://10.0.16.39:3306/" + BD;
 
     private AccesoBaseDatos() {
 
