@@ -206,7 +206,7 @@ public class Utilidad {
                     salir = true;
                 }
                 default ->
-                    System.out.println("Opcion no valida");
+                    System.out.println("Opcion no valida4");
             }
 
         } while (!salir);
@@ -259,7 +259,7 @@ public class Utilidad {
                     salir = true;
                 }
                 default ->
-                    System.out.println("Opcion no valida");
+                    System.out.println("Opcion no valida5");
             }
 
         } while (!salir);
@@ -299,7 +299,7 @@ public class Utilidad {
                     salir = true;
                 }
                 default ->
-                    System.out.println("Opcion no valida");
+                    System.out.println("Opcion no valida6");
             }
 
         } while (!salir);

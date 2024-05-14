@@ -37,8 +37,15 @@ public class Solicitud {
     private String comentarioEstado;
     private TreeMap <Integer, Profesor> profesoresParticipantes;
     private TreeMap <Integer, Profesor> profesoresResponsables;
+    private TreeMap <Integer, Grupo> grupos;
+    private TreeMap <Integer, Curso> cursos;
+    private int numeroAlumnos;
 
-    public Solicitud(int id, Profesor profesorSolicitante, String actividad, String tipoActividad, Departamento departamento, boolean previsto, TreeMap <Integer, Transporte> transporte, String comentarioTransporte, LocalDate fechaInicio, LocalDate fechaFinal, LocalTime horaInicio, LocalTime horaFinal, boolean alojamiento, String comentarioAlojamiento, String comentarioAdicional, String estado, String comentarioEstado, TreeMap<Integer, Profesor> profesoresParticipantes, TreeMap<Integer, Profesor> profesoresResponsables) {
+    public Solicitud(int id, Profesor profesorSolicitante, String actividad, String tipoActividad, Departamento departamento, boolean previsto, 
+            TreeMap <Integer, Transporte> transporte, String comentarioTransporte, LocalDate fechaInicio, LocalDate fechaFinal, LocalTime horaInicio, 
+            LocalTime horaFinal, boolean alojamiento, String comentarioAlojamiento, String comentarioAdicional, String estado, String comentarioEstado, 
+            TreeMap<Integer, Profesor> profesoresParticipantes, TreeMap<Integer, Profesor> profesoresResponsables, TreeMap <Integer, Grupo> grupos, TreeMap <Integer, 
+            Curso> cursos, int numeroAlumnos) {
         this.id = id;
         this.profesorSolicitante = profesorSolicitante;
         this.actividad = actividad;
@@ -66,8 +73,15 @@ public class Solicitud {
         this.comentarioEstado = comentarioEstado;
         this.profesoresParticipantes = profesoresParticipantes;
         this.profesoresResponsables = profesoresResponsables;
+        this.grupos = grupos;
+        this.cursos = cursos;
+        this.numeroAlumnos = numeroAlumnos;
     }
-     public Solicitud(Profesor profesorSolicitante, String actividad, String tipoActividad, Departamento departamento, boolean previsto, TreeMap <Integer, Transporte> transporte, String comentarioTransporte, LocalDate fechaInicio, LocalDate fechaFinal, LocalTime horaInicio, LocalTime horaFinal, boolean alojamiento, String comentarioAlojamiento, String comentarioAdicional, String estado, String comentarioEstado, TreeMap<Integer, Profesor> profesoresParticipantes, TreeMap<Integer, Profesor> profesoresResponsables) {
+     public Solicitud(Profesor profesorSolicitante, String actividad, String tipoActividad, Departamento departamento, boolean previsto,
+             TreeMap <Integer, Transporte> transporte, String comentarioTransporte, LocalDate fechaInicio, LocalDate fechaFinal, 
+             LocalTime horaInicio, LocalTime horaFinal, boolean alojamiento, String comentarioAlojamiento, String comentarioAdicional, 
+             String estado, String comentarioEstado, TreeMap<Integer, Profesor> profesoresParticipantes, TreeMap<Integer, Profesor> profesoresResponsables,
+             TreeMap <Integer, Grupo> grupos, TreeMap <Integer,Curso> cursos, int numeroAlumnos) {
         
         this.profesorSolicitante = profesorSolicitante;
         this.actividad = actividad;
@@ -95,6 +109,10 @@ public class Solicitud {
         this.comentarioEstado = comentarioEstado;
         this.profesoresParticipantes = profesoresParticipantes;
         this.profesoresResponsables = profesoresResponsables;
+        this.grupos = grupos;
+        this.cursos = cursos;
+        this.numeroAlumnos = numeroAlumnos;
+    
     }
      
      
@@ -124,6 +142,23 @@ public class Solicitud {
          }
      }
      
+     public void agregarGrupo(Grupo g){
+         
+         if(grupos.isEmpty()){
+             grupos.put(1, g);
+         }else{
+             grupos.put((grupos.lastKey()+1), g);
+         }
+     }
+     
+     public void agregarCurso(Curso c){
+         
+         if(cursos.isEmpty()){
+             cursos.put(1, c);
+         }else{
+             cursos.put((cursos.lastKey()+1), c);
+         }
+     }
         
     private TipoActividad tipoActividad(String temp){
         TipoActividad actividad = null;
@@ -196,6 +231,8 @@ public class Solicitud {
     }
     
     */
+    
+    
     
     
    
@@ -274,7 +311,18 @@ public class Solicitud {
     public TreeMap<Integer, Profesor> getProfesoresResponsables() {
         return profesoresResponsables;
     }
+    
+    public TreeMap<Integer, Grupo> getGrupo() {
+        return grupos;
+    }
+    
+    public TreeMap<Integer, Curso> getCurso() {
+        return cursos;
+    }
 
+    public int getNumeroAlumnos() {
+        return numeroAlumnos;
+    }
     
     
     

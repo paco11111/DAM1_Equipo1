@@ -17,6 +17,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.TreeMap;
 import reto.gestoractividadesextraescolar.AccesoBaseDatos;
+import reto.gestoractividadesextraescolar.Curso;
+import reto.gestoractividadesextraescolar.Grupo;
 import reto.gestoractividadesextraescolar.Profesor;
 import reto.gestoractividadesextraescolar.Repositorio;
 import reto.gestoractividadesextraescolar.Solicitud;
@@ -37,7 +39,7 @@ public class SolicitudDAO implements Repositorio<Solicitud>{
     @Override
     public List<Solicitud> listar() {
         List<Solicitud> solicitudes = new ArrayList<>();
-        try ( Statement stmt = getConnection().createStatement();  ResultSet rs = stmt.executeQuery("SELECT idSolicitud, idSolicitante, actividad, tipo_actividad, previsto_programacion, requiere_transporte, comentario_transporte, finicio, ffinal, hora_inicio,  hora_fin, alojamiento, comentario_alojamiento,comentarios_adicionales, estado, comentario_estado FROM solicitudes");) {
+        try ( Statement stmt = getConnection().createStatement();  ResultSet rs = stmt.executeQuery("SELECT idSolicitud, idSolicitante, actividad, tipo_actividad, previsto_programacion, requiere_transporte, comentario_transporte, finicio, ffinal, hora_inicio, hora_fin, alojamiento, comentario_alojamiento, comentarios_adicionales, estado, comentario_estado FROM solicitudes");) {
             while (rs.next()) {
                 Solicitud solicitud = crearSolicitud(rs);
                 if (!solicitudes.add(solicitud)) {
@@ -53,6 +55,8 @@ public class SolicitudDAO implements Repositorio<Solicitud>{
         }
         return solicitudes;
     }
+    
+    
     private Solicitud crearSolicitud(final ResultSet rs) throws SQLException {
         ProfesorDAO profesorDAO = new ProfesorDAO();       
         //Profesores Participantes
@@ -89,6 +93,7 @@ public class SolicitudDAO implements Repositorio<Solicitud>{
                 index++;
             }
             
+            
 
         } catch (SQLException ex) {
             // errores
@@ -96,6 +101,54 @@ public class SolicitudDAO implements Repositorio<Solicitud>{
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
         }
+        
+        //Agregar grupos + contador de alumnos
+        TreeMap <Integer, Grupo> grupos = new TreeMap <Integer, Grupo>();
+        int numeroAlumnos = 0;
+        Grupo g;
+        try ( PreparedStatement stmt = getConnection().prepareStatement("SELECT idGrupo FROM solicitudes_has_grupos WHERE idSolicitud = ? ");) {
+            stmt.setInt(1, rs.getInt("idSolicitud"));            
+            ResultSet rs2 = stmt.executeQuery();
+            int index = 0;
+            
+            while (rs2.next()) {
+                grupos.put(index, new GrupoDAO().porId(rs2.getInt("idGrupo")));
+                g = new GrupoDAO().porId(rs2.getInt("idGrupo"));
+                index++;
+                numeroAlumnos += g.getNumeroAlumnos();
+            }
+            
+            
+
+        } catch (SQLException ex) {
+            // errores
+            System.out.println("SQLException: " + ex.getMessage());
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+        
+        //Agregar cursos
+        TreeMap <Integer, Curso> cursos = new TreeMap <Integer, Curso>();
+        
+        try ( PreparedStatement stmt = getConnection().prepareStatement("SELECT idCurso FROM solicitudes_has_cursos WHERE idSolicitud = ? ");) {
+            stmt.setInt(1, rs.getInt("idSolicitud"));            
+            ResultSet rs2 = stmt.executeQuery();
+            int index = 0;
+            while (rs2.next()) {
+                cursos.put(index, new CursoDAO().porId(rs2.getInt("idCurso")));
+                index++;
+            }
+            
+            
+
+        } catch (SQLException ex) {
+            // errores
+            System.out.println("SQLException: " + ex.getMessage());
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+        
+        
         
         
         DepartamentoDAO departamentoDAO = new DepartamentoDAO();
@@ -126,7 +179,15 @@ public class SolicitudDAO implements Repositorio<Solicitud>{
         LocalTime horaInicio = rs.getTime("hora_inicio").toLocalTime();
         LocalTime horaFin = rs.getTime("hora_fin").toLocalTime();
         
-        return new Solicitud(rs.getInt("idSolicitud"),profesorDAO.porId(rs.getInt("idSolicitante")),rs.getString("actividad"),rs.getString("tipo_actividad"),departamentoDAO.porId(profesorDAO.porId(rs.getInt("idSolicitante")).getDepartamento().getId()), rs.getBoolean("previsto_programacion"),transportes , rs.getString("comentario_transporte"),finicio, ffin,horaInicio,horaFin, rs.getBoolean("alojamiento"), rs.getString("comentario_alojamiento"), rs.getString("comentarios_adicionales"), rs.getString("estado"), rs.getString("comentario_estado"), profesoresParticipantes, profesoresResponsables);
+        
+        return new Solicitud(rs.getInt("idSolicitud"),profesorDAO.porId(rs.getInt("idSolicitante")),
+                rs.getString("actividad"),rs.getString("tipo_actividad"),
+                departamentoDAO.porId(profesorDAO.porId(rs.getInt("idSolicitante")).getDepartamento().getId()), 
+                rs.getBoolean("previsto_programacion"),transportes , rs.getString("comentario_transporte"),
+                finicio, ffin,horaInicio,horaFin, rs.getBoolean("alojamiento"), 
+                rs.getString("comentario_alojamiento"), rs.getString("comentarios_adicionales"), 
+                rs.getString("estado"), rs.getString("comentario_estado"), profesoresParticipantes,
+                profesoresResponsables, grupos, cursos, numeroAlumnos);
     }
     
 

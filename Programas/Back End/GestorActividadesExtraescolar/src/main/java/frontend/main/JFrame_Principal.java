@@ -4,23 +4,16 @@
  */
 package frontend.main;
 
+import DAOs.CursoDAO;
+import DAOs.DepartamentoDAO;
 import java.beans.Statement;
 import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
-import java.sql.Connection;
-import java.sql.SQLException;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.LocalTime;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
-import DAOs.DepartamentoDAO;
-import DAOs.LoggProfesorDAO;
+import DAOs.GrupoDAO;
+import DAOs.GrupoDAO;
 import DAOs.ProfesorDAO;
 import DAOs.SolicitudDAO;
 import DAOs.TransporteDAO;
@@ -30,10 +23,11 @@ import FuncionesInterfaz.MostrarTabla;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.TreeMap;
-import reto.gestoractividadesextraescolar.Departamento;
-import reto.gestoractividadesextraescolar.LoggProfesor;
-import reto.gestoractividadesextraescolar.Profesor;
 import FuncionesInterfaz.LoggIn;
+import reto.gestoractividadesextraescolar.Curso;
+import reto.gestoractividadesextraescolar.Departamento;
+import reto.gestoractividadesextraescolar.Grupo;
+import reto.gestoractividadesextraescolar.Profesor;
 import reto.gestoractividadesextraescolar.Solicitud;
 import reto.gestoractividadesextraescolar.Transporte;
 
@@ -612,7 +606,6 @@ public class JFrame_Principal extends javax.swing.JFrame {
             }
         });
 
-        jTable5.setModel(MostrarTabla.mostrarDepartamento());
         jScrollPane5.setViewportView(jTable5);
 
         javax.swing.GroupLayout jPanelDeptmLayout = new javax.swing.GroupLayout(jPanelDeptm);
@@ -762,7 +755,6 @@ public class JFrame_Principal extends javax.swing.JFrame {
         jPanelSoliPendientes.setBackground(new java.awt.Color(51, 51, 51));
         jPanelSoliPendientes.setPreferredSize(new java.awt.Dimension(812, 656));
 
-        jTableSoliPendientes.setModel(MostrarTabla.mostrarSolicitud());
         jTableSoliPendientes.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jTableSoliPendientesMouseClicked(evt);
@@ -2267,6 +2259,9 @@ public class JFrame_Principal extends javax.swing.JFrame {
             }
         });
         
+        for(Solicitud s : new SolicitudDAO().listar()){
+            System.out.println(s.getId());
+        }
         
 
     }
