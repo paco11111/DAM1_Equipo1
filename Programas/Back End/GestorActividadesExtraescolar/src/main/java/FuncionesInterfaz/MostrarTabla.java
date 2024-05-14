@@ -14,6 +14,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 import javax.swing.table.DefaultTableModel;
 import reto.gestoractividadesextraescolar.Curso;
 import reto.gestoractividadesextraescolar.Departamento;
@@ -31,7 +32,7 @@ public class MostrarTabla {
 
     private static DefaultTableModel model;
     private static SolicitudDAO solicitudDAO = new SolicitudDAO();
-    private static String[] solicitud = new String[16];
+    private static String[] solicitud = new String[18];
     private static List<Solicitud> solicitudes = new ArrayList<>();
 
     private static SolicitudAprobadaDAO solicitudAprobadaDAO = new SolicitudAprobadaDAO();
@@ -76,7 +77,9 @@ public class MostrarTabla {
             model.addColumn("Comentario Adicional");
             model.addColumn("Estado");
             model.addColumn("Comentario Estado");
-
+            model.addColumn("Profesores Responsables");
+            model.addColumn("Profesores Participantes");
+            
             for (Solicitud s : solicitudes) {
                 solicitud[0] = String.valueOf(s.getId());
                 solicitud[1] = s.getProfesorSolicitante().getNombre() + " " + s.getProfesorSolicitante().getApellidos();
@@ -94,6 +97,16 @@ public class MostrarTabla {
                 solicitud[13] = s.getComentarioAdicional();
                 solicitud[14] = s.getESTADO().name();
                 solicitud[15] = s.getComentarioEstado();
+                String pr = "";
+                for (Map.Entry<Integer, Profesor> p : s.getProfesoresResponsables().entrySet()){
+                    pr = p.getValue().getNombre() + " " + p.getValue().getApellidos() + ",";
+                }
+                solicitud[16] = pr;
+                String pp = "";
+                for (Map.Entry<Integer, Profesor> p : s.getProfesoresParticipantes().entrySet()){
+                    pp = p.getValue().getNombre() + " " + p.getValue().getApellidos() + ",";
+                }
+                solicitud[17] = pp;
 
                 model.addRow(solicitud);
             }
