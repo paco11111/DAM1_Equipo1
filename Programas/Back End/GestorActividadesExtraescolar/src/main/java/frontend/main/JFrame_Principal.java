@@ -456,17 +456,7 @@ public class JFrame_Principal extends javax.swing.JFrame {
             }
         });
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
+        jTable2.setModel(MostrarTabla.mostrarProfesor());
         jScrollPane2.setViewportView(jTable2);
 
         javax.swing.GroupLayout jPanelProfLayout = new javax.swing.GroupLayout(jPanelProf);
@@ -487,7 +477,7 @@ public class JFrame_Principal extends javax.swing.JFrame {
                     .addGroup(jPanelProfLayout.createSequentialGroup()
                         .addGap(171, 171, 171)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(189, Short.MAX_VALUE))
+                .addContainerGap(185, Short.MAX_VALUE))
         );
         jPanelProfLayout.setVerticalGroup(
             jPanelProfLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -498,7 +488,7 @@ public class JFrame_Principal extends javax.swing.JFrame {
                 .addGroup(jPanelProfLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cbProf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnProf))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 78, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 95, Short.MAX_VALUE)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(67, 67, 67))
         );
@@ -801,7 +791,6 @@ public class JFrame_Principal extends javax.swing.JFrame {
 
         jPanelSoliPendientes.setBackground(new java.awt.Color(51, 51, 51));
         jPanelSoliPendientes.setPreferredSize(new java.awt.Dimension(812, 656));
-
 
         jTableSoliPendientes.setModel(MostrarTabla.mostrarSolicitud());
         jTableSoliPendientes.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -1863,11 +1852,11 @@ public class JFrame_Principal extends javax.swing.JFrame {
             jLayersMenuPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 0, Short.MAX_VALUE)
             .addGroup(jLayersMenuPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jPanelCargaDatos, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jPanelCargaDatos, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 818, Short.MAX_VALUE))
             .addGroup(jLayersMenuPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jPanelMantenimientoDatos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jPanelMantenimientoDatos, javax.swing.GroupLayout.DEFAULT_SIZE, 818, Short.MAX_VALUE))
             .addGroup(jLayersMenuPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jPanelSolicitud, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jPanelSolicitud, javax.swing.GroupLayout.DEFAULT_SIZE, 818, Short.MAX_VALUE))
             .addGroup(jLayersMenuPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(jPanelActividad, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 818, Short.MAX_VALUE))
         );
@@ -1962,8 +1951,7 @@ public class JFrame_Principal extends javax.swing.JFrame {
         // TODO add your handling code here:
         String usu = txUsu.getText();
         String pass = txCnna.getText();
-        boolean temp = LoggIn.validarEmail(usu);
-        if (temp/*&& LoggIn.validarPasswrd(pass)*/) {
+        if (LoggIn.validarEmail(usu)/*&& LoggIn.validarPasswrd(pass)*/) {
             jPanelInicio.setVisible(false);
             jPanelPrincipal.setVisible(true);
             jPanelMenuPrincipal.setVisible(true);

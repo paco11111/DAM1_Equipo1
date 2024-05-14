@@ -42,25 +42,6 @@ public class LoggIn {
     }
 
 
-    
-    public static boolean validarEmail(String email){
-        boolean valido = false;
-        validar = new ArrayList<LoggProfesor>();
-        loggProfesorDAO = new LoggProfesorDAO();
-        validar = loggProfesorDAO.listar();
-        try {
-            for(LoggProfesor p : validar){
-                if (p.getEmail().equals(email)) {
-                    System.out.println("TRUE");
-                    valido = true;
-                }
-            }
-        }catch(Exception e){
-            e.getMessage();
-        }             
-        return valido;        
-    }
-    
     /*public static boolean validarPasswrd(String password){
         boolean valida = false;
         LoggProfesorDAO login = new LoggProfesorDAO();
