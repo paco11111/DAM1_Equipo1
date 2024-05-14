@@ -30,7 +30,6 @@ import reto.gestoractividadesextraescolar.Utilidad;
  */
 public class MostrarTabla {
 
-    private static DefaultTableModel model;
     private static SolicitudDAO solicitudDAO = new SolicitudDAO();
     private static String[] solicitud = new String[18];
     private static List<Solicitud> solicitudes = new ArrayList<>();
@@ -57,7 +56,7 @@ public class MostrarTabla {
 
     
     public static DefaultTableModel mostrarSolicitud() {
-        model = new DefaultTableModel();
+        DefaultTableModel model = new DefaultTableModel();
         DateTimeFormatter f = DateTimeFormatter.ofPattern("dd 'de' MMMM 'de' yyyy").withLocale(new Locale("es", "ES"));
         DateTimeFormatter t = DateTimeFormatter.ofPattern("hh:mm").withLocale(new Locale("es", "ES"));
         solicitudes = solicitudDAO.listar();
@@ -119,7 +118,7 @@ public class MostrarTabla {
     }
 
     public static DefaultTableModel mostrarSolicitudAprobada() {
-        model = new DefaultTableModel();
+        DefaultTableModel model = new DefaultTableModel();
         DateTimeFormatter f = DateTimeFormatter.ofPattern("dd 'de' MMMM 'de' yyyy").withLocale(new Locale("es", "ES"));
         DateTimeFormatter t = DateTimeFormatter.ofPattern("' hh:mm").withLocale(new Locale("es", "ES"));
         solicitudesAprobadas = solicitudAprobadaDAO.listar();
@@ -174,7 +173,7 @@ public class MostrarTabla {
     }
 
     public static DefaultTableModel mostrarGrupo() {
-        model = new DefaultTableModel();
+        DefaultTableModel model = new DefaultTableModel();
         grupos = grupoDAO.listar();
         try {
             model.addColumn("Id");
@@ -200,7 +199,7 @@ public class MostrarTabla {
     }
 
     public static DefaultTableModel mostrarCurso() {
-        model = new DefaultTableModel();
+        DefaultTableModel model = new DefaultTableModel();
         cursos = cursoDAO.listar();
         try {
             model.addColumn("Id");
@@ -226,7 +225,7 @@ public class MostrarTabla {
     }
 
     public static DefaultTableModel mostrarDepartamento() {
-        model = new DefaultTableModel();
+        DefaultTableModel model = new DefaultTableModel();
         departamentos = departamentoDAO.listar();
         try {
             model.addColumn("Id");
@@ -235,10 +234,10 @@ public class MostrarTabla {
             model.addColumn("Profesor Jefe");
             
             for (Departamento d : departamentos) {
-                curso[0] = String.valueOf(d.getId());
-                curso[1] = d.getCodigo();
-                curso[2] = d.getNombre();
-                curso[3] = d.getJefe().getNombre() + " " + d.getJefe().getApellidos();
+                departamento[0] = String.valueOf(d.getId());
+                departamento[1] = d.getCodigo();
+                departamento[2] = d.getNombre();
+                departamento[3] = d.getJefe().getNombre() + " " + d.getJefe().getApellidos();
 
                 model.addRow(departamento);
             }
@@ -250,7 +249,7 @@ public class MostrarTabla {
     }
 
     public static DefaultTableModel mostrarProfesor() {
-        model = new DefaultTableModel();
+        DefaultTableModel model = new DefaultTableModel();
         profesores = profesorDAO.listar();
         try {
             model.addColumn("Id");
@@ -261,12 +260,12 @@ public class MostrarTabla {
             model.addColumn("Activo");
             
             for (Profesor p : profesores) {
-                curso[0] = String.valueOf(p.getId());
-                curso[1] = p.getDni();
-                curso[2] = p.getNombre();
-                curso[3] = p.getApellidos();
-                curso[4] = p.getDepartamento().getNombre();
-                curso[5] = Utilidad.respuestaBoolean(p.isActivo());
+                profesor[0] = String.valueOf(p.getId());
+                profesor[1] = p.getDni();
+                profesor[2] = p.getNombre();
+                profesor[3] = p.getApellidos();
+                profesor[4] = p.getDepartamento().getNombre();
+                profesor[5] = Utilidad.respuestaBoolean(p.isActivo());
 
                 model.addRow(profesor);
             }

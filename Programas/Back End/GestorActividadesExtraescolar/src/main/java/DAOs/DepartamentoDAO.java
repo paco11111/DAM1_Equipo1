@@ -59,7 +59,7 @@ public class DepartamentoDAO implements Repositorio<Departamento>{
     @Override
     public Departamento porId(int id) {
         Departamento departamento = null;
-        String sql = "SELECT idProfesor, profesores.nombre as profesor, apellidos,DNI,departamentos.idDepartamento,activo, codigo, departamentos.nombre, idProfesorJefe FROM departamentos LEFT JOIN profesores ON profesores.idDepartamento= departamentos.idDepartamento WHERE IF (idProfesorJefe IS NULL, departamentos.idDepartamento = ?, departamentos.idDepartamento = ? AND idProfesor = idProfesorJefe);";
+        String sql = ("SELECT idProfesor, profesores.nombre as profesor, apellidos,DNI,departamentos.idDepartamento,activo, codigo, departamentos.nombre, idProfesorJefe FROM departamentos LEFT JOIN profesores ON profesores.idDepartamento= departamentos.idDepartamento WHERE IF (idProfesorJefe IS NULL, departamentos.idDepartamento = ?, departamentos.idDepartamento = ? AND idProfesor = idProfesorJefe)");
         try (PreparedStatement stmt = getConnection().prepareStatement(sql);) {
             stmt.setInt(1, id);
             stmt.setInt(2, id);

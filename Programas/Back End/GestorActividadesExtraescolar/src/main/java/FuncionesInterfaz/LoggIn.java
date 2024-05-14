@@ -27,11 +27,9 @@ public class LoggIn {
         try {
             for(LoggProfesor p : validar){
                 if (p.getEmail().equals(email)) {
-                    System.out.println("TRUE");
-                    System.out.println(p.getEmail());
                     valido = true;
                 }else{
-                    System.out.println("FALSE");
+                    
                 }
             }
         }catch(Exception e){

@@ -135,7 +135,7 @@ public class Solicitud {
                     actividad = TipoActividad.EXTRAESCOLAR;
                 }
                 default ->
-                    System.out.println("Opcion no valida");
+                    System.out.println("Opcion no valida1");
             }
         return actividad;
     }
@@ -156,7 +156,7 @@ public class Solicitud {
                     estado = EstadoSolicitud.SOLICITADA;
                 }
                 default ->
-                    System.out.println("Opcion no valida");
+                    System.out.println("Opcion no valida2");
             }
         return estado;
     }
