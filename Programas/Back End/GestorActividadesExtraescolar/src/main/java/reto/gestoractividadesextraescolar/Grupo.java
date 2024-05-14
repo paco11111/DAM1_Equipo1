@@ -9,15 +9,7 @@ package reto.gestoractividadesextraescolar;
  * @author Francisco Sitjar
  */
 public class Grupo{
-    //ATRIBUTOS
-    
-    /**
-     * @param id numero entero que identifica el objeto
-     * @param codigo codigo del grupo
-     * @param curso Curso en el que estan
-     * @param numeroAlumno numero de alumnos en el grupo
-     * @param activoGrupo Indica si el grupo esta activo
-     */
+   
     private int id;
     private String codigo;
     //private int idC;
@@ -25,9 +17,11 @@ public class Grupo{
     private int numeroAlumnos;
     private boolean activoGrupo;
     
-    //CONSTRUCCTORES
+    
     
     /**
+     * CONSTRUCTOR
+     * 
      * @param id numero entero que identifica el objeto
      * @param codigo codigo del grupo
      * @param curso Curso en el que estan
@@ -49,7 +43,9 @@ public class Grupo{
     }
 
     
-    
+    /**
+     * CONSTRUCTOR
+     */
     public Grupo(){
         codigo = Utilidad.codigoGrupo();
         numeroAlumnos = Utilidad.nextInt("Numeor de alumnos: ");

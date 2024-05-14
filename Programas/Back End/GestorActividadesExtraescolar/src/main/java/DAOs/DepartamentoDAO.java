@@ -30,7 +30,7 @@ public class DepartamentoDAO implements Repositorio<Departamento>{
     @Override
     public List<Departamento> listar() {
         List<Departamento> departamentos = new ArrayList<>();
-        try ( Statement stmt = getConnection().createStatement();  ResultSet rs = stmt.executeQuery("SELECT idDepartamento, codigo,nombre, idProfesorJefe FROM departamentos");) {
+        try ( Statement stmt = getConnection().createStatement();  ResultSet rs = stmt.executeQuery("SELECT idProfesor, profesores.nombre as profesor, apellidos,DNI,departamentos.idDepartamento,activo, codigo, departamentos.nombre, idProfesorJefe FROM departamentos LEFT JOIN profesores ON profesores.idDepartamento= departamentos.idDepartamento");) {
             while (rs.next()) {
                 Departamento departamento = crearDepartamento(rs);
                 if (!departamentos.add(departamento)) {

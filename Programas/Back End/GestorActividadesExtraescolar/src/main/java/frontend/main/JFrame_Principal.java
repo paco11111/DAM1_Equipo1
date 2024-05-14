@@ -4,23 +4,16 @@
  */
 package frontend.main;
 
+import DAOs.CursoDAO;
+import DAOs.DepartamentoDAO;
 import java.beans.Statement;
 import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
-import java.sql.Connection;
-import java.sql.SQLException;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.LocalTime;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
-import DAOs.DepartamentoDAO;
-import DAOs.LoggProfesorDAO;
+import DAOs.GrupoDAO;
+import DAOs.GrupoDAO;
 import DAOs.ProfesorDAO;
 import DAOs.SolicitudDAO;
 import DAOs.TransporteDAO;
@@ -30,10 +23,11 @@ import FuncionesInterfaz.MostrarTabla;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.TreeMap;
-import reto.gestoractividadesextraescolar.Departamento;
-import reto.gestoractividadesextraescolar.LoggProfesor;
-import reto.gestoractividadesextraescolar.Profesor;
 import FuncionesInterfaz.LoggIn;
+import reto.gestoractividadesextraescolar.Curso;
+import reto.gestoractividadesextraescolar.Departamento;
+import reto.gestoractividadesextraescolar.Grupo;
+import reto.gestoractividadesextraescolar.Profesor;
 import reto.gestoractividadesextraescolar.Solicitud;
 import reto.gestoractividadesextraescolar.Transporte;
 
@@ -1292,6 +1286,7 @@ public class JFrame_Principal extends javax.swing.JFrame {
             }
         });
 
+
         jLabel102.setBackground(new java.awt.Color(51, 51, 51));
         jLabel102.setForeground(new java.awt.Color(204, 204, 204));
         jLabel102.setText("Jefe departamento :");
@@ -1493,6 +1488,7 @@ public class JFrame_Principal extends javax.swing.JFrame {
                     .addGap(2, 2, 2)))
         );
 
+
         javax.swing.GroupLayout jPanelDeptmLayout = new javax.swing.GroupLayout(jPanelDeptm);
         jPanelDeptm.setLayout(jPanelDeptmLayout);
         jPanelDeptmLayout.setHorizontalGroup(
@@ -1665,7 +1661,7 @@ public class JFrame_Principal extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnEstadoSoli))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(140, Short.MAX_VALUE))
+                .addContainerGap(128, Short.MAX_VALUE))
         );
 
         jPanelSoliNueva.setBackground(new java.awt.Color(51, 51, 51));

@@ -16,6 +16,8 @@ public class Profesor implements Comparable<Profesor> {
    
     
      /**
+     * CONSTRUCTOR
+     * 
      * @param id numero entero que identifica el objeto
      * @param nombre Cadena de texto que guarad el nombre
      * @param apellidos Cadena de texto que guarad los apellidos
@@ -28,11 +30,13 @@ public class Profesor implements Comparable<Profesor> {
     private String nombre;
     private String apellidos;
     private Departamento departamento;
-    private boolean activo
-    
+
+    private boolean activo;
+
 
    
     /**
+     * CONSTRUCTOR
      * 
      * @param id numero entero que identifica el objeto
      * @param nombre Cadena de texto que guarad el nombre
@@ -57,6 +61,8 @@ public class Profesor implements Comparable<Profesor> {
 
     }
     /**
+     * CONSTRUCTOR
+     * 
      * @param nombre Cadena de texto que guarad el nombre
      * @param apellidos Cadena de texto que guarad los apellidos
      * @param dni Cadena de texto que guarda DNI

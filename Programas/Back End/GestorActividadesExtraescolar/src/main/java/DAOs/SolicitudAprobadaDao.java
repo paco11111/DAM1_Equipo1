@@ -11,14 +11,17 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.sql.Time;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.TreeMap;
 import reto.gestoractividadesextraescolar.AccesoBaseDatos;
 import reto.gestoractividadesextraescolar.Profesor;
 import reto.gestoractividadesextraescolar.Repositorio;
+import reto.gestoractividadesextraescolar.Solicitud;
 import reto.gestoractividadesextraescolar.SolicitudAprobada;
 import reto.gestoractividadesextraescolar.Transporte;
 
@@ -34,12 +37,27 @@ public class SolicitudAprobadaDAO implements Repositorio<SolicitudAprobada> {
 
     @Override
     public List<SolicitudAprobada> listar() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        List<SolicitudAprobada> solicitudes = new ArrayList<>();
+        try ( Statement stmt = getConnection().createStatement();  ResultSet rs = stmt.executeQuery("SELECT * FROM solicitudesAprobada");) {
+            while (rs.next()) {
+                SolicitudAprobada solicitud = crearSolicitudAprobada(rs);
+                if (!solicitudes.add(solicitud)) {
+                    throw new Exception("error no se ha insertado el objeto en la colección");
+                }
+                 }
+
+        } catch (SQLException ex) {
+            System.out.println("SQLException: " + ex.getMessage());
+            
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+        return solicitudes;
     }
     
     private SolicitudAprobada crearSolicitudAprobada(final ResultSet rs) throws SQLException {
                 
-        ProfesorDAO profesorDAO = new ProfesorDAO();       
+        /*ProfesorDAO profesorDAO = new ProfesorDAO();       
         //Profesores Participantes
         TreeMap <Integer, Profesor> profesoresParticipantes = new TreeMap <Integer, Profesor>();
         
@@ -109,9 +127,11 @@ public class SolicitudAprobadaDAO implements Repositorio<SolicitudAprobada> {
         LocalDate finicio = rs.getDate("finicio").toLocalDate();
         LocalDate ffin = rs.getDate("ffin").toLocalDate();
         LocalTime horaInicio = rs.getTime("hora_inicio").toLocalTime();
-        LocalTime horaFin = rs.getTime("hora_fin").toLocalTime();
+        LocalTime horaFin = rs.getTime("hora_fin").toLocalTime();*/
+        Solicitud s = new SolicitudDAO().porId(rs.getInt("idSolicitud"));
         
-        return new SolicitudAprobada(rs.getInt("idSolicitud"),profesorDAO.porId(rs.getInt("idSolicitante")),rs.getString("actividad"),rs.getString("tipo_actividad"),departamentoDAO.porId(profesorDAO.porId(rs.getInt("idSolicitante")).getDepartamento().getId()), rs.getBoolean("previsto_programacion"),transportes , rs.getString("comentario_transporte"),finicio, ffin,horaInicio,horaFin, rs.getBoolean("alojamiento"), rs.getString("comentario_alojamiento"), rs.getString("comentarios_adicionales"), rs.getString("estado"), rs.getString("comentario_estado"), profesoresParticipantes, profesoresResponsables, rs.getString("empresa_transporte"), rs.getDouble("importe_transporte"), rs.getString("comentario_actividad"));
+        //return new SolicitudAprobada(rs.getInt("idSolicitud"),profesorDAO.porId(rs.getInt("idSolicitante")),rs.getString("actividad"),rs.getString("tipo_actividad"),departamentoDAO.porId(profesorDAO.porId(rs.getInt("idSolicitante")).getDepartamento().getId()), rs.getBoolean("previsto_programacion"),transportes , rs.getString("comentario_transporte"),finicio, ffin,horaInicio,horaFin, rs.getBoolean("alojamiento"), rs.getString("comentario_alojamiento"), rs.getString("comentarios_adicionales"), rs.getString("estado"), rs.getString("comentario_estado"), profesoresParticipantes, profesoresResponsables, rs.getString("empresa_transporte"), rs.getDouble("importe_transporte"), rs.getString("comentario_actividad"));
+        return new SolicitudAprobada(rs.getInt("idSolicitud"),s.getProfesorSolicitante(),s.getActividad(),s.getTIPOACTIVIDAD().name(),s.getDepartamento(), s.isPrevisto(),s.getTransporte(), s.getComentarioTransporte(),s.getFechaInicio(), s.getFechaFinal(), s.getHoraInicio(), s.getHoraFinal(), s.isAlojamiento(), s.getComentarioAlojamiento(), s.getComentarioAdicional(), s.getESTADO().name(), s.getComentarioEstado(), s.getProfesoresParticipantes(),s.getProfesoresResponsables(), s.getGrupo(),s.getCurso(),s.getNumeroAlumnos(),rs.getString("empresa_transporte"), rs.getDouble("importe_transporte"), rs.getString("comentario_actividad"));
     }
 
     @Override

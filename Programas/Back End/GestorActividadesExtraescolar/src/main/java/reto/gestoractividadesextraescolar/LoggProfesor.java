@@ -13,12 +13,7 @@ import reto.gestoractividadesextraescolar.Profesor;
  */
 public class LoggProfesor {
     
-    /**
-     * @param profesor profesor
-     * @param email correo electronico
-     * @param psswrd contraseña
-     * @param PUESTO tipo de usuario
-     */
+    
 
     private Profesor profesor;
     private String email;
@@ -27,6 +22,8 @@ public class LoggProfesor {
     
     
     /**
+     * CONSTRUCTOR
+     * 
      * @param profesor profesor
      * @param email correo electronico
      * @param psswrd contraseña
@@ -41,6 +38,8 @@ public class LoggProfesor {
     }
     
     /**
+     * CONSTRUCTOR
+     * 
      * @param profesor profesor
      * @param email correo electronico
      */
@@ -54,6 +53,8 @@ public class LoggProfesor {
     
     
     /**
+     * METODOS
+     * 
      * @param temp variable temporal
      * @return puesto el tipo de usuario del profesor
      */
