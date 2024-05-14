@@ -12,15 +12,31 @@ import Enumerados.PuestoProfesor;
  * @author Francisco Sitjar
  */
 public class Profesor implements Comparable<Profesor> {
-
+    
+   
+    
+     /**
+     * CONSTRUCTOR
+     * 
+     * @param id numero entero que identifica el objeto
+     * @param nombre Cadena de texto que guarad el nombre
+     * @param apellidos Cadena de texto que guarad los apellidos
+     * @param dni Cadena de texto que guarda DNI
+     * @param departamento Objeto Departamento al que pertenece el profesor
+     * @param activo boolean que informa si el profesor esta activo o no 
+     */
     private int id;
     private String dni;
     private String nombre;
     private String apellidos;
     private Departamento departamento;
+
     private boolean activo;
 
+
+   
     /**
+     * CONSTRUCTOR
      * 
      * @param id numero entero que identifica el objeto
      * @param nombre Cadena de texto que guarad el nombre
@@ -44,6 +60,14 @@ public class Profesor implements Comparable<Profesor> {
         this.activo = activo;
 
     }
+    /**
+     * CONSTRUCTOR
+     * 
+     * @param nombre Cadena de texto que guarad el nombre
+     * @param apellidos Cadena de texto que guarad los apellidos
+     * @param dni Cadena de texto que guarda DNI
+     * @param departamento Objeto Departamento al que pertenece el profesor
+     */
     public Profesor( String nombre, String apellidos, String dni, Departamento departamento) {
         this.dni = dni;
         this.nombre = nombre;
@@ -58,7 +82,6 @@ public class Profesor implements Comparable<Profesor> {
        
 
     }
-
   
 
     public void setDepartamento(Departamento departamento) {

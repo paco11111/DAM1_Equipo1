@@ -11,17 +11,21 @@ import Enumerados.EtapaCurso;
  * @author Francisco Sitjar
  */
 public class Curso {
+    
+    
     private int id;
     private String codigo;
     private EtapaCurso etapa;
     private String descripcion;
     private boolean activoCurso;
     
+   
+    
     public Curso(){
         
     }
     
-    public Curso(boolean tieneId){
+    /*public Curso(boolean tieneId){
         if(tieneId){
             this.id = Utilidad.nextInt("Id del curso");
         }
@@ -33,8 +37,17 @@ public class Curso {
         }
         activoCurso = Utilidad.nextBolean("Curso activo?");
         
-    }
+    }*/
     
+     /**
+     * CONSTRUCTOR
+     * 
+     * @param id numero entero que identifica el objeto
+     * @param codigo Codigo del departamento
+     * @param etapa Etapa del curso
+     * @param descripcion Profesor jefe del departamento
+     * @param activo Indica si esta activo o no
+     */
     public Curso(int id, String codigo, EtapaCurso etapa, String descripcion, boolean activo){
         this.id = id;
         this.codigo = codigo;
