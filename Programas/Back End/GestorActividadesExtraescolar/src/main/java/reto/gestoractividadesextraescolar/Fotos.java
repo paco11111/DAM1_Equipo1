@@ -9,21 +9,17 @@ package reto.gestoractividadesextraescolar;
  * @author Francisco Sitjar
  */
 public class Fotos {
-    //ATRIBUTOS
-    
-     /**
-     * @param id numero entero que identifica el objeto
-     * @param url Enlace de la foto
-     * @param Descripcion Etapa del curso
-     */
+ 
     private int id;
     private String url;
     private String descripcion;
     
     
-    //CONSTRUCCTORES
+    
     
     /**
+     * CONSTRUCTOR
+     * 
      * @param id numero entero que identifica el objeto
      * @param url Enlace de la foto
      * @param Descripcion Etapa del curso

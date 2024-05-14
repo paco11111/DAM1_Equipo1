@@ -11,22 +11,17 @@ import DAOs.ProfesorDAO;
  * @author Francisco Sitjar
  */
 public class Departamento {
-    //ATRIBUTOS
-   
-    /**
-     * @param id numero entero que identifica el objeto
-     * @param nombre Cadena de texto que guarad el nombre
-     * @param codigo Codigo del departamento
-     * @param jefe Profesor jefe del departamento
-     */
+    
     private int id;
     private String codigo;
     private String nombre;
     private Profesor jefe;
     
-    //CONSTRUCCTORES
+    
     
      /**
+     * CONSTRUCTOR
+     * 
      * @param id numero entero que identifica el objeto
      * @param nombre Cadena de texto que guarad el nombre
      * @param codigo Codigo del departamento
@@ -45,7 +40,9 @@ public class Departamento {
         
         
     }
-     /**
+    /**
+     * CONSTRUCTOR
+     * 
      * @param id numero entero que identifica el objeto
      * @param codigo Codigo del departamento
      * @param nombre Cadena de texto que guarad el nombre

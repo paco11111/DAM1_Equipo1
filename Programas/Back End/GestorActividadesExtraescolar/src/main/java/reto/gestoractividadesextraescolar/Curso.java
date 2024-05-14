@@ -12,21 +12,14 @@ import Enumerados.EtapaCurso;
  */
 public class Curso {
     
-    //ATRIBUTOS
     
-       /**
-     * @param id numero entero que identifica el objeto
-     * @param codigo Codigo del departamento
-     * @param EtapaCurso Etapa del curso
-     * @param jefe Profesor jefe del departamento
-     */
     private int id;
     private String codigo;
     private EtapaCurso etapa;
     private String descripcion;
     private boolean activoCurso;
     
-    //CONSTRUCTORES
+   
     
     public Curso(){
         
@@ -47,6 +40,8 @@ public class Curso {
     }*/
     
      /**
+     * CONSTRUCTOR
+     * 
      * @param id numero entero que identifica el objeto
      * @param codigo Codigo del departamento
      * @param etapa Etapa del curso
