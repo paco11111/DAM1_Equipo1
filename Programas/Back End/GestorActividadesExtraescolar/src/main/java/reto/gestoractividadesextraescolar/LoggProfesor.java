@@ -49,7 +49,7 @@ public class LoggProfesor {
                 puesto = PuestoProfesor.PROFESOR;
             }
             default ->
-                System.out.println("Opcion no valida");
+                System.out.println("Opcion no valida3");
         }
         return puesto;
     }
