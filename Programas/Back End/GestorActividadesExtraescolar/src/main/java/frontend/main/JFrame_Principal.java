@@ -755,6 +755,7 @@ public class JFrame_Principal extends javax.swing.JFrame {
         jPanelSoliPendientes.setBackground(new java.awt.Color(51, 51, 51));
         jPanelSoliPendientes.setPreferredSize(new java.awt.Dimension(812, 656));
 
+        jTableSoliPendientes.setModel(MostrarTabla.mostrarSolicitud());
         jTableSoliPendientes.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jTableSoliPendientesMouseClicked(evt);
@@ -796,7 +797,7 @@ public class JFrame_Principal extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnEstadoSoli))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(140, Short.MAX_VALUE))
+                .addContainerGap(128, Short.MAX_VALUE))
         );
 
         jPanelSoliNueva.setBackground(new java.awt.Color(51, 51, 51));
@@ -2259,9 +2260,6 @@ public class JFrame_Principal extends javax.swing.JFrame {
             }
         });
         
-        for(Solicitud s : new SolicitudDAO().listar()){
-            System.out.println(s.getId());
-        }
         
 
     }

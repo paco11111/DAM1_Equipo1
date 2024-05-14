@@ -55,7 +55,7 @@ public class MostrarTabla {
     private static List<Profesor> profesores = new ArrayList<>();
 
     
-   /* public static DefaultTableModel mostrarSolicitud() {
+    public static DefaultTableModel mostrarSolicitud() {
         DefaultTableModel model = new DefaultTableModel();
         DateTimeFormatter f = DateTimeFormatter.ofPattern("dd 'de' MMMM 'de' yyyy").withLocale(new Locale("es", "ES"));
         DateTimeFormatter t = DateTimeFormatter.ofPattern("hh:mm").withLocale(new Locale("es", "ES"));
@@ -128,7 +128,7 @@ public class MostrarTabla {
         }
         return model;
 
-    }*/
+    }
 
     public static DefaultTableModel mostrarSolicitudAprobada() {
         DefaultTableModel model = new DefaultTableModel();
