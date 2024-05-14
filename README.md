@@ -15,4 +15,6 @@ Las solicitudes aprobadas tienen fotos de la actividad
 
 
 ## PROGRAMACION
+![](https://github.com/paco11111/DAM1_Equipo1/blob/337a269efc7911e054f6b1b60f88cf281e8c57b0/DC.png)
 [Guia de despliegue](https://educantabria.sharepoint.com/sites/RetoDAM1_2324-Equipo1/_layouts/15/download.aspx?UniqueId=4c0ff03c%2Df8a7%2D489f%2Dbca0%2Dfd9c0769260f)
+
