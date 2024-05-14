@@ -31,11 +31,11 @@ import reto.gestoractividadesextraescolar.Utilidad;
 public class MostrarTabla {
 
     private static SolicitudDAO solicitudDAO = new SolicitudDAO();
-    private static String[] solicitud = new String[18];
+    private static String[] solicitud = new String[21];
     private static List<Solicitud> solicitudes = new ArrayList<>();
 
     private static SolicitudAprobadaDAO solicitudAprobadaDAO = new SolicitudAprobadaDAO();
-    private static String[] solicitudAprobada = new String[19];
+    private static String[] solicitudAprobada = new String[24];
     private static List<SolicitudAprobada> solicitudesAprobadas = new ArrayList<>();
 
     private static GrupoDAO grupoDAO = new GrupoDAO();
@@ -72,13 +72,16 @@ public class MostrarTabla {
             model.addColumn("Fecha Final");
             model.addColumn("Hora Inicio");
             model.addColumn("Hora Final");
+            model.addColumn("Alojamiento");
             model.addColumn("Comentario Alojamiento");
             model.addColumn("Comentario Adicional");
             model.addColumn("Estado");
             model.addColumn("Comentario Estado");
             model.addColumn("Profesores Responsables");
             model.addColumn("Profesores Participantes");
-            
+            model.addColumn("Grupos");
+            model.addColumn("Cursos");
+            model.addColumn("NºAlumnos");
             for (Solicitud s : solicitudes) {
                 solicitud[0] = String.valueOf(s.getId());
                 solicitud[1] = s.getProfesorSolicitante().getNombre() + " " + s.getProfesorSolicitante().getApellidos();
@@ -106,7 +109,17 @@ public class MostrarTabla {
                     pp = p.getValue().getNombre() + " " + p.getValue().getApellidos() + ",";
                 }
                 solicitud[17] = pp;
-
+                String grupos = "";
+                for (Map.Entry<Integer, Grupo> p : s.getGrupo().entrySet()){
+                    pp = p.getValue().getCodigo()+ ", ";
+                }
+                solicitud[18] = grupos;
+                String cursos = "";
+                for (Map.Entry<Integer, Curso> p : s.getCurso().entrySet()){
+                    pp = p.getValue().getCodigo()+ ",";
+                }
+                solicitud[19] = cursos;
+                solicitud[20] = String.valueOf(s.getNumeroAlumnos());
                 model.addRow(solicitud);
             }
 
@@ -134,10 +147,14 @@ public class MostrarTabla {
             model.addColumn("Fecha Final");
             model.addColumn("Hora Inicio");
             model.addColumn("Hora Final");
-            model.addColumn("Comentario Alojamiento");
             model.addColumn("Comentario Adicional");
             model.addColumn("Estado");
             model.addColumn("Comentario Estado");
+            model.addColumn("Profesores Responsables");
+            model.addColumn("Profesores Participantes");
+            model.addColumn("Grupos");
+            model.addColumn("Cursos");
+            model.addColumn("NºAlumnos");
             model.addColumn("Informacion de Transporte");
             model.addColumn("Precio");
             model.addColumn("Comentario Actividad");
@@ -154,14 +171,35 @@ public class MostrarTabla {
                 solicitudAprobada[8] = sa.getFechaFinal().format(f);
                 solicitudAprobada[9] = sa.getHoraInicio().format(t);
                 solicitudAprobada[10] = sa.getHoraFinal().format(t);
-                solicitudAprobada[11] = Utilidad.respuestaBoolean(sa.isAlojamiento());
-                solicitudAprobada[12] = sa.getComentarioAlojamiento();
-                solicitudAprobada[13] = sa.getComentarioAdicional();
-                solicitudAprobada[14] = sa.getESTADO().name();
-                solicitudAprobada[15] = sa.getComentarioEstado();
-                solicitudAprobada[16] = sa.getInfoEmpresaTransporte();
-                solicitudAprobada[17] = String.valueOf(sa.getImporteTransporte());
-                solicitudAprobada[18] = sa.getComentarioActividad();
+               solicitud[11] = Utilidad.respuestaBoolean(sa.isAlojamiento());
+                solicitud[12] = sa.getComentarioAlojamiento();
+                solicitud[13] = sa.getComentarioAdicional();
+                solicitud[14] = sa.getESTADO().name();
+                solicitud[15] = sa.getComentarioEstado();
+                String pr = "";
+                for (Map.Entry<Integer, Profesor> p : sa.getProfesoresResponsables().entrySet()){
+                    pr = p.getValue().getNombre() + " " + p.getValue().getApellidos() + ",";
+                }
+                solicitud[16] = pr;
+                String pp = "";
+                for (Map.Entry<Integer, Profesor> p : sa.getProfesoresParticipantes().entrySet()){
+                    pp = p.getValue().getNombre() + " " + p.getValue().getApellidos() + ",";
+                }
+                solicitud[17] = pp;
+                String grupos = "";
+                for (Map.Entry<Integer, Grupo> p : sa.getGrupo().entrySet()){
+                    pp = p.getValue().getCodigo()+ ", ";
+                }
+                solicitud[18] = grupos;
+                String cursos = "";
+                for (Map.Entry<Integer, Curso> p : sa.getCurso().entrySet()){
+                    pp = p.getValue().getCodigo()+ ",";
+                }
+                solicitud[19] = cursos;
+                solicitud[20] = String.valueOf(sa.getNumeroAlumnos());
+                solicitudAprobada[21] = sa.getInfoEmpresaTransporte();
+                solicitudAprobada[22] = String.valueOf(sa.getImporteTransporte());
+                solicitudAprobada[23] = sa.getComentarioActividad();
 
                 model.addRow(solicitudAprobada);
             }

@@ -33,7 +33,7 @@ public class GrupoDAO implements Repositorio<Grupo>{
     @Override
     public List<Grupo> listar() {
         List<Grupo> grupos = new ArrayList<>();
-        try ( Statement stmt = getConnection().createStatement();  ResultSet rs = stmt.executeQuery("SELECT idGrupo, codigo, numero_alumnos, idCurso, activo FROM grupos");) {
+        try ( Statement stmt = getConnection().createStatement();  ResultSet rs = stmt.executeQuery("SELECT * FROM grupos");) {
             while (rs.next()) {
                 Grupo grupo = crearGrupo(rs);
                 if (!grupos.add(grupo)) {

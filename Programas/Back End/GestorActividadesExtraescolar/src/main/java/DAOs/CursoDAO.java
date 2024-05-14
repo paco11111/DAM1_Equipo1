@@ -31,7 +31,7 @@ public class CursoDAO implements Repositorio<Curso>{
     @Override
     public List<Curso> listar() {
         List<Curso> cursos = new ArrayList<>();
-        try ( Statement stmt = getConnection().createStatement();  ResultSet rs = stmt.executeQuery("SELECT idCurso, codigo, descripcion, etapa, activo FROM cursos");) {
+        try ( Statement stmt = getConnection().createStatement();  ResultSet rs = stmt.executeQuery("SELECT * FROM cursos");) {
             while (rs.next()) {
                 Curso curso = crearCurso(rs);
                 if (!cursos.add(curso)) {
@@ -50,7 +50,7 @@ public class CursoDAO implements Repositorio<Curso>{
     
     private Curso crearCurso(final ResultSet rs) throws SQLException {
         EtapaCurso etapa = null;
-        switch (rs.getString("etapa")) {
+        switch (rs.getString("etapa").toUpperCase()) {
                 case "ESO" -> {
                     etapa = EtapaCurso.ESO;
                 }
@@ -70,7 +70,7 @@ public class CursoDAO implements Repositorio<Curso>{
                     etapa = EtapaCurso.FPCE;
                 }
                 default ->
-                    System.out.println("Opcion no valida");
+                    System.out.println("Opcion no valida7");
             }
         return new Curso( rs.getInt("idCurso"),rs.getString("codigo"),etapa, rs.getString("descripcion"),rs.getBoolean("activo"));
     }
