@@ -26,8 +26,9 @@ public class LoggIn {
         loggProfesorDAO = new LoggProfesorDAO();
         validar = loggProfesorDAO.listar();
         try {
-            for(LoggProfesor p : validar){
+            /*for(LoggProfesor p : validar){
                 if (p.getEmail().equals(email)) {
+
                     if (p.getPsswrd().equals(null)){
                         p.setPsswrd(JOptionPane.showInputDialog("Establezca su contraseña","password"));
                     }else if (p.getPsswrd().equals(password) && p.getEmail().equals(email)) {
@@ -37,7 +38,8 @@ public class LoggIn {
                     }
                 }else{
                 }
-            }
+            }*/
+            
         }catch(Exception e){
             e.getMessage();
         }             
