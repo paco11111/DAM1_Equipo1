@@ -74,13 +74,12 @@ public class LoggProfesorDAO implements Repositorio<LoggProfesor> {
 
     @Override
     public void modificar(LoggProfesor profesor) {
-        try ( PreparedStatement stmt = getConnection().prepareStatement("UPDATE logprofesores SET email = ?, password = md5(?), idProfesor = ?, ocupacion = ? WHERE idProfesor=?");) {
+        try ( PreparedStatement stmt = getConnection().prepareStatement("UPDATE logprofesores SET email = ?, password = ?, idProfesor = ?, ocupacion = ? WHERE idProfesor=?");) {
             stmt.setString(1, profesor.getEmail());
             stmt.setString(2, profesor.getPsswrd());
             stmt.setInt(3, profesor.getProfesor().getId());
-            String ocupacion = ""+profesor.getPUESTO();
-            stmt.setString(4, ocupacion);
-            stmt.setInt(5, 0);
+            stmt.setString(4, profesor.getPUESTO().name());
+            stmt.setInt(5, profesor.getProfesor().getId());
             int salida = stmt.executeUpdate();
             if (salida != 1) {
                 throw new Exception(" No se ha insertado/modificado un solo registro");

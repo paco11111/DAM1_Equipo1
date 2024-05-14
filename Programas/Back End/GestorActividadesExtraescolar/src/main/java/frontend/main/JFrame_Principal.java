@@ -33,7 +33,7 @@ import reto.gestoractividadesextraescolar.Transporte;
 
 /**
  *
- * @author DAM118
+ * @author Fabian Saiz Landeras
  */
 public class JFrame_Principal extends javax.swing.JFrame {
 
@@ -2765,13 +2765,12 @@ public class JFrame_Principal extends javax.swing.JFrame {
 
        
 
-        LoggIn.validar(usu);
-        if (LoggIn.validar(usu)) {
+        if (LoggIn.validar(usu, pass)) {
             jPanelInicio.setVisible(false);
             jPanelPrincipal.setVisible(true);
             jPanelMenuPrincipal.setVisible(true);
         }else{
-            System.out.println("No");
+            JOptionPane.showMessageDialog(null,"Usuario o Contraseña incorrectos");
         }
         
     }//GEN-LAST:event_btnSesionActionPerformed
