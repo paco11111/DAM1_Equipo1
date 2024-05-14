@@ -20,7 +20,25 @@ public class LoggIn {
     private static LoggProfesorDAO loggProfesorDAO;
  
     
-    public static boolean validar(String email, String password){
+    public static boolean validar(String email){
+        boolean valido = false;
+        loggProfesorDAO = new LoggProfesorDAO();
+        validar = loggProfesorDAO.listar();
+        for(LoggProfesor p : validar){
+                if (p.getEmail().equals(email)) {
+                    valido = true;
+                }else{
+                    System.out.println("FALSE");
+                }
+
+                    
+    } 
+        return valido;
+    }
+    
+
+    
+   /* public static boolean validar(String email, String password){
         boolean valido = false;
         validar = new ArrayList<LoggProfesor>();
         loggProfesorDAO = new LoggProfesorDAO();
@@ -38,11 +56,13 @@ public class LoggIn {
                     }
                 }else{
                 }
-            }*/
+            }
             
         }catch(Exception e){
             e.getMessage();
         }             
         return valido;
     }    
+*/
+
 }

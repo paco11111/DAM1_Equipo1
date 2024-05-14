@@ -2765,13 +2765,15 @@ public class JFrame_Principal extends javax.swing.JFrame {
 
        
 
-        LoggIn.validar(usu,pass);
-        if (LoggIn.validar(usu,pass)) {
+        LoggIn.validar(usu);
+        if (LoggIn.validar(usu)) {
             jPanelInicio.setVisible(false);
             jPanelPrincipal.setVisible(true);
             jPanelMenuPrincipal.setVisible(true);
+        }else{
+            System.out.println("No");
         }
-
+        
     }//GEN-LAST:event_btnSesionActionPerformed
 
     private void txCnnaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txCnnaActionPerformed
