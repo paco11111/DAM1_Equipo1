@@ -2764,13 +2764,12 @@ public class JFrame_Principal extends javax.swing.JFrame {
         // TODO add your handling code here:
         String usu = txUsu.getText();
         String pass = txCnna.getText();
-        if (LoggIn.validarEmail(usu)/*&& LoggIn.validarPasswrd(pass)*/) {
+        LoggIn.validar(usu,pass);
+        //if (LoggIn.validar(usu,pass)) {
             jPanelInicio.setVisible(false);
             jPanelPrincipal.setVisible(true);
             jPanelMenuPrincipal.setVisible(true);
-        }else{
-            JOptionPane.showMessageDialog(this, "Usuario o Contraseña incorrectos");
-        }
+        //}
     }//GEN-LAST:event_btnSesionActionPerformed
 
     private void txCnnaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txCnnaActionPerformed
