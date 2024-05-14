@@ -29,7 +29,7 @@ public class Profesor implements Comparable<Profesor> {
     private String apellidos;
     private Departamento departamento;
     private boolean activo
-    public Profesor(int id, String nombre, String apellidos, String dni, Departamento departamento, String puesto, boolean activo) {
+    
 
    
     /**
