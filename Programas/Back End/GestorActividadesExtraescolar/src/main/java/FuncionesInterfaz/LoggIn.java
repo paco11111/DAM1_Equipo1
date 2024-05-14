@@ -25,13 +25,24 @@ public class LoggIn {
         loggProfesorDAO = new LoggProfesorDAO();
         validar = loggProfesorDAO.listar();
         try {
-            for(LoggProfesor p : validar){
+            /*for(LoggProfesor p : validar){
                 if (p.getEmail().equals(email)) {
+<<<<<<< Updated upstream
                     valido = true;
+=======
+                    if (p.getPsswrd().equals("")){
+                        p.setPsswrd(JOptionPane.showInputDialog("Establezca su contraseña","password"));
+                    }else if (p.getPsswrd().equals(password) && p.getEmail().equals(email)) {
+                        valido = true;
+                    }else{
+                        JOptionPane.showMessageDialog(null,"Usuario o Contraseña incorrectos");
+                    }
+>>>>>>> Stashed changes
                 }else{
                     
                 }
-            }
+            }*/
+            
         }catch(Exception e){
             e.getMessage();
         }             

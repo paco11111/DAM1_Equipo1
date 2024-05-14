@@ -590,12 +590,13 @@ public class JFrame_Principal extends javax.swing.JFrame {
                     .addComponent(jLabel47)
                     .addComponent(tfActividad5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(57, 57, 57)
-                .addGroup(jPanelProfEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel61)
-                    .addComponent(tfActividad7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanelProfEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelProfEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel67)
-                        .addComponent(jComboBox6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jComboBox6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanelProfEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel61)
+                        .addComponent(tfActividad7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(55, 55, 55)
                 .addGroup(jPanelProfEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jCheckBox1)
@@ -1115,7 +1116,6 @@ public class JFrame_Principal extends javax.swing.JFrame {
         jScrollPane30.setViewportView(jTableGrupo);
 
         btnAddGrupo.setText("Nuevo Grupo");
-        btnAddGrupo.setActionCommand("Nuevo Grupo");
         btnAddGrupo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAddGrupoActionPerformed(evt);
@@ -1285,7 +1285,6 @@ public class JFrame_Principal extends javax.swing.JFrame {
                 btnSendEditDptmActionPerformed(evt);
             }
         });
-
 
         jLabel102.setBackground(new java.awt.Color(51, 51, 51));
         jLabel102.setForeground(new java.awt.Color(204, 204, 204));
@@ -1487,7 +1486,6 @@ public class JFrame_Principal extends javax.swing.JFrame {
                     .addComponent(jPanelDptmAdd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(2, 2, 2)))
         );
-
 
         javax.swing.GroupLayout jPanelDeptmLayout = new javax.swing.GroupLayout(jPanelDeptm);
         jPanelDeptm.setLayout(jPanelDeptmLayout);
@@ -2764,12 +2762,20 @@ public class JFrame_Principal extends javax.swing.JFrame {
         // TODO add your handling code here:
         String usu = txUsu.getText();
         String pass = txCnna.getText();
+<<<<<<< Updated upstream
         if (LoggIn.validarEmail(usu)/*&& LoggIn.validarPasswrd(pass)*/) {
             jPanelInicio.setVisible(false);
             jPanelPrincipal.setVisible(true);
             jPanelMenuPrincipal.setVisible(true);
         }else{
             JOptionPane.showMessageDialog(this, "Usuario o Contraseña incorrectos");
+=======
+        LoggIn.validar(usu,pass);
+        if (LoggIn.validar(usu,pass)) {
+            jPanelInicio.setVisible(false);
+            jPanelPrincipal.setVisible(true);
+            jPanelMenuPrincipal.setVisible(true);
+>>>>>>> Stashed changes
         }
     }//GEN-LAST:event_btnSesionActionPerformed
 
