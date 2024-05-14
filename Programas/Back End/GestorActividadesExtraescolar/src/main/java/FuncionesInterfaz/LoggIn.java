@@ -7,6 +7,7 @@ package FuncionesInterfaz;
 import DAOs.LoggProfesorDAO;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JOptionPane;
 import reto.gestoractividadesextraescolar.LoggProfesor;
 
 
@@ -19,7 +20,7 @@ public class LoggIn {
     private static LoggProfesorDAO loggProfesorDAO;
  
     
-    public static boolean validarEmail(String email){
+    public static boolean validar(String email, String password){
         boolean valido = false;
         validar = new ArrayList<LoggProfesor>();
         loggProfesorDAO = new LoggProfesorDAO();
@@ -27,49 +28,21 @@ public class LoggIn {
         try {
             /*for(LoggProfesor p : validar){
                 if (p.getEmail().equals(email)) {
-<<<<<<< Updated upstream
-                    valido = true;
-=======
-                    if (p.getPsswrd().equals("")){
+
+                    if (p.getPsswrd().equals(null)){
                         p.setPsswrd(JOptionPane.showInputDialog("Establezca su contraseña","password"));
                     }else if (p.getPsswrd().equals(password) && p.getEmail().equals(email)) {
                         valido = true;
                     }else{
                         JOptionPane.showMessageDialog(null,"Usuario o Contraseña incorrectos");
                     }
->>>>>>> Stashed changes
                 }else{
-                    
                 }
             }*/
             
         }catch(Exception e){
             e.getMessage();
         }             
-        return valido;        
-
-    }
-
-
-    /*public static boolean validarPasswrd(String password){
-        boolean valida = false;
-        LoggProfesorDAO login = new LoggProfesorDAO();
-        try {
-            List<LoggProfesor> validar = login.listar();
-            Iterator it = validar.iterator();
-            for(LoggProfesor p : validar){
-                if (p.getPsswrd().equals(password)) {
-                    valida = true;
-                }else{
-                    valida = false;
-                }
-            }
-        }catch(Exception e){
-            e.getMessage();
-        }             
-        return valida;        
-    }*/
-    
-    
-    
+        return valido;
+    }    
 }
