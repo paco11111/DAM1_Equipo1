@@ -13,12 +13,25 @@ public class Transporte implements Comparable<Transporte> {
     private String tipo;
     private String descripcion;
     
-    
+    /**
+     * CONSTRUCTOR
+     * 
+     * @param id numero entero que identifica el objeto
+     * @param tipo tipo de transporte
+     * @param descripcion del transporte
+     */
     public Transporte(int id, String tipo, String descripcion){
         this.id = id;
         this.tipo = tipo;
         this.descripcion = descripcion;
     }
+    
+    /**
+     * CONSTRUCTOR
+     *
+     * @param tipo tipo de transporte
+     * @param descripcion del transporte
+     */
     public Transporte(String tipo, String descripcion){
         this.tipo = tipo;
         this.descripcion = descripcion;
@@ -37,6 +50,11 @@ public class Transporte implements Comparable<Transporte> {
         return descripcion;
     }
 
+    /**
+     * 
+     * @param o Objeto Transporte a comparar
+     * @return Compara ambos objetos transportes por nombre 
+     */
     @Override
     public int compareTo(Transporte o) {
         return this.getTipo().compareTo(o.getTipo());
