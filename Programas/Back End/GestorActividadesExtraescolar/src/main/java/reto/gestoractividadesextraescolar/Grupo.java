@@ -51,9 +51,9 @@ public class Grupo{
     
     
     public Grupo(){
-        codigo = Teclado.codigoGrupo();
-        numeroAlumnos = Teclado.nextInt("Numeor de alumnos: ");
-        activoGrupo = Teclado.nextBolean("Grupo activo? ");
+        codigo = Utilidad.codigoGrupo();
+        numeroAlumnos = Utilidad.nextInt("Numeor de alumnos: ");
+        activoGrupo = Utilidad.nextBolean("Grupo activo? ");
         
     }
     

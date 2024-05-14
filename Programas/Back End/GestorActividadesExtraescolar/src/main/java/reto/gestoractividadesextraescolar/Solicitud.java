@@ -81,6 +81,7 @@ public class Solicitud {
             
         }
         this.previsto = previsto;
+        this.transporte = transporte;
         this.departamento = departamento;
         this.comentarioTransporte = comentarioTransporte;
         this.fechaInicio = fechaInicio;
@@ -95,10 +96,38 @@ public class Solicitud {
         this.profesoresParticipantes = profesoresParticipantes;
         this.profesoresResponsables = profesoresResponsables;
     }
+     
+     
+     public void agregarTransporte(Transporte t){
+         if(transporte.isEmpty()){
+             transporte.put(1, t);
+         }else{
+             transporte.put((transporte.lastKey()+1), t);
+         }
+     }
+     
+     public void agregarParticipante(Profesor p){
+         if(profesoresParticipantes.isEmpty()){
+             profesoresParticipantes.put(1, p);
+         }else{
+             profesoresParticipantes.put((profesoresParticipantes.lastKey()+1), p);
+         }
+         
+     }
+     
+     public void agregarResponsable(Profesor p){
+         
+         if(profesoresResponsables.isEmpty()){
+             profesoresResponsables.put(1, p);
+         }else{
+             profesoresResponsables.put((profesoresResponsables.lastKey()+1), p);
+         }
+     }
+     
         
     private TipoActividad tipoActividad(String temp){
         TipoActividad actividad = null;
-        switch (temp) {
+        switch (temp.toUpperCase()) {
                 case "COMPLEMENTARIA" -> {
                     actividad = TipoActividad.COMPLEMENTARIA;
                 }
@@ -106,14 +135,14 @@ public class Solicitud {
                     actividad = TipoActividad.EXTRAESCOLAR;
                 }
                 default ->
-                    System.out.println("Opcion no valida");
+                    System.out.println("Opcion no valida1");
             }
         return actividad;
     }
     
     private EstadoSolicitud estadoSolicitud(String temp){
         EstadoSolicitud estado = null;
-        switch (temp) {
+        switch (temp.toUpperCase()) {
                 case "APROBADA" -> {
                     estado = EstadoSolicitud.APROBADA;
                 }
@@ -127,7 +156,7 @@ public class Solicitud {
                     estado = EstadoSolicitud.SOLICITADA;
                 }
                 default ->
-                    System.out.println("Opcion no valida");
+                    System.out.println("Opcion no valida2");
             }
         return estado;
     }

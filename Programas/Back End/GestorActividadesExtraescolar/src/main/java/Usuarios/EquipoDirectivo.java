@@ -7,7 +7,7 @@ package Usuarios;
 import DAOs.SolicitudDAO;
 import Enumerados.EstadoSolicitud;
 import reto.gestoractividadesextraescolar.Solicitud;
-import reto.gestoractividadesextraescolar.Teclado;
+import reto.gestoractividadesextraescolar.Utilidad;
 
 /**
  *

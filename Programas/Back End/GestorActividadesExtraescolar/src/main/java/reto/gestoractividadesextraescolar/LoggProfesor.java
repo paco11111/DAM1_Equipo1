@@ -12,7 +12,6 @@ import reto.gestoractividadesextraescolar.Profesor;
  * @author Fabian Saiz Landeras
  */
 public class LoggProfesor {
-    //ATRIBUTOS
     
     /**
      * @param profesor profesor
@@ -20,12 +19,12 @@ public class LoggProfesor {
      * @param psswrd contraseña
      * @param PUESTO tipo de usuario
      */
+
     private Profesor profesor;
     private String email;
     private String psswrd;
     private PuestoProfesor PUESTO;
     
-    //CONSTRUCCTORES
     
     /**
      * @param profesor profesor
@@ -33,6 +32,7 @@ public class LoggProfesor {
      * @param psswrd contraseña
      * @param puesto tipo de usuario
      */
+  
     public LoggProfesor(Profesor profesor,String email, String psswrd, String puesto){
         this.profesor = profesor;
         this.email = email;
@@ -44,6 +44,7 @@ public class LoggProfesor {
      * @param profesor profesor
      * @param email correo electronico
      */
+  
     public LoggProfesor(Profesor profesor,String email){
         this.profesor = profesor;
         this.email = email;
@@ -51,12 +52,12 @@ public class LoggProfesor {
     }
 
     
-    //METODOS
     
     /**
      * @param temp variable temporal
      * @return puesto el tipo de usuario del profesor
      */
+
     private PuestoProfesor puesto(String temp) {
         PuestoProfesor puesto = null;
         switch (temp.toUpperCase()) {

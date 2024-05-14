@@ -7,7 +7,7 @@ package Usuarios;
 import DAOs.SolicitudDAO;
 import Enumerados.EstadoSolicitud;
 import reto.gestoractividadesextraescolar.Solicitud;
-import reto.gestoractividadesextraescolar.Teclado;
+import reto.gestoractividadesextraescolar.Utilidad;
 
 /**
  *
@@ -22,18 +22,13 @@ public class UsuarioProfesor {
     }
     
     public void verSolicitudes(){
-        for(Solicitud s : sol.listar()){
-            System.out.println(s);
-        }
+        
         
     }
     
-    /*public void modificarSolicitud(){
-       int id = Teclado.nextInt("Que solicitud desea modificar?");
-       if(sol.porId(id).getESTADO().equals(EstadoSolicitud.SOLICITADA)){
-           sol.modificar(new Solicitud());
-       }
-    }*/
+    public void modificarSolicitud(){
+       
+    }
     
     
     

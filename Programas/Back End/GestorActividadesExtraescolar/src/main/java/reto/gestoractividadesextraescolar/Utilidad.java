@@ -13,12 +13,13 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.InputMismatchException;
 import java.util.Scanner;
+import java.util.TreeMap;
 
 /**
  *
  * @author Francisco Sitjar
  */
-public class Teclado {
+public class Utilidad {
 
     public static String nextString(String texto) {
         System.out.println(texto);
@@ -153,7 +154,7 @@ public class Teclado {
         String temp = "";
         boolean salir = false;
         do {
-            temp = Teclado.nextString("Email: ");
+            temp = Utilidad.nextString("Email: ");
             if (temp.contains("@")) {
                 salir = true;
             } else {
@@ -186,7 +187,7 @@ public class Teclado {
         boolean salir = false;
 
         do {
-            opc = Teclado.nextInt("Puesto del profesor: \n1.-Super Usuario\n2.-Administrador\n3.-Equipo Directivo\n4.-Profesor");
+            opc = Utilidad.nextInt("Puesto del profesor: \n1.-Super Usuario\n2.-Administrador\n3.-Equipo Directivo\n4.-Profesor");
             switch (opc) {
                 case 1 -> {
                     puesto = PuestoProfesor.SUPERUSUARIO;
@@ -218,7 +219,7 @@ public class Teclado {
         TipoActividad actividad = null;
         boolean salir = false;
         do {
-            int opc = Teclado.nextInt("Tipo de actividad:       1-Extraescolar      2-Complementaria");
+            int opc = Utilidad.nextInt("Tipo de actividad:       1-Extraescolar      2-Complementaria");
             if(opc == 1){
                 actividad = TipoActividad.EXTRAESCOLAR;
                 salir = true;
@@ -239,7 +240,7 @@ public class Teclado {
         boolean salir = false;
 
         do {
-            opc = Teclado.nextInt("Estado de la actividad: \n1.-Solicitada\n2.-Aprobada\n3.-Denegada\n4.-Realizada");
+            opc = Utilidad.nextInt("Estado de la actividad: \n1.-Solicitada\n2.-Aprobada\n3.-Denegada\n4.-Realizada");
             switch (opc) {
                 case 1 -> {
                     estado = EstadoSolicitud.SOLICITADA;
@@ -271,7 +272,7 @@ public class Teclado {
         boolean salir = false;
 
         do {
-            opc = Teclado.nextInt("Etapa del curso: \n1.-ESO\n2.-Bachillerato\n3.-FP Basica\n4.-FP grado medio\n5.-FP grado superior\n6.-FP curso especializacion: ");
+            opc = Utilidad.nextInt("Etapa del curso: \n1.-ESO\n2.-Bachillerato\n3.-FP Basica\n4.-FP grado medio\n5.-FP grado superior\n6.-FP curso especializacion: ");
             switch (opc) {
                 case 1 -> {
                     etapa = EtapaCurso.ESO;
@@ -310,7 +311,7 @@ public class Teclado {
         String temp = "";
         boolean salir = false;
         do {
-            temp = Teclado.nextString("Codigo del curso (No puede tener mas de 8 caracteres): ");
+            temp = Utilidad.nextString("Codigo del curso (No puede tener mas de 8 caracteres): ");
             if (temp.length() <= 8) {
                 salir = true;
             } else {
@@ -325,7 +326,7 @@ public class Teclado {
         String temp = "";
         boolean salir = false;
         do {
-            temp = Teclado.nextString("Codigo del curso (No puede tener mas de 5 caracteres): ");
+            temp = Utilidad.nextString("Codigo del curso (No puede tener mas de 5 caracteres): ");
             if (temp.length() <= 5) {
                 salir = true;
             } else {
@@ -340,7 +341,7 @@ public class Teclado {
         String temp = "";
         boolean salir = false;
         do {
-            temp = Teclado.nextString("Codigo de Departamento (3 caracteres en mayuscula): ");
+            temp = Utilidad.nextString("Codigo de Departamento (3 caracteres en mayuscula): ");
             if (temp.matches("[A-Z]{3}")) {
                 salir = true;
             } else {
@@ -351,6 +352,26 @@ public class Teclado {
         return temp;
     }
     
+    public static String respuestaBoolean(boolean temp){
+        String texto = "";
+        if(temp){
+            texto = "Si";
+        }else{
+            texto = "No";
+        }
+        return texto;
+    }
     
+   public static String respuestaMapa(TreeMap <Integer, Object> temp){
+       String texto = "";
+        if(temp.isEmpty()){
+            texto = "No";
+        }else{
+            texto = "Si";
+        }
+        return texto;
+       
+       
+   }
 
 }
