@@ -12,7 +12,17 @@ import Enumerados.PuestoProfesor;
  * @author Francisco Sitjar
  */
 public class Profesor implements Comparable<Profesor> {
-
+    
+    //ATRIBUTOS
+    
+     /**
+     * @param id numero entero que identifica el objeto
+     * @param nombre Cadena de texto que guarad el nombre
+     * @param apellidos Cadena de texto que guarad los apellidos
+     * @param dni Cadena de texto que guarda DNI
+     * @param departamento Objeto Departamento al que pertenece el profesor
+     * @param activo boolean que informa si el profesor esta activo o no 
+     */
     private int id;
     private String dni;
     private String nombre;
@@ -20,8 +30,23 @@ public class Profesor implements Comparable<Profesor> {
     private PuestoProfesor PUESTO;
     private Departamento departamento;
     private boolean activo;
+<<<<<<< Updated upstream
 
     public Profesor(int id, String nombre, String apellidos, String dni, Departamento departamento, String puesto, boolean activo) {
+=======
+    
+    //CONSTRUCCTORES
+    
+    /**
+     * @param id numero entero que identifica el objeto
+     * @param nombre Cadena de texto que guarad el nombre
+     * @param apellidos Cadena de texto que guarad los apellidos
+     * @param dni Cadena de texto que guarda DNI
+     * @param departamento Objeto Departamento al que pertenece el profesor
+     * @param activo boolean que informa si el profesor esta activo o no 
+     */
+    public Profesor(int id, String nombre, String apellidos, String dni, Departamento departamento, boolean activo) {
+>>>>>>> Stashed changes
         this.id = id;
         this.dni = dni;
         this.nombre = nombre;
@@ -37,6 +62,30 @@ public class Profesor implements Comparable<Profesor> {
         this.activo = activo;
 
     }
+<<<<<<< Updated upstream
+=======
+    
+    /**
+     * @param nombre Cadena de texto que guarad el nombre
+     * @param apellidos Cadena de texto que guarad los apellidos
+     * @param dni Cadena de texto que guarda DNI
+     * @param departamento Objeto Departamento al que pertenece el profesor
+     */
+    public Profesor( String nombre, String apellidos, String dni, Departamento departamento) {
+        this.dni = dni;
+        this.nombre = nombre;
+        this.apellidos = apellidos;
+        if(departamento != null){
+            this.departamento = departamento;
+           this. departamento.setJefe(this);
+        }else{
+            this.departamento = null;
+        }
+        this.activo = true;
+       
+
+    }
+>>>>>>> Stashed changes
 
   
 
