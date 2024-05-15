@@ -56,6 +56,7 @@ El header es simple y sobrio para que no destaque sobre la información que apar
 
 Las opciones de la navbar serán: inició, actividades(que contará con un desplegable de solicitadas y aprobadas), solicitud, fotos(con un desplegable para cada uno de los años disponibles).
 ![](https://github.com/paco11111/DAM1_Equipo1/blob/340a34f581aa88497dc8941bc88f132de7efa4de/Recursos/Navbar.PNG)
+![](https://github.com/paco11111/DAM1_Equipo1/blob/340a34f581aa88497dc8941bc88f132de7efa4de/Recursos/Navbar_cod.PNG)
 
 
 
@@ -76,6 +77,8 @@ La página de inicio es simple dividido en bandas horizontales para diferenciar 
 ![](https://github.com/paco11111/DAM1_Equipo1/blob/340a34f581aa88497dc8941bc88f132de7efa4de/Recursos/Inicio4.PNG)
 ![](https://github.com/paco11111/DAM1_Equipo1/blob/340a34f581aa88497dc8941bc88f132de7efa4de/Recursos/Inicio5.PNG)
 ![](https://github.com/paco11111/DAM1_Equipo1/blob/84463836a3a3f12309a130018612e19641fbb654/Recursos/Formato%20de%20la%20pagina.PNG)
+![](https://github.com/paco11111/DAM1_Equipo1/blob/84463836a3a3f12309a130018612e19641fbb654/Recursos/Section.PNG)
+![](https://github.com/paco11111/DAM1_Equipo1/blob/84463836a3a3f12309a130018612e19641fbb654/Recursos/boytones.PNG)
 
 PÁGINA DE ACTIVIDADES
 Esta página aparece de forma directa en el navegador con el título (“ACTIVIDADES”) del cual se despliegan las opciones aprobadas y solicitadas.
