@@ -22,7 +22,13 @@ import reto.gestoractividadesextraescolar.Repositorio;
  */
 public class DepartamentoDAO implements Repositorio<Departamento>{
 //    private ProfesorDAO profesorDAO = new ProfesorDAO();
-        
+    
+        /**
+         * METODO getConnection:
+         * Establece conexion con la base de datos
+         * 
+         * @return conexion a la base de datos
+         */
     private Connection getConnection() {
         return AccesoBaseDatos.getInstance().getConn();
     }
@@ -47,7 +53,13 @@ public class DepartamentoDAO implements Repositorio<Departamento>{
         return departamentos;
     }
     ; 
-
+    
+/**METODO Crear departamento:
+ * Crea un departamento
+ * @param rs un resultset con los datos del nuevo departamento
+ * @return el departamento creado
+ * @throws SQLException 
+ */
     private Departamento crearDepartamento(final ResultSet rs) throws SQLException {
         Departamento d = new Departamento(rs.getInt("idDepartamento"), rs.getString("codigo"), rs.getString("nombre"), null);
         Profesor p = new Profesor(rs.getInt("idProfesorJefe"), rs.getString("profesor"), rs.getString("apellidos"),rs.getString("DNI"), d, rs.getBoolean("activo"));
@@ -75,6 +87,36 @@ public class DepartamentoDAO implements Repositorio<Departamento>{
         }
         return departamento;
     }
+<<<<<<< Updated upstream
+=======
+    
+    
+    /**
+     * METODO porCodigo
+     * Selecciona un departamento por codigo
+     * @param codigo codigo del departamento a localizar
+     * @return el departamento buscado si existe
+     */ 
+    public Departamento porCodigo(String codigo) {
+        Departamento departamento = null;
+        String sql = ("SELECT idProfesor, profesores.nombre as profesor, apellidos,DNI,departamentos.idDepartamento,activo, codigo, departamentos.nombre, idProfesorJefe FROM departamentos LEFT JOIN profesores ON profesores.idDepartamento= departamentos.idDepartamento WHERE IF (idProfesorJefe IS NULL, departamentos.codigo = ?, departamentos.codigo = ? AND idProfesor = idProfesorJefe)");
+        try (PreparedStatement stmt = getConnection().prepareStatement(sql);) {
+            stmt.setString(1, codigo);
+            stmt.setString(2, codigo);
+            try (ResultSet rs = stmt.executeQuery();) {
+                if (rs.next()) {
+                    departamento = crearDepartamento(rs);
+                } else {
+                    System.out.println("No hay departamento con tal codigo");
+                }
+            }
+        } catch (SQLException ex) {
+            System.out.println("SQLException: " + ex.getMessage());
+        }
+        return departamento;
+    }
+    
+>>>>>>> Stashed changes
 
     @Override
     public void modificar(Departamento departamento) {
