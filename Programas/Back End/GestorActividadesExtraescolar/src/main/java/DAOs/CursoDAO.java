@@ -94,6 +94,25 @@ public class CursoDAO implements Repositorio<Curso>{
         }
         return curso;
     }
+    
+    public Curso porCodigo(String codigo) {
+        Curso curso = null;
+        String sql = "SELECT idCurso, codigo, descripcion, etapa, activo FROM cursos WHERE codigo = ?";
+        try ( PreparedStatement stmt = getConnection().prepareStatement(sql);) {
+            stmt.setString(1, codigo);
+            try ( ResultSet rs = stmt.executeQuery();) {
+                if (rs.next()) {
+                    curso = crearCurso(rs);
+                }else{
+                    System.out.println("No hay curso con tal id");
+                }
+            } 
+        } catch (SQLException ex) {
+            // errores
+            System.out.println("SQLException: " + ex.getMessage());
+        }
+        return curso;
+    }
 
     @Override
     public void modificar(Curso curso) {

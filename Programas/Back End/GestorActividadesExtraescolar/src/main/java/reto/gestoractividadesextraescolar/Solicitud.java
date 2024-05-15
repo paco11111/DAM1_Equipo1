@@ -196,41 +196,7 @@ public class Solicitud {
         return estado;
     }
     
-   /* public Solicitud(){
-        profesorSolicitante = new Profesor(false);
-        actividad = Teclado.nextString("Actividad a solicitar:");
-        TIPOACTIVIDAD = Teclado.tipoActividad();
-        departamento = Teclado.nextString("Departamento");
-        previsto = Teclado.nextBolean("Estaba previsto en la programación didáctica? ");
-        transporte = Teclado.nextBolean("Hay transporte? ");
-        boolean opc = Teclado.nextBolean("Añadir comentario sobre el transporte?");
-        if(opc){
-            comentarioTransporte = Teclado.nextString("Añade un comentario: ");
-        }
-        fechaInicio = Teclado.fecha("Fecha de inicio: ");
-        fechaFinal = Teclado.fecha("Fecha de finalización: ");
-        horaInicio = Teclado.hora("Hora de salida: ");
-        horaFinal = Teclado.hora("Hora de entrada: ");
-        alojamiento = Teclado.nextBolean("Alojamiento?");
-        opc = Teclado.nextBolean("Añadir comentario sobre el alojamiento?");
-        if(opc){
-            comentarioTransporte = Teclado.nextString("Añade un comentario: ");
-        }
-        opc = Teclado.nextBolean("Añadir comentario adicional?");
-        if(opc){
-            comentarioTransporte = Teclado.nextString("Añade un comentario: ");
-        }
-        ESTADO = Teclado.estado();
-        opc = Teclado.nextBolean("Añadir comentario sobre el estado?");
-        if(opc){
-            comentarioTransporte = Teclado.nextString("Añade un comentario: ");
-        }
-        profesoresParticipantes = new TreeMap<Integer, Profesor>(); 
-        profesoresResponsables = new TreeMap<Integer, Profesor>(); 
-        
-    }
-    
-    */
+  
     
     
     

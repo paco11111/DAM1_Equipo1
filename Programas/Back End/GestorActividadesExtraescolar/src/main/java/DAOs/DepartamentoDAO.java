@@ -75,6 +75,27 @@ public class DepartamentoDAO implements Repositorio<Departamento>{
         }
         return departamento;
     }
+    
+     
+    public Departamento porCodigo(String codigo) {
+        Departamento departamento = null;
+        String sql = ("SELECT idProfesor, profesores.nombre as profesor, apellidos,DNI,departamentos.idDepartamento,activo, codigo, departamentos.nombre, idProfesorJefe FROM departamentos LEFT JOIN profesores ON profesores.idDepartamento= departamentos.idDepartamento WHERE IF (idProfesorJefe IS NULL, departamentos.codigo = ?, departamentos.codigo = ? AND idProfesor = idProfesorJefe)");
+        try (PreparedStatement stmt = getConnection().prepareStatement(sql);) {
+            stmt.setString(1, codigo);
+            stmt.setString(2, codigo);
+            try (ResultSet rs = stmt.executeQuery();) {
+                if (rs.next()) {
+                    departamento = crearDepartamento(rs);
+                } else {
+                    System.out.println("No hay departamento con tal codigo");
+                }
+            }
+        } catch (SQLException ex) {
+            System.out.println("SQLException: " + ex.getMessage());
+        }
+        return departamento;
+    }
+    
 
     @Override
     public void modificar(Departamento departamento) {
