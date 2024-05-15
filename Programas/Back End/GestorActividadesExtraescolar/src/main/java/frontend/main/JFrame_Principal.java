@@ -3336,7 +3336,7 @@ public class JFrame_Principal extends javax.swing.JFrame {
         // TODO add your handling code here:
         UsuarioProfesor u = new UsuarioProfesor();
         TreeMap<Integer, Transporte> transporte = new TreeMap<Integer, Transporte>();
-        String tra = tfActividad15.getText();
+        /*String tra = tfActividad15.getText();
         System.out.println(tfActividad15.getText());
         if(tra.contains(",")){
                 String[] t = tra.split(",");
@@ -3355,41 +3355,45 @@ public class JFrame_Principal extends javax.swing.JFrame {
                     transporte.put(transporte.lastKey()+1, tDAO.porTipo(tra));
                 }
     
+        */
         
-        
-        DateTimeFormatter f = DateTimeFormatter.ofPattern("dd-MMMM-yyyy").withLocale(new Locale("es","ES"));
+        DateTimeFormatter f = DateTimeFormatter.ofPattern("dd-MM-yyyy").withLocale(new Locale("es","ES"));
         LocalDate fIni = LocalDate.parse(tfFini.getText(), f);
         LocalDate fFin = LocalDate.parse(tfFfin.getText(), f);
-        DateTimeFormatter time = DateTimeFormatter.ofPattern("hh:mm").withLocale(new Locale("es","ES"));
+        DateTimeFormatter time = DateTimeFormatter.ofPattern("HH:mm").withLocale(new Locale("es","ES"));
         LocalTime horaInicio = LocalTime.parse(tfFfin1.getText(), time);
         LocalTime horaFin = LocalTime.parse(tfFfin2.getText(), time);
         
         
-        TreeMap<Integer, Profesor> profesoresR = new TreeMap<Integer, Profesor>();
+        TreeMap<Integer, Profesor> profesoresR = new TreeMap<Integer, Profesor>();/*
         String r =  tfActividad.getText();
         if(r.contains(",")){
                 String[] pr =r.split(",");
             for (int i = 0; i < pr.length ; i++) {
                 profesoresR.put(i, pDAO.porNombreApellido(pr[i]));
             }
+        }else if (profesoresR.isEmpty()){
+            profesoresR.put(1, pDAO.porNombreApellido(r));
         }else{
             profesoresR.put(profesoresR.lastKey()+1, pDAO.porNombreApellido(r));
         }
-        
-        TreeMap<Integer, Profesor> profesoresP = new TreeMap<Integer, Profesor>();
+        */
+        TreeMap<Integer, Profesor> profesoresP = new TreeMap<Integer, Profesor>(); /*
         String p =  tfActividad.getText();
         if(r.contains(",")){
                 String[] pr =r.split(",");
             for (int i = 0; i < pr.length ; i++) {
                 profesoresP.put(i, pDAO.porNombreApellido(p));
             }
+        }else if(profesoresP.isEmpty()){
+            profesoresR.put(1, pDAO.porNombreApellido(p));
         }else{
             profesoresR.put(profesoresP.lastKey()+1, pDAO.porNombreApellido(p));
         }
-        
-        TreeMap<Integer, Grupo> grupos = new TreeMap<Integer, Grupo>();
+        */int numeroAlumnos = 0;
+        TreeMap<Integer, Grupo> grupos = new TreeMap<Integer, Grupo>();/*
         String gr = tfActividad13.getText();
-        int numeroAlumnos = 0;
+        
         if(gr.contains(",")){
                 String[] g = gr.split(",");
                 for (int i = 0; i < g.length ; i++) {
@@ -3397,11 +3401,13 @@ public class JFrame_Principal extends javax.swing.JFrame {
                 grupos.put(i, gru);
                 numeroAlumnos += gru.getNumeroAlumnos();
             }
+        }else if(grupos.isEmpty()){
+            grupos.put(1, gDAO.porCodigo(gr));
         }else{
             grupos.put(grupos.lastKey()+1, gDAO.porCodigo(gr));
         }
-        
-        TreeMap<Integer, Curso> cursos = new TreeMap<Integer, Curso>();
+        */
+        TreeMap<Integer, Curso> cursos = new TreeMap<Integer, Curso>();/*
         String cur = tfActividad14.getText();
         String[] c = tfActividad14.getText().split(",");
         if(gr.contains(",")){
@@ -3410,9 +3416,12 @@ public class JFrame_Principal extends javax.swing.JFrame {
                 Curso cr = cDAO.porCodigo(c[i]);
                 cursos.put(i, cr);
             }
+        }else if (cursos.isEmpty()){
+                cursos.put(1, cDAO.porCodigo(cur));
         }else{
-            cursos.put(cursos.lastKey()+1, cDAO.porCodigo(cur));
-        }
+                cursos.put(cursos.lastKey()+1, cDAO.porCodigo(cur));
+       }*/
+        
         u.crearSolicitud(profesor, tfActividad.getText(),String.valueOf( cbTipoActividad.getSelectedItem()), profesor.getDepartamento(),btnPrevisto1.isSelected(), transporte, taTransporte.getText(),fIni, fFin, horaInicio, horaFin,cbAlojamiento.isSelected(),taTransporte1.getText(),jTextArea1.getText(), "SOLICITADA", "", profesoresP, profesoresR, grupos, cursos, numeroAlumnos);
                 
     }//GEN-LAST:event_btnSendSoliActionPerformed

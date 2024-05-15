@@ -41,6 +41,8 @@ public class LoggIn {
                     JOptionPane.showMessageDialog(null, "Contraseña guardada correctamente:");
                     valido = true;
                 } else if (p.getEmail().equals(email) && p.getPsswrd().equals(password)) {
+                    loggProfesorDAO.modificar(p);
+                    profesor = p.getProfesor();
                     valido = true;
                 }
             }
