@@ -57,7 +57,35 @@ El header es simple y sobrio para que no destaque sobre la información que apar
 
 Las opciones de la navbar serán: inició, actividades(que contará con un desplegable de solicitadas y aprobadas), solicitud, fotos(con un desplegable para cada uno de los años disponibles).
 ![](https://github.com/paco11111/DAM1_Equipo1/blob/340a34f581aa88497dc8941bc88f132de7efa4de/Recursos/Navbar.PNG)
-![](https://github.com/paco11111/DAM1_Equipo1/blob/340a34f581aa88497dc8941bc88f132de7efa4de/Recursos/Navbar_cod.PNG)
+~~~
+.navbar {
+    display: flex; 
+}
+
+.logo {
+    margin-left: 30px;
+}
+
+.logo a {
+    text-decoration: none;
+    color: #fff;
+    text-transform: uppercase;
+    font-size: 20px;
+}
+
+.navbar a {
+    display: block;
+    padding: 20px 20px;
+    color: #fff;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 20px;
+}
+
+.navbar a:hover {
+    background: #3f3f3f;
+}
+~~~
 
 
 
@@ -66,8 +94,62 @@ Nuestro footer es común en todas las partes de la página. En él aparecen dato
 El footer está diseñado de tal manera que se adapte al tamaño de la página, de tal manera que los datos que están situados a lo ancho del footer se ordenen de manera vertical unas encima de otras manteniendo su formato y diseño.
 
 ![](https://github.com/paco11111/DAM1_Equipo1/blob/340a34f581aa88497dc8941bc88f132de7efa4de/Recursos/footer.PNG)
-![](https://github.com/paco11111/DAM1_Equipo1/blob/340a34f581aa88497dc8941bc88f132de7efa4de/Recursos/footer_cod.PNG)
-![](https://github.com/paco11111/DAM1_Equipo1/blob/84463836a3a3f12309a130018612e19641fbb654/Recursos/ajuste%20tama%C3%B1o.PNG
+~~~
+footer{
+    margin-top: auto;
+}
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style: none;/*SIRVE PARA QUITAR LOS PUNTOS DE LAS LISTAS*/
+}
+
+.footer{/*LAS PALABRAS QUE ESTEN DESNTRO DE ESTE CONTENEDOR EMPEZARAN SIEMPRE POR MAYUSCULA*/
+    text-transform: capitalize;
+    
+}
+
+.container{
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer{
+    background-color: #24262b;
+    padding: 80px 0;
+}
+
+.footer-row{
+    display: flex;
+    flex-wrap: wrap;/*sirve para adaptar a pantalla reducida*/
+}
+
+.footer-links{
+    width: 25%;
+    padding: 0 15px;
+}
+
+.footer-links h4{/*sirve para modificar los h4*/
+    font-size: 20px;
+    color: #FFFFFF;
+    margin-bottom: 25px;
+    font-weight: 500;
+    border-bottom: 2px solid #e2f1f8;/*la rallita de debao de los h4*/
+    padding-bottom:5px;/*SEPARA LA RALLITTA DE LA PALABRA*/
+    display: inline-block;
+}
+
+.footer-links ul li a{
+font-size: 18px;
+text-decoration: none;
+color: #BBBBBB;
+display: block;
+margin-bottom: 15px;
+transition: all .3s ease;/*ANIMACION*/
+}
+~~~
+
 )
 
 PÁGINA DE INICIO
@@ -77,9 +159,29 @@ La página de inicio es simple dividido en bandas horizontales para diferenciar 
 ![](https://github.com/paco11111/DAM1_Equipo1/blob/340a34f581aa88497dc8941bc88f132de7efa4de/Recursos/Inicio3.PNG)
 ![](https://github.com/paco11111/DAM1_Equipo1/blob/340a34f581aa88497dc8941bc88f132de7efa4de/Recursos/Inicio4.PNG)
 ![](https://github.com/paco11111/DAM1_Equipo1/blob/340a34f581aa88497dc8941bc88f132de7efa4de/Recursos/Inicio5.PNG)
-![](https://github.com/paco11111/DAM1_Equipo1/blob/84463836a3a3f12309a130018612e19641fbb654/Recursos/Formato%20de%20la%20pagina.PNG)
-![](https://github.com/paco11111/DAM1_Equipo1/blob/84463836a3a3f12309a130018612e19641fbb654/Recursos/Section.PNG)
-![](https://github.com/paco11111/DAM1_Equipo1/blob/84463836a3a3f12309a130018612e19641fbb654/Recursos/boytones.PNG)
+
+~~~
+* {
+    border: 0;
+    margin: 0;
+    padding: 0;
+    font-size: 100%;
+    vertical-align: baseline;
+}
+~~~
+
+~~~
+section {
+    padding: 20px;
+    margin:20px auto;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    max-width: 800px;
+    border: 1px solid black;
+    
+}
+~~~
 
 PÁGINA DE ACTIVIDADES
 Esta página aparece de forma directa en el navegador con el título (“ACTIVIDADES”) del cual se despliegan las opciones aprobadas y solicitadas.
@@ -137,7 +239,22 @@ La página de fotos mantiene la estética general de la página con las bandas h
 
 ![](https://github.com/paco11111/DAM1_Equipo1/blob/340a34f581aa88497dc8941bc88f132de7efa4de/Recursos/fotos.PNG)
 ![](https://github.com/paco11111/DAM1_Equipo1/blob/340a34f581aa88497dc8941bc88f132de7efa4de/Recursos/CARRUSEL.PNG)
-![](https://github.com/paco11111/DAM1_Equipo1/blob/f013d38ab6dde2e3e85fc338cd6c013a53270215/Recursos/CArrete%20de%20imagenes.PNG)
+
+~~~
+#carrete {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow-x: auto;
+    padding: 20px;
+}
+
+#carrete img {
+    max-width: 100%;
+    max-height: 300px;
+    margin-right: 10px;
+}
+~~~
 
 PÁGINA DE FOTOS POR AÑO
 Aquí mostraremos las fotos del año seleccionado mediante tres carruseles con distinto diseño. El primero será automático y pasara las fotos para una visualización rápida, el otro sin embargo será manual y permitirá ver la imagen con más detalle.
