@@ -124,14 +124,14 @@ Por ultimo los botones de esta seccion para enviar el formulario cuneta con un d
 PÁGINA DE CONTACTO
 Esta sección es la más sencilla de todas ya que parte de la información que debería aparecer en esta está representada en el footer. Por lo exterior hemos decidido conservar la estética simple y minimalista de la página y en esta sección plantear solo un formulario de contacto con un formato idéntico al usado para las solicitudes en el que se pide al usuario un nombre, un correo electrónico y se le da un espacio para escribir su mensaje, el botón de enviar conserva también el formato ovalado y el color que utilizamos en el apartado solicitudes.
 
-![](https://github.com/paco11111/DAM1_Equipo1/blob/340a34f581aa88497dc8941bc88f132de7efa4de/Recursos/Formulario de contacto.PNG)
+![](https://github.com/paco11111/DAM1_Equipo1/blob/f013d38ab6dde2e3e85fc338cd6c013a53270215/Recursos/Formulario%20de%20contacto.PNG)
 
 PÁGINA DE FOTOS
 La página de fotos mantiene la estética general de la página con las bandas horizontales en las que se presenta la información, en este caso solo se muestra el año, ya que la idea es que estas láminas al ser pulsadas por el usuario lo redirija a otra sección donde podrá ver todas las fotos de actividades que hay de ese año
 
 ![](https://github.com/paco11111/DAM1_Equipo1/blob/340a34f581aa88497dc8941bc88f132de7efa4de/Recursos/fotos.PNG)
 ![](https://github.com/paco11111/DAM1_Equipo1/blob/340a34f581aa88497dc8941bc88f132de7efa4de/Recursos/CARRUSEL.PNG)
-![](https://github.com/paco11111/DAM1_Equipo1/blob/340a34f581aa88497dc8941bc88f132de7efa4de/Recursos/CArrete de imagenes.PNG)
+![](https://github.com/paco11111/DAM1_Equipo1/blob/f013d38ab6dde2e3e85fc338cd6c013a53270215/Recursos/CArrete%20de%20imagenes.PNG)
 
 PÁGINA DE FOTOS POR AÑO
 Aquí mostraremos las fotos del año seleccionado mediante tres carruseles con distinto diseño. El primero será automático y pasara las fotos para una visualización rápida, el otro sin embargo será manual y permitirá ver la imagen con más detalle.
