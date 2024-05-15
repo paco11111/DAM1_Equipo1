@@ -9,10 +9,12 @@ import Enumerados.EstadoSolicitud;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.TreeMap;
+import reto.gestoractividadesextraescolar.Curso;
 import reto.gestoractividadesextraescolar.Departamento;
 import reto.gestoractividadesextraescolar.Profesor;
 import reto.gestoractividadesextraescolar.Solicitud;
 import reto.gestoractividadesextraescolar.Transporte;
+import reto.gestoractividadesextraescolar.Grupo;
 import reto.gestoractividadesextraescolar.Utilidad;
 
 /**
@@ -27,26 +29,26 @@ public class UsuarioProfesor {
         
     }
     
-//    public Solicitud crearSolicitudes(Profesor profesorSolicitante, String actividad, String tipoActividad, Departamento departamento, boolean previsto, TreeMap <Integer, Transporte> transporte, String comentarioTransporte, LocalDate fechaInicio, LocalDate fechaFinal, LocalTime horaInicio, LocalTime horaFinal, boolean alojamiento, String comentarioAlojamiento, String comentarioAdicional, String estado, String comentarioEstado, TreeMap<Integer, Profesor> profesoresParticipantes, TreeMap<Integer, Profesor> profesoresResponsables) {    
-//        
-//        Solicitud s = new Solicitud(profesorSolicitante, actividad, tipoActividad, departamento, previsto, transporte, comentarioTransporte, fechaInicio, fechaFinal, horaInicio, horaFinal, alojamiento, comentarioAlojamiento, comentarioAdicional, estado, comentarioEstado, profesoresParticipantes, profesoresResponsables);
-//        
-//        return s;
-//    }
-//    
-//    /*public void verSolicitudes(){
-//        
-//        
-//    }*/
-//    
-//    public Solicitud modificarSolicitud(Profesor profesorSolicitante, String actividad, String tipoActividad, Departamento departamento, boolean previsto, TreeMap <Integer, Transporte> transporte, String comentarioTransporte, LocalDate fechaInicio, LocalDate fechaFinal, LocalTime horaInicio, LocalTime horaFinal, boolean alojamiento, String comentarioAlojamiento, String comentarioAdicional, String estado, String comentarioEstado, TreeMap<Integer, Profesor> profesoresParticipantes, TreeMap<Integer, Profesor> profesoresResponsables) {    
-//        
-//        Solicitud s = new Solicitud(profesorSolicitante, actividad, tipoActividad, departamento, previsto, transporte, comentarioTransporte, fechaInicio, fechaFinal, horaInicio, horaFinal, alojamiento, comentarioAlojamiento, comentarioAdicional, estado, comentarioEstado, profesoresParticipantes, profesoresResponsables);
-//        
-//        return s;
-//    }
-//    
-//    
+    public Solicitud crearSolicitud(Profesor profesorSolicitante, String actividad, String tipoActividad, Departamento departamento, boolean previsto, TreeMap <Integer, Transporte> transporte, String comentarioTransporte, LocalDate fechaInicio, LocalDate fechaFinal, LocalTime horaInicio, LocalTime horaFinal, boolean alojamiento, String comentarioAlojamiento, String comentarioAdicional, String estado, String comentarioEstado, TreeMap<Integer, Profesor> profesoresParticipantes, TreeMap<Integer, Profesor> profesoresResponsables, TreeMap<Integer, Grupo> grupos, TreeMap<Integer, Curso> cursos, int numeroAlumnos) {    
+        
+        Solicitud s = new Solicitud(profesorSolicitante, actividad, tipoActividad, departamento, previsto, transporte, comentarioTransporte, fechaInicio, fechaFinal, horaInicio, horaFinal, alojamiento, comentarioAlojamiento, comentarioAdicional, estado, comentarioEstado, profesoresParticipantes, profesoresResponsables, grupos, cursos, numeroAlumnos );
+        
+        return s;
+    }
+    
+    /*public void verSolicitudes(){
+        
+        
+    }*/
+    
+    public Solicitud modificarSolicitud(Profesor profesorSolicitante, String actividad, String tipoActividad, Departamento departamento, boolean previsto, TreeMap <Integer, Transporte> transporte, String comentarioTransporte, LocalDate fechaInicio, LocalDate fechaFinal, LocalTime horaInicio, LocalTime horaFinal, boolean alojamiento, String comentarioAlojamiento, String comentarioAdicional, String estado, String comentarioEstado, TreeMap<Integer, Profesor> profesoresParticipantes, TreeMap<Integer, Profesor> profesoresResponsables, TreeMap<Integer, Grupo> grupos, TreeMap<Integer, Curso> cursos, int numeroAlumnos) {    
+        
+        Solicitud s = new Solicitud(profesorSolicitante, actividad, tipoActividad, departamento, previsto, transporte, comentarioTransporte, fechaInicio, fechaFinal, horaInicio, horaFinal, alojamiento, comentarioAlojamiento, comentarioAdicional, estado, comentarioEstado, profesoresParticipantes, profesoresResponsables, grupos, cursos, numeroAlumnos);
+        
+        return s;
+    }
+    
+    
     
     
     

@@ -9,34 +9,17 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
 import reto.gestoractividadesextraescolar.LoggProfesor;
+import reto.gestoractividadesextraescolar.Profesor;
 
 /**
  *
  * @author Fabian Saiz Landeras
  */
 public class LoggIn {
-
+    private static Profesor profesor;
     private static List<LoggProfesor> validar;
     private static LoggProfesorDAO loggProfesorDAO;
 
-    /*   
-    public static boolean validar(String email){
-        boolean valido = false;
-        loggProfesorDAO = new LoggProfesorDAO();
-        validar = loggProfesorDAO.listar();
-        for(LoggProfesor p : validar){
-                if (p.getEmail().equals(email)) {
-                    valido = true;
-                }else{
-                    System.out.println("FALSE");
-                }
-
-                    
-    } 
-        return valido;
-    }
-    
-     */
     public static boolean validar(String email, String password) {
         boolean valido = false;
         String psswrd = null;
@@ -54,6 +37,7 @@ public class LoggIn {
                     } while (!psswrd.equals(psswrd2));
                     p.setPsswrd(psswrd);
                     loggProfesorDAO.modificar(p);
+                    profesor = p.getProfesor();
                     JOptionPane.showMessageDialog(null, "Contraseña guardada correctamente:");
                     valido = true;
                 } else if (p.getEmail().equals(email) && p.getPsswrd().equals(password)) {
@@ -67,5 +51,11 @@ public class LoggIn {
         }
         return valido;
     }
+
+    public static Profesor getProfesor() {
+        return profesor;
+    }
+    
+    
 
 }
