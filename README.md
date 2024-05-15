@@ -9,7 +9,7 @@ Tambien se almacena el estado de la solicitud y se gestionan los grupos y cursos
 Las solicitudes aprobadas tienen fotos de la actividad
 ![](ER.png)
 ![](https://github.com/paco11111/DAM1_Equipo1/blob/819450778aa33353f1181a760f5cb26825788a63/Markdown/BDR.png)
-[BASE DE DATOS](https://educantabria.sharepoint.com/sites/RetoDAM1_2324-Equipo1/_layouts/15/download.aspx?UniqueId=4c0ff03c%2Df8a7%2D489f%2Dbca0%2Dfd9c0769260f))
+[BASE DE DATOS](https://educantabria.sharepoint.com/sites/RetoDAM1_2324-Equipo1/_layouts/15/download.aspx?UniqueId=fe7c0036%2D0362%2D45c9%2D9cb9%2D66873cc8c9d8)
 
 ## PAGINA WEB
 
