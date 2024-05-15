@@ -302,7 +302,7 @@ public class MostrarTabla {
                 profesor[1] = p.getDni();
                 profesor[2] = p.getNombre();
                 profesor[3] = p.getApellidos();
-                profesor[4] = p.getDepartamento().getNombre();
+                profesor[4] = p.getDepartamento().getCodigo();
                 profesor[5] = Utilidad.respuestaBoolean(p.isActivo());
 
                 model.addRow(profesor);
