@@ -17,6 +17,7 @@ import reto.gestoractividadesextraescolar.Profesor;
  */
 public class LoggIn {
     private static Profesor profesor;
+    private static String usuario;
     private static List<LoggProfesor> validar;
     private static LoggProfesorDAO loggProfesorDAO;
 
@@ -38,11 +39,13 @@ public class LoggIn {
                     p.setPsswrd(psswrd);
                     loggProfesorDAO.modificar(p);
                     profesor = p.getProfesor();
+                    usuario = p.getPUESTO().name();
                     JOptionPane.showMessageDialog(null, "Contraseña guardada correctamente:");
                     valido = true;
                 } else if (p.getEmail().equals(email) && p.getPsswrd().equals(password)) {
                     loggProfesorDAO.modificar(p);
                     profesor = p.getProfesor();
+                    usuario = p.getPUESTO().name();
                     valido = true;
                 }
             }
@@ -53,10 +56,18 @@ public class LoggIn {
         }
         return valido;
     }
+    
+    
+    
 
     public static Profesor getProfesor() {
         return profesor;
     }
+
+    public static String getUsuario() {
+        return usuario;
+    }
+    
     
     
 

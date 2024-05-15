@@ -256,7 +256,43 @@ public class SolicitudDAO implements Repositorio<Solicitud>{
 
     @Override
     public void agregar(Solicitud solicitud) {
-        try ( PreparedStatement stmt = getConnection().prepareStatement("INSERT INTO solicitudes (idSolicitante, actividad, tipo_actividad, previsto_programacion, requiere_transporte, comentario_transporte, finicio, ffinal, hora_inicio, hora_fin, alojamiento, comentario_alojamiento, comentarios_adicionales, estado, comentario_estado ) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");) {
+        int id = agregar2(solicitud);
+        try ( PreparedStatement stmt2 = getConnection().prepareStatement("INSERT INTO idprofes_participantes (idProfe, idSolicitud) VALUES (?,?)");) {
+            for(Map.Entry<Integer, Profesor> entry : solicitud.getProfesoresParticipantes().entrySet()){
+                stmt2.setInt(1, entry.getValue().getId());
+                stmt2.setInt(2, id);
+                 int salida = stmt2.executeUpdate();
+                if (salida != 1) {
+                    throw new Exception(" No se ha insertado/modificado un solo registro en profesores");
+                }
+            }
+        }
+        catch (SQLException ex) {
+            // errores
+            System.out.println("SQLException: " + ex.getMessage());
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+        try ( PreparedStatement stmt2 = getConnection().prepareStatement("INSERT INTO idprofes_responsables (idProfe, idSolicitud) VALUES (?,?)");) {
+            for(Map.Entry<Integer, Profesor> entry : solicitud.getProfesoresResponsables().entrySet()){
+                stmt2.setInt(1, entry.getValue().getId());
+                stmt2.setInt(2, id);
+                 int salida = stmt2.executeUpdate();
+                if (salida != 1) {
+                    throw new Exception(" No se ha insertado/modificado un solo registro en profesores");
+                }
+            }
+        }
+        catch (SQLException ex) {
+            // errores
+            System.out.println("SQLException: " + ex.getMessage());
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+    
+    public int agregar2(Solicitud solicitud) {
+        try ( PreparedStatement stmt = getConnection().prepareStatement("INSERT INTO solicitudes (idSolicitante, actividad, tipo_actividad, previsto_programacion, requiere_transporte, comentario_transporte, finicio, ffinal, hora_inicio, hora_fin, alojamiento, comentario_alojamiento, comentarios_adicionales, estado, comentario_estado ) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)", Statement.RETURN_GENERATED_KEYS);) {
             stmt.setInt(1, solicitud.getProfesorSolicitante().getId());
             stmt.setString(2, solicitud.getActividad());
             String tipoActividad = "" + solicitud.getTIPOACTIVIDAD();
@@ -286,6 +322,12 @@ public class SolicitudDAO implements Repositorio<Solicitud>{
             if (salida != 1) {
                 throw new Exception(" No se ha insertado/modificado un solo registro en profesores");
             }
+            try (ResultSet generatedKeys = stmt.getGeneratedKeys()) {
+                if (generatedKeys.next()) {
+                    return generatedKeys.getInt(1);
+                }
+            }
+            
 
         }
         catch (SQLException ex) {
@@ -294,11 +336,20 @@ public class SolicitudDAO implements Repositorio<Solicitud>{
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
         }
-        try ( PreparedStatement stmt = getConnection().prepareStatement("INSERT INTO idProfes_participantes (idProfe, idSolicitud) VALUES (?,?)");) {
+         
+         
+         return -1;
+        
+    }
+    
+    private void agregarProfesores(Solicitud solicitud){
+        try ( Statement stmt = getConnection().createStatement();  ResultSet rs = stmt.executeQuery("SELECT idSolicitud FROM solicitudes ORDER BY idSolicitud DESC LIMIT 1");) {
+            
+             try ( PreparedStatement stmt2 = getConnection().prepareStatement("INSERT INTO idprofes_participantes (idProfe, idSolicitud) VALUES (?,?)");) {
             for(Map.Entry<Integer, Profesor> entry : solicitud.getProfesoresParticipantes().entrySet()){
-                stmt.setInt(1, entry.getValue().getId());
-                stmt.setInt(2, solicitud.getId());
-                 int salida = stmt.executeUpdate();
+                stmt2.setInt(1, entry.getValue().getId());
+                stmt2.setInt(2, rs.getInt(1));
+                 int salida = stmt2.executeUpdate();
                 if (salida != 1) {
                     throw new Exception(" No se ha insertado/modificado un solo registro en profesores");
                 }
@@ -310,11 +361,11 @@ public class SolicitudDAO implements Repositorio<Solicitud>{
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
         }
-        try ( PreparedStatement stmt = getConnection().prepareStatement("INSERT INTO idProfes_responsables (idProfe, idSolicitud) VALUES (?,?)");) {
+        try ( PreparedStatement stmt2 = getConnection().prepareStatement("INSERT INTO idprofes_responsables (idProfe, idSolicitud) VALUES (?,?)");) {
             for(Map.Entry<Integer, Profesor> entry : solicitud.getProfesoresResponsables().entrySet()){
-                stmt.setInt(1, entry.getValue().getId());
-                stmt.setInt(2, solicitud.getId());
-                 int salida = stmt.executeUpdate();
+                stmt2.setInt(1, entry.getValue().getId());
+                stmt2.setInt(2, rs.getInt(1));
+                 int salida = stmt2.executeUpdate();
                 if (salida != 1) {
                     throw new Exception(" No se ha insertado/modificado un solo registro en profesores");
                 }
@@ -323,6 +374,13 @@ public class SolicitudDAO implements Repositorio<Solicitud>{
         catch (SQLException ex) {
             // errores
             System.out.println("SQLException: " + ex.getMessage());
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+
+        } catch (SQLException ex) {
+            System.out.println("SQLException: " + ex.getMessage());
+            
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
         }
