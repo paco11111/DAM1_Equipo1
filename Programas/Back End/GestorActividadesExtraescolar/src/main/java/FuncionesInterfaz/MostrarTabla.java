@@ -129,6 +129,86 @@ public class MostrarTabla {
         return model;
 
     }
+    
+    public static DefaultTableModel mostrarSolicitudResponsable(Profesor profesor) {
+        DefaultTableModel model = new DefaultTableModel();
+        DateTimeFormatter f = DateTimeFormatter.ofPattern("dd 'de' MMMM 'de' yyyy").withLocale(new Locale("es", "ES"));
+        DateTimeFormatter t = DateTimeFormatter.ofPattern("hh:mm").withLocale(new Locale("es", "ES"));
+        solicitudes = solicitudDAO.listar();
+        try {
+            model.addColumn("idSolicitud");
+            model.addColumn("idProfesorSolicitante");
+            model.addColumn("Actividad");
+            model.addColumn("Tipo Actividad");
+            model.addColumn("Previsto Programacion");
+            model.addColumn("Transporte");
+            model.addColumn("Comentario Transporte");
+            model.addColumn("Fecha Inicio");
+            model.addColumn("Fecha Final");
+            model.addColumn("Hora Inicio");
+            model.addColumn("Hora Final");
+            model.addColumn("Alojamiento");
+            model.addColumn("Comentario Alojamiento");
+            model.addColumn("Comentario Adicional");
+            model.addColumn("Estado");
+            model.addColumn("Comentario Estado");
+            model.addColumn("Profesores Responsables");
+            model.addColumn("Profesores Participantes");
+            model.addColumn("Grupos");
+            model.addColumn("Cursos");
+            model.addColumn("NºAlumnos");
+            //PROFESORES RESOPONSABLES!!!!!!!!
+            for (Solicitud s : solicitudes) {
+                for(Map.Entry<Integer, Profesor> entry : s.getProfesoresResponsables().entrySet()){
+                    if(entry.getValue().getNombre().equals(profesor.getNombre()) && entry.getValue().getApellidos().equals(profesor.getApellidos()) ){
+                    solicitud[0] = String.valueOf(s.getId());
+                    solicitud[1] = s.getProfesorSolicitante().getNombre() + " " + s.getProfesorSolicitante().getApellidos();
+                    solicitud[2] = s.getActividad();
+                    solicitud[3] = s.getTIPOACTIVIDAD().name();
+                    solicitud[4] = Utilidad.respuestaBoolean(s.isPrevisto());
+                    solicitud[5] = Utilidad.respuestaMapa(s.getTransporte());
+                    solicitud[6] = s.getComentarioTransporte();
+                    solicitud[7] = s.getFechaInicio().format(f);
+                    solicitud[8] = s.getFechaFinal().format(f);
+                    solicitud[9] = s.getHoraInicio().format(t);
+                    solicitud[10] = s.getHoraFinal().format(t);
+                    solicitud[11] = Utilidad.respuestaBoolean(s.isAlojamiento());
+                    solicitud[12] = s.getComentarioAlojamiento();
+                    solicitud[13] = s.getComentarioAdicional();
+                    solicitud[14] = s.getESTADO().name();
+                    solicitud[15] = s.getComentarioEstado();
+                    String pr = "";
+                    for (Map.Entry<Integer, Profesor> p : s.getProfesoresResponsables().entrySet()){
+                        pr = p.getValue().getNombre() + " " + p.getValue().getApellidos() + ",";
+                    }
+                    solicitud[16] = pr;
+                    String pp = "";
+                    for (Map.Entry<Integer, Profesor> p : s.getProfesoresParticipantes().entrySet()){
+                        pp = p.getValue().getNombre() + " " + p.getValue().getApellidos() + ",";
+                    }
+                    solicitud[17] = pp;
+                    String grupos = "";
+                    for (Map.Entry<Integer, Grupo> p : s.getGrupo().entrySet()){
+                        pp = p.getValue().getCodigo()+ ", ";
+                    }
+                    solicitud[18] = grupos;
+                    String cursos = "";
+                    for (Map.Entry<Integer, Curso> p : s.getCurso().entrySet()){
+                        pp = p.getValue().getCodigo()+ ",";
+                    }
+                    solicitud[19] = cursos;
+                    solicitud[20] = String.valueOf(s.getNumeroAlumnos());
+                    model.addRow(solicitud);
+                }
+                }
+            }
+
+        } catch (Exception e) {
+            e.getMessage();
+        }
+        return model;
+
+    }
 
     public static DefaultTableModel mostrarSolicitudAprobada() {
         DefaultTableModel model = new DefaultTableModel();

@@ -81,7 +81,7 @@ public class ProfesorDAO implements Repositorio<Profesor>{
         Profesor profesor = null;
         String sql = "SELECT idProfesor, profesores.nombre as profesor, apellidos,DNI,profesores.idDepartamento,activo, codigo, departamentos.nombre, idProfesorJefe FROM profesores INNER JOIN departamentos ON profesores.idDepartamento= departamentos.idDepartamento WHERE  CONCAT(profesores.nombre,' ', profesores.apellidos) = ?";
         try (PreparedStatement stmt = getConnection().prepareStatement(sql);) {
-            stmt.setString(1, " "+ nombre + " ");
+            stmt.setString(1,nombre);
             try (ResultSet rs = stmt.executeQuery();) {
                 if (rs.next()) {
                     profesor = crearProfesor(rs);

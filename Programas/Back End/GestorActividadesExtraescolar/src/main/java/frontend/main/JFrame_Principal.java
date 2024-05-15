@@ -41,6 +41,7 @@ import reto.gestoractividadesextraescolar.Transporte;
 public class JFrame_Principal extends javax.swing.JFrame {
     // Atributos añadidos manualmente
     Profesor profesor;
+    SolicitudDAO sDAO = new SolicitudDAO();
     TransporteDAO tDAO = new TransporteDAO();
     ProfesorDAO pDAO = new ProfesorDAO();
     GrupoDAO gDAO = new GrupoDAO();
@@ -56,6 +57,8 @@ public class JFrame_Principal extends javax.swing.JFrame {
         jPanelInicio.setVisible(true);
         jPanelPrincipal.setVisible(false);
             jPanelMenuPrincipalAdmin.setVisible(false);
+            jPanelMenuPrincipalProf.setVisible(false);
+            jPanelMenuPrincipalEqdir.setVisible(false);
                 jPanelCargaDatos.setVisible(false);
                 jPanelMantenimientoDatos.setVisible(false);
                     jPanelMenuDatos.setVisible(false);
@@ -78,7 +81,7 @@ public class JFrame_Principal extends javax.swing.JFrame {
                 jPanelSolicitud.setVisible(false);
                     jPanelMenuSolicitudAdmin.setVisible(false);
                     jPanelMenuSolicitudProf.setVisible(false);
-                    jPanelMenuSolicitudProf.setVisible(false);
+                    jPanelMenuSolicitudEqdir.setVisible(false);
                         jPanelSoliPendientes.setVisible(false);
                         jPanelSoliNueva.setVisible(false);
                         jPanelSoliUsu.setVisible(false);
@@ -2531,31 +2534,8 @@ public class JFrame_Principal extends javax.swing.JFrame {
 
         jScrollPane13.setPreferredSize(new java.awt.Dimension(812, 600));
 
-        jTableActvd.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4", "Title 5", "Title 6", "Title 7", "Title 8"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
+        jTableActvd.setModel(MostrarTabla.mostrarSolicitudResponsable(profesor)
+        );
         jTableActvd.setPreferredSize(new java.awt.Dimension(800, 500));
         jTableActvd.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -2977,11 +2957,36 @@ public class JFrame_Principal extends javax.swing.JFrame {
         String pass = txCnna.getText();
 
         if (LoggIn.validar(usu, pass)) {
-            jPanelInicio.setVisible(false);
-            jPanelPrincipal.setVisible(true);
-
-           jPanelMenuPrincipalAdmin.setVisible(true);
-            profesor = LoggIn.getProfesor();
+            switch(LoggIn.getUsuario().toUpperCase()){
+                 case "SUPERUSUARIO" -> {
+                    jPanelInicio.setVisible(false);
+                    jPanelPrincipal.setVisible(true);
+                    jPanelMenuPrincipalAdmin.setVisible(true);
+                    profesor = LoggIn.getProfesor();
+                }
+                case "ADMINISTRADOR" -> {
+                    jPanelInicio.setVisible(false);
+                    jPanelPrincipal.setVisible(true);
+                    jPanelMenuPrincipalAdmin.setVisible(true);
+                    profesor = LoggIn.getProfesor();
+                }
+                case "EQUIPO_DIRECTIVO" -> {
+                    jPanelInicio.setVisible(false);
+                    jPanelPrincipal.setVisible(true);
+                    jPanelMenuPrincipalEqdir.setVisible(true);
+                    profesor = LoggIn.getProfesor();
+                }
+                case "PROFESOR" -> {
+                    jPanelInicio.setVisible(false);
+                    jPanelPrincipal.setVisible(true);
+                    jPanelMenuPrincipalProf.setVisible(true);
+                    profesor = LoggIn.getProfesor();
+                }
+                default ->
+                System.out.println("Opcion no valida3");
+        
+            }
+            
         }else{
             JOptionPane.showMessageDialog(null,"Usuario o Contraseña incorrectos");
         }
@@ -3457,7 +3462,7 @@ public class JFrame_Principal extends javax.swing.JFrame {
 
     private void jList4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jList4MouseClicked
         // TODO add your handling code here:
-        switch (jList1.getSelectedIndex()) {
+        switch (jList4.getSelectedIndex()) {
             case 0 -> {
                 jPanelCargaDatos.setVisible(true);
                 jPanelMantenimientoDatos.setVisible(false);
@@ -3508,7 +3513,7 @@ public class JFrame_Principal extends javax.swing.JFrame {
                         jPanelDptmAdd.setVisible(false);
                         jPanelDptmEdit.setVisible(false);
                 jPanelSolicitud.setVisible(true);
-                    jPanelMenuSolicitudAdmin.setVisible(true);
+                    jPanelMenuSolicitudProf.setVisible(true);
                 jPanelActividad.setVisible(false);
                     jPanelActvdEdit.setVisible(false);
                     jPanelActvdTable.setVisible(false);
@@ -3581,7 +3586,7 @@ public class JFrame_Principal extends javax.swing.JFrame {
 
     private void jList5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jList5MouseClicked
         // TODO add your handling code here:
-        switch (jList1.getSelectedIndex()) {
+        switch (jList5.getSelectedIndex()) {
             case 0 -> {
                 jPanelCargaDatos.setVisible(false);
                 jPanelMantenimientoDatos.setVisible(false);
@@ -3602,7 +3607,7 @@ public class JFrame_Principal extends javax.swing.JFrame {
                         jPanelDptmAdd.setVisible(false);
                         jPanelDptmEdit.setVisible(false);
                 jPanelSolicitud.setVisible(true);
-                    jPanelMenuSolicitudAdmin.setVisible(true);
+                    jPanelMenuSolicitudEqdir.setVisible(true);
                 jPanelActividad.setVisible(false);
                     jPanelActvdEdit.setVisible(false);
                     jPanelActvdTable.setVisible(false);
@@ -3647,7 +3652,7 @@ public class JFrame_Principal extends javax.swing.JFrame {
 
     private void jList6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jList6MouseClicked
         // TODO add your handling code here:
-        switch (jList3.getSelectedIndex()) {
+        switch (jList6.getSelectedIndex()) {
             case 0 -> {
                 jPanelMenuSolicitudProf.setVisible(false);
                 jPanelSoliPendientes.setVisible(false);
@@ -3669,7 +3674,7 @@ public class JFrame_Principal extends javax.swing.JFrame {
 
     private void jList7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jList7MouseClicked
         // TODO add your handling code here:
-        switch (jList3.getSelectedIndex()) {
+        switch (jList7.getSelectedIndex()) {
             case 0 -> {
                 jPanelMenuSolicitudEqdir.setVisible(false);
                 jPanelSoliPendientes.setVisible(true);
@@ -3713,12 +3718,13 @@ public class JFrame_Principal extends javax.swing.JFrame {
         LocalTime horaInicio = LocalTime.parse(tfFfin1.getText(), time);
         LocalTime horaFin = LocalTime.parse(tfFfin2.getText(), time);
         
-        
-        TreeMap<Integer, Profesor> profesoresR = new TreeMap<Integer, Profesor>();/*
+       
+        TreeMap<Integer, Profesor> profesoresR = new TreeMap<Integer, Profesor>();
         String r =  tfActividad.getText();
         if(r.contains(",")){
                 String[] pr =r.split(",");
             for (int i = 0; i < pr.length ; i++) {
+                System.out.println(pr[i]);
                 profesoresR.put(i, pDAO.porNombreApellido(pr[i]));
             }
         }else if (profesoresR.isEmpty()){
@@ -3726,7 +3732,7 @@ public class JFrame_Principal extends javax.swing.JFrame {
         }else{
             profesoresR.put(profesoresR.lastKey()+1, pDAO.porNombreApellido(r));
         }
-        */
+        
         TreeMap<Integer, Profesor> profesoresP = new TreeMap<Integer, Profesor>(); /*
         String p =  tfActividad.getText();
         if(r.contains(",")){
@@ -3770,9 +3776,10 @@ public class JFrame_Principal extends javax.swing.JFrame {
         }else{
                 cursos.put(cursos.lastKey()+1, cDAO.porCodigo(cur));
        }*/
+        Solicitud solicitud = new Solicitud(profesor, tfActividad6.getText(),String.valueOf( cbTipoActividad.getSelectedItem()), profesor.getDepartamento(),cbPrevisto1.isSelected(), transporte, taTransporte.getText(),fIni, fFin, horaInicio, horaFin,cbAlojamiento.isSelected(),taTransporte1.getText(),jTextArea1.getText(), "SOLICITADA", "", profesoresP, profesoresR, grupos, cursos, numeroAlumnos);
+        sDAO.agregar(solicitud);
         
-        u.crearSolicitud(profesor, tfActividad.getText(),String.valueOf( cbTipoActividad.getSelectedItem()), profesor.getDepartamento(),cbPrevisto1.isSelected(), transporte, taTransporte.getText(),fIni, fFin, horaInicio, horaFin,cbAlojamiento.isSelected(),taTransporte1.getText(),jTextArea1.getText(), "SOLICITADA", "", profesoresP, profesoresR, grupos, cursos, numeroAlumnos);
-                
+        
     }//GEN-LAST:event_btnSendSoliActionPerformed
 
     private void cbPrevisto1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbPrevisto1ActionPerformed
