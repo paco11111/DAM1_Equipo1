@@ -12,8 +12,6 @@ Las solicitudes aprobadas tienen fotos de la actividad
 
 ## PAGINA WEB
 
-<<<<<<< HEAD
-=======
 Hemos decidido estructurar nuestra página basándonos en diseños de otras páginas de centros reales analizando los factores comunes en todas ellas y eligiendo las partes que más nos han llamado la atención.
 
 La página está planteada de tal manera que puedas acceder a cualquier parte con dos clics como máximo. 
@@ -66,6 +64,9 @@ Nuestro footer es común en todas las partes de la página. En él aparecen dato
 El footer está diseñado de tal manera que se adapte al tamaño de la página, de tal manera que los datos que están situados a lo ancho del footer se ordenen de manera vertical unas encima de otras manteniendo su formato y diseño.
 
 ![](https://github.com/paco11111/DAM1_Equipo1/blob/340a34f581aa88497dc8941bc88f132de7efa4de/Recursos/footer.PNG)
+![](https://github.com/paco11111/DAM1_Equipo1/blob/340a34f581aa88497dc8941bc88f132de7efa4de/Recursos/footer_cod.PNG)
+![](https://github.com/paco11111/DAM1_Equipo1/blob/84463836a3a3f12309a130018612e19641fbb654/Recursos/ajuste%20tama%C3%B1o.PNG
+)
 
 PÁGINA DE INICIO
 La página de inicio es simple dividido en bandas horizontales para diferenciar los segmentos y se pueda ver donde esta la informacion o como acceder a ella fácilmente. Cada un a de estas bandas tiene el titulo de la pagina a la que enlaza en grande centrado y con contraste con el fondo(es decir, si el fondo es blanco el titulo es negro y viceversa). Debajo de este título hay un botón con el que podremos acceder a las páginas referenciadas en el título.
@@ -74,6 +75,7 @@ La página de inicio es simple dividido en bandas horizontales para diferenciar 
 ![](https://github.com/paco11111/DAM1_Equipo1/blob/340a34f581aa88497dc8941bc88f132de7efa4de/Recursos/Inicio3.PNG)
 ![](https://github.com/paco11111/DAM1_Equipo1/blob/340a34f581aa88497dc8941bc88f132de7efa4de/Recursos/Inicio4.PNG)
 ![](https://github.com/paco11111/DAM1_Equipo1/blob/340a34f581aa88497dc8941bc88f132de7efa4de/Recursos/Inicio5.PNG)
+![](https://github.com/paco11111/DAM1_Equipo1/blob/84463836a3a3f12309a130018612e19641fbb654/Recursos/Formato%20de%20la%20pagina.PNG)
 
 PÁGINA DE ACTIVIDADES
 Esta página aparece de forma directa en el navegador con el título (“ACTIVIDADES”) del cual se despliegan las opciones aprobadas y solicitadas.
