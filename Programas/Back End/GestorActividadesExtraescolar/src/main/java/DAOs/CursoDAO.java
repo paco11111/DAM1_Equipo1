@@ -31,7 +31,7 @@ public class CursoDAO implements Repositorio<Curso>{
     @Override
     public List<Curso> listar() {
         List<Curso> cursos = new ArrayList<>();
-        try ( Statement stmt = getConnection().createStatement();  ResultSet rs = stmt.executeQuery("SELECT idCurso, codigo, descripcion, etapa, activo FROM cursos");) {
+        try ( Statement stmt = getConnection().createStatement();  ResultSet rs = stmt.executeQuery("SELECT * FROM cursos");) {
             while (rs.next()) {
                 Curso curso = crearCurso(rs);
                 if (!cursos.add(curso)) {
@@ -50,7 +50,7 @@ public class CursoDAO implements Repositorio<Curso>{
     
     private Curso crearCurso(final ResultSet rs) throws SQLException {
         EtapaCurso etapa = null;
-        switch (rs.getString("etapa")) {
+        switch (rs.getString("etapa").toUpperCase()) {
                 case "ESO" -> {
                     etapa = EtapaCurso.ESO;
                 }
@@ -70,7 +70,7 @@ public class CursoDAO implements Repositorio<Curso>{
                     etapa = EtapaCurso.FPCE;
                 }
                 default ->
-                    System.out.println("Opcion no valida");
+                    System.out.println("Opcion no valida7");
             }
         return new Curso( rs.getInt("idCurso"),rs.getString("codigo"),etapa, rs.getString("descripcion"),rs.getBoolean("activo"));
     }
@@ -81,6 +81,25 @@ public class CursoDAO implements Repositorio<Curso>{
         String sql = "SELECT idCurso, codigo, descripcion, etapa, activo FROM cursos WHERE idCurso = ?";
         try ( PreparedStatement stmt = getConnection().prepareStatement(sql);) {
             stmt.setInt(1, id);
+            try ( ResultSet rs = stmt.executeQuery();) {
+                if (rs.next()) {
+                    curso = crearCurso(rs);
+                }else{
+                    System.out.println("No hay curso con tal id");
+                }
+            } 
+        } catch (SQLException ex) {
+            // errores
+            System.out.println("SQLException: " + ex.getMessage());
+        }
+        return curso;
+    }
+    
+    public Curso porCodigo(String codigo) {
+        Curso curso = null;
+        String sql = "SELECT idCurso, codigo, descripcion, etapa, activo FROM cursos WHERE codigo = ?";
+        try ( PreparedStatement stmt = getConnection().prepareStatement(sql);) {
+            stmt.setString(1, codigo);
             try ( ResultSet rs = stmt.executeQuery();) {
                 if (rs.next()) {
                     curso = crearCurso(rs);

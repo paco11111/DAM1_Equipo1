@@ -17,8 +17,12 @@ public class SolicitudAprobada extends Solicitud{
     private double importeTransporte;
     private String comentarioActividad;
 
-    public SolicitudAprobada(int id, Profesor profesorSolicitante, String actividad, String tipoActividad, Departamento departamento, boolean previsto, TreeMap<Integer, Transporte> transporte, String comentarioTransporte, LocalDate fechaInicio, LocalDate fechaFinal, LocalTime horaInicio, LocalTime horaFinal, boolean alojamiento, String comentarioAlojamiento, String comentarioAdicional, String estado, String comentarioEstado, TreeMap<Integer, Profesor> profesoresParticipantes, TreeMap<Integer, Profesor> profesoresResponsables, String infoEmpresa, double importeTransportes, String infoActividad) {
-        super(id, profesorSolicitante, actividad, tipoActividad, departamento, previsto, transporte, comentarioTransporte, fechaInicio, fechaFinal, horaInicio, horaFinal, alojamiento, comentarioAlojamiento, comentarioAdicional, estado, comentarioEstado, profesoresParticipantes, profesoresResponsables);
+    public SolicitudAprobada(int id, Profesor profesorSolicitante, String actividad, String tipoActividad, Departamento departamento, boolean previsto, 
+            TreeMap<Integer, Transporte> transporte, String comentarioTransporte, LocalDate fechaInicio, LocalDate fechaFinal, LocalTime horaInicio, 
+            LocalTime horaFinal, boolean alojamiento, String comentarioAlojamiento, String comentarioAdicional, String estado, String comentarioEstado, 
+            TreeMap<Integer, Profesor> profesoresParticipantes, TreeMap<Integer, Profesor> profesoresResponsables, TreeMap <Integer, Grupo> grupos, TreeMap <Integer,Curso> cursos, int numeroAlumnos, 
+            String infoEmpresa, double importeTransportes, String infoActividad) {
+        super(id, profesorSolicitante, actividad, tipoActividad, departamento, previsto, transporte, comentarioTransporte, fechaInicio, fechaFinal, horaInicio, horaFinal, alojamiento, comentarioAlojamiento, comentarioAdicional, estado, comentarioEstado, profesoresParticipantes, profesoresResponsables, grupos, cursos, numeroAlumnos);
         this.infoEmpresaTransporte = infoEmpresa;
         this.importeTransporte = importeTransportes;
         this.comentarioActividad = infoActividad;

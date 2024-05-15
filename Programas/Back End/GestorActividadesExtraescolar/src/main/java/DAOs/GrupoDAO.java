@@ -33,7 +33,7 @@ public class GrupoDAO implements Repositorio<Grupo>{
     @Override
     public List<Grupo> listar() {
         List<Grupo> grupos = new ArrayList<>();
-        try ( Statement stmt = getConnection().createStatement();  ResultSet rs = stmt.executeQuery("SELECT idGrupo, codigo, numero_alumnos, idCurso, activo FROM grupos");) {
+        try ( Statement stmt = getConnection().createStatement();  ResultSet rs = stmt.executeQuery("SELECT * FROM grupos");) {
             while (rs.next()) {
                 Grupo grupo = crearGrupo(rs);
                 if (!grupos.add(grupo)) {
@@ -56,6 +56,24 @@ public class GrupoDAO implements Repositorio<Grupo>{
         String sql = "SELECT idGrupo, codigo, numero_alumnos, idCurso, activo FROM grupos WHERE idGrupo = ?";
         try ( PreparedStatement stmt = getConnection().prepareStatement(sql);) {
             stmt.setInt(1, id);
+            try ( ResultSet rs = stmt.executeQuery();) {
+                if (rs.next()) {
+                    grupo = crearGrupo(rs);
+                }else{
+                    System.out.println("No hay grupo con tal id");
+                }
+            } 
+        } catch (SQLException ex) {
+            // errores
+            System.out.println("SQLException: " + ex.getMessage());
+        }
+        return grupo;
+    }
+     public Grupo porCodigo(String codigo) {
+         Grupo grupo = null;
+        String sql = "SELECT idGrupo, codigo, numero_alumnos, idCurso, activo FROM grupos WHERE codigo = ?";
+        try ( PreparedStatement stmt = getConnection().prepareStatement(sql);) {
+            stmt.setString(1, codigo);
             try ( ResultSet rs = stmt.executeQuery();) {
                 if (rs.next()) {
                     grupo = crearGrupo(rs);

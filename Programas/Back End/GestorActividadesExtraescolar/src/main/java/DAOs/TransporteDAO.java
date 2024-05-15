@@ -68,6 +68,26 @@ public class TransporteDAO implements Repositorio<Transporte>{
         }
         return transporte;
     }
+    
+    
+    public Transporte porTipo(String tipo) {
+        Transporte transporte = null;
+        String sql = "SELECT idTransporte, Tipo_transporte, descripcion FROM transporte WHERE Tipo_transporte = ?";
+        try ( PreparedStatement stmt = getConnection().prepareStatement(sql);) {
+            stmt.setString(1, tipo);
+            try ( ResultSet rs = stmt.executeQuery();) {
+                if (rs.next()) {
+                    transporte = crearTransporte(rs);
+                }else{
+                    System.out.println("No hay transporte con tal tipo");
+                }
+            } 
+        } catch (SQLException ex) {
+            // errores
+            System.out.println("SQLException: " + ex.getMessage());
+        }
+        return transporte;
+    }
 
     @Override
     public void modificar(Transporte transporte) {

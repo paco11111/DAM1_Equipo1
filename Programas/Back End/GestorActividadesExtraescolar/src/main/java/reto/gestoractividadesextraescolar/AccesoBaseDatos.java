@@ -12,6 +12,8 @@ import java.util.Properties;
 /**
  *
  * @author Francisco Sitjar
+ * 
+ * Esta clase representa la conexión a la base de datos.
  */
 public class AccesoBaseDatos {
 
@@ -20,8 +22,13 @@ public class AccesoBaseDatos {
     private static final String BD = "Base_Datos_Reto";
     private static final String USUARIO = "gestor";
     private static final String CLAVE = "root";
-    private static final String URL = "jdbc:mysql://10.0.16.36:3306/" + BD;
+    private static final String URL = "jdbc:mysql://10.0.16.33:3306/" + BD;
 
+    
+    /**
+     * Constructor privado que crea una instancia para la conexión con la base de datos.
+     * Utiliza el patrón Singleton para instanciar la clase una unica vez. 
+     */
     private AccesoBaseDatos() {
 
         try {
@@ -44,22 +51,33 @@ public class AccesoBaseDatos {
         }
     }
 
+    /**
+     * Este método devuelva la instancia para la conexión. 
+     * @return La instancia AccesoBaseDatos.
+     */
     public static AccesoBaseDatos getInstance() {
         return AccesoBaseDatosHolder.INSTANCE;
 
     }
+    
+    /**
+     * Clase privada que guarda la unica instancia de conexión
+     */
 
     private static class AccesoBaseDatosHolder {
 
         private static final AccesoBaseDatos INSTANCE = new AccesoBaseDatos();
     }
 
-// método obtener la conexión
+    
     public Connection getConn() {
         return conn;
     }
 
-    // método para cerrar la conexión a la bd
+    /**
+     * Metodo que cierra la conexión con la base de datos.
+     * @return Boolean true si la conexion se ha cerrado, false en caso contrario.
+     */
     public boolean cerrar() {
         boolean siCerrada = false;
         try {
