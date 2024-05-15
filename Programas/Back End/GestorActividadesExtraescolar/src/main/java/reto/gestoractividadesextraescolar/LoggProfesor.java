@@ -12,9 +12,6 @@ import reto.gestoractividadesextraescolar.Profesor;
  * @author Fabian Saiz Landeras
  */
 public class LoggProfesor {
-    
-    
-
     private Profesor profesor;
     private String email;
     private String psswrd;

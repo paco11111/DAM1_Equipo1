@@ -15,6 +15,7 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.TreeMap;
 import reto.gestoractividadesextraescolar.AccesoBaseDatos;
 import reto.gestoractividadesextraescolar.Curso;
@@ -286,7 +287,40 @@ public class SolicitudDAO implements Repositorio<Solicitud>{
                 throw new Exception(" No se ha insertado/modificado un solo registro en profesores");
             }
 
-        } catch (SQLException ex) {
+        }
+        catch (SQLException ex) {
+            // errores
+            System.out.println("SQLException: " + ex.getMessage());
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+        try ( PreparedStatement stmt = getConnection().prepareStatement("INSERT INTO idProfes_participantes (idProfe, idSolicitud) VALUES (?,?)");) {
+            for(Map.Entry<Integer, Profesor> entry : solicitud.getProfesoresParticipantes().entrySet()){
+                stmt.setInt(1, entry.getValue().getId());
+                stmt.setInt(2, solicitud.getId());
+                 int salida = stmt.executeUpdate();
+                if (salida != 1) {
+                    throw new Exception(" No se ha insertado/modificado un solo registro en profesores");
+                }
+            }
+        }
+        catch (SQLException ex) {
+            // errores
+            System.out.println("SQLException: " + ex.getMessage());
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+        try ( PreparedStatement stmt = getConnection().prepareStatement("INSERT INTO idProfes_responsables (idProfe, idSolicitud) VALUES (?,?)");) {
+            for(Map.Entry<Integer, Profesor> entry : solicitud.getProfesoresResponsables().entrySet()){
+                stmt.setInt(1, entry.getValue().getId());
+                stmt.setInt(2, solicitud.getId());
+                 int salida = stmt.executeUpdate();
+                if (salida != 1) {
+                    throw new Exception(" No se ha insertado/modificado un solo registro en profesores");
+                }
+            }
+        }
+        catch (SQLException ex) {
             // errores
             System.out.println("SQLException: " + ex.getMessage());
         } catch (Exception ex) {
