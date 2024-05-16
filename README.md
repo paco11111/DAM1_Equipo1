@@ -1,6 +1,6 @@
 # DOCUMENTACION
 ## BASE DE DATOS:
-
+### DESCARGA LA MAQUINA VIRTUAL [AQUI](https://drive.google.com/file/d/1AeOy5H-OqsGziam-21jSSha79k780nbx/view?usp=sharing)
 La base de datos consiste en un login el cual compara email y password (md5)
 Luego una vez dentro hay Profesores que son Jefes de un departamento,los profesores pueden solicitar las actividades de dos maneras,profesores responsables y profesores participantes
 Cuando un profesor hace una solicitud,tiene que indicar que tipo de actividad es,informacion sobre el transporte, fecha de inicio y fin, si tiene alojamiento o no y
