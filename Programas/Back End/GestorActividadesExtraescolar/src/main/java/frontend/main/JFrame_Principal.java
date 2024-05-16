@@ -608,6 +608,11 @@ public class JFrame_Principal extends javax.swing.JFrame {
         jLabel67.setText("Departamento :");
 
         btnEliminarProf.setText("Eliminar");
+        btnEliminarProf.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarProfActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanelProfEditLayout = new javax.swing.GroupLayout(jPanelProfEdit);
         jPanelProfEdit.setLayout(jPanelProfEditLayout);
@@ -705,14 +710,14 @@ public class JFrame_Principal extends javax.swing.JFrame {
         jPanelProfTableLayout.setVerticalGroup(
             jPanelProfTableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelProfTableLayout.createSequentialGroup()
-                .addContainerGap(597, Short.MAX_VALUE)
+                .addContainerGap(595, Short.MAX_VALUE)
                 .addComponent(btnAddProf)
                 .addGap(36, 36, 36))
             .addGroup(jPanelProfTableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanelProfTableLayout.createSequentialGroup()
                     .addGap(47, 47, 47)
                     .addComponent(jScrollPane26, javax.swing.GroupLayout.PREFERRED_SIZE, 509, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(100, Short.MAX_VALUE)))
+                    .addContainerGap(98, Short.MAX_VALUE)))
         );
 
         jPanelProfAdd.setBackground(new java.awt.Color(51, 51, 51));
@@ -824,11 +829,11 @@ public class JFrame_Principal extends javax.swing.JFrame {
             .addGap(0, 656, Short.MAX_VALUE)
             .addGroup(jLayeredPane3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jLayeredPane3Layout.createSequentialGroup()
-                    .addComponent(jPanelProfEdit, javax.swing.GroupLayout.DEFAULT_SIZE, 655, Short.MAX_VALUE)
+                    .addComponent(jPanelProfEdit, javax.swing.GroupLayout.DEFAULT_SIZE, 654, Short.MAX_VALUE)
                     .addGap(0, 2, Short.MAX_VALUE)))
             .addGroup(jLayeredPane3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jLayeredPane3Layout.createSequentialGroup()
-                    .addComponent(jPanelProfTable, javax.swing.GroupLayout.DEFAULT_SIZE, 655, Short.MAX_VALUE)
+                    .addComponent(jPanelProfTable, javax.swing.GroupLayout.DEFAULT_SIZE, 654, Short.MAX_VALUE)
                     .addGap(0, 2, Short.MAX_VALUE)))
             .addGroup(jLayeredPane3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jLayeredPane3Layout.createSequentialGroup()
@@ -883,6 +888,11 @@ public class JFrame_Principal extends javax.swing.JFrame {
         jLabel79.setText("Etapa :");
 
         btnEliminarCurso.setText("Eliminar");
+        btnEliminarCurso.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarCursoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanelCursoEditLayout = new javax.swing.GroupLayout(jPanelCursoEdit);
         jPanelCursoEdit.setLayout(jPanelCursoEditLayout);
@@ -1134,6 +1144,11 @@ public class JFrame_Principal extends javax.swing.JFrame {
         spGrupoAlu1.setPreferredSize(new java.awt.Dimension(88, 22));
 
         btnEliminarGrupo.setText("Eliminar");
+        btnEliminarGrupo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarGrupoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanelGrupoEditLayout = new javax.swing.GroupLayout(jPanelGrupoEdit);
         jPanelGrupoEdit.setLayout(jPanelGrupoEditLayout);
@@ -1370,6 +1385,11 @@ public class JFrame_Principal extends javax.swing.JFrame {
         jLabel102.setText("Jefe departamento :");
 
         btnEliminarDptm.setText("Eliminar");
+        btnEliminarDptm.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarDptmActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanelDptmEditLayout = new javax.swing.GroupLayout(jPanelDptmEdit);
         jPanelDptmEdit.setLayout(jPanelDptmEditLayout);
@@ -1401,7 +1421,7 @@ public class JFrame_Principal extends javax.swing.JFrame {
         jPanelDptmEditLayout.setVerticalGroup(
             jPanelDptmEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelDptmEditLayout.createSequentialGroup()
-                .addContainerGap(130, Short.MAX_VALUE)
+                .addContainerGap(154, Short.MAX_VALUE)
                 .addGroup(jPanelDptmEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(tfDptmName1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel100))
@@ -2195,6 +2215,11 @@ public class JFrame_Principal extends javax.swing.JFrame {
         });
 
         btnEliminarSoli.setText("Eliminar");
+        btnEliminarSoli.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarSoliActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanelEditSoliLayout = new javax.swing.GroupLayout(jPanelEditSoli);
         jPanelEditSoli.setLayout(jPanelEditSoliLayout);
@@ -2788,6 +2813,11 @@ public class JFrame_Principal extends javax.swing.JFrame {
         });
 
         btnEliminarActvd.setText("Eliminar");
+        btnEliminarActvd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarActvdActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanelActvdEditLayout = new javax.swing.GroupLayout(jPanelActvdEdit);
         jPanelActvdEdit.setLayout(jPanelActvdEditLayout);
@@ -4154,6 +4184,7 @@ public class JFrame_Principal extends javax.swing.JFrame {
         //Boton para enviar los cambios de edicion de la tabla solicitudes a la base de datos
         jPanelSoliTable.setVisible(true);
         jPanelEditSoli.setVisible(false);
+        
     }//GEN-LAST:event_btnEditSoliActionPerformed
 
     private void cbEditSoliPrevistoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbEditSoliPrevistoActionPerformed
@@ -4183,6 +4214,43 @@ public class JFrame_Principal extends javax.swing.JFrame {
     private void tfActvdProfParActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfActvdProfParActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_tfActvdProfParActionPerformed
+
+    private void btnEliminarProfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarProfActionPerformed
+        // TODO add your handling code here:
+        jPanelProfTable.setVisible(true);
+        jPanelProfEdit.setVisible(false);
+    }//GEN-LAST:event_btnEliminarProfActionPerformed
+
+    private void btnEliminarCursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarCursoActionPerformed
+        // TODO add your handling code here:
+        jPanelCursoTable.setVisible(true);
+        jPanelCursoEdit.setVisible(false);
+    }//GEN-LAST:event_btnEliminarCursoActionPerformed
+
+    private void btnEliminarGrupoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarGrupoActionPerformed
+        // TODO add your handling code here:
+        jPanelGrupoTable.setVisible(true);
+        jPanelGrupoEdit.setVisible(false);
+    }//GEN-LAST:event_btnEliminarGrupoActionPerformed
+
+    private void btnEliminarDptmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarDptmActionPerformed
+        // TODO add your handling code here:
+        jPanelDptmTable.setVisible(true);
+        jPanelDptmEdit.setVisible(false);
+    }//GEN-LAST:event_btnEliminarDptmActionPerformed
+
+    private void btnEliminarSoliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarSoliActionPerformed
+        // TODO add your handling code here:
+        jPanelSoliTable.setVisible(true);
+        jPanelEditSoli.setVisible(false);
+    }//GEN-LAST:event_btnEliminarSoliActionPerformed
+
+    private void btnEliminarActvdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActvdActionPerformed
+        // TODO add your handling code here:
+        jPanelActvdEdit.setVisible(false);
+        jPanelActvdTable.setVisible(false);
+        jPanelActvdInfo.setVisible(true);
+    }//GEN-LAST:event_btnEliminarActvdActionPerformed
 
 
     //metodo para poder mostrar las imagenes necesarias para la aplicacion
