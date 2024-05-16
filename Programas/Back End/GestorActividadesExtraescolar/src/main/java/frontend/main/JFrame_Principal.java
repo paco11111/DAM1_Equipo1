@@ -39,6 +39,7 @@ import reto.gestoractividadesextraescolar.Transporte;
  * @author Fabian Saiz Landeras
  */
 public class JFrame_Principal extends javax.swing.JFrame {
+
     // Atributos añadidos manualmente
     Profesor profesor;
     SolicitudDAO sDAO = new SolicitudDAO();
@@ -46,52 +47,57 @@ public class JFrame_Principal extends javax.swing.JFrame {
     ProfesorDAO pDAO = new ProfesorDAO();
     GrupoDAO gDAO = new GrupoDAO();
     CursoDAO cDAO = new CursoDAO();
+    DepartamentoDAO dDAO = new DepartamentoDAO();
+    
 
     /**
      * Creates new form JFrame_Principal
      */
     public JFrame_Principal() {
-        
+
         initComponents();
         mostrarImagen1();
+        for(Departamento d : dDAO.listar()){
+            cbProfDep1.addItem(d.getCodigo());
+            cbProfDep2.addItem(d.getCodigo());
+        }
         jPanelInicio.setVisible(true);
         jPanelPrincipal.setVisible(false);
-            jPanelMenuPrincipalAdmin.setVisible(false);
-            jPanelMenuPrincipalProf.setVisible(false);
-            jPanelMenuPrincipalEqdir.setVisible(false);
-                jPanelCargaDatos.setVisible(false);
-                jPanelMantenimientoDatos.setVisible(false);
-                    jPanelMenuDatos.setVisible(false);
-                        jPanelProf.setVisible(false);
-                            jPanelProfTable.setVisible(false);
-                            jPanelProfAdd.setVisible(false);
-                            jPanelProfEdit.setVisible(false);
-                        jPanelCurso.setVisible(false);
-                            jPanelCursoTable.setVisible(false);
-                            jPanelCursoAdd.setVisible(false);
-                            jPanelCursoEdit.setVisible(false);
-                        jPanelGrupo.setVisible(false);
-                            jPanelGrupoTable.setVisible(false);
-                            jPanelGrupoAdd.setVisible(false);
-                            jPanelGrupoEdit.setVisible(false);
-                        jPanelDeptm.setVisible(false);
-                            jPanelDptmTable.setVisible(false);
-                            jPanelDptmAdd.setVisible(false);
-                            jPanelDptmEdit.setVisible(false);
-                jPanelSolicitud.setVisible(false);
-                    jPanelMenuSolicitudAdmin.setVisible(false);
-                    jPanelMenuSolicitudProf.setVisible(false);
-                    jPanelMenuSolicitudEqdir.setVisible(false);
-                        jPanelSoliPendientes.setVisible(false);
-                        jPanelSoliNueva.setVisible(false);
-                        jPanelSoliUsu.setVisible(false);
-                            jPanelSoliTable.setVisible(false);
-                            jPanelEditSoli.setVisible(false);
-                jPanelActividad.setVisible(false);
-                    jPanelActvdEdit.setVisible(false);
-                    jPanelActvdTable.setVisible(false);
-                    jPanelActvdInfo.setVisible(false);
-        
+        jPanelMenuPrincipalAdmin.setVisible(false);
+        jPanelMenuPrincipalProf.setVisible(false);
+        jPanelMenuPrincipalEqdir.setVisible(false);
+        jPanelCargaDatos.setVisible(false);
+        jPanelMantenimientoDatos.setVisible(false);
+        jPanelMenuDatos.setVisible(false);
+        jPanelProf.setVisible(false);
+        jPanelProfTable.setVisible(false);
+        jPanelProfAdd.setVisible(false);
+        jPanelProfEdit.setVisible(false);
+        jPanelCurso.setVisible(false);
+        jPanelCursoTable.setVisible(false);
+        jPanelCursoAdd.setVisible(false);
+        jPanelCursoEdit.setVisible(false);
+        jPanelGrupo.setVisible(false);
+        jPanelGrupoTable.setVisible(false);
+        jPanelGrupoAdd.setVisible(false);
+        jPanelGrupoEdit.setVisible(false);
+        jPanelDeptm.setVisible(false);
+        jPanelDptmTable.setVisible(false);
+        jPanelDptmAdd.setVisible(false);
+        jPanelDptmEdit.setVisible(false);
+        jPanelSolicitud.setVisible(false);
+        jPanelMenuSolicitudAdmin.setVisible(false);
+        jPanelMenuSolicitudProf.setVisible(false);
+        jPanelMenuSolicitudEqdir.setVisible(false);
+        jPanelSoliPendientes.setVisible(false);
+        jPanelSoliNueva.setVisible(false);
+        jPanelSoliUsu.setVisible(false);
+        jPanelSoliTable.setVisible(false);
+        jPanelEditSoli.setVisible(false);
+        jPanelActividad.setVisible(false);
+        jPanelActvdEdit.setVisible(false);
+        jPanelActvdTable.setVisible(false);
+        jPanelActvdInfo.setVisible(false);
 
     }
 
@@ -565,8 +571,6 @@ public class JFrame_Principal extends javax.swing.JFrame {
 
         chbProfActivo1.setText("Activo");
 
-        cbProfDep1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "BG", "DIB", "ECO", "EF", "FIL", "FQ", "FRA", "GH", "ING", "LAT", "LEN", "MAT", "MUS", "TEC", "AG", "FOL", "INF", "FM", "TMV" }));
-
         jLabel67.setBackground(new java.awt.Color(51, 51, 51));
         jLabel67.setForeground(new java.awt.Color(204, 204, 204));
         jLabel67.setText("Departamento :");
@@ -599,7 +603,7 @@ public class JFrame_Principal extends javax.swing.JFrame {
                         .addComponent(jLabel67)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(cbProfDep1, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(133, Short.MAX_VALUE))
+                .addContainerGap(132, Short.MAX_VALUE))
         );
         jPanelProfEditLayout.setVerticalGroup(
             jPanelProfEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -622,7 +626,7 @@ public class JFrame_Principal extends javax.swing.JFrame {
                 .addGroup(jPanelProfEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(chbProfActivo1)
                     .addComponent(btnSendEditProf))
-                .addContainerGap(357, Short.MAX_VALUE))
+                .addContainerGap(343, Short.MAX_VALUE))
         );
 
         jPanelProfTable.setBackground(new java.awt.Color(51, 51, 51));
@@ -651,7 +655,7 @@ public class JFrame_Principal extends javax.swing.JFrame {
         jPanelProfTableLayout.setHorizontalGroup(
             jPanelProfTableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelProfTableLayout.createSequentialGroup()
-                .addContainerGap(686, Short.MAX_VALUE)
+                .addContainerGap(682, Short.MAX_VALUE)
                 .addComponent(btnAddProf)
                 .addGap(14, 14, 14))
             .addGroup(jPanelProfTableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -663,7 +667,7 @@ public class JFrame_Principal extends javax.swing.JFrame {
         jPanelProfTableLayout.setVerticalGroup(
             jPanelProfTableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelProfTableLayout.createSequentialGroup()
-                .addContainerGap(597, Short.MAX_VALUE)
+                .addContainerGap(593, Short.MAX_VALUE)
                 .addComponent(btnAddProf)
                 .addGap(36, 36, 36))
             .addGroup(jPanelProfTableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -701,8 +705,6 @@ public class JFrame_Principal extends javax.swing.JFrame {
 
         chbProfActivo2.setText("Activo");
 
-        cbProfDep2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
         javax.swing.GroupLayout jPanelProfAddLayout = new javax.swing.GroupLayout(jPanelProfAdd);
         jPanelProfAdd.setLayout(jPanelProfAddLayout);
         jPanelProfAddLayout.setHorizontalGroup(
@@ -732,7 +734,7 @@ public class JFrame_Principal extends javax.swing.JFrame {
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addComponent(cbProfDep2, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(btnAplyAddProf, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(133, Short.MAX_VALUE))
+                .addContainerGap(132, Short.MAX_VALUE))
         );
         jPanelProfAddLayout.setVerticalGroup(
             jPanelProfAddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -753,7 +755,7 @@ public class JFrame_Principal extends javax.swing.JFrame {
                 .addGroup(jPanelProfAddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(chbProfActivo2)
                     .addComponent(btnAplyAddProf))
-                .addContainerGap(357, Short.MAX_VALUE))
+                .addContainerGap(334, Short.MAX_VALUE))
         );
 
         jLayeredPane3.setLayer(jPanelProfEdit, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -764,7 +766,7 @@ public class JFrame_Principal extends javax.swing.JFrame {
         jLayeredPane3.setLayout(jLayeredPane3Layout);
         jLayeredPane3Layout.setHorizontalGroup(
             jLayeredPane3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 812, Short.MAX_VALUE)
+            .addGap(0, 824, Short.MAX_VALUE)
             .addGroup(jLayeredPane3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(jPanelProfEdit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(jLayeredPane3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -780,16 +782,16 @@ public class JFrame_Principal extends javax.swing.JFrame {
             .addGap(0, 656, Short.MAX_VALUE)
             .addGroup(jLayeredPane3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jLayeredPane3Layout.createSequentialGroup()
-                    .addComponent(jPanelProfEdit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanelProfEdit, javax.swing.GroupLayout.DEFAULT_SIZE, 646, Short.MAX_VALUE)
                     .addGap(0, 0, Short.MAX_VALUE)))
             .addGroup(jLayeredPane3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jLayeredPane3Layout.createSequentialGroup()
-                    .addComponent(jPanelProfTable, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanelProfTable, javax.swing.GroupLayout.DEFAULT_SIZE, 646, Short.MAX_VALUE)
                     .addGap(0, 0, Short.MAX_VALUE)))
             .addGroup(jLayeredPane3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jLayeredPane3Layout.createSequentialGroup()
                     .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanelProfAdd, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanelProfAdd, javax.swing.GroupLayout.DEFAULT_SIZE, 638, Short.MAX_VALUE)
                     .addGap(2, 2, 2)))
         );
 
@@ -799,14 +801,14 @@ public class JFrame_Principal extends javax.swing.JFrame {
             jPanelProfLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelProfLayout.createSequentialGroup()
                 .addGap(3, 3, 3)
-                .addComponent(jLayeredPane3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLayeredPane3, 824, 824, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(3, 3, 3))
         );
         jPanelProfLayout.setVerticalGroup(
             jPanelProfLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelProfLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLayeredPane3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLayeredPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 646, Short.MAX_VALUE)
                 .addGap(4, 4, 4))
         );
 
@@ -817,6 +819,12 @@ public class JFrame_Principal extends javax.swing.JFrame {
 
         jPanelCursoEdit.setBackground(new java.awt.Color(51, 51, 51));
         jPanelCursoEdit.setPreferredSize(new java.awt.Dimension(812, 632));
+
+        tfCursoDesc1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tfCursoDesc1ActionPerformed(evt);
+            }
+        });
 
         jLabel68.setBackground(new java.awt.Color(51, 51, 51));
         jLabel68.setForeground(new java.awt.Color(204, 204, 204));
@@ -835,7 +843,7 @@ public class JFrame_Principal extends javax.swing.JFrame {
 
         chbCursoActivo1.setText("Activo");
 
-        cbCursoEtapa1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbCursoEtapa1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ESO", "Bachillerato", "FPB", "FPGM", "FPGS", "FPCE" }));
 
         jLabel79.setBackground(new java.awt.Color(51, 51, 51));
         jLabel79.setForeground(new java.awt.Color(204, 204, 204));
@@ -863,7 +871,7 @@ public class JFrame_Principal extends javax.swing.JFrame {
                                 .addComponent(jLabel79)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(cbCursoEtapa1, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(124, Short.MAX_VALUE))
+                .addContainerGap(123, Short.MAX_VALUE))
         );
         jPanelCursoEditLayout.setVerticalGroup(
             jPanelCursoEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -938,7 +946,7 @@ public class JFrame_Principal extends javax.swing.JFrame {
 
         chbCursoActivo2.setText("Activo");
 
-        cbCursoEtapa2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbCursoEtapa2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ESO", "Bachillerato", "FPB", "FPGM", "FPGS", "FPCE" }));
 
         jLabel112.setBackground(new java.awt.Color(51, 51, 51));
         jLabel112.setForeground(new java.awt.Color(204, 204, 204));
@@ -1541,9 +1549,9 @@ public class JFrame_Principal extends javax.swing.JFrame {
             jLayersMenuDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jLayersMenuDatosLayout.createSequentialGroup()
                 .addComponent(jPanelMenuDatos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 639, Short.MAX_VALUE))
+                .addGap(0, 657, Short.MAX_VALUE))
             .addGroup(jLayersMenuDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jPanelProf, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jPanelProf, javax.swing.GroupLayout.Alignment.TRAILING, 830, 830, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(jLayersMenuDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(jPanelCurso, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(jLayersMenuDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1908,7 +1916,7 @@ public class JFrame_Principal extends javax.swing.JFrame {
                                 .addComponent(jLabel3)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(cbTipoActividad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(101, Short.MAX_VALUE))
+                .addContainerGap(97, Short.MAX_VALUE))
         );
         jPanelSoliNuevaLayout.setVerticalGroup(
             jPanelSoliNuevaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1941,7 +1949,7 @@ public class JFrame_Principal extends javax.swing.JFrame {
                         .addGroup(jPanelSoliNuevaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel10)
                             .addComponent(tfFfin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(18, 23, Short.MAX_VALUE)
+                .addGap(18, 18, Short.MAX_VALUE)
                 .addGroup(jPanelSoliNuevaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelSoliNuevaLayout.createSequentialGroup()
                         .addComponent(jLabel16)
@@ -2481,7 +2489,7 @@ public class JFrame_Principal extends javax.swing.JFrame {
                                 .addComponent(jScrollPane17, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addComponent(jScrollPane19, javax.swing.GroupLayout.PREFERRED_SIZE, 568, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(btnSendEditActvd, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(122, Short.MAX_VALUE))
+                .addContainerGap(114, Short.MAX_VALUE))
         );
         jPanelActvdEditLayout.setVerticalGroup(
             jPanelActvdEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2536,7 +2544,7 @@ public class JFrame_Principal extends javax.swing.JFrame {
 
         jScrollPane13.setPreferredSize(new java.awt.Dimension(812, 600));
 
-        jTableActvd.setModel(MostrarTabla.mostrarSolicitudResponsable(profesor)
+        jTableActvd.setModel(MostrarTabla.mostrarSolicitud()
         );
         jTableActvd.setPreferredSize(new java.awt.Dimension(800, 500));
         jTableActvd.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -2559,12 +2567,12 @@ public class JFrame_Principal extends javax.swing.JFrame {
         );
         jPanelActvdTableLayout.setVerticalGroup(
             jPanelActvdTableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 656, Short.MAX_VALUE)
+            .addGap(0, 632, Short.MAX_VALUE)
             .addGroup(jPanelActvdTableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanelActvdTableLayout.createSequentialGroup()
                     .addGap(16, 16, 16)
                     .addComponent(jScrollPane13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(40, Short.MAX_VALUE)))
+                    .addContainerGap(16, Short.MAX_VALUE)))
         );
 
         jPanelActvdInfo.setBackground(new java.awt.Color(51, 51, 51));
@@ -2754,7 +2762,7 @@ public class JFrame_Principal extends javax.swing.JFrame {
                     .addContainerGap()))
             .addGroup(jLayersMenuPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jLayersMenuPrincipalLayout.createSequentialGroup()
-                    .addComponent(jPanelMantenimientoDatos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanelMantenimientoDatos, 830, 830, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addContainerGap()))
             .addGroup(jLayersMenuPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jLayersMenuPrincipalLayout.createSequentialGroup()
@@ -2959,8 +2967,8 @@ public class JFrame_Principal extends javax.swing.JFrame {
         String pass = txCnna.getText();
 
         if (LoggIn.validar(usu, pass)) {
-            switch(LoggIn.getUsuario().toUpperCase()){
-                 case "SUPERUSUARIO" -> {
+            switch (LoggIn.getUsuario().toUpperCase()) {
+                case "SUPERUSUARIO" -> {
                     jPanelInicio.setVisible(false);
                     jPanelPrincipal.setVisible(true);
                     jPanelMenuPrincipalAdmin.setVisible(true);
@@ -2985,15 +2993,14 @@ public class JFrame_Principal extends javax.swing.JFrame {
                     profesor = LoggIn.getProfesor();
                 }
                 default ->
-                System.out.println("Opcion no valida3");
-        
+                    System.out.println("Opcion no valida3");
+
             }
-            
-        }else{
-            JOptionPane.showMessageDialog(null,"Usuario o Contraseña incorrectos");
+
+        } else {
+            JOptionPane.showMessageDialog(null, "Usuario o Contraseña incorrectos");
         }
-        
-        
+
     }//GEN-LAST:event_btnSesionActionPerformed
 
     private void txCnnaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txCnnaActionPerformed
@@ -3011,167 +3018,168 @@ public class JFrame_Principal extends javax.swing.JFrame {
             case 0 -> {
                 jPanelCargaDatos.setVisible(true);
                 jPanelMantenimientoDatos.setVisible(false);
-                    jPanelProf.setVisible(false);
-                        jPanelProfTable.setVisible(false);
-                        jPanelProfAdd.setVisible(false);
-                        jPanelProfEdit.setVisible(false);
-                    jPanelCurso.setVisible(false);
-                        jPanelCursoTable.setVisible(false);
-                        jPanelCursoAdd.setVisible(false);
-                        jPanelCursoEdit.setVisible(false);
-                    jPanelGrupo.setVisible(false);
-                        jPanelGrupoTable.setVisible(false);
-                        jPanelGrupoAdd.setVisible(false);
-                        jPanelGrupoEdit.setVisible(false);
-                    jPanelDeptm.setVisible(false);
-                        jPanelDptmTable.setVisible(false);
-                        jPanelDptmAdd.setVisible(false);
-                        jPanelDptmEdit.setVisible(false);
+                jPanelProf.setVisible(false);
+                jPanelProfTable.setVisible(false);
+                jPanelProfAdd.setVisible(false);
+                jPanelProfEdit.setVisible(false);
+                jPanelCurso.setVisible(false);
+                jPanelCursoTable.setVisible(false);
+                jPanelCursoAdd.setVisible(false);
+                jPanelCursoEdit.setVisible(false);
+                jPanelGrupo.setVisible(false);
+                jPanelGrupoTable.setVisible(false);
+                jPanelGrupoAdd.setVisible(false);
+                jPanelGrupoEdit.setVisible(false);
+                jPanelDeptm.setVisible(false);
+                jPanelDptmTable.setVisible(false);
+                jPanelDptmAdd.setVisible(false);
+                jPanelDptmEdit.setVisible(false);
                 jPanelSolicitud.setVisible(false);
-                    jPanelSoliPendientes.setVisible(false);
-                    jPanelSoliNueva.setVisible(false);
-                    jPanelSoliUsu.setVisible(false);
-                        jPanelSoliTable.setVisible(false);
-                        jPanelEditSoli.setVisible(false);
+                jPanelSoliPendientes.setVisible(false);
+                jPanelSoliNueva.setVisible(false);
+                jPanelSoliUsu.setVisible(false);
+                jPanelSoliTable.setVisible(false);
+                jPanelEditSoli.setVisible(false);
                 jPanelActividad.setVisible(false);
-                    jPanelActvdEdit.setVisible(false);
-                    jPanelActvdTable.setVisible(false);
-                    jPanelActvdInfo.setVisible(false);
+                jPanelActvdEdit.setVisible(false);
+                jPanelActvdTable.setVisible(false);
+                jPanelActvdInfo.setVisible(false);
             }
             case 1 -> {
                 jPanelCargaDatos.setVisible(false);
                 jPanelMantenimientoDatos.setVisible(true);
-                    jPanelMenuDatos.setVisible(true);
+                jPanelMenuDatos.setVisible(true);
                 jPanelSolicitud.setVisible(false);
-                    jPanelSoliPendientes.setVisible(false);
-                    jPanelSoliNueva.setVisible(false);
-                    jPanelSoliUsu.setVisible(false);
-                        jPanelSoliTable.setVisible(false);
-                        jPanelEditSoli.setVisible(false);
+                jPanelSoliPendientes.setVisible(false);
+                jPanelSoliNueva.setVisible(false);
+                jPanelSoliUsu.setVisible(false);
+                jPanelSoliTable.setVisible(false);
+                jPanelEditSoli.setVisible(false);
                 jPanelActividad.setVisible(false);
-                    jPanelActvdEdit.setVisible(false);
-                    jPanelActvdTable.setVisible(false);
-                    jPanelActvdInfo.setVisible(false);
-                
+                jPanelActvdEdit.setVisible(false);
+                jPanelActvdTable.setVisible(false);
+                jPanelActvdInfo.setVisible(false);
+
             }
             case 2 -> {
                 jPanelCargaDatos.setVisible(false);
                 jPanelMantenimientoDatos.setVisible(false);
-                    jPanelProf.setVisible(false);
-                        jPanelProfTable.setVisible(false);
-                        jPanelProfAdd.setVisible(false);
-                        jPanelProfEdit.setVisible(false);
-                    jPanelCurso.setVisible(false);
-                        jPanelCursoTable.setVisible(false);
-                        jPanelCursoAdd.setVisible(false);
-                        jPanelCursoEdit.setVisible(false);
-                    jPanelGrupo.setVisible(false);
-                        jPanelGrupoTable.setVisible(false);
-                        jPanelGrupoAdd.setVisible(false);
-                        jPanelGrupoEdit.setVisible(false);
-                    jPanelDeptm.setVisible(false);
-                        jPanelDptmTable.setVisible(false);
-                        jPanelDptmAdd.setVisible(false);
-                        jPanelDptmEdit.setVisible(false);
+                jPanelProf.setVisible(false);
+                jPanelProfTable.setVisible(false);
+                jPanelProfAdd.setVisible(false);
+                jPanelProfEdit.setVisible(false);
+                jPanelCurso.setVisible(false);
+                jPanelCursoTable.setVisible(false);
+                jPanelCursoAdd.setVisible(false);
+                jPanelCursoEdit.setVisible(false);
+                jPanelGrupo.setVisible(false);
+                jPanelGrupoTable.setVisible(false);
+                jPanelGrupoAdd.setVisible(false);
+                jPanelGrupoEdit.setVisible(false);
+                jPanelDeptm.setVisible(false);
+                jPanelDptmTable.setVisible(false);
+                jPanelDptmAdd.setVisible(false);
+                jPanelDptmEdit.setVisible(false);
                 jPanelSolicitud.setVisible(true);
-                    jPanelMenuSolicitudAdmin.setVisible(true);
+                jPanelMenuSolicitudAdmin.setVisible(true);
                 jPanelActividad.setVisible(false);
-                    jPanelActvdEdit.setVisible(false);
-                    jPanelActvdTable.setVisible(false);
-                    jPanelActvdInfo.setVisible(false);
+                jPanelActvdEdit.setVisible(false);
+                jPanelActvdTable.setVisible(false);
+                jPanelActvdInfo.setVisible(false);
             }
             case 3 -> {
                 jPanelCargaDatos.setVisible(false);
                 jPanelMantenimientoDatos.setVisible(false);
-                    jPanelProf.setVisible(false);
-                        jPanelProfTable.setVisible(false);
-                        jPanelProfAdd.setVisible(false);
-                        jPanelProfEdit.setVisible(false);
-                    jPanelCurso.setVisible(false);
-                        jPanelCursoTable.setVisible(false);
-                        jPanelCursoAdd.setVisible(false);
-                        jPanelCursoEdit.setVisible(false);
-                    jPanelGrupo.setVisible(false);
-                        jPanelGrupoTable.setVisible(false);
-                        jPanelGrupoAdd.setVisible(false);
-                        jPanelGrupoEdit.setVisible(false);
-                    jPanelDeptm.setVisible(false);
-                        jPanelDptmTable.setVisible(false);
-                        jPanelDptmAdd.setVisible(false);
-                        jPanelDptmEdit.setVisible(false);
+                jPanelProf.setVisible(false);
+                jPanelProfTable.setVisible(false);
+                jPanelProfAdd.setVisible(false);
+                jPanelProfEdit.setVisible(false);
+                jPanelCurso.setVisible(false);
+                jPanelCursoTable.setVisible(false);
+                jPanelCursoAdd.setVisible(false);
+                jPanelCursoEdit.setVisible(false);
+                jPanelGrupo.setVisible(false);
+                jPanelGrupoTable.setVisible(false);
+                jPanelGrupoAdd.setVisible(false);
+                jPanelGrupoEdit.setVisible(false);
+                jPanelDeptm.setVisible(false);
+                jPanelDptmTable.setVisible(false);
+                jPanelDptmAdd.setVisible(false);
+                jPanelDptmEdit.setVisible(false);
                 jPanelSolicitud.setVisible(false);
-                    jPanelSoliPendientes.setVisible(false);
-                    jPanelSoliNueva.setVisible(false);
-                    jPanelSoliUsu.setVisible(false);
-                        jPanelSoliTable.setVisible(false);
-                        jPanelEditSoli.setVisible(false);
+                jPanelSoliPendientes.setVisible(false);
+                jPanelSoliNueva.setVisible(false);
+                jPanelSoliUsu.setVisible(false);
+                jPanelSoliTable.setVisible(false);
+                jPanelEditSoli.setVisible(false);
                 jPanelActividad.setVisible(true);
-                    jPanelActvdTable.setVisible(true);
+                jPanelActvdTable.setVisible(true);
             }
             case 4 -> {
                 jPanelInicio.setVisible(true);
-                jPanelPrincipal.setVisible(false); 
+                jPanelPrincipal.setVisible(false);
                 jPanelCargaDatos.setVisible(false);
                 jPanelMantenimientoDatos.setVisible(false);
-                    jPanelProf.setVisible(false);
-                        jPanelProfTable.setVisible(false);
-                        jPanelProfAdd.setVisible(false);
-                        jPanelProfEdit.setVisible(false);
-                    jPanelCurso.setVisible(false);
-                        jPanelCursoTable.setVisible(false);
-                        jPanelCursoAdd.setVisible(false);
-                        jPanelCursoEdit.setVisible(false);
-                    jPanelGrupo.setVisible(false);
-                        jPanelGrupoTable.setVisible(false);
-                        jPanelGrupoAdd.setVisible(false);
-                        jPanelGrupoEdit.setVisible(false);
-                    jPanelDeptm.setVisible(false);
-                        jPanelDptmTable.setVisible(false);
-                        jPanelDptmAdd.setVisible(false);
-                        jPanelDptmEdit.setVisible(false);
+                jPanelProf.setVisible(false);
+                jPanelProfTable.setVisible(false);
+                jPanelProfAdd.setVisible(false);
+                jPanelProfEdit.setVisible(false);
+                jPanelCurso.setVisible(false);
+                jPanelCursoTable.setVisible(false);
+                jPanelCursoAdd.setVisible(false);
+                jPanelCursoEdit.setVisible(false);
+                jPanelGrupo.setVisible(false);
+                jPanelGrupoTable.setVisible(false);
+                jPanelGrupoAdd.setVisible(false);
+                jPanelGrupoEdit.setVisible(false);
+                jPanelDeptm.setVisible(false);
+                jPanelDptmTable.setVisible(false);
+                jPanelDptmAdd.setVisible(false);
+                jPanelDptmEdit.setVisible(false);
                 jPanelSolicitud.setVisible(false);
-                    jPanelSoliPendientes.setVisible(false);
-                    jPanelSoliNueva.setVisible(false);
-                    jPanelSoliUsu.setVisible(false);
-                        jPanelSoliTable.setVisible(false);
-                        jPanelEditSoli.setVisible(false);
+                jPanelSoliPendientes.setVisible(false);
+                jPanelSoliNueva.setVisible(false);
+                jPanelSoliUsu.setVisible(false);
+                jPanelSoliTable.setVisible(false);
+                jPanelEditSoli.setVisible(false);
                 jPanelActividad.setVisible(false);
-                    jPanelActvdEdit.setVisible(false);
-                    jPanelActvdTable.setVisible(false);
-                    jPanelActvdInfo.setVisible(false);
+                jPanelActvdEdit.setVisible(false);
+                jPanelActvdTable.setVisible(false);
+                jPanelActvdInfo.setVisible(false);
             }
             default -> {
             }
         }
     }//GEN-LAST:event_jList1MouseClicked
     private String texto;
-    public String ruta(){
+
+    public String ruta() {
         return texto;
     }
     private void btnCSVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCSVActionPerformed
         // TODO add your handling code here:/
         boolean condicion = false;
-        do{
+        do {
             JFileChooser fileChooser = new JFileChooser();
             int response = fileChooser.showOpenDialog(null);
-            if(response == JFileChooser.APPROVE_OPTION){
+            if (response == JFileChooser.APPROVE_OPTION) {
                 if (fileChooser.getSelectedFile().getAbsolutePath().toString().endsWith(".csv")) {
                     texto = fileChooser.getSelectedFile().getAbsolutePath();
                     txFile.setText(texto);
                     condicion = true;
-                }else{
+                } else {
                     JOptionPane.showMessageDialog(this, "El archivo seleccionado no esta soportado por la base de datos",
                             "Error", JOptionPane.ERROR_MESSAGE);
                 }
-            }else if (response != JFileChooser.APPROVE_OPTION) {
+            } else if (response != JFileChooser.APPROVE_OPTION) {
                 txFile.setText("Selecciona un CSV desde tu dispositivo");
                 condicion = true;
             }
-        }while(condicion == false);
-        
+        } while (condicion == false);
+
         BufferedReader reader = null;
-        
-       // String line = "";
+
+        // String line = "";
     }//GEN-LAST:event_btnCSVActionPerformed
 
     private void btnCSVupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCSVupActionPerformed
@@ -3179,7 +3187,7 @@ public class JFrame_Principal extends javax.swing.JFrame {
         String file = texto;
         if (txFile.getText().equals("Selecciona un CSV desde tu dispositivo")) {
             JOptionPane.showMessageDialog(this, "Selecciona un archivo para importar");
-        }else{
+        } else {
             int confirmar;
             confirmar = JOptionPane.showConfirmDialog(this, "¿Estas seguro de importar el archivo seleccionado?", "Verificar accion", ICONIFIED);
             if (confirmar == JOptionPane.YES_OPTION) {
@@ -3188,13 +3196,13 @@ public class JFrame_Principal extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, "Archivo importado correctamente");
                 pbCSV.setValue(100);
                 LectorCSV.lectorCSV(file);
-            }else if (confirmar == JOptionPane.NO_OPTION) {
+            } else if (confirmar == JOptionPane.NO_OPTION) {
                 System.out.println("Operacion interrumpida");
                 txFile.setText("Selecciona un CSV desde tu dispositivo");
                 JOptionPane.showMessageDialog(this, "Operacion interrumpida");
             }
         }
-        
+
     }//GEN-LAST:event_btnCSVupActionPerformed
 
     private void jList2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jList2MouseClicked
@@ -3203,78 +3211,78 @@ public class JFrame_Principal extends javax.swing.JFrame {
             case 0 -> {
                 jPanelMenuDatos.setVisible(false);
                 jPanelProf.setVisible(true);
-                    jPanelProfTable.setVisible(true);
-                    jPanelProfAdd.setVisible(false);
-                    jPanelProfEdit.setVisible(false);
+                jPanelProfTable.setVisible(true);
+                jPanelProfAdd.setVisible(false);
+                jPanelProfEdit.setVisible(false);
                 jPanelCurso.setVisible(false);
-                    jPanelCursoTable.setVisible(false);
-                    jPanelCursoAdd.setVisible(false);
-                    jPanelCursoEdit.setVisible(false);
+                jPanelCursoTable.setVisible(false);
+                jPanelCursoAdd.setVisible(false);
+                jPanelCursoEdit.setVisible(false);
                 jPanelGrupo.setVisible(false);
-                    jPanelGrupoTable.setVisible(false);
-                    jPanelGrupoAdd.setVisible(false);
-                    jPanelGrupoEdit.setVisible(false);
+                jPanelGrupoTable.setVisible(false);
+                jPanelGrupoAdd.setVisible(false);
+                jPanelGrupoEdit.setVisible(false);
                 jPanelDeptm.setVisible(false);
-                    jPanelDptmTable.setVisible(false);
-                    jPanelDptmAdd.setVisible(false);
-                    jPanelDptmEdit.setVisible(false);
+                jPanelDptmTable.setVisible(false);
+                jPanelDptmAdd.setVisible(false);
+                jPanelDptmEdit.setVisible(false);
             }
             case 1 -> {
                 jPanelMenuDatos.setVisible(false);
                 jPanelProf.setVisible(false);
-                    jPanelProfTable.setVisible(false);
-                    jPanelProfAdd.setVisible(false);
-                    jPanelProfEdit.setVisible(false);
+                jPanelProfTable.setVisible(false);
+                jPanelProfAdd.setVisible(false);
+                jPanelProfEdit.setVisible(false);
                 jPanelCurso.setVisible(true);
-                    jPanelCursoTable.setVisible(true);
-                    jPanelCursoAdd.setVisible(false);
-                    jPanelCursoEdit.setVisible(false);
+                jPanelCursoTable.setVisible(true);
+                jPanelCursoAdd.setVisible(false);
+                jPanelCursoEdit.setVisible(false);
                 jPanelGrupo.setVisible(false);
-                    jPanelGrupoTable.setVisible(false);
-                    jPanelGrupoAdd.setVisible(false);
-                    jPanelGrupoEdit.setVisible(false);
+                jPanelGrupoTable.setVisible(false);
+                jPanelGrupoAdd.setVisible(false);
+                jPanelGrupoEdit.setVisible(false);
                 jPanelDeptm.setVisible(false);
-                    jPanelDptmTable.setVisible(false);
-                    jPanelDptmAdd.setVisible(false);
-                    jPanelDptmEdit.setVisible(false);
+                jPanelDptmTable.setVisible(false);
+                jPanelDptmAdd.setVisible(false);
+                jPanelDptmEdit.setVisible(false);
             }
             case 2 -> {
                 jPanelMenuDatos.setVisible(false);
                 jPanelProf.setVisible(false);
-                    jPanelProfTable.setVisible(false);
-                    jPanelProfAdd.setVisible(false);
-                    jPanelProfEdit.setVisible(false);
+                jPanelProfTable.setVisible(false);
+                jPanelProfAdd.setVisible(false);
+                jPanelProfEdit.setVisible(false);
                 jPanelCurso.setVisible(false);
-                    jPanelCursoTable.setVisible(false);
-                    jPanelCursoAdd.setVisible(false);
-                    jPanelCursoEdit.setVisible(false);
+                jPanelCursoTable.setVisible(false);
+                jPanelCursoAdd.setVisible(false);
+                jPanelCursoEdit.setVisible(false);
                 jPanelGrupo.setVisible(true);
-                    jPanelGrupoTable.setVisible(true);
-                    jPanelGrupoAdd.setVisible(false);
-                    jPanelGrupoEdit.setVisible(false);
+                jPanelGrupoTable.setVisible(true);
+                jPanelGrupoAdd.setVisible(false);
+                jPanelGrupoEdit.setVisible(false);
                 jPanelDeptm.setVisible(false);
-                    jPanelDptmTable.setVisible(false);
-                    jPanelDptmAdd.setVisible(false);
-                    jPanelDptmEdit.setVisible(false);
+                jPanelDptmTable.setVisible(false);
+                jPanelDptmAdd.setVisible(false);
+                jPanelDptmEdit.setVisible(false);
             }
             case 3 -> {
                 jPanelMenuDatos.setVisible(false);
                 jPanelProf.setVisible(false);
-                    jPanelProfTable.setVisible(true);
-                    jPanelProfAdd.setVisible(false);
-                    jPanelProfEdit.setVisible(false);
+                jPanelProfTable.setVisible(true);
+                jPanelProfAdd.setVisible(false);
+                jPanelProfEdit.setVisible(false);
                 jPanelCurso.setVisible(false);
-                    jPanelCursoTable.setVisible(false);
-                    jPanelCursoAdd.setVisible(false);
-                    jPanelCursoEdit.setVisible(false);
+                jPanelCursoTable.setVisible(false);
+                jPanelCursoAdd.setVisible(false);
+                jPanelCursoEdit.setVisible(false);
                 jPanelGrupo.setVisible(false);
-                    jPanelGrupoTable.setVisible(false);
-                    jPanelGrupoAdd.setVisible(false);
-                    jPanelGrupoEdit.setVisible(false);
+                jPanelGrupoTable.setVisible(false);
+                jPanelGrupoAdd.setVisible(false);
+                jPanelGrupoEdit.setVisible(false);
                 jPanelDeptm.setVisible(true);
-                    jPanelDptmTable.setVisible(true);
-                    jPanelDptmAdd.setVisible(false);
-                    jPanelDptmEdit.setVisible(false);
+                jPanelDptmTable.setVisible(true);
+                jPanelDptmAdd.setVisible(false);
+                jPanelDptmEdit.setVisible(false);
             }
             default -> {
             }
@@ -3302,8 +3310,8 @@ public class JFrame_Principal extends javax.swing.JFrame {
                 jPanelSoliPendientes.setVisible(false);
                 jPanelSoliNueva.setVisible(false);
                 jPanelSoliUsu.setVisible(true);
-                    jPanelSoliTable.setVisible(true);
-                    jPanelEditSoli.setVisible(false);
+                jPanelSoliTable.setVisible(true);
+                jPanelEditSoli.setVisible(false);
             }
             default -> {
             }
@@ -3318,7 +3326,7 @@ public class JFrame_Principal extends javax.swing.JFrame {
         // TODO add your handling code here:
         String info = "";
         for (int i = 1; i < 20; i++) {
-            info += jTableSoliPendientes.getValueAt(jTableSoliPendientes.getSelectedRow(), i).toString()+"\n";
+            info += jTableSoliPendientes.getValueAt(jTableSoliPendientes.getSelectedRow(), i).toString() + "\n";
         }
         tpSoliPendientes.setText(info);
     }//GEN-LAST:event_jTableSoliPendientesMouseClicked
@@ -3369,6 +3377,10 @@ public class JFrame_Principal extends javax.swing.JFrame {
         // TODO add your handling code here:
         jPanelProfTable.setVisible(true);
         jPanelProfEdit.setVisible(false);
+        
+        pDAO.modificar(new Profesor(Integer.parseInt(jTableProf.getValueAt(jTableProf.getSelectedRow(),0).toString()), tfProfName1.getText(), tfProfSurNa1.getText(), tfProfDNI1.getText(), dDAO.porCodigo(String.valueOf(cbProfDep1.getSelectedItem())),chbProfActivo1.isSelected()));
+         jTableProf.setModel(MostrarTabla.mostrarProfesor());
+        
     }//GEN-LAST:event_btnSendEditProfActionPerformed
 
     private void jTableProfMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableProfMouseClicked
@@ -3381,37 +3393,44 @@ public class JFrame_Principal extends javax.swing.JFrame {
         if (jTableProf.getValueAt(jTableProf.getSelectedRow(), 5).toString().equals("Si")) {
             chbProfActivo1.setSelected(rootPaneCheckingEnabled);
         }
-        //Falta la combo box xisco
+        
     }//GEN-LAST:event_jTableProfMouseClicked
 
     private void btnAplyAddProfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAplyAddProfActionPerformed
         // TODO add your handling code here:
         jPanelProfTable.setVisible(true);
         jPanelProfAdd.setVisible(false);
+        
+        pDAO.agregar(new Profesor(tfProfName2.getText(), tfProfSurNa2.getText(), tfProfDNI2.getText(), dDAO.porCodigo(String.valueOf(cbProfDep2.getSelectedItem())),chbProfActivo2.isSelected()));
+        jTableProf.setModel(MostrarTabla.mostrarProfesor());
     }//GEN-LAST:event_btnAplyAddProfActionPerformed
 
     private void btnSendEditCursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSendEditCursoActionPerformed
         // TODO add your handling code here:
         jPanelCursoTable.setVisible(true);
         jPanelCursoEdit.setVisible(false);
+        //System.out.println(Integer.parseInt(jTableProf.getValueAt(jTableProf.getSelectedRow(),0).toString()) + tfCursoCod1.getText() +  String.valueOf(cbCursoEtapa1.getSelectedItem()) + tfCursoDesc1.getText() + chbCursoActivo1.isSelected());
+        cDAO.modificar(new Curso(Integer.parseInt(jTableCurso.getValueAt(jTableCurso.getSelectedRow(),0).toString()), tfCursoCod1.getText(), String.valueOf(cbCursoEtapa1.getSelectedItem()), tfCursoDesc1.getText(),chbCursoActivo1.isSelected()));
+        jTableCurso.setModel(MostrarTabla.mostrarCurso());
     }//GEN-LAST:event_btnSendEditCursoActionPerformed
 
     private void jTableCursoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableCursoMouseClicked
         // TODO add your handling code here:
         jPanelCursoTable.setVisible(false);
         jPanelCursoEdit.setVisible(true);
-        tfCursoDesc1.setText(jTableCurso.getValueAt(jTableCurso.getSelectedRow(), 1).toString());
-        tfCursoCod1.setText(jTableCurso.getValueAt(jTableCurso.getSelectedRow(), 3).toString());
+        tfCursoDesc1.setText(jTableCurso.getValueAt(jTableCurso.getSelectedRow(), 3).toString());
+        tfCursoCod1.setText(jTableCurso.getValueAt(jTableCurso.getSelectedRow(), 1).toString());
         if (jTableCurso.getValueAt(jTableCurso.getSelectedRow(), 4).toString().equals("Si")) {
             chbCursoActivo1.setSelected(rootPaneCheckingEnabled);
         }
-        //Falta la combo box xisco
     }//GEN-LAST:event_jTableCursoMouseClicked
 
     private void btnSendEditGrupoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSendEditGrupoActionPerformed
         // TODO add your handling code here:
         jPanelGrupoTable.setVisible(true);
         jPanelGrupoEdit.setVisible(false);
+        gDAO.modificar(new Grupo(Integer.parseInt(jTableGrupo.getValueAt(jTableGrupo.getSelectedRow(),0).toString()), tfGrupoCod1.getText(),(Integer) spGrupoAlu1.getValue(),cDAO.porCodigo(jTableGrupo.getValueAt(jTableGrupo.getSelectedRow(),2).toString()),chbGrupoActivo1.isSelected()));
+        jTableGrupo.setModel(MostrarTabla.mostrarGrupo());
     }//GEN-LAST:event_btnSendEditGrupoActionPerformed
 
     private void jTableGrupoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableGrupoMouseClicked
@@ -3428,6 +3447,8 @@ public class JFrame_Principal extends javax.swing.JFrame {
         // TODO add your handling code here:
         jPanelDptmTable.setVisible(true);
         jPanelDptmEdit.setVisible(false);
+        dDAO.modificar(new Departamento(Integer.parseInt(jTableDptm.getValueAt(jTableDptm.getSelectedRow(),0).toString()),tfDptmCod1.getText(), tfDptmName1.getText(),pDAO.porNombreApellido(tfDptmJefe1.getText())));
+        jTableDptm.setModel(MostrarTabla.mostrarDepartamento());
     }//GEN-LAST:event_btnSendEditDptmActionPerformed
 
     private void jTableDptmMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableDptmMouseClicked
@@ -3443,12 +3464,19 @@ public class JFrame_Principal extends javax.swing.JFrame {
         // TODO add your handling code here:
         jPanelCursoTable.setVisible(true);
         jPanelCursoAdd.setVisible(false);
+        
+        //adasdasdadasda
+        cDAO.agregar(new Curso( tfCursoCod2.getText(), String.valueOf(cbCursoEtapa2.getSelectedItem()),tfCursoDesc2.getText(), chbCursoActivo2.isSelected()));
+        jTableCurso.setModel(MostrarTabla.mostrarCurso());
     }//GEN-LAST:event_btnAplyAddCursoActionPerformed
 
     private void btnAplyAddGrupoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAplyAddGrupoActionPerformed
         // TODO add your handling code here:
         jPanelGrupoTable.setVisible(true);
         jPanelGrupoAdd.setVisible(false);
+        gDAO.agregar(new Grupo (tfGrupoCod2.getText(),(Integer)spGrupoAlu2.getValue(),cDAO.porCodigo(jTableGrupo.getValueAt(jTableGrupo.getSelectedRow(),2).toString()),chbGrupoActivo2.isSelected()));
+        jTableGrupo.setModel(MostrarTabla.mostrarGrupo());
+        
     }//GEN-LAST:event_btnAplyAddGrupoActionPerformed
 
     private void btnAddProfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddProfActionPerformed
@@ -3461,6 +3489,8 @@ public class JFrame_Principal extends javax.swing.JFrame {
         // TODO add your handling code here:
         jPanelDptmTable.setVisible(true);
         jPanelDptmAdd.setVisible(false);
+        dDAO.agregar(new Departamento(tfDptmCod2.getText(), tfDptmName2.getText(),pDAO.porNombreApellido(tfDptmJefe2.getText())));
+        jTableDptm.setModel(MostrarTabla.mostrarDepartamento());
     }//GEN-LAST:event_btnAplyAddDptmActionPerformed
 
     private void btnAddCursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddCursoActionPerformed
@@ -3488,118 +3518,118 @@ public class JFrame_Principal extends javax.swing.JFrame {
             case 0 -> {
                 jPanelCargaDatos.setVisible(true);
                 jPanelMantenimientoDatos.setVisible(false);
-                    jPanelProf.setVisible(false);
-                        jPanelProfTable.setVisible(false);
-                        jPanelProfAdd.setVisible(false);
-                        jPanelProfEdit.setVisible(false);
-                    jPanelCurso.setVisible(false);
-                        jPanelCursoTable.setVisible(false);
-                        jPanelCursoAdd.setVisible(false);
-                        jPanelCursoEdit.setVisible(false);
-                    jPanelGrupo.setVisible(false);
-                        jPanelGrupoTable.setVisible(false);
-                        jPanelGrupoAdd.setVisible(false);
-                        jPanelGrupoEdit.setVisible(false);
-                    jPanelDeptm.setVisible(false);
-                        jPanelDptmTable.setVisible(false);
-                        jPanelDptmAdd.setVisible(false);
-                        jPanelDptmEdit.setVisible(false);
+                jPanelProf.setVisible(false);
+                jPanelProfTable.setVisible(false);
+                jPanelProfAdd.setVisible(false);
+                jPanelProfEdit.setVisible(false);
+                jPanelCurso.setVisible(false);
+                jPanelCursoTable.setVisible(false);
+                jPanelCursoAdd.setVisible(false);
+                jPanelCursoEdit.setVisible(false);
+                jPanelGrupo.setVisible(false);
+                jPanelGrupoTable.setVisible(false);
+                jPanelGrupoAdd.setVisible(false);
+                jPanelGrupoEdit.setVisible(false);
+                jPanelDeptm.setVisible(false);
+                jPanelDptmTable.setVisible(false);
+                jPanelDptmAdd.setVisible(false);
+                jPanelDptmEdit.setVisible(false);
                 jPanelSolicitud.setVisible(false);
-                    jPanelSoliPendientes.setVisible(false);
-                    jPanelSoliNueva.setVisible(false);
-                    jPanelSoliUsu.setVisible(false);
-                        jPanelSoliTable.setVisible(false);
-                        jPanelEditSoli.setVisible(false);
+                jPanelSoliPendientes.setVisible(false);
+                jPanelSoliNueva.setVisible(false);
+                jPanelSoliUsu.setVisible(false);
+                jPanelSoliTable.setVisible(false);
+                jPanelEditSoli.setVisible(false);
                 jPanelActividad.setVisible(false);
-                    jPanelActvdEdit.setVisible(false);
-                    jPanelActvdTable.setVisible(false);
-                    jPanelActvdInfo.setVisible(false);
+                jPanelActvdEdit.setVisible(false);
+                jPanelActvdTable.setVisible(false);
+                jPanelActvdInfo.setVisible(false);
             }
             case 1 -> {
                 jPanelCargaDatos.setVisible(false);
                 jPanelMantenimientoDatos.setVisible(false);
-                    jPanelProf.setVisible(false);
-                        jPanelProfTable.setVisible(false);
-                        jPanelProfAdd.setVisible(false);
-                        jPanelProfEdit.setVisible(false);
-                    jPanelCurso.setVisible(false);
-                        jPanelCursoTable.setVisible(false);
-                        jPanelCursoAdd.setVisible(false);
-                        jPanelCursoEdit.setVisible(false);
-                    jPanelGrupo.setVisible(false);
-                        jPanelGrupoTable.setVisible(false);
-                        jPanelGrupoAdd.setVisible(false);
-                        jPanelGrupoEdit.setVisible(false);
-                    jPanelDeptm.setVisible(false);
-                        jPanelDptmTable.setVisible(false);
-                        jPanelDptmAdd.setVisible(false);
-                        jPanelDptmEdit.setVisible(false);
+                jPanelProf.setVisible(false);
+                jPanelProfTable.setVisible(false);
+                jPanelProfAdd.setVisible(false);
+                jPanelProfEdit.setVisible(false);
+                jPanelCurso.setVisible(false);
+                jPanelCursoTable.setVisible(false);
+                jPanelCursoAdd.setVisible(false);
+                jPanelCursoEdit.setVisible(false);
+                jPanelGrupo.setVisible(false);
+                jPanelGrupoTable.setVisible(false);
+                jPanelGrupoAdd.setVisible(false);
+                jPanelGrupoEdit.setVisible(false);
+                jPanelDeptm.setVisible(false);
+                jPanelDptmTable.setVisible(false);
+                jPanelDptmAdd.setVisible(false);
+                jPanelDptmEdit.setVisible(false);
                 jPanelSolicitud.setVisible(true);
-                    jPanelMenuSolicitudProf.setVisible(true);
+                jPanelMenuSolicitudProf.setVisible(true);
                 jPanelActividad.setVisible(false);
-                    jPanelActvdEdit.setVisible(false);
-                    jPanelActvdTable.setVisible(false);
-                    jPanelActvdInfo.setVisible(false);
+                jPanelActvdEdit.setVisible(false);
+                jPanelActvdTable.setVisible(false);
+                jPanelActvdInfo.setVisible(false);
             }
             case 2 -> {
                 jPanelCargaDatos.setVisible(false);
                 jPanelMantenimientoDatos.setVisible(false);
-                    jPanelProf.setVisible(false);
-                        jPanelProfTable.setVisible(false);
-                        jPanelProfAdd.setVisible(false);
-                        jPanelProfEdit.setVisible(false);
-                    jPanelCurso.setVisible(false);
-                        jPanelCursoTable.setVisible(false);
-                        jPanelCursoAdd.setVisible(false);
-                        jPanelCursoEdit.setVisible(false);
-                    jPanelGrupo.setVisible(false);
-                        jPanelGrupoTable.setVisible(false);
-                        jPanelGrupoAdd.setVisible(false);
-                        jPanelGrupoEdit.setVisible(false);
-                    jPanelDeptm.setVisible(false);
-                        jPanelDptmTable.setVisible(false);
-                        jPanelDptmAdd.setVisible(false);
-                        jPanelDptmEdit.setVisible(false);
+                jPanelProf.setVisible(false);
+                jPanelProfTable.setVisible(false);
+                jPanelProfAdd.setVisible(false);
+                jPanelProfEdit.setVisible(false);
+                jPanelCurso.setVisible(false);
+                jPanelCursoTable.setVisible(false);
+                jPanelCursoAdd.setVisible(false);
+                jPanelCursoEdit.setVisible(false);
+                jPanelGrupo.setVisible(false);
+                jPanelGrupoTable.setVisible(false);
+                jPanelGrupoAdd.setVisible(false);
+                jPanelGrupoEdit.setVisible(false);
+                jPanelDeptm.setVisible(false);
+                jPanelDptmTable.setVisible(false);
+                jPanelDptmAdd.setVisible(false);
+                jPanelDptmEdit.setVisible(false);
                 jPanelSolicitud.setVisible(false);
-                    jPanelSoliPendientes.setVisible(false);
-                    jPanelSoliNueva.setVisible(false);
-                    jPanelSoliUsu.setVisible(false);
-                        jPanelSoliTable.setVisible(false);
-                        jPanelEditSoli.setVisible(false);
+                jPanelSoliPendientes.setVisible(false);
+                jPanelSoliNueva.setVisible(false);
+                jPanelSoliUsu.setVisible(false);
+                jPanelSoliTable.setVisible(false);
+                jPanelEditSoli.setVisible(false);
                 jPanelActividad.setVisible(true);
-                    jPanelActvdTable.setVisible(true);
+                jPanelActvdTable.setVisible(true);
             }
             case 3 -> {
                 jPanelInicio.setVisible(true);
-                jPanelPrincipal.setVisible(false); 
+                jPanelPrincipal.setVisible(false);
                 jPanelCargaDatos.setVisible(false);
                 jPanelMantenimientoDatos.setVisible(false);
-                    jPanelProf.setVisible(false);
-                        jPanelProfTable.setVisible(false);
-                        jPanelProfAdd.setVisible(false);
-                        jPanelProfEdit.setVisible(false);
-                    jPanelCurso.setVisible(false);
-                        jPanelCursoTable.setVisible(false);
-                        jPanelCursoAdd.setVisible(false);
-                        jPanelCursoEdit.setVisible(false);
-                    jPanelGrupo.setVisible(false);
-                        jPanelGrupoTable.setVisible(false);
-                        jPanelGrupoAdd.setVisible(false);
-                        jPanelGrupoEdit.setVisible(false);
-                    jPanelDeptm.setVisible(false);
-                        jPanelDptmTable.setVisible(false);
-                        jPanelDptmAdd.setVisible(false);
-                        jPanelDptmEdit.setVisible(false);
+                jPanelProf.setVisible(false);
+                jPanelProfTable.setVisible(false);
+                jPanelProfAdd.setVisible(false);
+                jPanelProfEdit.setVisible(false);
+                jPanelCurso.setVisible(false);
+                jPanelCursoTable.setVisible(false);
+                jPanelCursoAdd.setVisible(false);
+                jPanelCursoEdit.setVisible(false);
+                jPanelGrupo.setVisible(false);
+                jPanelGrupoTable.setVisible(false);
+                jPanelGrupoAdd.setVisible(false);
+                jPanelGrupoEdit.setVisible(false);
+                jPanelDeptm.setVisible(false);
+                jPanelDptmTable.setVisible(false);
+                jPanelDptmAdd.setVisible(false);
+                jPanelDptmEdit.setVisible(false);
                 jPanelSolicitud.setVisible(false);
-                    jPanelSoliPendientes.setVisible(false);
-                    jPanelSoliNueva.setVisible(false);
-                    jPanelSoliUsu.setVisible(false);
-                        jPanelSoliTable.setVisible(false);
-                        jPanelEditSoli.setVisible(false);
+                jPanelSoliPendientes.setVisible(false);
+                jPanelSoliNueva.setVisible(false);
+                jPanelSoliUsu.setVisible(false);
+                jPanelSoliTable.setVisible(false);
+                jPanelEditSoli.setVisible(false);
                 jPanelActividad.setVisible(false);
-                    jPanelActvdEdit.setVisible(false);
-                    jPanelActvdTable.setVisible(false);
-                    jPanelActvdInfo.setVisible(false);
+                jPanelActvdEdit.setVisible(false);
+                jPanelActvdTable.setVisible(false);
+                jPanelActvdInfo.setVisible(false);
             }
             default -> {
             }
@@ -3612,60 +3642,60 @@ public class JFrame_Principal extends javax.swing.JFrame {
             case 0 -> {
                 jPanelCargaDatos.setVisible(false);
                 jPanelMantenimientoDatos.setVisible(false);
-                    jPanelProf.setVisible(false);
-                        jPanelProfTable.setVisible(false);
-                        jPanelProfAdd.setVisible(false);
-                        jPanelProfEdit.setVisible(false);
-                    jPanelCurso.setVisible(false);
-                        jPanelCursoTable.setVisible(false);
-                        jPanelCursoAdd.setVisible(false);
-                        jPanelCursoEdit.setVisible(false);
-                    jPanelGrupo.setVisible(false);
-                        jPanelGrupoTable.setVisible(false);
-                        jPanelGrupoAdd.setVisible(false);
-                        jPanelGrupoEdit.setVisible(false);
-                    jPanelDeptm.setVisible(false);
-                        jPanelDptmTable.setVisible(false);
-                        jPanelDptmAdd.setVisible(false);
-                        jPanelDptmEdit.setVisible(false);
+                jPanelProf.setVisible(false);
+                jPanelProfTable.setVisible(false);
+                jPanelProfAdd.setVisible(false);
+                jPanelProfEdit.setVisible(false);
+                jPanelCurso.setVisible(false);
+                jPanelCursoTable.setVisible(false);
+                jPanelCursoAdd.setVisible(false);
+                jPanelCursoEdit.setVisible(false);
+                jPanelGrupo.setVisible(false);
+                jPanelGrupoTable.setVisible(false);
+                jPanelGrupoAdd.setVisible(false);
+                jPanelGrupoEdit.setVisible(false);
+                jPanelDeptm.setVisible(false);
+                jPanelDptmTable.setVisible(false);
+                jPanelDptmAdd.setVisible(false);
+                jPanelDptmEdit.setVisible(false);
                 jPanelSolicitud.setVisible(true);
-                    jPanelMenuSolicitudEqdir.setVisible(true);
+                jPanelMenuSolicitudEqdir.setVisible(true);
                 jPanelActividad.setVisible(false);
-                    jPanelActvdEdit.setVisible(false);
-                    jPanelActvdTable.setVisible(false);
-                    jPanelActvdInfo.setVisible(false);
+                jPanelActvdEdit.setVisible(false);
+                jPanelActvdTable.setVisible(false);
+                jPanelActvdInfo.setVisible(false);
             }
             case 1 -> {
                 jPanelInicio.setVisible(true);
-                jPanelPrincipal.setVisible(false); 
+                jPanelPrincipal.setVisible(false);
                 jPanelCargaDatos.setVisible(false);
                 jPanelMantenimientoDatos.setVisible(false);
-                    jPanelProf.setVisible(false);
-                        jPanelProfTable.setVisible(false);
-                        jPanelProfAdd.setVisible(false);
-                        jPanelProfEdit.setVisible(false);
-                    jPanelCurso.setVisible(false);
-                        jPanelCursoTable.setVisible(false);
-                        jPanelCursoAdd.setVisible(false);
-                        jPanelCursoEdit.setVisible(false);
-                    jPanelGrupo.setVisible(false);
-                        jPanelGrupoTable.setVisible(false);
-                        jPanelGrupoAdd.setVisible(false);
-                        jPanelGrupoEdit.setVisible(false);
-                    jPanelDeptm.setVisible(false);
-                        jPanelDptmTable.setVisible(false);
-                        jPanelDptmAdd.setVisible(false);
-                        jPanelDptmEdit.setVisible(false);
+                jPanelProf.setVisible(false);
+                jPanelProfTable.setVisible(false);
+                jPanelProfAdd.setVisible(false);
+                jPanelProfEdit.setVisible(false);
+                jPanelCurso.setVisible(false);
+                jPanelCursoTable.setVisible(false);
+                jPanelCursoAdd.setVisible(false);
+                jPanelCursoEdit.setVisible(false);
+                jPanelGrupo.setVisible(false);
+                jPanelGrupoTable.setVisible(false);
+                jPanelGrupoAdd.setVisible(false);
+                jPanelGrupoEdit.setVisible(false);
+                jPanelDeptm.setVisible(false);
+                jPanelDptmTable.setVisible(false);
+                jPanelDptmAdd.setVisible(false);
+                jPanelDptmEdit.setVisible(false);
                 jPanelSolicitud.setVisible(false);
-                    jPanelSoliPendientes.setVisible(false);
-                    jPanelSoliNueva.setVisible(false);
-                    jPanelSoliUsu.setVisible(false);
-                        jPanelSoliTable.setVisible(false);
-                        jPanelEditSoli.setVisible(false);
+                jPanelSoliPendientes.setVisible(false);
+                jPanelSoliNueva.setVisible(false);
+                jPanelSoliUsu.setVisible(false);
+                jPanelSoliTable.setVisible(false);
+                jPanelEditSoli.setVisible(false);
                 jPanelActividad.setVisible(false);
-                    jPanelActvdEdit.setVisible(false);
-                    jPanelActvdTable.setVisible(false);
-                    jPanelActvdInfo.setVisible(false);
+                jPanelActvdEdit.setVisible(false);
+                jPanelActvdTable.setVisible(false);
+                jPanelActvdInfo.setVisible(false);
             }
             default -> {
             }
@@ -3686,8 +3716,8 @@ public class JFrame_Principal extends javax.swing.JFrame {
                 jPanelSoliPendientes.setVisible(false);
                 jPanelSoliNueva.setVisible(false);
                 jPanelSoliUsu.setVisible(true);
-                    jPanelSoliTable.setVisible(true);
-                    jPanelEditSoli.setVisible(false);
+                jPanelSoliTable.setVisible(true);
+                jPanelEditSoli.setVisible(false);
             }
             default -> {
             }
@@ -3731,78 +3761,74 @@ public class JFrame_Principal extends javax.swing.JFrame {
                     tDAO.agregar(new Transporte(tra, ""));
                     transporte.put(transporte.lastKey()+1, tDAO.porTipo(tra));
                 }
-    
-        */
-        
-        DateTimeFormatter f = DateTimeFormatter.ofPattern("dd-MM-yyyy").withLocale(new Locale("es","ES"));
+         */
+
+        DateTimeFormatter f = DateTimeFormatter.ofPattern("dd-MM-yyyy").withLocale(new Locale("es", "ES"));
         LocalDate fIni = LocalDate.parse(tfFini.getText(), f);
         LocalDate fFin = LocalDate.parse(tfFfin.getText(), f);
-        DateTimeFormatter time = DateTimeFormatter.ofPattern("HH:mm").withLocale(new Locale("es","ES"));
+        DateTimeFormatter time = DateTimeFormatter.ofPattern("HH:mm").withLocale(new Locale("es", "ES"));
         LocalTime horaInicio = LocalTime.parse(tfFfin1.getText(), time);
         LocalTime horaFin = LocalTime.parse(tfFfin2.getText(), time);
-        
-       
+
         TreeMap<Integer, Profesor> profesoresR = new TreeMap<Integer, Profesor>();
-        String r =  tfActividad.getText();
-        if(r.contains(",")){
-                String[] pr =r.split(",");
-            for (int i = 0; i < pr.length ; i++) {
-                System.out.println(pr[i]);
+        String r = tfActividad.getText();
+        if (r.contains(",")) {
+            String[] pr = r.split(",");
+            for (int i = 0; i < pr.length; i++) {
                 profesoresR.put(i, pDAO.porNombreApellido(pr[i]));
             }
-        }else if (profesoresR.isEmpty()){
+        } else if (profesoresR.isEmpty()) {
             profesoresR.put(1, pDAO.porNombreApellido(r));
-        }else{
-            profesoresR.put(profesoresR.lastKey()+1, pDAO.porNombreApellido(r));
+        } else {
+            profesoresR.put(profesoresR.lastKey() + 1, pDAO.porNombreApellido(r));
         }
-        
-        TreeMap<Integer, Profesor> profesoresP = new TreeMap<Integer, Profesor>(); /*
-        String p =  tfActividad.getText();
-        if(r.contains(",")){
-                String[] pr =r.split(",");
-            for (int i = 0; i < pr.length ; i++) {
+
+        TreeMap<Integer, Profesor> profesoresP = new TreeMap<Integer, Profesor>();
+        String p = tfActividad1.getText();
+        if (r.contains(",")) {
+            String[] pr = p.split(",");
+            for (int i = 0; i < pr.length; i++) {
                 profesoresP.put(i, pDAO.porNombreApellido(p));
             }
-        }else if(profesoresP.isEmpty()){
+        } else if (profesoresP.isEmpty()) {
             profesoresR.put(1, pDAO.porNombreApellido(p));
-        }else{
-            profesoresR.put(profesoresP.lastKey()+1, pDAO.porNombreApellido(p));
+        } else {
+            profesoresR.put(profesoresP.lastKey() + 1, pDAO.porNombreApellido(p));
         }
-        */int numeroAlumnos = 0;
-        TreeMap<Integer, Grupo> grupos = new TreeMap<Integer, Grupo>();/*
+        int numeroAlumnos = 0;
+        TreeMap<Integer, Grupo> grupos = new TreeMap<Integer, Grupo>();
         String gr = tfActividad13.getText();
-        
-        if(gr.contains(",")){
-                String[] g = gr.split(",");
-                for (int i = 0; i < g.length ; i++) {
+
+        if (gr.contains(",")) {
+            String[] g = gr.split(",");
+            for (int i = 0; i < g.length; i++) {
                 Grupo gru = gDAO.porCodigo(g[i]);
                 grupos.put(i, gru);
                 numeroAlumnos += gru.getNumeroAlumnos();
             }
-        }else if(grupos.isEmpty()){
+        } else if (grupos.isEmpty()) {
             grupos.put(1, gDAO.porCodigo(gr));
-        }else{
-            grupos.put(grupos.lastKey()+1, gDAO.porCodigo(gr));
+        } else {
+            grupos.put(grupos.lastKey() + 1, gDAO.porCodigo(gr));
         }
-        */
-        TreeMap<Integer, Curso> cursos = new TreeMap<Integer, Curso>();/*
+
+        TreeMap<Integer, Curso> cursos = new TreeMap<Integer, Curso>();
         String cur = tfActividad14.getText();
-        String[] c = tfActividad14.getText().split(",");
-        if(gr.contains(",")){
-                String[] g = gr.split(",");
-                for (int i = 0; i < g.length ; i++) {
+        if (gr.contains(",")) {
+            String[] c = cur.split(",");
+            for (int i = 0; i < c.length; i++) {
                 Curso cr = cDAO.porCodigo(c[i]);
                 cursos.put(i, cr);
             }
-        }else if (cursos.isEmpty()){
-                cursos.put(1, cDAO.porCodigo(cur));
-        }else{
-                cursos.put(cursos.lastKey()+1, cDAO.porCodigo(cur));
-       }*/
-        Solicitud solicitud = new Solicitud(profesor, tfActividad6.getText(),String.valueOf( cbTipoActividad.getSelectedItem()), profesor.getDepartamento(),cbPrevisto1.isSelected(), transporte, taTransporte.getText(),fIni, fFin, horaInicio, horaFin,cbAlojamiento.isSelected(),taTransporte1.getText(),jTextArea1.getText(), "SOLICITADA", "", profesoresP, profesoresR, grupos, cursos, numeroAlumnos);
+        } else if (cursos.isEmpty()) {
+            cursos.put(1, cDAO.porCodigo(cur));
+        } else {
+            cursos.put(cursos.lastKey() + 1, cDAO.porCodigo(cur));
+        }
+        Solicitud solicitud = new Solicitud(profesor, tfActividad6.getText(), String.valueOf(cbTipoActividad.getSelectedItem()), profesor.getDepartamento(), cbPrevisto1.isSelected(), transporte, taTransporte.getText(), fIni, fFin, horaInicio, horaFin, cbAlojamiento.isSelected(), taTransporte1.getText(), jTextArea1.getText(), "SOLICITADA", "", profesoresP, profesoresR, grupos, cursos, numeroAlumnos);
         sDAO.agregar(solicitud);
-        
-        
+
+
     }//GEN-LAST:event_btnSendSoliActionPerformed
 
     private void cbPrevisto1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbPrevisto1ActionPerformed
@@ -3819,9 +3845,12 @@ public class JFrame_Principal extends javax.swing.JFrame {
 
     private void cbEstadoSoliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbEstadoSoliActionPerformed
         // TODO add your handling code here:
-        
+
     }//GEN-LAST:event_cbEstadoSoliActionPerformed
 
+    private void tfCursoDesc1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfCursoDesc1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tfCursoDesc1ActionPerformed
 
     private void mostrarImagen1() {
         ImageIcon img = new ImageIcon(getClass().getClassLoader().getResource("Imagen/IES MIGUEL HERRERO.png"));
@@ -3830,7 +3859,7 @@ public class JFrame_Principal extends javax.swing.JFrame {
                         lblimagen1.getHeight(), img.getIconWidth()));
         lblimagen1.setIcon(icon);
     }
-    
+
     /**
      * @param args the command line arguments
      */
@@ -3864,8 +3893,6 @@ public class JFrame_Principal extends javax.swing.JFrame {
                 new JFrame_Principal().setVisible(true);
             }
         });
-        
-        
 
     }
 

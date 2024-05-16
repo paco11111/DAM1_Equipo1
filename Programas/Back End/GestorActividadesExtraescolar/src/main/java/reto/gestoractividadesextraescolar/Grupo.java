@@ -28,10 +28,20 @@ public class Grupo{
      * @param numero numero de alumnos en el grupo
      * @param activo Indica si el grupo esta activo
      */
-    public Grupo(int id, String codigo, int numero, /*int idC*/ Curso curso, boolean activo){
+    public Grupo(int id, String codigo, int numero, Curso curso, boolean activo){
         this.id = id;
         this.codigo = codigo;
-        //this.idC = idC;
+        if(curso != null){
+            this.curso = curso;
+        }else{
+            this.curso = null;
+        }
+        this.numeroAlumnos = numero;
+        this.activoGrupo = activo;
+        
+    }
+    public Grupo(String codigo, int numero, Curso curso, boolean activo){
+        this.codigo = codigo;
         if(curso != null){
             this.curso = curso;
         }else{
@@ -43,15 +53,7 @@ public class Grupo{
     }
 
     
-    /**
-     * CONSTRUCTOR
-     */
-    public Grupo(){
-        codigo = Utilidad.codigoGrupo();
-        numeroAlumnos = Utilidad.nextInt("Numeor de alumnos: ");
-        activoGrupo = Utilidad.nextBolean("Grupo activo? ");
-        
-    }
+ 
     
     //METODOS
 
