@@ -38,7 +38,6 @@ public class Departamento {
             this.jefe = null;
         }
         
-        
     }
     /**
      * CONSTRUCTOR
@@ -53,7 +52,24 @@ public class Departamento {
         this.nombre = nombre;
     }
     
-    
+    /**
+     * CONSTRUCTOR
+     * 
+     * @param codigo Codigo del departamento
+     * @param nombre Cadena de texto que guarad el nombre
+     *  @param jefe Profesor jefe del departamento
+     */
+    public Departamento(String codigo, String nombre, Profesor jefe){
+        this.codigo = codigo;
+        this.nombre = nombre;
+        if(jefe != null){
+            this.jefe = jefe;
+            this.jefe.setDepartamento(this);
+        }else{
+            this.jefe = null;
+        }
+        
+    }
 
     public void setJefe(Profesor jefe) {
         this.jefe = jefe;

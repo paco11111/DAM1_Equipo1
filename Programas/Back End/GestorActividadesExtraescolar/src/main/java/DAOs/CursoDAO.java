@@ -49,30 +49,8 @@ public class CursoDAO implements Repositorio<Curso>{
     }
     
     private Curso crearCurso(final ResultSet rs) throws SQLException {
-        EtapaCurso etapa = null;
-        switch (rs.getString("etapa").toUpperCase()) {
-                case "ESO" -> {
-                    etapa = EtapaCurso.ESO;
-                }
-                case "BACHILLERATO" -> {
-                    etapa = EtapaCurso.BACHILLERATO;
-                }
-                case "FPB" -> {
-                    etapa = EtapaCurso.FPB;
-                }
-                case "FPGM" -> {
-                    etapa = EtapaCurso.FPGM;
-                }
-                case "FPGS" -> {
-                    etapa = EtapaCurso.FPGS;
-                }
-                case "FPCE" -> {
-                    etapa = EtapaCurso.FPCE;
-                }
-                default ->
-                    System.out.println("Opcion no valida7");
-            }
-        return new Curso( rs.getInt("idCurso"),rs.getString("codigo"),etapa, rs.getString("descripcion"),rs.getBoolean("activo"));
+        
+        return new Curso( rs.getInt("idCurso"),rs.getString("codigo"),rs.getString("etapa"), rs.getString("descripcion"),rs.getBoolean("activo"));
     }
 
     @Override
@@ -119,8 +97,7 @@ public class CursoDAO implements Repositorio<Curso>{
          try ( PreparedStatement stmt = getConnection().prepareStatement("UPDATE cursos SET codigo =?, descripcion = ?, etapa = ?, activo = ? WHERE idCurso=?");) {
             stmt.setString(1, curso.getCodigo());
             stmt.setString(2, curso.getDescripcion());
-            String etapa = ""+curso.getEtapa();
-            stmt.setString(3, etapa);
+            stmt.setString(3, curso.getEtapa().name());
             stmt.setBoolean(4, curso.isActivoCurso());
             stmt.setInt(5, curso.getId());
             int salida = stmt.executeUpdate();
@@ -141,8 +118,7 @@ public class CursoDAO implements Repositorio<Curso>{
         try ( PreparedStatement stmt = getConnection().prepareStatement("INSERT INTO cursos (codigo, descripcion,etapa, activo ) VALUES (?,?,?,?)");) {
              stmt.setString(1, curso.getCodigo());
             stmt.setString(2, curso.getDescripcion());
-            String etapa = ""+curso.getEtapa();
-            stmt.setString(3, etapa);
+            stmt.setString(3, curso.getEtapa().name());
             stmt.setBoolean(4, curso.isActivoCurso());
             int salida = stmt.executeUpdate();
             if (salida != 1) {

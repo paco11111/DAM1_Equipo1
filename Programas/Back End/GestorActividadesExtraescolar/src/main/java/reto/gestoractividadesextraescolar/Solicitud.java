@@ -226,10 +226,19 @@ public class Solicitud {
         return previsto;
     }
 
-    public TreeMap getTransporte() {
+    public TreeMap<Integer, Transporte> getTransporte() {
         return transporte;
     }
 
+    public TreeMap<Integer, Grupo> getGrupos() {
+        return grupos;
+    }
+
+    public TreeMap<Integer, Curso> getCursos() {
+        return cursos;
+    }
+
+    
     public String getComentarioTransporte() {
         return comentarioTransporte;
     }
@@ -288,6 +297,26 @@ public class Solicitud {
 
     public int getNumeroAlumnos() {
         return numeroAlumnos;
+    }
+
+    public void setTransporte(TreeMap<Integer, Transporte> transporte) {
+        this.transporte = transporte;
+    }
+
+    public void setProfesoresParticipantes(TreeMap<Integer, Profesor> profesoresParticipantes) {
+        this.profesoresParticipantes = profesoresParticipantes;
+    }
+
+    public void setProfesoresResponsables(TreeMap<Integer, Profesor> profesoresResponsables) {
+        this.profesoresResponsables = profesoresResponsables;
+    }
+
+    public void setGrupos(TreeMap<Integer, Grupo> grupos) {
+        this.grupos = grupos;
+    }
+
+    public void setCursos(TreeMap<Integer, Curso> cursos) {
+        this.cursos = cursos;
     }
     
     

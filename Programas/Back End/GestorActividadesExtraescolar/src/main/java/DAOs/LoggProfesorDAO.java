@@ -71,10 +71,45 @@ public class LoggProfesorDAO implements Repositorio<LoggProfesor> {
         }
         return profesor;
     }
+    public LoggProfesor porEmail(String email) {
+        LoggProfesor profesor = null;
+        String sql = "SELECT logprofesores.idProfesor, nombre, apellidos,DNI,idDepartamento,ocupacion,activo, email, password FROM profesores INNER JOIN logprofesores ON profesores.idProfesor= profesores.idProfesor WHERE logprofesores.email=?";
+        try (PreparedStatement stmt = getConnection().prepareStatement(sql);) {
+            stmt.setString(1, email);
+            try (ResultSet rs = stmt.executeQuery();) {
+                if (rs.next()) {
+                    profesor = crearLoggProfesor(rs);
+                } else {
+                    System.out.println("No hay profesor usuario con tal id");
+                }
+            }
+        } catch (SQLException ex) {
+            System.out.println("SQLException: " + ex.getMessage());
+        }
+        return profesor;
+    }
+    
+    public String devolverPsswrd(String password) {
+        String temp = "";
+        String sql = "SELECT md5(?)";
+        try (PreparedStatement stmt = getConnection().prepareStatement(sql);) {
+            stmt.setString(1, password);
+            try (ResultSet rs = stmt.executeQuery();) {
+                if (rs.next()) {
+                    temp = rs.getString(1);
+                } else {
+                    System.out.println("No hay profesor usuario con tal id");
+                }
+            }
+        } catch (SQLException ex) {
+            System.out.println("SQLException: " + ex.getMessage());
+        }
+        return temp;
+    }
 
     @Override
     public void modificar(LoggProfesor profesor) {
-        try ( PreparedStatement stmt = getConnection().prepareStatement("UPDATE logprofesores SET email = ?, password = ?, idProfesor = ?, ocupacion = ? WHERE idProfesor=?");) {
+        try ( PreparedStatement stmt = getConnection().prepareStatement("UPDATE logprofesores SET email = ?, password = md5(?), idProfesor = ?, ocupacion = ? WHERE idProfesor=?");) {
             stmt.setString(1, profesor.getEmail());
             stmt.setString(2, profesor.getPsswrd());
             stmt.setInt(3, profesor.getProfesor().getId());
