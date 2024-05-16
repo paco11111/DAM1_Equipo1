@@ -15,6 +15,7 @@ import javax.swing.JOptionPane;
 import DAOs.GrupoDAO;
 import DAOs.GrupoDAO;
 import DAOs.ProfesorDAO;
+import DAOs.SolicitudAprobadaDAO;
 import DAOs.SolicitudDAO;
 import DAOs.TransporteDAO;
 import FuncionesInterfaz.LectorCSV;
@@ -31,6 +32,7 @@ import reto.gestoractividadesextraescolar.Departamento;
 import reto.gestoractividadesextraescolar.Grupo;
 import reto.gestoractividadesextraescolar.Profesor;
 import reto.gestoractividadesextraescolar.Solicitud;
+import reto.gestoractividadesextraescolar.SolicitudAprobada;
 import reto.gestoractividadesextraescolar.Transporte;
 
 /**
@@ -47,6 +49,7 @@ public class JFrame_Principal extends javax.swing.JFrame {
     GrupoDAO gDAO = new GrupoDAO();
     CursoDAO cDAO = new CursoDAO();
     DepartamentoDAO dDAO = new DepartamentoDAO();
+    SolicitudAprobadaDAO saDAO = new SolicitudAprobadaDAO();
     
 
     /**
@@ -709,14 +712,14 @@ public class JFrame_Principal extends javax.swing.JFrame {
         jPanelProfTableLayout.setVerticalGroup(
             jPanelProfTableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelProfTableLayout.createSequentialGroup()
-                .addContainerGap(595, Short.MAX_VALUE)
+                .addContainerGap(597, Short.MAX_VALUE)
                 .addComponent(btnAddProf)
                 .addGap(36, 36, 36))
             .addGroup(jPanelProfTableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanelProfTableLayout.createSequentialGroup()
                     .addGap(47, 47, 47)
                     .addComponent(jScrollPane26, javax.swing.GroupLayout.PREFERRED_SIZE, 509, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(98, Short.MAX_VALUE)))
+                    .addContainerGap(100, Short.MAX_VALUE)))
         );
 
         jPanelProfAdd.setBackground(new java.awt.Color(51, 51, 51));
@@ -1069,7 +1072,7 @@ public class JFrame_Principal extends javax.swing.JFrame {
         jLayeredPane4.setLayout(jLayeredPane4Layout);
         jLayeredPane4Layout.setHorizontalGroup(
             jLayeredPane4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 812, Short.MAX_VALUE)
+            .addGap(0, 806, Short.MAX_VALUE)
             .addGroup(jLayeredPane4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(jPanelCursoEdit, 806, 806, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(jLayeredPane4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1082,7 +1085,7 @@ public class JFrame_Principal extends javax.swing.JFrame {
         );
         jLayeredPane4Layout.setVerticalGroup(
             jLayeredPane4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 640, Short.MAX_VALUE)
+            .addGap(0, 646, Short.MAX_VALUE)
             .addGroup(jLayeredPane4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jLayeredPane4Layout.createSequentialGroup()
                     .addComponent(jPanelCursoEdit, javax.swing.GroupLayout.DEFAULT_SIZE, 646, Short.MAX_VALUE)
@@ -1326,7 +1329,7 @@ public class JFrame_Principal extends javax.swing.JFrame {
             .addGap(0, 656, Short.MAX_VALUE)
             .addGroup(jLayeredPane5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jLayeredPane5Layout.createSequentialGroup()
-                    .addComponent(jPanelGrupoEdit, javax.swing.GroupLayout.DEFAULT_SIZE, 643, Short.MAX_VALUE)
+                    .addComponent(jPanelGrupoEdit, javax.swing.GroupLayout.DEFAULT_SIZE, 642, Short.MAX_VALUE)
                     .addGap(0, 5, Short.MAX_VALUE)))
             .addGroup(jLayeredPane5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jLayeredPane5Layout.createSequentialGroup()
@@ -1786,6 +1789,11 @@ public class JFrame_Principal extends javax.swing.JFrame {
         });
 
         btnEstadoSoli.setText("Aplicar");
+        btnEstadoSoli.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEstadoSoliActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanelSoliPendientesLayout = new javax.swing.GroupLayout(jPanelSoliPendientes);
         jPanelSoliPendientes.setLayout(jPanelSoliPendientesLayout);
@@ -4195,11 +4203,10 @@ public class JFrame_Principal extends javax.swing.JFrame {
 
     private void btnEliminarProfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarProfActionPerformed
         // TODO add your handling code here:
-
+        //boton eliminar profesor
         jPanelProfTable.setVisible(true);
         jPanelProfEdit.setVisible(false);
 
-        //boton eliminar profesor
         int result = JOptionPane.showConfirmDialog(this,"¿Estas seguro de querer eliminar este elemento?", "Eliminar",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
         if(result == JOptionPane.YES_OPTION){
             pDAO.eliminar(Integer.parseInt(jTableProf.getValueAt(jTableProf.getSelectedRow(),0).toString()));   
@@ -4211,11 +4218,11 @@ public class JFrame_Principal extends javax.swing.JFrame {
 
     private void btnEliminarCursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarCursoActionPerformed
         // TODO add your handling code here:
-
+        //Boton eliminar curso
         jPanelCursoTable.setVisible(true);
         jPanelCursoEdit.setVisible(false);
 
-        //Boton eliminar curso
+        
         int result = JOptionPane.showConfirmDialog(this,"¿Estas seguro de querer eliminar este elemento?", "Eliminar",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
         if(result == JOptionPane.YES_OPTION){
             cDAO.eliminar(Integer.parseInt(jTableCurso.getValueAt(jTableCurso.getSelectedRow(),0).toString()));   
@@ -4268,6 +4275,10 @@ public class JFrame_Principal extends javax.swing.JFrame {
         jPanelActvdTable.setVisible(false);
         jPanelActvdInfo.setVisible(true);
     }//GEN-LAST:event_btnEliminarActvdActionPerformed
+
+    private void btnEstadoSoliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEstadoSoliActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnEstadoSoliActionPerformed
 
 
 
