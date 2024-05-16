@@ -2015,31 +2015,8 @@ public class JFrame_Principal extends javax.swing.JFrame {
 
         jScrollPane12.setPreferredSize(new java.awt.Dimension(812, 600));
 
-        jTableSoliUsu.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4", "Title 5", "Title 6", "Title 7", "Title 8", "Title 9", "Title 10", "Title 11", "Title 12", "Title 13", "Title 14", "Title 15", "Title 16"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
+        jTableSoliUsu.setModel(MostrarTabla.mostrarSolicitud()
+        );
         jTableSoliUsu.setPreferredSize(new java.awt.Dimension(800, 500));
         jTableSoliUsu.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -2419,8 +2396,9 @@ public class JFrame_Principal extends javax.swing.JFrame {
 
         jScrollPane13.setPreferredSize(new java.awt.Dimension(812, 600));
 
-        jTableActvd.setModel(MostrarTabla.mostrarSolicitudResponsable(profesor)
+        jTableActvd.setModel(MostrarTabla.mostrarSolicitudAprobada()
         );
+        jTableActvd.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
         jTableActvd.setPreferredSize(new java.awt.Dimension(800, 500));
         jTableActvd.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -3193,7 +3171,8 @@ public class JFrame_Principal extends javax.swing.JFrame {
         } else {
             JOptionPane.showMessageDialog(null, "Usuario o Contraseña incorrectos");
         }
-
+        MostrarTabla.mostrarSolicitudResponsable(profesor);
+        
     }//GEN-LAST:event_btnSesionActionPerformed
 
     private void txCnnaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txCnnaActionPerformed
