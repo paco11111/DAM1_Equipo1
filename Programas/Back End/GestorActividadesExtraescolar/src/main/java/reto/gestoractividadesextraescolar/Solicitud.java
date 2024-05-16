@@ -226,10 +226,19 @@ public class Solicitud {
         return previsto;
     }
 
-    public TreeMap getTransporte() {
+    public TreeMap<Integer, Transporte> getTransporte() {
         return transporte;
     }
 
+    public TreeMap<Integer, Grupo> getGrupos() {
+        return grupos;
+    }
+
+    public TreeMap<Integer, Curso> getCursos() {
+        return cursos;
+    }
+
+    
     public String getComentarioTransporte() {
         return comentarioTransporte;
     }

@@ -22,6 +22,7 @@ import reto.gestoractividadesextraescolar.Grupo;
 import reto.gestoractividadesextraescolar.Profesor;
 import reto.gestoractividadesextraescolar.Solicitud;
 import reto.gestoractividadesextraescolar.SolicitudAprobada;
+import reto.gestoractividadesextraescolar.Transporte;
 import reto.gestoractividadesextraescolar.Utilidad;
 
 /**
@@ -32,6 +33,7 @@ public class MostrarTabla {
 
     private static SolicitudDAO solicitudDAO = new SolicitudDAO();
     private static String[] solicitud = new String[21];
+    private static String[] solicitud2 = new String[21];
     private static List<Solicitud> solicitudes = new ArrayList<>();
 
     private static SolicitudAprobadaDAO solicitudAprobadaDAO = new SolicitudAprobadaDAO();
@@ -88,7 +90,11 @@ public class MostrarTabla {
                 solicitud[2] = s.getActividad();
                 solicitud[3] = s.getTIPOACTIVIDAD().name();
                 solicitud[4] = Utilidad.respuestaBoolean(s.isPrevisto());
-                solicitud[5] = Utilidad.respuestaMapa(s.getTransporte());
+                String tra = "";
+                for (Map.Entry<Integer, Transporte> transporte : s.getTransporte().entrySet()){
+                    tra = transporte.getValue().getTipo();
+                }
+                solicitud[5] = tra;
                 solicitud[6] = s.getComentarioTransporte();
                 solicitud[7] = s.getFechaInicio().format(f);
                 solicitud[8] = s.getFechaFinal().format(f);
@@ -158,48 +164,60 @@ public class MostrarTabla {
             model.addColumn("Cursos");
             model.addColumn("NºAlumnos");
             //PROFESORES RESOPONSABLES!!!!!!!!
+            boolean temp = false;
             for (Solicitud s : solicitudes) {
                 for(Map.Entry<Integer, Profesor> entry : s.getProfesoresResponsables().entrySet()){
                     if(entry.getValue().getNombre().equals(profesor.getNombre()) && entry.getValue().getApellidos().equals(profesor.getApellidos()) ){
-                    solicitud[0] = String.valueOf(s.getId());
-                    solicitud[1] = s.getProfesorSolicitante().getNombre() + " " + s.getProfesorSolicitante().getApellidos();
-                    solicitud[2] = s.getActividad();
-                    solicitud[3] = s.getTIPOACTIVIDAD().name();
-                    solicitud[4] = Utilidad.respuestaBoolean(s.isPrevisto());
-                    solicitud[5] = Utilidad.respuestaMapa(s.getTransporte());
-                    solicitud[6] = s.getComentarioTransporte();
-                    solicitud[7] = s.getFechaInicio().format(f);
-                    solicitud[8] = s.getFechaFinal().format(f);
-                    solicitud[9] = s.getHoraInicio().format(t);
-                    solicitud[10] = s.getHoraFinal().format(t);
-                    solicitud[11] = Utilidad.respuestaBoolean(s.isAlojamiento());
-                    solicitud[12] = s.getComentarioAlojamiento();
-                    solicitud[13] = s.getComentarioAdicional();
-                    solicitud[14] = s.getESTADO().name();
-                    solicitud[15] = s.getComentarioEstado();
-                    String pr = "";
-                    for (Map.Entry<Integer, Profesor> p : s.getProfesoresResponsables().entrySet()){
-                        pr = p.getValue().getNombre() + " " + p.getValue().getApellidos() + ",";
+                        System.out.println("YES");
+                        temp = true;
+                        
+                    }else{
+                        System.out.println("No");
                     }
-                    solicitud[16] = pr;
-                    String pp = "";
-                    for (Map.Entry<Integer, Profesor> p : s.getProfesoresParticipantes().entrySet()){
-                        pp = p.getValue().getNombre() + " " + p.getValue().getApellidos() + ",";
-                    }
-                    solicitud[17] = pp;
-                    String grupos = "";
-                    for (Map.Entry<Integer, Grupo> p : s.getGrupo().entrySet()){
-                        pp = p.getValue().getCodigo()+ ", ";
-                    }
-                    solicitud[18] = grupos;
-                    String cursos = "";
-                    for (Map.Entry<Integer, Curso> p : s.getCurso().entrySet()){
-                        pp = p.getValue().getCodigo()+ ",";
-                    }
-                    solicitud[19] = cursos;
-                    solicitud[20] = String.valueOf(s.getNumeroAlumnos());
-                    model.addRow(solicitud);
                 }
+                if(temp){
+                        solicitud[0] = String.valueOf(s.getId());
+                        solicitud[1] = s.getProfesorSolicitante().getNombre() + " " + s.getProfesorSolicitante().getApellidos();
+                        solicitud[2] = s.getActividad();
+                        solicitud[3] = s.getTIPOACTIVIDAD().name();
+                        solicitud[4] = Utilidad.respuestaBoolean(s.isPrevisto());
+                        String tra = "";
+                        for (Map.Entry<Integer, Transporte> transporte : s.getTransporte().entrySet()){
+                            tra = transporte.getValue().getTipo();
+                        }
+                        solicitud[5] = tra;
+                        solicitud[6] = s.getComentarioTransporte();
+                        solicitud[7] = s.getFechaInicio().format(f);
+                        solicitud[8] = s.getFechaFinal().format(f);
+                        solicitud[9] = s.getHoraInicio().format(t);
+                        solicitud[10] = s.getHoraFinal().format(t);
+                        solicitud[11] = Utilidad.respuestaBoolean(s.isAlojamiento());
+                        solicitud[12] = s.getComentarioAlojamiento();
+                        solicitud[13] = s.getComentarioAdicional();
+                        solicitud[14] = s.getESTADO().name();
+                        solicitud[15] = s.getComentarioEstado();
+                        String pr = "";
+                        for (Map.Entry<Integer, Profesor> p : s.getProfesoresResponsables().entrySet()){
+                            pr = p.getValue().getNombre() + " " + p.getValue().getApellidos() + ",";
+                        }
+                        solicitud[16] = pr;
+                        String pp = "";
+                        for (Map.Entry<Integer, Profesor> p : s.getProfesoresParticipantes().entrySet()){
+                            pp = p.getValue().getNombre() + " " + p.getValue().getApellidos() + ",";
+                        }
+                        solicitud[17] = pp;
+                        String grupos = "";
+                        for (Map.Entry<Integer, Grupo> p : s.getGrupo().entrySet()){
+                            pp = p.getValue().getCodigo()+ ", ";
+                        }
+                        solicitud[18] = grupos;
+                        String cursos = "";
+                        for (Map.Entry<Integer, Curso> p : s.getCurso().entrySet()){
+                            pp = p.getValue().getCodigo()+ ",";
+                        }
+                        solicitud[19] = cursos;
+                        solicitud[20] = String.valueOf(s.getNumeroAlumnos());
+                        model.addRow(solicitud);
                 }
             }
 
@@ -210,7 +228,7 @@ public class MostrarTabla {
 
     }
 
-    public static DefaultTableModel mostrarSolicitudAprobada() {
+    public static DefaultTableModel mostrarSolicitudAprobada(Profesor profesor) {
         DefaultTableModel model = new DefaultTableModel();
         DateTimeFormatter f = DateTimeFormatter.ofPattern("dd 'de' MMMM 'de' yyyy").withLocale(new Locale("es", "ES"));
         DateTimeFormatter t = DateTimeFormatter.ofPattern("' hh:mm").withLocale(new Locale("es", "ES"));
@@ -245,7 +263,11 @@ public class MostrarTabla {
                 solicitudAprobada[2] = sa.getActividad();
                 solicitudAprobada[3] = sa.getTIPOACTIVIDAD().name();
                 solicitudAprobada[4] = Utilidad.respuestaBoolean(sa.isPrevisto());
-                solicitudAprobada[5] = Utilidad.respuestaMapa(sa.getTransporte());
+                String tra = "";
+                for (Map.Entry<Integer, Transporte> transporte : sa.getTransporte().entrySet()){
+                    tra = transporte.getValue().getTipo();
+                }
+                solicitudAprobada[5] = tra;
                 solicitudAprobada[6] = sa.getComentarioTransporte();
                 solicitudAprobada[7] = sa.getFechaInicio().format(f);
                 solicitudAprobada[8] = sa.getFechaFinal().format(f);
@@ -350,7 +372,6 @@ public class MostrarTabla {
             model.addColumn("Código"); 
             model.addColumn("Nombre");
             model.addColumn("Profesor Jefe");
-            
             for (Departamento d : departamentos) {
                 departamento[0] = String.valueOf(d.getId());
                 departamento[1] = d.getCodigo();

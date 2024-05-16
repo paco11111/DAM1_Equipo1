@@ -48,15 +48,51 @@ public class Curso {
      * @param descripcion Profesor jefe del departamento
      * @param activo Indica si esta activo o no
      */
-    public Curso(int id, String codigo, EtapaCurso etapa, String descripcion, boolean activo){
+    public Curso(int id, String codigo, String etapa, String descripcion, boolean activo){
         this.id = id;
         this.codigo = codigo;
-        this.etapa = etapa;
+        this.etapa = etapaCurso(etapa);
         this.descripcion = descripcion;
         this.activoCurso = activo;
         
         
     }
+    public Curso(String codigo, String etapa, String descripcion, boolean activo){
+        this.codigo = codigo;
+        this.etapa = etapaCurso(etapa);
+        this.descripcion = descripcion;
+        this.activoCurso = activo;
+        
+        
+    }
+    
+    private EtapaCurso etapaCurso(String temp){
+        EtapaCurso etapa = null;
+        switch (temp.toUpperCase()) {
+                case "ESO" -> {
+                    etapa = EtapaCurso.ESO;
+                }
+                case "BACHILLERATO" -> {
+                    etapa = EtapaCurso.BACHILLERATO;
+                }
+                case "FPB" -> {
+                    etapa = EtapaCurso.FPB;
+                }
+                case "FPGM" -> {
+                    etapa = EtapaCurso.FPGM;
+                }
+                case "FPGS" -> {
+                    etapa = EtapaCurso.FPGS;
+                }
+                case "FPCE" -> {
+                    etapa = EtapaCurso.FPCE;
+                }
+                default ->
+                    System.out.println("Opcion no valida7");
+            }
+        return etapa;
+    }
+         
             
             
     public String getCodigo() {
