@@ -24,7 +24,6 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.TreeMap;
 import FuncionesInterfaz.LoggIn;
-import Usuarios.UsuarioProfesor;
 import java.time.format.DateTimeFormatter;
 import java.util.Locale;
 import reto.gestoractividadesextraescolar.Curso;
@@ -608,6 +607,11 @@ public class JFrame_Principal extends javax.swing.JFrame {
         jLabel67.setText("Departamento :");
 
         btnEliminarProf.setText("Eliminar");
+        btnEliminarProf.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarProfActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanelProfEditLayout = new javax.swing.GroupLayout(jPanelProfEdit);
         jPanelProfEdit.setLayout(jPanelProfEditLayout);
@@ -824,11 +828,11 @@ public class JFrame_Principal extends javax.swing.JFrame {
             .addGap(0, 656, Short.MAX_VALUE)
             .addGroup(jLayeredPane3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jLayeredPane3Layout.createSequentialGroup()
-                    .addComponent(jPanelProfEdit, javax.swing.GroupLayout.DEFAULT_SIZE, 655, Short.MAX_VALUE)
+                    .addComponent(jPanelProfEdit, javax.swing.GroupLayout.DEFAULT_SIZE, 654, Short.MAX_VALUE)
                     .addGap(0, 2, Short.MAX_VALUE)))
             .addGroup(jLayeredPane3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jLayeredPane3Layout.createSequentialGroup()
-                    .addComponent(jPanelProfTable, javax.swing.GroupLayout.DEFAULT_SIZE, 655, Short.MAX_VALUE)
+                    .addComponent(jPanelProfTable, javax.swing.GroupLayout.DEFAULT_SIZE, 654, Short.MAX_VALUE)
                     .addGap(0, 2, Short.MAX_VALUE)))
             .addGroup(jLayeredPane3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jLayeredPane3Layout.createSequentialGroup()
@@ -883,6 +887,11 @@ public class JFrame_Principal extends javax.swing.JFrame {
         jLabel79.setText("Etapa :");
 
         btnEliminarCurso.setText("Eliminar");
+        btnEliminarCurso.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarCursoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanelCursoEditLayout = new javax.swing.GroupLayout(jPanelCursoEdit);
         jPanelCursoEdit.setLayout(jPanelCursoEditLayout);
@@ -1134,6 +1143,11 @@ public class JFrame_Principal extends javax.swing.JFrame {
         spGrupoAlu1.setPreferredSize(new java.awt.Dimension(88, 22));
 
         btnEliminarGrupo.setText("Eliminar");
+        btnEliminarGrupo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarGrupoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanelGrupoEditLayout = new javax.swing.GroupLayout(jPanelGrupoEdit);
         jPanelGrupoEdit.setLayout(jPanelGrupoEditLayout);
@@ -1296,7 +1310,7 @@ public class JFrame_Principal extends javax.swing.JFrame {
         jLayeredPane5.setLayout(jLayeredPane5Layout);
         jLayeredPane5Layout.setHorizontalGroup(
             jLayeredPane5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 812, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
             .addGroup(jLayeredPane5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(jPanelGrupoEdit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(jLayeredPane5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1312,16 +1326,16 @@ public class JFrame_Principal extends javax.swing.JFrame {
             .addGap(0, 656, Short.MAX_VALUE)
             .addGroup(jLayeredPane5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jLayeredPane5Layout.createSequentialGroup()
-                    .addComponent(jPanelGrupoEdit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanelGrupoEdit, javax.swing.GroupLayout.DEFAULT_SIZE, 643, Short.MAX_VALUE)
                     .addGap(0, 5, Short.MAX_VALUE)))
             .addGroup(jLayeredPane5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jLayeredPane5Layout.createSequentialGroup()
-                    .addComponent(jPanelGrupoTable, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanelGrupoTable, javax.swing.GroupLayout.DEFAULT_SIZE, 646, Short.MAX_VALUE)
                     .addGap(0, 0, Short.MAX_VALUE)))
             .addGroup(jLayeredPane5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jLayeredPane5Layout.createSequentialGroup()
                     .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanelGrupoAdd, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanelGrupoAdd, javax.swing.GroupLayout.DEFAULT_SIZE, 638, Short.MAX_VALUE)
                     .addGap(2, 2, 2)))
         );
 
@@ -1338,7 +1352,7 @@ public class JFrame_Principal extends javax.swing.JFrame {
             jPanelGrupoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelGrupoLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLayeredPane5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLayeredPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 646, Short.MAX_VALUE)
                 .addGap(4, 4, 4))
         );
 
@@ -1370,6 +1384,11 @@ public class JFrame_Principal extends javax.swing.JFrame {
         jLabel102.setText("Jefe departamento :");
 
         btnEliminarDptm.setText("Eliminar");
+        btnEliminarDptm.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarDptmActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanelDptmEditLayout = new javax.swing.GroupLayout(jPanelDptmEdit);
         jPanelDptmEdit.setLayout(jPanelDptmEditLayout);
@@ -1543,7 +1562,7 @@ public class JFrame_Principal extends javax.swing.JFrame {
         jLayeredPane6.setLayout(jLayeredPane6Layout);
         jLayeredPane6Layout.setHorizontalGroup(
             jLayeredPane6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 812, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
             .addGroup(jLayeredPane6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(jPanelDptmEdit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(jLayeredPane6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1559,16 +1578,16 @@ public class JFrame_Principal extends javax.swing.JFrame {
             .addGap(0, 656, Short.MAX_VALUE)
             .addGroup(jLayeredPane6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jLayeredPane6Layout.createSequentialGroup()
-                    .addComponent(jPanelDptmEdit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanelDptmEdit, javax.swing.GroupLayout.DEFAULT_SIZE, 646, Short.MAX_VALUE)
                     .addGap(0, 0, Short.MAX_VALUE)))
             .addGroup(jLayeredPane6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jLayeredPane6Layout.createSequentialGroup()
-                    .addComponent(jPanelDptmTable, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanelDptmTable, javax.swing.GroupLayout.DEFAULT_SIZE, 646, Short.MAX_VALUE)
                     .addGap(0, 0, Short.MAX_VALUE)))
             .addGroup(jLayeredPane6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jLayeredPane6Layout.createSequentialGroup()
                     .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanelDptmAdd, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanelDptmAdd, javax.swing.GroupLayout.DEFAULT_SIZE, 638, Short.MAX_VALUE)
                     .addGap(2, 2, 2)))
         );
 
@@ -1585,7 +1604,7 @@ public class JFrame_Principal extends javax.swing.JFrame {
             jPanelDeptmLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelDeptmLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLayeredPane6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLayeredPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 646, Short.MAX_VALUE)
                 .addGap(4, 4, 4))
         );
 
@@ -4035,29 +4054,8 @@ public class JFrame_Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_jList7MouseClicked
 
     private void btnSendSoliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSendSoliActionPerformed
-        // TODO add your handling code here:
-        //Añadir los datos de la nueva solicitud a la tabla en la base de datos
-        UsuarioProfesor u = new UsuarioProfesor();
+        // TODO add your handling code here
         TreeMap<Integer, Transporte> transporte = new TreeMap<Integer, Transporte>();
-        /*String tra = tfActividad15.getText();
-        System.out.println(tfActividad15.getText());
-        if(tra.contains(",")){
-                String[] t = tra.split(",");
-            for (int i = 0; i < t.length; i++) {
-                if(tDAO.porTipo(t[i]) != null){
-                    transporte.put(i, tDAO.porTipo(t[i]));
-                }else{
-                    tDAO.agregar(new Transporte(t[i], ""));
-                    transporte.put(i, tDAO.porTipo(t[i]));
-                }
-            }
-        }else if(tDAO.porTipo(tra) != null){
-                    transporte.put(transporte.lastKey()+1, tDAO.porTipo(tra));
-                }else{
-                    tDAO.agregar(new Transporte(tra, ""));
-                    transporte.put(transporte.lastKey()+1, tDAO.porTipo(tra));
-                }
-         */
 
         DateTimeFormatter f = DateTimeFormatter.ofPattern("dd-MM-yyyy").withLocale(new Locale("es", "ES"));
         LocalDate fIni = LocalDate.parse(tfFini.getText(), f);
@@ -4183,6 +4181,52 @@ public class JFrame_Principal extends javax.swing.JFrame {
     private void tfActvdProfParActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfActvdProfParActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_tfActvdProfParActionPerformed
+
+    private void btnEliminarProfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarProfActionPerformed
+        // TODO add your handling code here:
+        //boton eliminar profesor
+        int result = JOptionPane.showConfirmDialog(this,"¿Estas seguro de querer eliminar este elemento?", "Eliminar",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
+        if(result == JOptionPane.YES_OPTION){
+            pDAO.eliminar(Integer.parseInt(jTableProf.getValueAt(jTableProf.getSelectedRow(),0).toString()));   
+        }
+         
+       jTableProf.setModel(MostrarTabla.mostrarProfesor());
+        
+    }//GEN-LAST:event_btnEliminarProfActionPerformed
+
+    private void btnEliminarCursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarCursoActionPerformed
+        // TODO add your handling code here:
+        //Boton eliminar curso
+        //boton eliminar profesor
+        int result = JOptionPane.showConfirmDialog(this,"¿Estas seguro de querer eliminar este elemento?", "Eliminar",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
+        if(result == JOptionPane.YES_OPTION){
+            cDAO.eliminar(Integer.parseInt(jTableCurso.getValueAt(jTableCurso.getSelectedRow(),0).toString()));   
+        }
+         
+       jTableCurso.setModel(MostrarTabla.mostrarCurso());
+    }//GEN-LAST:event_btnEliminarCursoActionPerformed
+
+    private void btnEliminarGrupoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarGrupoActionPerformed
+        // TODO add your handling code here:
+        //Boton eliminar Grupo
+        int result = JOptionPane.showConfirmDialog(this,"¿Estas seguro de querer eliminar este elemento?", "Eliminar",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
+        if(result == JOptionPane.YES_OPTION){
+            gDAO.eliminar(Integer.parseInt(jTableGrupo.getValueAt(jTableGrupo.getSelectedRow(),0).toString()));   
+        }
+         
+       jTableGrupo.setModel(MostrarTabla.mostrarGrupo());
+    }//GEN-LAST:event_btnEliminarGrupoActionPerformed
+
+    private void btnEliminarDptmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarDptmActionPerformed
+        // TODO add your handling code here:
+        //Boton eliminar Departamento
+        int result = JOptionPane.showConfirmDialog(this,"¿Estas seguro de querer eliminar este elemento?", "Eliminar",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
+        if(result == JOptionPane.YES_OPTION){
+            dDAO.eliminar(Integer.parseInt(jTableDptm.getValueAt(jTableDptm.getSelectedRow(),0).toString()));   
+        }
+         
+       jTableDptm.setModel(MostrarTabla.mostrarDepartamento());
+    }//GEN-LAST:event_btnEliminarDptmActionPerformed
 
 
     //metodo para poder mostrar las imagenes necesarias para la aplicacion
