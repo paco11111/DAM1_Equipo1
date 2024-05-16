@@ -531,26 +531,20 @@
                                   <EmptySpace min="0" pref="656" max="32767" attributes="0"/>
                                   <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                                       <Group type="102" alignment="0" attributes="0">
-
                                           <Component id="jPanelProfEdit" pref="646" max="32767" attributes="0"/>
-
                                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
                                   <Group type="103" rootIndex="2" groupAlignment="0" attributes="0">
                                       <Group type="102" alignment="0" attributes="0">
-
                                           <Component id="jPanelProfTable" pref="646" max="32767" attributes="0"/>
-
                                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
                                   <Group type="103" rootIndex="3" groupAlignment="0" attributes="0">
                                       <Group type="102" alignment="1" attributes="0">
                                           <EmptySpace max="32767" attributes="0"/>
-
                                           <Component id="jPanelProfAdd" pref="638" max="32767" attributes="0"/>
-
                                           <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
@@ -1062,7 +1056,6 @@
                                                   </Group>
                                                   <EmptySpace max="-2" attributes="0"/>
                                                   <Group type="103" groupAlignment="0" attributes="0">
-                                                      <Component id="tfCursoDesc1" min="-2" pref="341" max="-2" attributes="0"/>
                                                       <Component id="chbCursoActivo1" alignment="0" min="-2" max="-2" attributes="0"/>
                                                       <Group type="102" alignment="0" attributes="0">
                                                           <Component id="tfCursoCod1" min="-2" pref="193" max="-2" attributes="0"/>
@@ -1071,10 +1064,11 @@
                                                           <EmptySpace max="-2" attributes="0"/>
                                                           <Component id="cbCursoEtapa1" min="-2" pref="193" max="-2" attributes="0"/>
                                                       </Group>
+                                                      <Component id="tfCursoDesc1" alignment="0" min="-2" pref="350" max="-2" attributes="0"/>
                                                   </Group>
                                               </Group>
                                           </Group>
-                                          <EmptySpace pref="117" max="32767" attributes="0"/>
+                                          <EmptySpace pref="118" max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
                                 </DimensionLayout>
@@ -1083,8 +1077,8 @@
                                       <Group type="102" alignment="0" attributes="0">
                                           <EmptySpace min="-2" pref="93" max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="3" attributes="0">
-                                              <Component id="tfCursoDesc1" alignment="3" min="-2" max="-2" attributes="0"/>
                                               <Component id="jLabel68" alignment="3" min="-2" max="-2" attributes="0"/>
+                                              <Component id="tfCursoDesc1" alignment="3" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                           <EmptySpace min="-2" pref="65" max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="3" attributes="0">
@@ -1103,11 +1097,6 @@
                                 </DimensionLayout>
                               </Layout>
                               <SubComponents>
-                                <Component class="javax.swing.JTextField" name="tfCursoDesc1">
-                                  <Events>
-                                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tfCursoDesc1ActionPerformed"/>
-                                  </Events>
-                                </Component>
                                 <Component class="javax.swing.JLabel" name="jLabel68">
                                   <Properties>
                                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -1172,6 +1161,8 @@
                                     </Property>
                                     <Property name="text" type="java.lang.String" value="Etapa :"/>
                                   </Properties>
+                                </Component>
+                                <Component class="javax.swing.JTextField" name="tfCursoDesc1">
                                 </Component>
                               </SubComponents>
                             </Container>
@@ -3886,9 +3877,7 @@
                                           </Group>
                                       </Group>
                                   </Group>
-
                                   <EmptySpace min="-2" pref="122" max="-2" attributes="0"/>
-
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -3898,12 +3887,14 @@
                                   <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Group type="102" alignment="0" attributes="0">
-                                          <Group type="103" groupAlignment="3" attributes="0">
-                                              <Component id="lblActvdNom" alignment="3" min="-2" max="-2" attributes="0"/>
-                                              <Component id="lblActvdTipo" alignment="3" min="-2" max="-2" attributes="0"/>
-                                              <Group type="103" alignment="3" groupAlignment="3" attributes="0">
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Group type="103" alignment="0" groupAlignment="3" attributes="0">
                                                   <Component id="lblActvdFfin" alignment="3" min="-2" max="-2" attributes="0"/>
                                                   <Component id="lblActvdFini" alignment="3" min="-2" max="-2" attributes="0"/>
+                                              </Group>
+                                              <Group type="103" groupAlignment="3" attributes="0">
+                                                  <Component id="lblActvdNom" alignment="3" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="lblActvdTipo" alignment="3" min="-2" max="-2" attributes="0"/>
                                               </Group>
                                           </Group>
                                           <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
@@ -4574,9 +4565,7 @@
                         </Component>
                         <Component class="javax.swing.JTextField" name="tfActvdNom">
                         </Component>
-
                         <Component class="javax.swing.JLabel" name="jLabel30">
-
                           <Properties>
                             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                               <Color blue="33" green="33" red="33" type="rgb"/>

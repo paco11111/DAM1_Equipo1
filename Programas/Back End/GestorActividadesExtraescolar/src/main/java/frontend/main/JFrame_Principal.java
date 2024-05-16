@@ -160,7 +160,6 @@ public class JFrame_Principal extends javax.swing.JFrame {
         jPanelCurso = new javax.swing.JPanel();
         jLayeredPane4 = new javax.swing.JLayeredPane();
         jPanelCursoEdit = new javax.swing.JPanel();
-        tfCursoDesc1 = new javax.swing.JTextField();
         jLabel68 = new javax.swing.JLabel();
         jLabel77 = new javax.swing.JLabel();
         btnSendEditCurso = new javax.swing.JButton();
@@ -168,6 +167,7 @@ public class JFrame_Principal extends javax.swing.JFrame {
         chbCursoActivo1 = new javax.swing.JCheckBox();
         cbCursoEtapa1 = new javax.swing.JComboBox<>();
         jLabel79 = new javax.swing.JLabel();
+        tfCursoDesc1 = new javax.swing.JTextField();
         jPanelCursoTable = new javax.swing.JPanel();
         jScrollPane29 = new javax.swing.JScrollPane();
         jTableCurso = new javax.swing.JTable();
@@ -650,7 +650,7 @@ public class JFrame_Principal extends javax.swing.JFrame {
                 .addGroup(jPanelProfEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(chbProfActivo1)
                     .addComponent(btnSendEditProf))
-                .addContainerGap(343, Short.MAX_VALUE))
+                .addContainerGap(345, Short.MAX_VALUE))
         );
 
         jPanelProfTable.setBackground(new java.awt.Color(51, 51, 51));
@@ -691,7 +691,7 @@ public class JFrame_Principal extends javax.swing.JFrame {
         jPanelProfTableLayout.setVerticalGroup(
             jPanelProfTableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelProfTableLayout.createSequentialGroup()
-                .addContainerGap(593, Short.MAX_VALUE)
+                .addContainerGap(590, Short.MAX_VALUE)
                 .addComponent(btnAddProf)
                 .addGap(36, 36, 36))
             .addGroup(jPanelProfTableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -779,7 +779,7 @@ public class JFrame_Principal extends javax.swing.JFrame {
                 .addGroup(jPanelProfAddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(chbProfActivo2)
                     .addComponent(btnAplyAddProf))
-                .addContainerGap(334, Short.MAX_VALUE))
+                .addContainerGap(345, Short.MAX_VALUE))
         );
 
         jLayeredPane3.setLayer(jPanelProfEdit, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -844,12 +844,6 @@ public class JFrame_Principal extends javax.swing.JFrame {
         jPanelCursoEdit.setBackground(new java.awt.Color(51, 51, 51));
         jPanelCursoEdit.setPreferredSize(new java.awt.Dimension(812, 632));
 
-        tfCursoDesc1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tfCursoDesc1ActionPerformed(evt);
-            }
-        });
-
         jLabel68.setBackground(new java.awt.Color(51, 51, 51));
         jLabel68.setForeground(new java.awt.Color(204, 204, 204));
         jLabel68.setText("Descripcion: ");
@@ -887,23 +881,23 @@ public class JFrame_Principal extends javax.swing.JFrame {
                             .addComponent(jLabel77))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanelCursoEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(tfCursoDesc1, javax.swing.GroupLayout.PREFERRED_SIZE, 341, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(chbCursoActivo1)
                             .addGroup(jPanelCursoEditLayout.createSequentialGroup()
                                 .addComponent(tfCursoCod1, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(82, 82, 82)
                                 .addComponent(jLabel79)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(cbCursoEtapa1, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(123, Short.MAX_VALUE))
+                                .addComponent(cbCursoEtapa1, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(tfCursoDesc1, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(118, Short.MAX_VALUE))
         );
         jPanelCursoEditLayout.setVerticalGroup(
             jPanelCursoEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelCursoEditLayout.createSequentialGroup()
                 .addGap(93, 93, 93)
                 .addGroup(jPanelCursoEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tfCursoDesc1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel68))
+                    .addComponent(jLabel68)
+                    .addComponent(tfCursoDesc1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(65, 65, 65)
                 .addGroup(jPanelCursoEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel77)
@@ -2418,16 +2412,14 @@ public class JFrame_Principal extends javax.swing.JFrame {
         jPanelActividad.setBackground(new java.awt.Color(51, 51, 51));
         jPanelActividad.setPreferredSize(new java.awt.Dimension(812, 656));
 
-
         jLayeredPane2.setPreferredSize(new java.awt.Dimension(812, 656));
-
 
         jPanelActvdTable.setBackground(new java.awt.Color(51, 51, 51));
         jPanelActvdTable.setPreferredSize(new java.awt.Dimension(812, 656));
 
         jScrollPane13.setPreferredSize(new java.awt.Dimension(812, 600));
 
-        jTableActvd.setModel(MostrarTabla.mostrarSolicitud()
+        jTableActvd.setModel(MostrarTabla.mostrarSolicitudResponsable(profesor)
         );
         jTableActvd.setPreferredSize(new java.awt.Dimension(800, 500));
         jTableActvd.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -2450,12 +2442,12 @@ public class JFrame_Principal extends javax.swing.JFrame {
         );
         jPanelActvdTableLayout.setVerticalGroup(
             jPanelActvdTableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 632, Short.MAX_VALUE)
+            .addGap(0, 656, Short.MAX_VALUE)
             .addGroup(jPanelActvdTableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanelActvdTableLayout.createSequentialGroup()
                     .addGap(16, 16, 16)
                     .addComponent(jScrollPane13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(16, Short.MAX_VALUE)))
+                    .addContainerGap(40, Short.MAX_VALUE)))
         );
 
         jPanelActvdInfo.setBackground(new java.awt.Color(51, 51, 51));
@@ -2622,12 +2614,13 @@ public class JFrame_Principal extends javax.swing.JFrame {
                 .addGap(54, 54, 54)
                 .addGroup(jPanelActvdInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelActvdInfoLayout.createSequentialGroup()
-                        .addGroup(jPanelActvdInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblActvdNom)
-                            .addComponent(lblActvdTipo)
+                        .addGroup(jPanelActvdInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanelActvdInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(lblActvdFfin)
-                                .addComponent(lblActvdFini)))
+                                .addComponent(lblActvdFini))
+                            .addGroup(jPanelActvdInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(lblActvdNom)
+                                .addComponent(lblActvdTipo)))
                         .addGap(49, 49, 49)
                         .addGroup(jPanelActvdInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblActvdProg)
