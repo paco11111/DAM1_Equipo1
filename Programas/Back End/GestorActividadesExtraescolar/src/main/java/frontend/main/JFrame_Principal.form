@@ -538,13 +538,13 @@
                                   <EmptySpace min="0" pref="656" max="32767" attributes="0"/>
                                   <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                                       <Group type="102" alignment="0" attributes="0">
-                                          <Component id="jPanelProfEdit" pref="655" max="32767" attributes="0"/>
+                                          <Component id="jPanelProfEdit" pref="654" max="32767" attributes="0"/>
                                           <EmptySpace min="0" pref="2" max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
                                   <Group type="103" rootIndex="2" groupAlignment="0" attributes="0">
                                       <Group type="102" alignment="0" attributes="0">
-                                          <Component id="jPanelProfTable" pref="655" max="32767" attributes="0"/>
+                                          <Component id="jPanelProfTable" pref="654" max="32767" attributes="0"/>
                                           <EmptySpace min="0" pref="2" max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
@@ -724,6 +724,9 @@
                                   <Properties>
                                     <Property name="text" type="java.lang.String" value="Eliminar"/>
                                   </Properties>
+                                  <Events>
+                                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnEliminarProfActionPerformed"/>
+                                  </Events>
                                 </Component>
                               </SubComponents>
                             </Container>
@@ -1193,6 +1196,9 @@
                                   <Properties>
                                     <Property name="text" type="java.lang.String" value="Eliminar"/>
                                   </Properties>
+                                  <Events>
+                                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnEliminarCursoActionPerformed"/>
+                                  </Events>
                                 </Component>
                               </SubComponents>
                             </Container>
@@ -1440,7 +1446,7 @@
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="jLayeredPane5" max="32767" attributes="0"/>
+                                  <Component id="jLayeredPane5" pref="646" max="32767" attributes="0"/>
                                   <EmptySpace min="4" pref="4" max="-2" attributes="0"/>
                               </Group>
                           </Group>
@@ -1457,7 +1463,7 @@
                           <Layout>
                             <DimensionLayout dim="0">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <EmptySpace min="0" pref="812" max="32767" attributes="0"/>
+                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                   <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                                       <Component id="jPanelGrupoEdit" alignment="0" max="-2" attributes="0"/>
                                   </Group>
@@ -1478,20 +1484,20 @@
                                   <EmptySpace min="0" pref="656" max="32767" attributes="0"/>
                                   <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                                       <Group type="102" alignment="0" attributes="0">
-                                          <Component id="jPanelGrupoEdit" max="32767" attributes="0"/>
+                                          <Component id="jPanelGrupoEdit" pref="643" max="32767" attributes="0"/>
                                           <EmptySpace min="0" pref="5" max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
                                   <Group type="103" rootIndex="2" groupAlignment="0" attributes="0">
                                       <Group type="102" alignment="0" attributes="0">
-                                          <Component id="jPanelGrupoTable" max="32767" attributes="0"/>
+                                          <Component id="jPanelGrupoTable" pref="646" max="32767" attributes="0"/>
                                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
                                   <Group type="103" rootIndex="3" groupAlignment="0" attributes="0">
                                       <Group type="102" alignment="1" attributes="0">
                                           <EmptySpace max="32767" attributes="0"/>
-                                          <Component id="jPanelGrupoAdd" max="32767" attributes="0"/>
+                                          <Component id="jPanelGrupoAdd" pref="638" max="32767" attributes="0"/>
                                           <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
@@ -1611,6 +1617,9 @@
                                   <Properties>
                                     <Property name="text" type="java.lang.String" value="Eliminar"/>
                                   </Properties>
+                                  <Events>
+                                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnEliminarGrupoActionPerformed"/>
+                                  </Events>
                                 </Component>
                               </SubComponents>
                             </Container>
@@ -1832,7 +1841,7 @@
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="jLayeredPane6" max="32767" attributes="0"/>
+                                  <Component id="jLayeredPane6" pref="646" max="32767" attributes="0"/>
                                   <EmptySpace min="4" pref="4" max="-2" attributes="0"/>
                               </Group>
                           </Group>
@@ -1849,7 +1858,7 @@
                           <Layout>
                             <DimensionLayout dim="0">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <EmptySpace min="0" pref="812" max="32767" attributes="0"/>
+                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                   <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                                       <Component id="jPanelDptmEdit" alignment="0" max="-2" attributes="0"/>
                                   </Group>
@@ -1870,20 +1879,20 @@
                                   <EmptySpace min="0" pref="656" max="32767" attributes="0"/>
                                   <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                                       <Group type="102" alignment="0" attributes="0">
-                                          <Component id="jPanelDptmEdit" max="32767" attributes="0"/>
+                                          <Component id="jPanelDptmEdit" pref="646" max="32767" attributes="0"/>
                                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
                                   <Group type="103" rootIndex="2" groupAlignment="0" attributes="0">
                                       <Group type="102" alignment="0" attributes="0">
-                                          <Component id="jPanelDptmTable" max="32767" attributes="0"/>
+                                          <Component id="jPanelDptmTable" pref="646" max="32767" attributes="0"/>
                                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
                                   <Group type="103" rootIndex="3" groupAlignment="0" attributes="0">
                                       <Group type="102" alignment="1" attributes="0">
                                           <EmptySpace max="32767" attributes="0"/>
-                                          <Component id="jPanelDptmAdd" max="32767" attributes="0"/>
+                                          <Component id="jPanelDptmAdd" pref="638" max="32767" attributes="0"/>
                                           <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
@@ -2014,6 +2023,9 @@
                                   <Properties>
                                     <Property name="text" type="java.lang.String" value="Eliminar"/>
                                   </Properties>
+                                  <Events>
+                                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnEliminarDptmActionPerformed"/>
+                                  </Events>
                                 </Component>
                               </SubComponents>
                             </Container>
