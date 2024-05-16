@@ -92,6 +92,7 @@ public class SolicitudDAO implements Repositorio<Solicitud>{
             while (rs2.next()) {
                 profesoresResponsables.put(index, profesorDAO.porId(rs2.getInt("idProfe")));
                 index++;
+                System.out.println(profesorDAO.porId(rs2.getInt("idProfe")).getNombre());
             }
             
             
@@ -257,6 +258,7 @@ public class SolicitudDAO implements Repositorio<Solicitud>{
     @Override
     public void agregar(Solicitud solicitud) {
         int id = agregar2(solicitud);
+        //Agrega en tabla Profes Participantes
         try ( PreparedStatement stmt2 = getConnection().prepareStatement("INSERT INTO idprofes_participantes (idProfe, idSolicitud) VALUES (?,?)");) {
             for(Map.Entry<Integer, Profesor> entry : solicitud.getProfesoresParticipantes().entrySet()){
                 stmt2.setInt(1, entry.getValue().getId());
@@ -273,8 +275,61 @@ public class SolicitudDAO implements Repositorio<Solicitud>{
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
         }
+        //Agrega en tabla Profes Responsables
         try ( PreparedStatement stmt2 = getConnection().prepareStatement("INSERT INTO idprofes_responsables (idProfe, idSolicitud) VALUES (?,?)");) {
             for(Map.Entry<Integer, Profesor> entry : solicitud.getProfesoresResponsables().entrySet()){
+                stmt2.setInt(1, entry.getValue().getId());
+                stmt2.setInt(2, id);
+                 int salida = stmt2.executeUpdate();
+                if (salida != 1) {
+                    throw new Exception(" No se ha insertado/modificado un solo registro en profesores");
+                }
+            }
+        }
+        catch (SQLException ex) {
+            // errores
+            System.out.println("SQLException: " + ex.getMessage());
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+        //Agrega en tabla solicitudes_curso
+        try ( PreparedStatement stmt2 = getConnection().prepareStatement("INSERT INTO solicitudes_has_cursos (idCurso, idSolicitud) VALUES (?,?)");) {
+            for(Map.Entry<Integer, Curso> entry : solicitud.getCurso().entrySet()){
+                stmt2.setInt(1, entry.getValue().getId());
+                stmt2.setInt(2, id);
+                 int salida = stmt2.executeUpdate();
+                if (salida != 1) {
+                    throw new Exception(" No se ha insertado/modificado un solo registro en profesores");
+                }
+            }
+        }
+        catch (SQLException ex) {
+            // errores
+            System.out.println("SQLException: " + ex.getMessage());
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+        //Agrega en tabla solicitudes_grupo
+        try ( PreparedStatement stmt2 = getConnection().prepareStatement("INSERT INTO solicitudes_has_grupos (idGrupo, idSolicitud) VALUES (?,?)");) {
+            for(Map.Entry<Integer, Grupo> entry : solicitud.getGrupo().entrySet()){
+                stmt2.setInt(1, entry.getValue().getId());
+                stmt2.setInt(2, id);
+                 int salida = stmt2.executeUpdate();
+                if (salida != 1) {
+                    throw new Exception(" No se ha insertado/modificado un solo registro en profesores");
+                }
+            }
+        }
+        catch (SQLException ex) {
+            // errores
+            System.out.println("SQLException: " + ex.getMessage());
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+        
+        //Agrega en tabla solicitudes transporte
+        try ( PreparedStatement stmt2 = getConnection().prepareStatement("INSERT INTO solicitudes_has_transporte (idTransporte, idSolicitud) VALUES (?,?)");) {
+            for(Map.Entry<Integer, Transporte> entry : solicitud.getTransporte().entrySet()){
                 stmt2.setInt(1, entry.getValue().getId());
                 stmt2.setInt(2, id);
                  int salida = stmt2.executeUpdate();
@@ -342,50 +397,8 @@ public class SolicitudDAO implements Repositorio<Solicitud>{
         
     }
     
-    private void agregarProfesores(Solicitud solicitud){
-        try ( Statement stmt = getConnection().createStatement();  ResultSet rs = stmt.executeQuery("SELECT idSolicitud FROM solicitudes ORDER BY idSolicitud DESC LIMIT 1");) {
-            
-             try ( PreparedStatement stmt2 = getConnection().prepareStatement("INSERT INTO idprofes_participantes (idProfe, idSolicitud) VALUES (?,?)");) {
-            for(Map.Entry<Integer, Profesor> entry : solicitud.getProfesoresParticipantes().entrySet()){
-                stmt2.setInt(1, entry.getValue().getId());
-                stmt2.setInt(2, rs.getInt(1));
-                 int salida = stmt2.executeUpdate();
-                if (salida != 1) {
-                    throw new Exception(" No se ha insertado/modificado un solo registro en profesores");
-                }
-            }
-        }
-        catch (SQLException ex) {
-            // errores
-            System.out.println("SQLException: " + ex.getMessage());
-        } catch (Exception ex) {
-            System.out.println(ex.getMessage());
-        }
-        try ( PreparedStatement stmt2 = getConnection().prepareStatement("INSERT INTO idprofes_responsables (idProfe, idSolicitud) VALUES (?,?)");) {
-            for(Map.Entry<Integer, Profesor> entry : solicitud.getProfesoresResponsables().entrySet()){
-                stmt2.setInt(1, entry.getValue().getId());
-                stmt2.setInt(2, rs.getInt(1));
-                 int salida = stmt2.executeUpdate();
-                if (salida != 1) {
-                    throw new Exception(" No se ha insertado/modificado un solo registro en profesores");
-                }
-            }
-        }
-        catch (SQLException ex) {
-            // errores
-            System.out.println("SQLException: " + ex.getMessage());
-        } catch (Exception ex) {
-            System.out.println(ex.getMessage());
-        }
-
-        } catch (SQLException ex) {
-            System.out.println("SQLException: " + ex.getMessage());
-            
-        } catch (Exception ex) {
-            System.out.println(ex.getMessage());
-        }
-    }
-
+    
+    
     @Override
     public void eliminar(int id) {
         String sql="DELETE FROM solicitudes WHERE idSolicitud=?"; 

@@ -36,7 +36,7 @@ public class DepartamentoDAO implements Repositorio<Departamento>{
     @Override
     public List<Departamento> listar() {
         List<Departamento> departamentos = new ArrayList<>();
-        try ( Statement stmt = getConnection().createStatement();  ResultSet rs = stmt.executeQuery("SELECT idProfesor, profesores.nombre as profesor, apellidos,DNI,departamentos.idDepartamento,activo, codigo, departamentos.nombre, idProfesorJefe FROM departamentos LEFT JOIN profesores ON profesores.idDepartamento= departamentos.idDepartamento");) {
+        try ( Statement stmt = getConnection().createStatement();  ResultSet rs = stmt.executeQuery("SELECT departamentos.idDepartamento, idProfesor, profesores.nombre as profesor, apellidos,DNI,activo, codigo, departamentos.nombre, idProfesorJefe FROM departamentos LEFT JOIN profesores ON profesores.idDepartamento= departamentos.idDepartamento GROUP BY departamentos.idDepartamento");) {
             while (rs.next()) {
                 Departamento departamento = crearDepartamento(rs);
                 if (!departamentos.add(departamento)) {
@@ -63,8 +63,10 @@ public class DepartamentoDAO implements Repositorio<Departamento>{
     private Departamento crearDepartamento(final ResultSet rs) throws SQLException {
         Departamento d = new Departamento(rs.getInt("idDepartamento"), rs.getString("codigo"), rs.getString("nombre"), null);
         Profesor p = new Profesor(rs.getInt("idProfesorJefe"), rs.getString("profesor"), rs.getString("apellidos"),rs.getString("DNI"), d, rs.getBoolean("activo"));
+        
         d.setJefe(p);
         p.setDepartamento(d);
+        System.out.println(d.getId());
         return d;
     }
 
@@ -140,7 +142,7 @@ public class DepartamentoDAO implements Repositorio<Departamento>{
 
     @Override
     public void agregar(Departamento departamento) {
-        try ( PreparedStatement stmt = getConnection().prepareStatement("INSERT INTO departamento (codigo,nombre, idProfesorJefe ) VALUES (?,?,?)");) {
+        try ( PreparedStatement stmt = getConnection().prepareStatement("INSERT INTO departamentos (codigo,nombre, idProfesorJefe ) VALUES (?,?,?)");) {
             stmt.setString(1, departamento.getCodigo());
             stmt.setString(2, departamento.getNombre());
             stmt.setInt(3, departamento.getJefe().getId());

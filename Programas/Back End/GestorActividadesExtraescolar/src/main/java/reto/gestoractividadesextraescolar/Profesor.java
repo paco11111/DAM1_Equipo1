@@ -79,9 +79,31 @@ public class Profesor implements Comparable<Profesor> {
             this.departamento = null;
         }
         this.activo = true;
-       
-
     }
+    
+    /**
+     * CONSTRUCTOR
+     * 
+     * @param nombre Cadena de texto que guarad el nombre
+     * @param apellidos Cadena de texto que guarad los apellidos
+     * @param dni Cadena de texto que guarda DNI
+     * @param departamento Objeto Departamento al que pertenece el profesor
+     * @param activo Boolean para saber si el profesor esta activo o no
+     */
+    
+    public Profesor( String nombre, String apellidos, String dni, Departamento departamento, boolean activo) {
+        this.dni = dni;
+        this.nombre = nombre;
+        this.apellidos = apellidos;
+        if(departamento != null){
+            this.departamento = departamento;
+           this. departamento.setJefe(this);
+        }else{
+            this.departamento = null;
+        }
+        this.activo = activo;
+    }
+    
   
 
     public void setDepartamento(Departamento departamento) {

@@ -365,7 +365,7 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="jPanelMenuDatos" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="0" pref="639" max="32767" attributes="0"/>
+                              <EmptySpace min="0" pref="657" max="32767" attributes="0"/>
                           </Group>
                           <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                               <Component id="jPanelProf" alignment="1" min="830" pref="830" max="-2" attributes="0"/>
@@ -510,7 +510,7 @@
                           <Layout>
                             <DimensionLayout dim="0">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <EmptySpace min="0" pref="812" max="32767" attributes="0"/>
+                                  <EmptySpace min="0" pref="824" max="32767" attributes="0"/>
                                   <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                                       <Component id="jPanelProfEdit" alignment="0" max="-2" attributes="0"/>
                                   </Group>
@@ -531,20 +531,26 @@
                                   <EmptySpace min="0" pref="656" max="32767" attributes="0"/>
                                   <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                                       <Group type="102" alignment="0" attributes="0">
+
                                           <Component id="jPanelProfEdit" pref="646" max="32767" attributes="0"/>
+
                                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
                                   <Group type="103" rootIndex="2" groupAlignment="0" attributes="0">
                                       <Group type="102" alignment="0" attributes="0">
+
                                           <Component id="jPanelProfTable" pref="646" max="32767" attributes="0"/>
+
                                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
                                   <Group type="103" rootIndex="3" groupAlignment="0" attributes="0">
                                       <Group type="102" alignment="1" attributes="0">
                                           <EmptySpace max="32767" attributes="0"/>
+
                                           <Component id="jPanelProfAdd" pref="638" max="32767" attributes="0"/>
+
                                           <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
@@ -596,7 +602,7 @@
                                                   <Component id="cbProfDep1" min="-2" pref="193" max="-2" attributes="0"/>
                                               </Group>
                                           </Group>
-                                          <EmptySpace pref="133" max="32767" attributes="0"/>
+                                          <EmptySpace pref="132" max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
                                 </DimensionLayout>
@@ -626,7 +632,7 @@
                                               <Component id="chbProfActivo1" alignment="3" min="-2" max="-2" attributes="0"/>
                                               <Component id="btnSendEditProf" alignment="3" min="-2" max="-2" attributes="0"/>
                                           </Group>
-                                          <EmptySpace pref="357" max="32767" attributes="0"/>
+                                          <EmptySpace pref="345" max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
                                 </DimensionLayout>
@@ -690,27 +696,7 @@
                                 <Component class="javax.swing.JComboBox" name="cbProfDep1">
                                   <Properties>
                                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                                      <StringArray count="19">
-                                        <StringItem index="0" value="BG"/>
-                                        <StringItem index="1" value="DIB"/>
-                                        <StringItem index="2" value="ECO"/>
-                                        <StringItem index="3" value="EF"/>
-                                        <StringItem index="4" value="FIL"/>
-                                        <StringItem index="5" value="FQ"/>
-                                        <StringItem index="6" value="FRA"/>
-                                        <StringItem index="7" value="GH"/>
-                                        <StringItem index="8" value="ING"/>
-                                        <StringItem index="9" value="LAT"/>
-                                        <StringItem index="10" value="LEN"/>
-                                        <StringItem index="11" value="MAT"/>
-                                        <StringItem index="12" value="MUS"/>
-                                        <StringItem index="13" value="TEC"/>
-                                        <StringItem index="14" value="AG"/>
-                                        <StringItem index="15" value="FOL"/>
-                                        <StringItem index="16" value="INF"/>
-                                        <StringItem index="17" value="FM"/>
-                                        <StringItem index="18" value="TMV"/>
-                                      </StringArray>
+                                      <StringArray count="0"/>
                                     </Property>
                                   </Properties>
                                   <AuxValues>
@@ -744,7 +730,7 @@
                                 <DimensionLayout dim="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Group type="102" alignment="1" attributes="0">
-                                          <EmptySpace pref="686" max="32767" attributes="0"/>
+                                          <EmptySpace pref="682" max="32767" attributes="0"/>
                                           <Component id="btnAddProf" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
                                       </Group>
@@ -760,7 +746,7 @@
                                 <DimensionLayout dim="1">
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Group type="102" alignment="1" attributes="0">
-                                          <EmptySpace pref="597" max="32767" attributes="0"/>
+                                          <EmptySpace pref="590" max="32767" attributes="0"/>
                                           <Component id="btnAddProf" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
                                       </Group>
@@ -858,7 +844,7 @@
                                               </Group>
                                               <Component id="btnAplyAddProf" alignment="1" min="-2" pref="100" max="-2" attributes="0"/>
                                           </Group>
-                                          <EmptySpace pref="133" max="32767" attributes="0"/>
+                                          <EmptySpace pref="132" max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
                                 </DimensionLayout>
@@ -884,7 +870,7 @@
                                               <Component id="chbProfActivo2" alignment="3" min="-2" max="-2" attributes="0"/>
                                               <Component id="btnAplyAddProf" alignment="3" min="-2" max="-2" attributes="0"/>
                                           </Group>
-                                          <EmptySpace pref="357" max="32767" attributes="0"/>
+                                          <EmptySpace pref="345" max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
                                 </DimensionLayout>
@@ -956,12 +942,7 @@
                                 <Component class="javax.swing.JComboBox" name="cbProfDep2">
                                   <Properties>
                                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                                      <StringArray count="4">
-                                        <StringItem index="0" value="Item 1"/>
-                                        <StringItem index="1" value="Item 2"/>
-                                        <StringItem index="2" value="Item 3"/>
-                                        <StringItem index="3" value="Item 4"/>
-                                      </StringArray>
+                                      <StringArray count="0"/>
                                     </Property>
                                   </Properties>
                                   <AuxValues>
@@ -1093,7 +1074,7 @@
                                                   </Group>
                                               </Group>
                                           </Group>
-                                          <EmptySpace pref="124" max="32767" attributes="0"/>
+                                          <EmptySpace pref="117" max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
                                 </DimensionLayout>
@@ -1123,6 +1104,9 @@
                               </Layout>
                               <SubComponents>
                                 <Component class="javax.swing.JTextField" name="tfCursoDesc1">
+                                  <Events>
+                                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tfCursoDesc1ActionPerformed"/>
+                                  </Events>
                                 </Component>
                                 <Component class="javax.swing.JLabel" name="jLabel68">
                                   <Properties>
@@ -1164,11 +1148,13 @@
                                 <Component class="javax.swing.JComboBox" name="cbCursoEtapa1">
                                   <Properties>
                                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                                      <StringArray count="4">
-                                        <StringItem index="0" value="Item 1"/>
-                                        <StringItem index="1" value="Item 2"/>
-                                        <StringItem index="2" value="Item 3"/>
-                                        <StringItem index="3" value="Item 4"/>
+                                      <StringArray count="6">
+                                        <StringItem index="0" value="ESO"/>
+                                        <StringItem index="1" value="Bachillerato"/>
+                                        <StringItem index="2" value="FPB"/>
+                                        <StringItem index="3" value="FPGM"/>
+                                        <StringItem index="4" value="FPGS"/>
+                                        <StringItem index="5" value="FPCE"/>
                                       </StringArray>
                                     </Property>
                                   </Properties>
@@ -1344,11 +1330,13 @@
                                 <Component class="javax.swing.JComboBox" name="cbCursoEtapa2">
                                   <Properties>
                                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                                      <StringArray count="4">
-                                        <StringItem index="0" value="Item 1"/>
-                                        <StringItem index="1" value="Item 2"/>
-                                        <StringItem index="2" value="Item 3"/>
-                                        <StringItem index="3" value="Item 4"/>
+                                      <StringArray count="6">
+                                        <StringItem index="0" value="ESO"/>
+                                        <StringItem index="1" value="Bachillerato"/>
+                                        <StringItem index="2" value="FPB"/>
+                                        <StringItem index="3" value="FPGM"/>
+                                        <StringItem index="4" value="FPGS"/>
+                                        <StringItem index="5" value="FPCE"/>
                                       </StringArray>
                                     </Property>
                                   </Properties>
@@ -2689,7 +2677,7 @@
                                           </Group>
                                       </Group>
                                   </Group>
-                                  <EmptySpace pref="101" max="32767" attributes="0"/>
+                                  <EmptySpace pref="97" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -2734,7 +2722,7 @@
                                           </Group>
                                       </Group>
                                   </Group>
-                                  <EmptySpace type="separate" pref="23" max="32767" attributes="0"/>
+                                  <EmptySpace type="separate" max="32767" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Group type="102" alignment="1" attributes="0">
                                           <Component id="jLabel16" min="-2" max="-2" attributes="0"/>
@@ -3898,7 +3886,9 @@
                                           </Group>
                                       </Group>
                                   </Group>
+
                                   <EmptySpace min="-2" pref="122" max="-2" attributes="0"/>
+
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -4584,7 +4574,9 @@
                         </Component>
                         <Component class="javax.swing.JTextField" name="tfActvdNom">
                         </Component>
+
                         <Component class="javax.swing.JLabel" name="jLabel30">
+
                           <Properties>
                             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                               <Color blue="33" green="33" red="33" type="rgb"/>
