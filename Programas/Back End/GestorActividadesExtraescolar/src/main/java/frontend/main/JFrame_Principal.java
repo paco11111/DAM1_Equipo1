@@ -2421,6 +2421,7 @@ public class JFrame_Principal extends javax.swing.JFrame {
 
         jTableActvd.setModel(MostrarTabla.mostrarSolicitudResponsable(profesor)
         );
+        jTableActvd.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
         jTableActvd.setPreferredSize(new java.awt.Dimension(800, 500));
         jTableActvd.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
