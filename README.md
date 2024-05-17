@@ -267,6 +267,21 @@ Aquí mostraremos las fotos del año seleccionado mediante tres carruseles con d
 
 
 ## PROGRAMACION
+
+La aplicacion se gestiona distinto en base al tipo de usuario que lo abre:
+
+### EQUIPO DIRECTIVO:
+
+El equipo directivo tiene unicamente acceso a las solicitudes pendientes
+
+### PROFESOR:
+
+Los profesores pueden crear solicitudes, modificarlas y gestionar las actividades
+
+### SUPERUSUARIO/ADMINISTRADOR:
+
+Tienen permiso y acceso a todo, incluyendo la modificacion de las actividades y creacion de profesores, grupos, cursos y departamentos
+
 Nosotros gestionamos el numero de alumnos mediante la tabla grupos, que tiene una columna almacenando el numero de alumnos de la clase
 ![](https://github.com/paco11111/DAM1_Equipo1/blob/337a269efc7911e054f6b1b60f88cf281e8c57b0/DC.png)
 ![](https://github.com/paco11111/DAM1_Equipo1/blob/337a269efc7911e054f6b1b60f88cf281e8c57b0/DC2.png)
