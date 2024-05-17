@@ -92,7 +92,6 @@ public class SolicitudDAO implements Repositorio<Solicitud>{
             while (rs2.next()) {
                 profesoresResponsables.put(index, profesorDAO.porId(rs2.getInt("idProfe")));
                 index++;
-                System.out.println(profesorDAO.porId(rs2.getInt("idProfe")).getNombre());
             }
             
             
@@ -215,7 +214,7 @@ public class SolicitudDAO implements Repositorio<Solicitud>{
 
     @Override
     public void modificar(Solicitud solicitud) {
-        try ( PreparedStatement stmt = getConnection().prepareStatement("UPDATE solicitudes SET idSolicitante = ?, actividad = ?, tipo_actividad = ?, previsto_programacion = ?, requiere_transporte = ?, comentario_transporte = ?, finicio = ?, ffinal = ?, hora_inicio = ?, hora_fin = ?, alojamiento = ?, comentario_alojamiento = ?, comentarios_adicionales = ?, estado = ?, comentario_estado = ?, WHERE idSolicitud=?");) {
+        try ( PreparedStatement stmt = getConnection().prepareStatement("UPDATE solicitudes SET idSolicitante = ?, actividad = ?, tipo_actividad = ?, previsto_programacion = ?, requiere_transporte = ?, comentario_transporte = ?, finicio = ?, ffinal = ?, hora_inicio = ?, hora_fin = ?, alojamiento = ?, comentario_alojamiento = ?, comentarios_adicionales = ?, estado = ?, comentario_estado = ? WHERE idSolicitud=?");) {
             stmt.setInt(1, solicitud.getProfesorSolicitante().getId());
             stmt.setString(2, solicitud.getActividad());
             String tipoActividad = "" + solicitud.getTIPOACTIVIDAD();

@@ -295,6 +295,74 @@ public class Solicitud {
         return cursos;
     }
 
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setProfesorSolicitante(Profesor profesorSolicitante) {
+        this.profesorSolicitante = profesorSolicitante;
+    }
+
+    public void setActividad(String actividad) {
+        this.actividad = actividad;
+    }
+
+    public void setTIPOACTIVIDAD(TipoActividad TIPOACTIVIDAD) {
+        this.TIPOACTIVIDAD = TIPOACTIVIDAD;
+    }
+
+    public void setDepartamento(Departamento departamento) {
+        this.departamento = departamento;
+    }
+
+    public void setPrevisto(boolean previsto) {
+        this.previsto = previsto;
+    }
+
+    public void setComentarioTransporte(String comentarioTransporte) {
+        this.comentarioTransporte = comentarioTransporte;
+    }
+
+    public void setFechaInicio(LocalDate fechaInicio) {
+        this.fechaInicio = fechaInicio;
+    }
+
+    public void setFechaFinal(LocalDate fechaFinal) {
+        this.fechaFinal = fechaFinal;
+    }
+
+    public void setHoraInicio(LocalTime horaInicio) {
+        this.horaInicio = horaInicio;
+    }
+
+    public void setHoraFinal(LocalTime horaFinal) {
+        this.horaFinal = horaFinal;
+    }
+
+    public void setAlojamiento(boolean alojamiento) {
+        this.alojamiento = alojamiento;
+    }
+
+    public void setComentarioAlojamiento(String comentarioAlojamiento) {
+        this.comentarioAlojamiento = comentarioAlojamiento;
+    }
+
+    public void setComentarioAdicional(String comentarioAdicional) {
+        this.comentarioAdicional = comentarioAdicional;
+    }
+
+    public void setESTADO(String estado) {
+        this.ESTADO = estadoSolicitud(estado);
+    }
+
+    public void setComentarioEstado(String comentarioEstado) {
+        this.comentarioEstado = comentarioEstado;
+    }
+
+    public void setNumeroAlumnos(int numeroAlumnos) {
+        this.numeroAlumnos = numeroAlumnos;
+    }
+
     public int getNumeroAlumnos() {
         return numeroAlumnos;
     }

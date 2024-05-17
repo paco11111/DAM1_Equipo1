@@ -32,7 +32,7 @@ import reto.gestoractividadesextraescolar.Utilidad;
 public class MostrarTabla {
 
     private static SolicitudDAO solicitudDAO = new SolicitudDAO();
-    private static String[] solicitud = new String[21];
+    private static String[] solicitud = new String[22];
     private static List<Solicitud> solicitudes = new ArrayList<>();
 
     private static SolicitudAprobadaDAO solicitudAprobadaDAO = new SolicitudAprobadaDAO();
@@ -57,7 +57,7 @@ public class MostrarTabla {
 
     public static DefaultTableModel mostrarSolicitud() {
         DefaultTableModel model = new DefaultTableModel();
-        DateTimeFormatter f = DateTimeFormatter.ofPattern("dd 'de' MMMM 'de' yyyy").withLocale(new Locale("es", "ES"));
+        DateTimeFormatter f = DateTimeFormatter.ofPattern("dd-MM-yyyy").withLocale(new Locale("es", "ES"));
         DateTimeFormatter t = DateTimeFormatter.ofPattern("hh:mm").withLocale(new Locale("es", "ES"));
         solicitudes = solicitudDAO.listar();
         try {
@@ -65,6 +65,7 @@ public class MostrarTabla {
             model.addColumn("idProfesorSolicitante");
             model.addColumn("Actividad");
             model.addColumn("Tipo Actividad");
+            model.addColumn("Departamento:");
             model.addColumn("Previsto Programacion");
             model.addColumn("Transporte");
             model.addColumn("Comentario Transporte");
@@ -87,43 +88,44 @@ public class MostrarTabla {
                     solicitud[1] = s.getProfesorSolicitante().getNombre() + " " + s.getProfesorSolicitante().getApellidos();
                     solicitud[2] = s.getActividad();
                     solicitud[3] = s.getTIPOACTIVIDAD().name();
-                    solicitud[4] = Utilidad.respuestaBoolean(s.isPrevisto());
+                    solicitud[4] = s.getDepartamento().getCodigo();
+                    solicitud[5] = Utilidad.respuestaBoolean(s.isPrevisto());
                     String tra = "";
                     for (Map.Entry<Integer, Transporte> transporte : s.getTransporte().entrySet()) {
                         tra = transporte.getValue().getTipo();
                     }
-                    solicitud[5] = tra;
-                    solicitud[6] = s.getComentarioTransporte();
-                    solicitud[7] = s.getFechaInicio().format(f);
-                    solicitud[8] = s.getFechaFinal().format(f);
-                    solicitud[9] = s.getHoraInicio().format(t);
-                    solicitud[10] = s.getHoraFinal().format(t);
-                    solicitud[11] = Utilidad.respuestaBoolean(s.isAlojamiento());
-                    solicitud[12] = s.getComentarioAlojamiento();
-                    solicitud[13] = s.getComentarioAdicional();
-                    solicitud[14] = s.getESTADO().name();
-                    solicitud[15] = s.getComentarioEstado();
+                    solicitud[6] = tra;
+                    solicitud[7] = s.getComentarioTransporte();
+                    solicitud[8] = s.getFechaInicio().format(f);
+                    solicitud[9] = s.getFechaFinal().format(f);
+                    solicitud[10] = s.getHoraInicio().format(t);
+                    solicitud[11] = s.getHoraFinal().format(t);
+                    solicitud[12] = Utilidad.respuestaBoolean(s.isAlojamiento());
+                    solicitud[13] = s.getComentarioAlojamiento();
+                    solicitud[14] = s.getComentarioAdicional();
+                    solicitud[15] = s.getESTADO().name();
+                    solicitud[16] = s.getComentarioEstado();
                     String pr = "";
                     for (Map.Entry<Integer, Profesor> p : s.getProfesoresResponsables().entrySet()) {
                         pr = p.getValue().getNombre() + " " + p.getValue().getApellidos() + ",";
                     }
-                    solicitud[16] = pr;
+                    solicitud[17] = pr;
                     String pp = "";
                     for (Map.Entry<Integer, Profesor> p : s.getProfesoresParticipantes().entrySet()) {
                         pp = p.getValue().getNombre() + " " + p.getValue().getApellidos() + ",";
                     }
-                    solicitud[17] = pp;
+                    solicitud[18] = pp;
                     String grupos = "";
                     for (Map.Entry<Integer, Grupo> p : s.getGrupo().entrySet()) {
                         pp = p.getValue().getCodigo() + ", ";
                     }
-                    solicitud[18] = grupos;
+                    solicitud[19] = grupos;
                     String cursos = "";
                     for (Map.Entry<Integer, Curso> p : s.getCurso().entrySet()) {
                         pp = p.getValue().getCodigo() + ",";
                     }
-                    solicitud[19] = cursos;
-                    solicitud[20] = String.valueOf(s.getNumeroAlumnos());
+                    solicitud[20] = cursos;
+                    solicitud[21] = String.valueOf(s.getNumeroAlumnos());
                     model.addRow(solicitud);
 
             }
@@ -137,7 +139,7 @@ public class MostrarTabla {
 
     public static DefaultTableModel mostrarSolicitudResponsable(Profesor profesor) {
         DefaultTableModel model = new DefaultTableModel();
-        DateTimeFormatter f = DateTimeFormatter.ofPattern("dd 'de' MMMM 'de' yyyy").withLocale(new Locale("es", "ES"));
+        DateTimeFormatter f = DateTimeFormatter.ofPattern("dd-MM-yyyy").withLocale(new Locale("es", "ES"));
         DateTimeFormatter t = DateTimeFormatter.ofPattern("HH:mm").withLocale(new Locale("es", "ES"));
         solicitudes = solicitudDAO.listar();
         String[] solicitud2 = new String[21];
@@ -271,7 +273,7 @@ public class MostrarTabla {
 
     public static DefaultTableModel mostrarSolicitudAprobada() {
         DefaultTableModel model = new DefaultTableModel();
-        DateTimeFormatter f = DateTimeFormatter.ofPattern("dd 'de' MMMM 'de' yyyy").withLocale(new Locale("es", "ES"));
+        DateTimeFormatter f = DateTimeFormatter.ofPattern("dd-MM-yyyy").withLocale(new Locale("es", "ES"));
         DateTimeFormatter t = DateTimeFormatter.ofPattern("HH:mm").withLocale(new Locale("es", "ES"));
         solicitudesAprobadas = solicitudAprobadaDAO.listar();
         try {

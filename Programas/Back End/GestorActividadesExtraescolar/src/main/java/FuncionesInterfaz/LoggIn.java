@@ -17,13 +17,11 @@ import reto.gestoractividadesextraescolar.Profesor;
  * @author Fabian Saiz Landeras
  */
 public class LoggIn {
+
     private static Profesor profesor;
     private static String usuario;
     private static List<LoggProfesor> validar;
     private static LoggProfesorDAO loggProfesorDAO;
-    
-    
-    
 
     public static boolean validar(String email, String password) {
         boolean valido = false;
@@ -34,7 +32,6 @@ public class LoggIn {
         validar = loggProfesorDAO.listar();
         try {
             for (LoggProfesor p : validar) {
-                System.out.println(p.getPsswrd());
                 if (p.getEmail().equals(email) && p.getPsswrd() == null) {
                     do {
                         psswrd = JOptionPane.showInputDialog("Inserta la contraseña que vas a usar: ");
@@ -52,16 +49,12 @@ public class LoggIn {
                     valido = true;
                 }
             }
-            
 
         } catch (Exception e) {
             e.getMessage();
         }
         return valido;
     }
-    
-    
-    
 
     public static Profesor getProfesor() {
         return profesor;
@@ -70,8 +63,5 @@ public class LoggIn {
     public static String getUsuario() {
         return usuario;
     }
-    
-    
-    
 
 }
