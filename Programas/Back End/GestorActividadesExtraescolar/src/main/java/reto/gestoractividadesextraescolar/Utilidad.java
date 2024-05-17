@@ -14,6 +14,7 @@ import java.time.LocalTime;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 import java.util.TreeMap;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -123,15 +124,13 @@ public class Utilidad {
         return valido;
     }
 
-    public static String dni() {
+    public static String dni(String temp) {
         boolean valido = false;
-        String temp = "";
         while (!valido) {
-            temp = nextString("Introduce el DNI: ");
             if (temp.matches("[0-9]{8}[A-Z]") && letraDni(temp)) {
                 valido = true;
             } else {
-                System.out.println("DNI introducido invalido, vuelve a introducirlo");
+                JOptionPane.showMessageDialog(null,"DNI no valido");
             }
         }
         return temp;

@@ -22,6 +22,7 @@ public class SolicitudAprobada extends Solicitud{
             LocalTime horaFinal, boolean alojamiento, String comentarioAlojamiento, String comentarioAdicional, String estado, String comentarioEstado, 
             TreeMap<Integer, Profesor> profesoresParticipantes, TreeMap<Integer, Profesor> profesoresResponsables, TreeMap <Integer, Grupo> grupos, TreeMap <Integer,Curso> cursos, int numeroAlumnos, 
             String infoEmpresa, double importeTransportes, String infoActividad) {
+        
         super(id, profesorSolicitante, actividad, tipoActividad, departamento, previsto, transporte, comentarioTransporte, fechaInicio, fechaFinal, horaInicio, horaFinal, alojamiento, comentarioAlojamiento, comentarioAdicional, estado, comentarioEstado, profesoresParticipantes, profesoresResponsables, grupos, cursos, numeroAlumnos);
         this.infoEmpresaTransporte = infoEmpresa;
         this.importeTransporte = importeTransportes;

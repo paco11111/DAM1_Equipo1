@@ -18,6 +18,7 @@ import DAOs.ProfesorDAO;
 import DAOs.SolicitudAprobadaDAO;
 import DAOs.SolicitudDAO;
 import DAOs.TransporteDAO;
+import Enumerados.EstadoSolicitud;
 import FuncionesInterfaz.LectorCSV;
 import FuncionesInterfaz.LoggIn;
 import FuncionesInterfaz.MostrarTabla;
@@ -1329,7 +1330,7 @@ public class JFrame_Principal extends javax.swing.JFrame {
             .addGap(0, 656, Short.MAX_VALUE)
             .addGroup(jLayeredPane5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jLayeredPane5Layout.createSequentialGroup()
-                    .addComponent(jPanelGrupoEdit, javax.swing.GroupLayout.DEFAULT_SIZE, 642, Short.MAX_VALUE)
+                    .addComponent(jPanelGrupoEdit, javax.swing.GroupLayout.DEFAULT_SIZE, 641, Short.MAX_VALUE)
                     .addGap(0, 5, Short.MAX_VALUE)))
             .addGroup(jLayeredPane5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jLayeredPane5Layout.createSequentialGroup()
@@ -1781,7 +1782,7 @@ public class JFrame_Principal extends javax.swing.JFrame {
 
         jScrollPane1.setViewportView(tpSoliPendientes);
 
-        cbEstadoSoli.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pendiente", "Aprobada", "Denegada" }));
+        cbEstadoSoli.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "APROBADA", "DENEGADA", "SOLICITADA", "REALIZADA" }));
         cbEstadoSoli.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbEstadoSoliActionPerformed(evt);
@@ -2078,6 +2079,7 @@ public class JFrame_Principal extends javax.swing.JFrame {
 
         jTableSoliUsu.setModel(MostrarTabla.mostrarSolicitud()
         );
+        jTableSoliUsu.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
         jTableSoliUsu.setPreferredSize(new java.awt.Dimension(800, 500));
         jTableSoliUsu.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -2110,8 +2112,13 @@ public class JFrame_Principal extends javax.swing.JFrame {
         jPanelEditSoli.setBackground(new java.awt.Color(51, 51, 51));
         jPanelEditSoli.setPreferredSize(new java.awt.Dimension(812, 656));
 
-        tfEditSoliProfRes.setText("Nombre Apellidos,  Nombre Apellidos,...");
+        tfEditSoliProfRes.setText("Nombre Apellidos,Nombre Apellidos,...");
         tfEditSoliProfRes.setPreferredSize(new java.awt.Dimension(234, 22));
+        tfEditSoliProfRes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tfEditSoliProfResActionPerformed(evt);
+            }
+        });
 
         jLabel11.setBackground(new java.awt.Color(51, 51, 51));
         jLabel11.setForeground(new java.awt.Color(204, 204, 204));
@@ -2213,7 +2220,7 @@ public class JFrame_Principal extends javax.swing.JFrame {
             }
         });
 
-        tfEditSoliProfPar.setText("Nombre Apellidos, Nombre Apellidos,...");
+        tfEditSoliProfPar.setText("Nombre Apellidos,Nombre Apellidos,...");
         tfEditSoliProfPar.setPreferredSize(new java.awt.Dimension(234, 22));
         tfEditSoliProfPar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -2288,7 +2295,7 @@ public class JFrame_Principal extends javax.swing.JFrame {
                                 .addComponent(jLabel17)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(cbEditSoliTipoActividad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(101, Short.MAX_VALUE))
+                .addContainerGap(97, Short.MAX_VALUE))
         );
         jPanelEditSoliLayout.setVerticalGroup(
             jPanelEditSoliLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2321,7 +2328,7 @@ public class JFrame_Principal extends javax.swing.JFrame {
                         .addGroup(jPanelEditSoliLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel19)
                             .addComponent(tfEditSoliFfin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(18, 23, Short.MAX_VALUE)
+                .addGap(18, 18, Short.MAX_VALUE)
                 .addGroup(jPanelEditSoliLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelEditSoliLayout.createSequentialGroup()
                         .addComponent(lblEditSoliTransporte)
@@ -3602,17 +3609,17 @@ public class JFrame_Principal extends javax.swing.JFrame {
         jPanelSoliTable.setVisible(false);
         jPanelEditSoli.setVisible(true);
         tfEditSoliNom.setText(jTableSoliUsu.getValueAt(jTableSoliUsu.getSelectedRow(), 2).toString());
-        tfEditSoliFini.setText(jTableSoliUsu.getValueAt(jTableSoliUsu.getSelectedRow(), 7).toString());
-        tfEditSoliFfin.setText(jTableSoliUsu.getValueAt(jTableSoliUsu.getSelectedRow(), 8).toString());
-        tfEditSoliHini.setText(jTableSoliUsu.getValueAt(jTableSoliUsu.getSelectedRow(), 9).toString());
-        tfEditSoliHfin.setText(jTableSoliUsu.getValueAt(jTableSoliUsu.getSelectedRow(), 10).toString());
+        tfEditSoliFini.setText(jTableSoliUsu.getValueAt(jTableSoliUsu.getSelectedRow(), 8).toString());
+        tfEditSoliFfin.setText(jTableSoliUsu.getValueAt(jTableSoliUsu.getSelectedRow(), 9).toString());
+        tfEditSoliHini.setText(jTableSoliUsu.getValueAt(jTableSoliUsu.getSelectedRow(), 10).toString());
+        tfEditSoliHfin.setText(jTableSoliUsu.getValueAt(jTableSoliUsu.getSelectedRow(), 11).toString());
         tfEditSoliTransporte.setText(jTableSoliUsu.getValueAt(jTableSoliUsu.getSelectedRow(), 5).toString());
         taEditSoliTransporte.setText(jTableSoliUsu.getValueAt(jTableSoliUsu.getSelectedRow(), 6).toString());
         taEditSoliAlojamiento.setText(jTableSoliUsu.getValueAt(jTableSoliUsu.getSelectedRow(), 12).toString());
-        tfEditSoliProfRes.setText(jTableSoliUsu.getValueAt(jTableSoliUsu.getSelectedRow(), 16).toString());
-        tfEditSoliProfPar.setText(jTableSoliUsu.getValueAt(jTableSoliUsu.getSelectedRow(), 17).toString());
-        tfEditSoliGrupo.setText(jTableSoliUsu.getValueAt(jTableSoliUsu.getSelectedRow(), 18).toString());
-        tfEditSoliCurso.setText(jTableSoliUsu.getValueAt(jTableSoliUsu.getSelectedRow(), 19).toString());
+        tfEditSoliProfRes.setText(jTableSoliUsu.getValueAt(jTableSoliUsu.getSelectedRow(), 17).toString());
+        tfEditSoliProfPar.setText(jTableSoliUsu.getValueAt(jTableSoliUsu.getSelectedRow(), 18).toString());
+        tfEditSoliGrupo.setText(jTableSoliUsu.getValueAt(jTableSoliUsu.getSelectedRow(), 19).toString());
+        tfEditSoliCurso.setText(jTableSoliUsu.getValueAt(jTableSoliUsu.getSelectedRow(), 20).toString());
         taEditSoliComentario.setText(jTableSoliUsu.getValueAt(jTableSoliUsu.getSelectedRow(), 13).toString());
         if (jTableSoliUsu.getValueAt(jTableSoliUsu.getSelectedRow(), 5).toString().equals("Si")) {
             chbEditSoliAlojamiento.setSelected(rootPaneCheckingEnabled);
@@ -4139,7 +4146,9 @@ public class JFrame_Principal extends javax.swing.JFrame {
         }
         Solicitud solicitud = new Solicitud(profesor, tfActividad6.getText(), String.valueOf(cbTipoActividad.getSelectedItem()), profesor.getDepartamento(), cbPrevisto1.isSelected(), transporte, taTransporte.getText(), fIni, fFin, horaInicio, horaFin, cbAlojamiento.isSelected(), taTransporte1.getText(), jTextArea1.getText(), "SOLICITADA", "", profesoresP, profesoresR, grupos, cursos, numeroAlumnos);
         sDAO.agregar(solicitud);
-
+        
+        jTableSoliPendientes.setModel(MostrarTabla.mostrarSolicitud());
+        jTableSoliUsu.setModel(MostrarTabla.mostrarSolicitud());
 
     }//GEN-LAST:event_btnSendSoliActionPerformed
 
@@ -4170,6 +4179,79 @@ public class JFrame_Principal extends javax.swing.JFrame {
         //Boton para enviar los cambios de edicion de la tabla solicitudes a la base de datos
         jPanelSoliTable.setVisible(true);
         jPanelEditSoli.setVisible(false);
+        
+        //Modificar Solicitud
+        
+        TreeMap<Integer, Transporte> transporte = new TreeMap<Integer, Transporte>();
+
+        DateTimeFormatter f = DateTimeFormatter.ofPattern("dd-MM-yyyy").withLocale(new Locale("es", "ES"));
+        LocalDate fIni = LocalDate.parse(tfEditSoliFini.getText(), f);
+        LocalDate fFin = LocalDate.parse(tfEditSoliFfin.getText(), f);
+        DateTimeFormatter time = DateTimeFormatter.ofPattern("HH:mm").withLocale(new Locale("es", "ES"));
+        LocalTime horaInicio = LocalTime.parse(tfEditSoliHini.getText(), time);
+        LocalTime horaFin = LocalTime.parse(tfEditSoliHfin.getText(), time);
+
+        TreeMap<Integer, Profesor> profesoresR = new TreeMap<Integer, Profesor>();
+        String r = tfEditSoliProfRes.getText();
+        if (r.contains(",")) {
+            String[] pr = r.split(",");
+            for (int i = 0; i < pr.length; i++) {
+                profesoresR.put(i, pDAO.porNombreApellido(pr[i]));
+            }
+        } else if (profesoresR.isEmpty()) {
+            profesoresR.put(1, pDAO.porNombreApellido(r));
+        } else {
+            profesoresR.put(profesoresR.lastKey() + 1, pDAO.porNombreApellido(r));
+        }
+
+        TreeMap<Integer, Profesor> profesoresP = new TreeMap<Integer, Profesor>();
+        String p = tfEditSoliProfPar.getText();
+        if (r.contains(",")) {
+            String[] pr = p.split(",");
+            for (int i = 0; i < pr.length; i++) {
+                profesoresP.put(i, pDAO.porNombreApellido(p));
+            }
+        } else if (profesoresP.isEmpty()) {
+            profesoresR.put(1, pDAO.porNombreApellido(p));
+        } else {
+            profesoresR.put(profesoresP.lastKey() + 1, pDAO.porNombreApellido(p));
+        }
+        int numeroAlumnos = 0;
+        TreeMap<Integer, Grupo> grupos = new TreeMap<Integer, Grupo>();
+        String gr = tfEditSoliGrupo.getText();
+
+        if (gr.contains(",")) {
+            String[] g = gr.split(",");
+            for (int i = 0; i < g.length; i++) {
+                Grupo gru = gDAO.porCodigo(g[i]);
+                grupos.put(i, gru);
+                numeroAlumnos += gru.getNumeroAlumnos();
+            }
+        } else if (grupos.isEmpty()) {
+            grupos.put(1, gDAO.porCodigo(gr));
+        } else {
+            grupos.put(grupos.lastKey() + 1, gDAO.porCodigo(gr));
+        }
+
+        TreeMap<Integer, Curso> cursos = new TreeMap<Integer, Curso>();
+        String cur = tfEditSoliCurso.getText();
+        if (gr.contains(",")) {
+            String[] c = cur.split(",");
+            for (int i = 0; i < c.length; i++) {
+                Curso cr = cDAO.porCodigo(c[i]);
+                cursos.put(i, cr);
+            }
+        } else if (cursos.isEmpty()) {
+            cursos.put(1, cDAO.porCodigo(cur));
+        } else {
+            cursos.put(cursos.lastKey() + 1, cDAO.porCodigo(cur));
+        }
+        
+        Solicitud solicitud = new Solicitud(Integer.parseInt(jTableSoliUsu.getValueAt(jTableSoliUsu.getSelectedRow(),0).toString()), profesor, tfEditSoliNom.getText(), String.valueOf(cbEditSoliTipoActividad.getSelectedItem()), profesor.getDepartamento(), cbEditSoliPrevisto.isSelected(), transporte, taEditSoliTransporte.getText(), fIni, fFin, horaInicio, horaFin, chbEditSoliAlojamiento.isSelected(), taEditSoliAlojamiento.getText(), taEditSoliComentario.getText(), "SOLICITADA", "", profesoresP, profesoresR, grupos, cursos, numeroAlumnos);
+        System.out.println(taEditSoliTransporte.getText());
+        sDAO.modificar(solicitud);
+        
+        jTableSoliUsu.setModel(MostrarTabla.mostrarSolicitud());
         
     }//GEN-LAST:event_btnEditSoliActionPerformed
 
@@ -4267,6 +4349,13 @@ public class JFrame_Principal extends javax.swing.JFrame {
         // TODO add your handling code here:
         jPanelSoliTable.setVisible(true);
         jPanelEditSoli.setVisible(false);
+        //Eliminar solicitud
+        int result = JOptionPane.showConfirmDialog(this,"¿Estas seguro de querer eliminar este elemento?", "Eliminar",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
+        if(result == JOptionPane.YES_OPTION){
+            sDAO.eliminar(Integer.parseInt(jTableSoliUsu.getValueAt(jTableSoliUsu.getSelectedRow(),0).toString()));   
+        }
+        
+         jTableSoliUsu.setModel(MostrarTabla.mostrarSolicitud());
     }//GEN-LAST:event_btnEliminarSoliActionPerformed
 
     private void btnEliminarActvdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActvdActionPerformed
@@ -4278,7 +4367,23 @@ public class JFrame_Principal extends javax.swing.JFrame {
 
     private void btnEstadoSoliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEstadoSoliActionPerformed
         // TODO add your handling code here:
+        //Cambiar estado solicitud     jTableGrupo.getValueAt(jTableGrupo.getSelectedRow(),2).toString())
+        
+        Solicitud sol = sDAO.porId(Integer.valueOf(jTableSoliPendientes.getValueAt(jTableSoliPendientes.getSelectedRow(), 0).toString()));
+        sol.setESTADO(cbEstadoSoli.getSelectedItem().toString());
+        sDAO.modificar(sol);
+        if(sol.getESTADO().equals(EstadoSolicitud.APROBADA)){
+            saDAO.agregar(new SolicitudAprobada(sol.getId(),sol.getProfesorSolicitante(),sol.getActividad(),sol.getTIPOACTIVIDAD().name(),sol.getDepartamento(),
+                    sol.isPrevisto(),sol.getTransporte(),sol.getComentarioTransporte(),sol.getFechaInicio(),sol.getFechaFinal(),sol.getHoraInicio(),sol.getHoraFinal(),
+                    sol.isAlojamiento(),sol.getComentarioAlojamiento(),sol.getComentarioAdicional(),sol.getESTADO().name(), sol.getComentarioEstado(),sol.getProfesoresParticipantes(),
+                    sol.getProfesoresResponsables(),sol.getGrupos(),sol.getCursos(),sol.getNumeroAlumnos(),null, 0, null));
+        }
+        jTableSoliPendientes.setModel(MostrarTabla.mostrarSolicitud());
     }//GEN-LAST:event_btnEstadoSoliActionPerformed
+
+    private void tfEditSoliProfResActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfEditSoliProfResActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tfEditSoliProfResActionPerformed
 
 
 

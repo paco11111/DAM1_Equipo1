@@ -38,7 +38,7 @@ public class SolicitudAprobadaDAO implements Repositorio<SolicitudAprobada> {
     @Override
     public List<SolicitudAprobada> listar() {
         List<SolicitudAprobada> solicitudes = new ArrayList<>();
-        try ( Statement stmt = getConnection().createStatement();  ResultSet rs = stmt.executeQuery("SELECT * FROM solicitudesAprobada");) {
+        try ( Statement stmt = getConnection().createStatement();  ResultSet rs = stmt.executeQuery("SELECT * FROM solicitudes_aprobadas");) {
             while (rs.next()) {
                 SolicitudAprobada solicitud = crearSolicitudAprobada(rs);
                 if (!solicitudes.add(solicitud)) {
@@ -205,9 +205,9 @@ public class SolicitudAprobadaDAO implements Repositorio<SolicitudAprobada> {
             String tipoActividad = "" + solicitud.getTIPOACTIVIDAD();
             stmt.setString(2, tipoActividad);
             if(solicitud.getTransporte().isEmpty()){
-                stmt.setString(3, "false");
+                stmt.setBoolean(3,false );
             }else{
-                stmt.setString(3, "true");
+                stmt.setBoolean(3,true );
             }
             stmt.setString(4, solicitud.getComentarioTransporte());
             Date fechaInicio = Date.valueOf(solicitud.getFechaInicio());

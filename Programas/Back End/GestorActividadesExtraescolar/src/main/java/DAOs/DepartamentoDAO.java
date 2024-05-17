@@ -66,7 +66,6 @@ public class DepartamentoDAO implements Repositorio<Departamento>{
         
         d.setJefe(p);
         p.setDepartamento(d);
-        System.out.println(d.getId());
         return d;
     }
 
