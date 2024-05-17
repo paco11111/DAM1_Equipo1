@@ -267,6 +267,7 @@ Aquí mostraremos las fotos del año seleccionado mediante tres carruseles con d
 
 
 ## PROGRAMACION
+![](https://github.com/paco11111/DAM1_Equipo1/blob/c52851d3cb01252fae6b99758c510b87af9fa8e9/Diagramas/DiagramaUso.png)
 
 La aplicacion se gestiona distinto en base al tipo de usuario que lo abre:
 
@@ -276,7 +277,7 @@ El equipo directivo tiene unicamente acceso a las solicitudes pendientes
 
 ### PROFESOR:
 
-Los profesores pueden crear solicitudes, modificarlas y gestionar las actividades
+Los profesores pueden crear solicitudes, modificarlas,cargar datos y gestionar las actividades
 
 ### SUPERUSUARIO/ADMINISTRADOR:
 
