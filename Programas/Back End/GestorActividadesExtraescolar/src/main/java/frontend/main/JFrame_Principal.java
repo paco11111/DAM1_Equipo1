@@ -3470,6 +3470,8 @@ public class JFrame_Principal extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, "Operacion interrumpida");
             }
         }
+        
+        jTableProf.setModel(MostrarTabla.mostrarProfesor());
 
     }//GEN-LAST:event_btnCSVupActionPerformed
 
