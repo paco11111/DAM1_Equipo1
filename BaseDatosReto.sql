@@ -1,3 +1,5 @@
+CREATE DATABASE  IF NOT EXISTS `Base_Datos_Reto` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish2_ci */;
+USE `Base_Datos_Reto`;
 -- MySQL dump 10.13  Distrib 8.0.36, for Win64 (x86_64)
 --
 -- Host: 192.168.1.109    Database: Base_Datos_Reto
@@ -426,4 +428,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-05-21 12:58:18
+-- Dump completed on 2024-05-22  0:42:27
